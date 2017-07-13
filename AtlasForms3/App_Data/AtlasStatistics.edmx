@@ -1,0 +1,943 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="atlasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DiorganwshTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Seasonid" Type="int" Nullable="false" />
+          <Property Name="DiorganwshName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveDiorganwsh" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GamesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gamename" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="Gamestadium" Type="varchar" MaxLength="30" />
+          <Property Name="Gamedate" Type="datetime" />
+          <Property Name="Seasonid" Type="int" />
+          <Property Name="Diorganwshid" Type="int" />
+          <Property Name="Omilosid" Type="int" />
+          <Property Name="Kathgoriaid" Type="int" />
+          <Property Name="Agwnistiki" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="GipedaTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GipedoName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="KathgoriesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Omilosid" Type="int" Nullable="false" />
+          <Property Name="KathgoriaName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveKathgoria" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="DiataksiPlayoffId" Type="int" />
+          <Property Name="DiataksiCupId" Type="int" />
+        </EntityType>
+        <EntityType Name="OmilosTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Diorganwshid" Type="int" Nullable="false" />
+          <Property Name="OmilosName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveOmilos" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PlayersStatisticsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="Playerid" Type="int" Nullable="false" />
+          <Property Name="Gameid" Type="int" Nullable="false" />
+          <Property Name="pts2in" Type="int" />
+          <Property Name="pts2out" Type="int" />
+          <Property Name="pts3in" Type="int" />
+          <Property Name="pts3out" Type="int" />
+          <Property Name="ptstotal" Type="int" />
+          <Property Name="pts1in" Type="int" />
+          <Property Name="pts1out" Type="int" />
+          <Property Name="assists" Type="int" />
+          <Property Name="steals" Type="int" />
+          <Property Name="turnovers" Type="int" />
+          <Property Name="rebounds" Type="int" />
+          <Property Name="defrebounds" Type="int" />
+          <Property Name="offrebounds" Type="int" />
+          <Property Name="faouls" Type="int" />
+          <Property Name="blocks" Type="int" />
+          <Property Name="teamstatisticsid" Type="int" />
+          <Property Name="totaltime" Type="int" />
+          <Property Name="tendex" Type="float" />
+        </EntityType>
+        <EntityType Name="PlayersTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fanela" Type="int" />
+          <Property Name="ActivePlayer" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="FatherName" Type="varchar" MaxLength="30" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="NumberID" Type="varchar" MaxLength="50" />
+          <Property Name="Nationality" Type="varchar" MaxLength="30" />
+          <Property Name="PlayerPhoto" Type="image" />
+          <Property Name="resizeflag" Type="int" />
+        </EntityType>
+        <EntityType Name="SeasonTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeasonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveSeason" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TeamsandKathgoriesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="KathgoriaId" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TeamsandPlayersTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TeamsStatisticsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="Teamid" Type="int" Nullable="false" />
+          <Property Name="Gameid" Type="int" Nullable="false" />
+          <Property Name="pts2in" Type="int" />
+          <Property Name="pts2out" Type="int" />
+          <Property Name="pts3in" Type="int" />
+          <Property Name="pts3out" Type="int" />
+          <Property Name="ptstotal" Type="int" />
+          <Property Name="pts1in" Type="int" />
+          <Property Name="pts1out" Type="int" />
+          <Property Name="assists" Type="int" />
+          <Property Name="steals" Type="int" />
+          <Property Name="turnovers" Type="int" />
+          <Property Name="rebounds" Type="int" />
+          <Property Name="defrebounds" Type="int" />
+          <Property Name="offrebounds" Type="int" />
+          <Property Name="faouls" Type="int" />
+          <Property Name="blocks" Type="int" />
+          <Property Name="gipedouxos" Type="int" />
+          <Property Name="q1points" Type="int" />
+          <Property Name="q2points" Type="int" />
+          <Property Name="q3points" Type="int" />
+          <Property Name="q4points" Type="int" />
+          <Property Name="qo1points" Type="int" />
+          <Property Name="qo2points" Type="int" />
+          <Property Name="midenismos" Type="int" />
+        </EntityType>
+        <EntityType Name="TeamsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveTeam" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="TeamLogo" Type="image" />
+          <Property Name="TeamLogo_small" Type="image" />
+          <Property Name="resizeflag" Type="int" />
+        </EntityType>
+        <Function Name="getallteamsrankings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="season" Type="int" Mode="In" />
+          <Parameter Name="diorganwsh" Type="int" Mode="In" />
+          <Parameter Name="omilos" Type="int" Mode="In" />
+          <Parameter Name="kathgoria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeeklyReportStat1All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeeklyReportStat2All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeeklyReportStat3All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeeklyReportStat4All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWeeklyReportStat5All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="atlasModelStoreContainer">
+          <EntitySet Name="DiorganwshTable" EntityType="Self.DiorganwshTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GamesTable" EntityType="Self.GamesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GipedaTable" EntityType="Self.GipedaTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KathgoriesTable" EntityType="Self.KathgoriesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OmilosTable" EntityType="Self.OmilosTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlayersStatisticsTable" EntityType="Self.PlayersStatisticsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlayersTable" EntityType="Self.PlayersTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeasonTable" EntityType="Self.SeasonTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamsandKathgoriesTable" EntityType="Self.TeamsandKathgoriesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamsandPlayersTable" EntityType="Self.TeamsandPlayersTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamsStatisticsTable" EntityType="Self.TeamsStatisticsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamsTable" EntityType="Self.TeamsTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="atlasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DiorganwshTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Seasonid" Type="Int32" Nullable="false" />
+          <Property Name="DiorganwshName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActiveDiorganwsh" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GamesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gamename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gamestadium" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Gamedate" Type="DateTime" Precision="3" />
+          <Property Name="Seasonid" Type="Int32" />
+          <Property Name="Diorganwshid" Type="Int32" />
+          <Property Name="Omilosid" Type="Int32" />
+          <Property Name="Kathgoriaid" Type="Int32" />
+          <Property Name="Agwnistiki" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GipedaTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GipedoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KathgoriesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Omilosid" Type="Int32" Nullable="false" />
+          <Property Name="KathgoriaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActiveKathgoria" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DiataksiPlayoffId" Type="Int32" />
+          <Property Name="DiataksiCupId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OmilosTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Diorganwshid" Type="Int32" Nullable="false" />
+          <Property Name="OmilosName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActiveOmilos" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PlayersStatisticsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Playerid" Type="Int32" Nullable="false" />
+          <Property Name="Gameid" Type="Int32" Nullable="false" />
+          <Property Name="pts2in" Type="Int32" />
+          <Property Name="pts2out" Type="Int32" />
+          <Property Name="pts3in" Type="Int32" />
+          <Property Name="pts3out" Type="Int32" />
+          <Property Name="ptstotal" Type="Int32" />
+          <Property Name="pts1in" Type="Int32" />
+          <Property Name="pts1out" Type="Int32" />
+          <Property Name="assists" Type="Int32" />
+          <Property Name="steals" Type="Int32" />
+          <Property Name="turnovers" Type="Int32" />
+          <Property Name="rebounds" Type="Int32" />
+          <Property Name="defrebounds" Type="Int32" />
+          <Property Name="offrebounds" Type="Int32" />
+          <Property Name="faouls" Type="Int32" />
+          <Property Name="blocks" Type="Int32" />
+          <Property Name="teamstatisticsid" Type="Int32" />
+          <Property Name="totaltime" Type="Int32" />
+          <Property Name="tendex" Type="Double" />
+        </EntityType>
+        <EntityType Name="PlayersTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fanela" Type="Int32" />
+          <Property Name="ActivePlayer" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="FatherName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="NumberID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PlayerPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="resizeflag" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SeasonTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeasonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActiveSeason" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TeamsandKathgoriesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="KathgoriaId" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TeamsandPlayersTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="PlayerId" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TeamsStatisticsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Teamid" Type="Int32" Nullable="false" />
+          <Property Name="Gameid" Type="Int32" Nullable="false" />
+          <Property Name="pts2in" Type="Int32" />
+          <Property Name="pts2out" Type="Int32" />
+          <Property Name="pts3in" Type="Int32" />
+          <Property Name="pts3out" Type="Int32" />
+          <Property Name="ptstotal" Type="Int32" />
+          <Property Name="pts1in" Type="Int32" />
+          <Property Name="pts1out" Type="Int32" />
+          <Property Name="assists" Type="Int32" />
+          <Property Name="steals" Type="Int32" />
+          <Property Name="turnovers" Type="Int32" />
+          <Property Name="rebounds" Type="Int32" />
+          <Property Name="defrebounds" Type="Int32" />
+          <Property Name="offrebounds" Type="Int32" />
+          <Property Name="faouls" Type="Int32" />
+          <Property Name="blocks" Type="Int32" />
+          <Property Name="gipedouxos" Type="Int32" />
+          <Property Name="q1points" Type="Int32" />
+          <Property Name="q2points" Type="Int32" />
+          <Property Name="q3points" Type="Int32" />
+          <Property Name="q4points" Type="Int32" />
+          <Property Name="qo1points" Type="Int32" />
+          <Property Name="qo2points" Type="Int32" />
+          <Property Name="midenismos" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TeamsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActiveTeam" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeamLogo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TeamLogo_small" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="resizeflag" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="AtlasStatisticsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DiorganwshTable" EntityType="Self.DiorganwshTable" />
+          <EntitySet Name="GamesTable" EntityType="Self.GamesTable" />
+          <EntitySet Name="GipedaTable" EntityType="Self.GipedaTable" />
+          <EntitySet Name="KathgoriesTable" EntityType="Self.KathgoriesTable" />
+          <EntitySet Name="OmilosTable" EntityType="Self.OmilosTable" />
+          <EntitySet Name="PlayersStatisticsTable" EntityType="Self.PlayersStatisticsTable" />
+          <EntitySet Name="PlayersTable" EntityType="Self.PlayersTable" />
+          <EntitySet Name="SeasonTable" EntityType="Self.SeasonTable" />
+          <EntitySet Name="TeamsandKathgoriesTable" EntityType="Self.TeamsandKathgoriesTable" />
+          <EntitySet Name="TeamsandPlayersTable" EntityType="Self.TeamsandPlayersTable" />
+          <EntitySet Name="TeamsStatisticsTable" EntityType="Self.TeamsStatisticsTable" />
+          <EntitySet Name="TeamsTable" EntityType="Self.TeamsTable" />
+          <FunctionImport Name="getallteamsrankings" ReturnType="Collection(atlasModel.getallteamsrankings_Result)">
+            <Parameter Name="season" Mode="In" Type="Int32" />
+            <Parameter Name="diorganwsh" Mode="In" Type="Int32" />
+            <Parameter Name="omilos" Mode="In" Type="Int32" />
+            <Parameter Name="kathgoria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeeklyReportStat1All" ReturnType="Collection(atlasModel.GetWeeklyReportStat1All_Result)">
+            <Parameter Name="kid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeeklyReportStat2All" ReturnType="Collection(atlasModel.GetWeeklyReportStat2All_Result)">
+            <Parameter Name="kid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeeklyReportStat3All" ReturnType="Collection(atlasModel.GetWeeklyReportStat3All_Result)">
+            <Parameter Name="kid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeeklyReportStat4All" ReturnType="Collection(atlasModel.GetWeeklyReportStat4All_Result)">
+            <Parameter Name="kid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWeeklyReportStat5All" ReturnType="Collection(atlasModel.GetWeeklyReportStat5All_Result)">
+            <Parameter Name="kid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="getallteamsrankings_Result">
+          <Property Type="Int64" Name="ncount" Nullable="false" />
+          <Property Type="String" Name="thisname" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="thisid" Nullable="false" />
+          <Property Type="String" Name="SeasonName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DiorganwshName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="OmilosName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="KathgoriaName" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="nikes" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="isopalies" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="httes" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="mhdenismoi" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="totalplayed" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="totalpoints" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="diaforapontwn" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="bathmoi" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="GetWeeklyReportStat1All_Result">
+          <Property Type="Int64" Name="Row" Nullable="true" />
+          <Property Type="String" Name="thisname" Nullable="false" MaxLength="62" />
+          <Property Type="Int32" Name="thisid" Nullable="false" />
+          <Property Type="String" Name="SeasonName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DiorganwshName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OmilosName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="KathgoriaName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KathgoriaId" Nullable="false" />
+          <Property Type="String" Name="teamname" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="teamId" Nullable="false" />
+          <Property Type="Decimal" Name="totalpoints" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Binary" Name="PlayerPhoto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="GetWeeklyReportStat2All_Result">
+          <Property Type="Int64" Name="Row" Nullable="true" />
+          <Property Type="String" Name="thisname" Nullable="false" MaxLength="62" />
+          <Property Type="Int32" Name="thisid" Nullable="false" />
+          <Property Type="String" Name="SeasonName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DiorganwshName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OmilosName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="KathgoriaName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KathgoriaId" Nullable="false" />
+          <Property Type="String" Name="teamname" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="teamId" Nullable="false" />
+          <Property Type="Decimal" Name="totalassists" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Binary" Name="PlayerPhoto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="GetWeeklyReportStat3All_Result">
+          <Property Type="Int64" Name="Row" Nullable="true" />
+          <Property Type="String" Name="thisname" Nullable="false" MaxLength="62" />
+          <Property Type="Int32" Name="thisid" Nullable="false" />
+          <Property Type="String" Name="SeasonName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DiorganwshName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OmilosName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="KathgoriaName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KathgoriaId" Nullable="false" />
+          <Property Type="String" Name="teamname" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="teamId" Nullable="false" />
+          <Property Type="Decimal" Name="totalrebounds" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Binary" Name="PlayerPhoto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="GetWeeklyReportStat4All_Result">
+          <Property Type="Int64" Name="Row" Nullable="true" />
+          <Property Type="String" Name="thisname" Nullable="false" MaxLength="62" />
+          <Property Type="Int32" Name="thisid" Nullable="false" />
+          <Property Type="String" Name="SeasonName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DiorganwshName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OmilosName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="KathgoriaName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KathgoriaId" Nullable="false" />
+          <Property Type="String" Name="teamname" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="teamId" Nullable="false" />
+          <Property Type="Decimal" Name="totalsteals" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Binary" Name="PlayerPhoto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="GetWeeklyReportStat5All_Result">
+          <Property Type="Int64" Name="Row" Nullable="true" />
+          <Property Type="String" Name="thisname" Nullable="false" MaxLength="62" />
+          <Property Type="Int32" Name="thisid" Nullable="false" />
+          <Property Type="String" Name="SeasonName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DiorganwshName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OmilosName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="KathgoriaName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KathgoriaId" Nullable="false" />
+          <Property Type="String" Name="teamname" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="teamId" Nullable="false" />
+          <Property Type="Decimal" Name="totalblocks" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Binary" Name="PlayerPhoto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="atlasModelStoreContainer" CdmEntityContainer="AtlasStatisticsEntities">
+          <EntitySetMapping Name="DiorganwshTable">
+            <EntityTypeMapping TypeName="atlasModel.DiorganwshTable">
+              <MappingFragment StoreEntitySet="DiorganwshTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Seasonid" ColumnName="Seasonid" />
+                <ScalarProperty Name="DiorganwshName" ColumnName="DiorganwshName" />
+                <ScalarProperty Name="ActiveDiorganwsh" ColumnName="ActiveDiorganwsh" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GamesTable">
+            <EntityTypeMapping TypeName="atlasModel.GamesTable">
+              <MappingFragment StoreEntitySet="GamesTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Gamename" ColumnName="Gamename" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="Gamestadium" ColumnName="Gamestadium" />
+                <ScalarProperty Name="Gamedate" ColumnName="Gamedate" />
+                <ScalarProperty Name="Seasonid" ColumnName="Seasonid" />
+                <ScalarProperty Name="Diorganwshid" ColumnName="Diorganwshid" />
+                <ScalarProperty Name="Omilosid" ColumnName="Omilosid" />
+                <ScalarProperty Name="Kathgoriaid" ColumnName="Kathgoriaid" />
+                <ScalarProperty Name="Agwnistiki" ColumnName="Agwnistiki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GipedaTable">
+            <EntityTypeMapping TypeName="atlasModel.GipedaTable">
+              <MappingFragment StoreEntitySet="GipedaTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GipedoName" ColumnName="GipedoName" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KathgoriesTable">
+            <EntityTypeMapping TypeName="atlasModel.KathgoriesTable">
+              <MappingFragment StoreEntitySet="KathgoriesTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Omilosid" ColumnName="Omilosid" />
+                <ScalarProperty Name="KathgoriaName" ColumnName="KathgoriaName" />
+                <ScalarProperty Name="ActiveKathgoria" ColumnName="ActiveKathgoria" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="DiataksiPlayoffId" ColumnName="DiataksiPlayoffId" />
+                <ScalarProperty Name="DiataksiCupId" ColumnName="DiataksiCupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OmilosTable">
+            <EntityTypeMapping TypeName="atlasModel.OmilosTable">
+              <MappingFragment StoreEntitySet="OmilosTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Diorganwshid" ColumnName="Diorganwshid" />
+                <ScalarProperty Name="OmilosName" ColumnName="OmilosName" />
+                <ScalarProperty Name="ActiveOmilos" ColumnName="ActiveOmilos" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlayersStatisticsTable">
+            <EntityTypeMapping TypeName="atlasModel.PlayersStatisticsTable">
+              <MappingFragment StoreEntitySet="PlayersStatisticsTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="Playerid" ColumnName="Playerid" />
+                <ScalarProperty Name="Gameid" ColumnName="Gameid" />
+                <ScalarProperty Name="pts2in" ColumnName="pts2in" />
+                <ScalarProperty Name="pts2out" ColumnName="pts2out" />
+                <ScalarProperty Name="pts3in" ColumnName="pts3in" />
+                <ScalarProperty Name="pts3out" ColumnName="pts3out" />
+                <ScalarProperty Name="ptstotal" ColumnName="ptstotal" />
+                <ScalarProperty Name="pts1in" ColumnName="pts1in" />
+                <ScalarProperty Name="pts1out" ColumnName="pts1out" />
+                <ScalarProperty Name="assists" ColumnName="assists" />
+                <ScalarProperty Name="steals" ColumnName="steals" />
+                <ScalarProperty Name="turnovers" ColumnName="turnovers" />
+                <ScalarProperty Name="rebounds" ColumnName="rebounds" />
+                <ScalarProperty Name="defrebounds" ColumnName="defrebounds" />
+                <ScalarProperty Name="offrebounds" ColumnName="offrebounds" />
+                <ScalarProperty Name="faouls" ColumnName="faouls" />
+                <ScalarProperty Name="blocks" ColumnName="blocks" />
+                <ScalarProperty Name="teamstatisticsid" ColumnName="teamstatisticsid" />
+                <ScalarProperty Name="totaltime" ColumnName="totaltime" />
+                <ScalarProperty Name="tendex" ColumnName="tendex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlayersTable">
+            <EntityTypeMapping TypeName="atlasModel.PlayersTable">
+              <MappingFragment StoreEntitySet="PlayersTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Fanela" ColumnName="Fanela" />
+                <ScalarProperty Name="ActivePlayer" ColumnName="ActivePlayer" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="NumberID" ColumnName="NumberID" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="PlayerPhoto" ColumnName="PlayerPhoto" />
+                <ScalarProperty Name="resizeflag" ColumnName="resizeflag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeasonTable">
+            <EntityTypeMapping TypeName="atlasModel.SeasonTable">
+              <MappingFragment StoreEntitySet="SeasonTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+                <ScalarProperty Name="ActiveSeason" ColumnName="ActiveSeason" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamsandKathgoriesTable">
+            <EntityTypeMapping TypeName="atlasModel.TeamsandKathgoriesTable">
+              <MappingFragment StoreEntitySet="TeamsandKathgoriesTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="KathgoriaId" ColumnName="KathgoriaId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamsandPlayersTable">
+            <EntityTypeMapping TypeName="atlasModel.TeamsandPlayersTable">
+              <MappingFragment StoreEntitySet="TeamsandPlayersTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamsStatisticsTable">
+            <EntityTypeMapping TypeName="atlasModel.TeamsStatisticsTable">
+              <MappingFragment StoreEntitySet="TeamsStatisticsTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="Teamid" ColumnName="Teamid" />
+                <ScalarProperty Name="Gameid" ColumnName="Gameid" />
+                <ScalarProperty Name="pts2in" ColumnName="pts2in" />
+                <ScalarProperty Name="pts2out" ColumnName="pts2out" />
+                <ScalarProperty Name="pts3in" ColumnName="pts3in" />
+                <ScalarProperty Name="pts3out" ColumnName="pts3out" />
+                <ScalarProperty Name="ptstotal" ColumnName="ptstotal" />
+                <ScalarProperty Name="pts1in" ColumnName="pts1in" />
+                <ScalarProperty Name="pts1out" ColumnName="pts1out" />
+                <ScalarProperty Name="assists" ColumnName="assists" />
+                <ScalarProperty Name="steals" ColumnName="steals" />
+                <ScalarProperty Name="turnovers" ColumnName="turnovers" />
+                <ScalarProperty Name="rebounds" ColumnName="rebounds" />
+                <ScalarProperty Name="defrebounds" ColumnName="defrebounds" />
+                <ScalarProperty Name="offrebounds" ColumnName="offrebounds" />
+                <ScalarProperty Name="faouls" ColumnName="faouls" />
+                <ScalarProperty Name="blocks" ColumnName="blocks" />
+                <ScalarProperty Name="gipedouxos" ColumnName="gipedouxos" />
+                <ScalarProperty Name="q1points" ColumnName="q1points" />
+                <ScalarProperty Name="q2points" ColumnName="q2points" />
+                <ScalarProperty Name="q3points" ColumnName="q3points" />
+                <ScalarProperty Name="q4points" ColumnName="q4points" />
+                <ScalarProperty Name="qo1points" ColumnName="qo1points" />
+                <ScalarProperty Name="qo2points" ColumnName="qo2points" />
+                <ScalarProperty Name="midenismos" ColumnName="midenismos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamsTable">
+            <EntityTypeMapping TypeName="atlasModel.TeamsTable">
+              <MappingFragment StoreEntitySet="TeamsTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="ActiveTeam" ColumnName="ActiveTeam" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="TeamLogo" ColumnName="TeamLogo" />
+                <ScalarProperty Name="TeamLogo_small" ColumnName="TeamLogo_small" />
+                <ScalarProperty Name="resizeflag" ColumnName="resizeflag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getallteamsrankings" FunctionName="atlasModel.Store.getallteamsrankings">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="atlasModel.getallteamsrankings_Result">
+                <ScalarProperty Name="ncount" ColumnName="ncount" />
+                <ScalarProperty Name="thisname" ColumnName="thisname" />
+                <ScalarProperty Name="thisid" ColumnName="thisid" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+                <ScalarProperty Name="DiorganwshName" ColumnName="DiorganwshName" />
+                <ScalarProperty Name="OmilosName" ColumnName="OmilosName" />
+                <ScalarProperty Name="KathgoriaName" ColumnName="KathgoriaName" />
+                <ScalarProperty Name="nikes" ColumnName="nikes" />
+                <ScalarProperty Name="isopalies" ColumnName="isopalies" />
+                <ScalarProperty Name="httes" ColumnName="httes" />
+                <ScalarProperty Name="mhdenismoi" ColumnName="mhdenismoi" />
+                <ScalarProperty Name="totalplayed" ColumnName="totalplayed" />
+                <ScalarProperty Name="totalpoints" ColumnName="totalpoints" />
+                <ScalarProperty Name="diaforapontwn" ColumnName="diaforapontwn" />
+                <ScalarProperty Name="bathmoi" ColumnName="bathmoi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeeklyReportStat1All" FunctionName="atlasModel.Store.GetWeeklyReportStat1All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="atlasModel.GetWeeklyReportStat1All_Result">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="thisname" ColumnName="thisname" />
+                <ScalarProperty Name="thisid" ColumnName="thisid" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+                <ScalarProperty Name="DiorganwshName" ColumnName="DiorganwshName" />
+                <ScalarProperty Name="OmilosName" ColumnName="OmilosName" />
+                <ScalarProperty Name="KathgoriaName" ColumnName="KathgoriaName" />
+                <ScalarProperty Name="KathgoriaId" ColumnName="KathgoriaId" />
+                <ScalarProperty Name="teamname" ColumnName="teamname" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="totalpoints" ColumnName="totalpoints" />
+                <ScalarProperty Name="PlayerPhoto" ColumnName="PlayerPhoto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeeklyReportStat2All" FunctionName="atlasModel.Store.GetWeeklyReportStat2All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="atlasModel.GetWeeklyReportStat2All_Result">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="thisname" ColumnName="thisname" />
+                <ScalarProperty Name="thisid" ColumnName="thisid" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+                <ScalarProperty Name="DiorganwshName" ColumnName="DiorganwshName" />
+                <ScalarProperty Name="OmilosName" ColumnName="OmilosName" />
+                <ScalarProperty Name="KathgoriaName" ColumnName="KathgoriaName" />
+                <ScalarProperty Name="KathgoriaId" ColumnName="KathgoriaId" />
+                <ScalarProperty Name="teamname" ColumnName="teamname" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="totalassists" ColumnName="totalassists" />
+                <ScalarProperty Name="PlayerPhoto" ColumnName="PlayerPhoto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeeklyReportStat3All" FunctionName="atlasModel.Store.GetWeeklyReportStat3All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="atlasModel.GetWeeklyReportStat3All_Result">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="thisname" ColumnName="thisname" />
+                <ScalarProperty Name="thisid" ColumnName="thisid" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+                <ScalarProperty Name="DiorganwshName" ColumnName="DiorganwshName" />
+                <ScalarProperty Name="OmilosName" ColumnName="OmilosName" />
+                <ScalarProperty Name="KathgoriaName" ColumnName="KathgoriaName" />
+                <ScalarProperty Name="KathgoriaId" ColumnName="KathgoriaId" />
+                <ScalarProperty Name="teamname" ColumnName="teamname" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="totalrebounds" ColumnName="totalrebounds" />
+                <ScalarProperty Name="PlayerPhoto" ColumnName="PlayerPhoto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeeklyReportStat4All" FunctionName="atlasModel.Store.GetWeeklyReportStat4All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="atlasModel.GetWeeklyReportStat4All_Result">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="thisname" ColumnName="thisname" />
+                <ScalarProperty Name="thisid" ColumnName="thisid" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+                <ScalarProperty Name="DiorganwshName" ColumnName="DiorganwshName" />
+                <ScalarProperty Name="OmilosName" ColumnName="OmilosName" />
+                <ScalarProperty Name="KathgoriaName" ColumnName="KathgoriaName" />
+                <ScalarProperty Name="KathgoriaId" ColumnName="KathgoriaId" />
+                <ScalarProperty Name="teamname" ColumnName="teamname" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="totalsteals" ColumnName="totalsteals" />
+                <ScalarProperty Name="PlayerPhoto" ColumnName="PlayerPhoto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWeeklyReportStat5All" FunctionName="atlasModel.Store.GetWeeklyReportStat5All">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="atlasModel.GetWeeklyReportStat5All_Result">
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="thisname" ColumnName="thisname" />
+                <ScalarProperty Name="thisid" ColumnName="thisid" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+                <ScalarProperty Name="DiorganwshName" ColumnName="DiorganwshName" />
+                <ScalarProperty Name="OmilosName" ColumnName="OmilosName" />
+                <ScalarProperty Name="KathgoriaName" ColumnName="KathgoriaName" />
+                <ScalarProperty Name="KathgoriaId" ColumnName="KathgoriaId" />
+                <ScalarProperty Name="teamname" ColumnName="teamname" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="totalblocks" ColumnName="totalblocks" />
+                <ScalarProperty Name="PlayerPhoto" ColumnName="PlayerPhoto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,10 @@
+﻿Fernw tous omilous kai tis kathgories apo ta statistika (1)
+skeftomai na afisw mono mia kathgoriopoihsh sto blog, na to onomasw genika Kathgories (2)
+Ekei 8a exw apo genika nea, ws apla nea kai alles kathgories gia ta ar8ra
+sto ar8ro 8a syndew to (1) kai to (2)
+ara ena ar8ro 8a anikei se kathgoria, an einai geniko arthro
+alla an einai arthro omiloi 8a anhkei kai se kathgoria kai se omilo (blepe ton pinaka  BlogPostKathgoriaTable2)
+
+Ola 8a ginontai sto create/edit tou arthrou. ekei 8a exw drop down lists me tous omilous kai tis kathgories
+
+

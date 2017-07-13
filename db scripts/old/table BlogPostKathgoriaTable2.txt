@@ -1,0 +1,38 @@
+USE [atlasBlog]
+GO
+
+ Object  Table [dbo].[BlogPostKathgoriaTable2]    Script Date 1072017 121842 рм 
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[BlogPostKathgoriaTable2](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[AtlasKathgoriaId] [int] NULL,
+	[IsKathgoria] [bit] NOT NULL,
+	[IsYpokathgoria] [bit] NOT NULL,
+	[IsAtlasOmilos] [bit] NOT NULL,
+	[IsAtlasKathgoria] [bit] NOT NULL,
+	[PostId] [int] NOT NULL,
+	[CreationDate] [datetime] NULL,
+	[CreatedBy] [varchar](100) NULL,
+	[EditDate] [datetime] NULL,
+	[EditBy] [varchar](100) NULL,
+	[KathgoriaId] [int] NULL,
+ CONSTRAINT [PK_BlogPostKathgoriaTable2] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
