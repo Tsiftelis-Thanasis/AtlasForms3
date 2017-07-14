@@ -90,38 +90,44 @@ Namespace Controllers
                     If Not logodata Is Nothing Then
                         newpost.PostPhoto = logodata
                     End If
+                    newpost.PostSummary = p1.PostSummary
                     newpost.Youtubelink = p1.Youtubelink
                     newpost.Statslink = p1.Statslink
-                    newpost.Activepost = p1.Activepost
+                    newpost.Activepost = 1
                     newpost.CreatedBy = User.Identity.Name
                     newpost.CreationDate = Now()
                     newpost.EditBy = User.Identity.Name
                     newpost.EditDate = Now()
+                    pdb.BlogPostsTable.Add(newpost)
                     pdb.SaveChanges()
 
                     Dim kat = If(kathgoria Is Nothing, Nothing, kathgoria(0))
                     Dim om = If(omilos Is Nothing, Nothing, omilos(0))
 
                     If Not (kat Is Nothing And om Is Nothing) Then
+                        If kat <> "" Or om <> "" Then
 
-                        Dim newlink As New BlogPostandKathgoriaTable
-                        newlink.PostId = newpost.Id
-                        If Not (kat Is Nothing) Then
-                            newlink.KathgoriaId = kat
-                            newlink.IsKathgoria = True
+                            Dim newlink As New BlogPostandKathgoriaTable
+                            newlink.PostId = newpost.Id
+                            If kat <> "" Then
+                                newlink.KathgoriaId = CInt(kat)
+                                newlink.IsKathgoria = True
+                            End If
+                            If om <> "" Then
+                                newlink.AtlasKathgoriaId = CInt(om)
+                                newlink.IsAtlasOmilos = True
+                            End If
+                            newlink.CreationDate = Now()
+                            newlink.EditBy = User.Identity.Name
+                            newlink.EditDate = Now()
+                            pdb.BlogPostandKathgoriaTable.Add(newlink)
+                            pdb.SaveChanges()
+
                         End If
-                        If Not (om Is Nothing) Then
-                            newlink.AtlasKathgoriaId = om
-                            newlink.IsAtlasOmilos = True
-                        End If
-                        newlink.CreationDate = Now()
-                        newlink.EditBy = User.Identity.Name
-                        newlink.EditDate = Now()
-                        pdb.BlogPostandKathgoriaTable.Add(newlink)
-                        pdb.SaveChanges()
+
                     End If
 
-                    Return RedirectToAction("Index", "Posts")
+                        Return RedirectToAction("Index", "Posts")
 
                 Catch ex As Exception
                     ModelState.AddModelError("error_msg", ex.Message)
@@ -192,12 +198,13 @@ Namespace Controllers
 
                     editpost.PostTitle = p1.PostTitle
                     editpost.PostBody = p1.PostBody
+                    editpost.PostSummary = p1.PostSummary
                     If Not logodata Is Nothing Then
                         editpost.PostPhoto = logodata
                     End If
                     editpost.Youtubelink = p1.Youtubelink
                     editpost.Statslink = p1.Statslink
-                    editpost.Activepost = p1.Activepost
+                    editpost.Activepost = If(p1.Activepost, 1, 0)
                     editpost.EditBy = User.Identity.Name
                     editpost.EditDate = Now()
                     pdb.SaveChanges()
@@ -217,22 +224,26 @@ Namespace Controllers
                     Dim om = If(omilos Is Nothing, Nothing, omilos(0))
 
                     If Not (kat Is Nothing And om Is Nothing) Then
+                        If kat <> "" Or om <> "" Then
 
-                        Dim newlink As New BlogPostandKathgoriaTable
-                        newlink.PostId = p1.Id
-                        If Not (kat Is Nothing) Then
-                            newlink.KathgoriaId = kat
-                            newlink.IsKathgoria = True
+                            Dim newlink As New BlogPostandKathgoriaTable
+                            newlink.PostId = editpost.Id
+                            If kat <> "" Then
+                                newlink.KathgoriaId = CInt(kat)
+                                newlink.IsKathgoria = True
+                            End If
+                            If om <> "" Then
+                                newlink.AtlasKathgoriaId = CInt(om)
+                                newlink.IsAtlasOmilos = True
+                            End If
+                            newlink.CreationDate = Now()
+                            newlink.EditBy = User.Identity.Name
+                            newlink.EditDate = Now()
+                            pdb.BlogPostandKathgoriaTable.Add(newlink)
+                            pdb.SaveChanges()
+
                         End If
-                        If Not (om Is Nothing) Then
-                            newlink.AtlasKathgoriaId = om
-                            newlink.IsAtlasOmilos = True
-                        End If
-                        newlink.CreationDate = Now()
-                        newlink.EditBy = User.Identity.Name
-                        newlink.EditDate = Now()
-                        pdb.BlogPostandKathgoriaTable.Add(newlink)
-                        pdb.SaveChanges()
+
                     End If
 
                     Return RedirectToAction("Index", "Posts")

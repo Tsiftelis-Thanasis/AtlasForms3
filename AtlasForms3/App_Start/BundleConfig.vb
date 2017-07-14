@@ -31,7 +31,7 @@ Public Module BundleConfig
 
         bundles.Add(New StyleBundle("~/Content/css").Include(
                   "~/Content/bootstrap.css",
-                  "~/Content/chosen.css",
+                  "~/Content/bootstrap-chosen.css",
                   "~/Content/site.css",
                   "~/Content/font-awesome.css",
                   "~/Content/superfish.css",

@@ -310,7 +310,7 @@ End Code
                                 ' <article class="entry-item"> ' +
                                 ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"> ' +
                                 ' <div class="entry-thumb"> ' +
-                                ' <img src="' + this.PostPhoto + '" alt=""> ' +
+                                ' <img src="' + this.PostPhoto + '" alt="" style="height:30px;width:30px;"> ' +
                                 ' </div> </a>' +
                                 ' <h4 class="entry-title">' + this.PostTitle + '</h4> ' +
                                 ' </article> ' +

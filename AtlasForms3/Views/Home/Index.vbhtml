@@ -790,7 +790,7 @@ End Code
                 type: "POST",
                 url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
                 //data: "{nCount : " + thisid + "}",
-                data: "{nCount : 10, yk: 9}",
+                data: "{nCount : 10, k: 7}",
                 async: false,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

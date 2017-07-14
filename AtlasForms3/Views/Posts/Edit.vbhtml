@@ -1,7 +1,7 @@
 ﻿@ModelType AtlasForms3.Posts
 
 @Code
-    ViewData("Title") = "Αλλαγή: " & Model.PostTitle
+'ViewData("Title") = "Αλλαγή: " & Model.PostTitle
 
     @Html.ValidationMessage("error_msg")
 
@@ -31,8 +31,12 @@
     Next
 
 
-    Dim list2 = (From p1 In pdb2.OmilosTable
-                 Select p1.Id, p1.OmilosName).OrderBy(Function(p) p.OmilosName).ToList
+    Dim list2 = (From o In pdb2.OmilosTable
+                 Join d In pdb2.DiorganwshTable On d.Id Equals o.Diorganwshid
+                 Join s In pdb2.SeasonTable On s.Id Equals d.Seasonid
+                 Where s.ActiveSeason = True
+                 Select o.Id, OmilosName = o.OmilosName & " (" & d.DiorganwshName & ")").OrderBy(Function(p) p.OmilosName).ToList
+
 
     For Each it In list2
         If it.Id = omid Then
@@ -51,8 +55,9 @@
 
 
 End Code
-<h2>@ViewBag.Title</h2>
-<hr />
+@*<h2>@ViewBag.Title</h2>
+    <hr />*@
+
 
 @Using (Html.BeginForm("Edit", "Posts", FormMethod.Post, New With {Key .enctype = "multipart/form-data"}))
 
@@ -60,51 +65,118 @@ End Code
     @Html.ValidationSummary(True)
     @Html.HiddenFor(Function(model) model.Id)
 
-    @<div Class="kopa-entry-post">
+
+    @<article Class="entry-item">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11 section">
+                    <div class="row section-header">
+                        <h2>Αλλαγή</h2>
+                    </div>
+
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-1 control-label">Τίτλος</label>
+                            <div class="col-md-11">
+                                @Html.TextBoxFor(Function(model) model.PostTitle, New With {.class = "form-control input-text"})
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-1 control-label">Κατηγορία</label>
+                            <div class="col-sm-5">
+                                @Html.DropDownList("kathgoria", katlist, "Please select...", New With {.id = "kathgoria", .class = "form-control chosen-select"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-1 control-label">Όμιλος</label>
+                            <div class="col-sm-5">
+                                @Html.DropDownList("omilos", omiloilist, "Please select...", New With {.id = "omilos", .class = "form-control chosen-select"})
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-1 control-label">Περίληψη</label>
+                            <div class="col-md-11">
+                                @Html.TextBoxFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-2 control-label">Youtube link (code) </label>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(Function(model) model.Youtubelink, New With {.class = "form-control input-text"})
+                            </div>
+
+                            <label for="title" class="col-md-2 control-label">Statistics Link (number) </label>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(Function(model) model.Statslink, New With {.class = "form-control input-text"})
+                            </div>
+
+                            <label for="title" class="col-md-1 control-label">Active</label>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(Function(model) model.Activepost, New With {.class = "form-control input-text"})
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-horizontal">
+
+                    </div>
+
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Φωτογραφία</label>
+                            <div class="col-md-2">
+                                <input type="file" class="btn btn-default" id="uploadEditorImage" name="uploadEditorImage" />
+                            </div>
+                            <div class="col-md-9">
+                                <label class="control-label" name="uploaddone" id="uploaddone">ανέβηκε η φωτογραφία...</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-6 entry-thumb">
+                                <img src="@imageSrc" style="height:160px;width:160px;" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            @Html.TextAreaFor(Function(m) m.PostBody)
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                    </div>
+                </div>
+
+
+
+
+       
+    <p></p>
     
-    <article Class="entry-item">
-           
-        <div class="row">
-            <div class="col-sm-2"><label>Τίτλος:</label></div>            
-            <div class="col-lg-10">@Html.EditorFor(Function(model) model.PostTitle)</div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-2"><label>Κατηγορία:</label></div>
-            <div class="col-sm-10">
-                @Html.DropDownList("kathgoria", katlist, New With {.id = "kathgoria", .class = "form-control chosen-select", .multiple = "false"})
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2"><label>Όμιλος:</label></div>
-            <div class="col-sm-10">
-                @Html.DropDownList("omilos", omiloilist, New With {.id = "omilos", .class = "form-control chosen-select", .multiple = "false"})
-            </div>
-        </div>
-                
 
-        <div class="row">
-            <div class="col-sm-2"><label>Περίληψη:</label></div>  
-            <div class="col-sm-10">
-                @Html.EditorFor(Function(model) model.PostSummary)
-            </div>
-        </div>
-        
-        
-        @Html.TextAreaFor(Function(m) m.PostBody)   
+       
 
-        Youtube link (code): <p Class="short-des"><i>@Html.EditorFor(Function(model) model.Youtubelink)</i></p>
-        Statistics Link (just the number): <p Class="short-des"><i>@Html.EditorFor(Function(model) model.Statslink)</i></p>
-        Active : <p Class="short-des"><i>@Html.CheckBoxFor(Function(m) m.Activepost)</i></p>
-              
-        @Html.LabelFor(Function(m) m.PostPhoto)
-        <div Class="entry-thumb">
-            <img src="@imageSrc" style="height:320px;width:320px;"/>
-        </div>
-        
-        <input type="file" id="uploadEditorImage" name="uploadEditorImage" />
-        @Html.Label("uploaddone", "Upload is done...", New With {.id = "uploaddone"})
-        
         <div Class="entry-meta">
             <span Class="entry-author">Created by @Html.DisplayFor(Function(model) model.createdby)</span>
             <span Class="entry-date">Created on @Html.DisplayFor(Function(model) model.creationdate)</span>
@@ -112,13 +184,10 @@ End Code
             <span Class="entry-author">Edit by @Html.DisplayFor(Function(model) model.editby)</span>
             <span Class="entry-date">Edited on @Html.DisplayFor(Function(model) model.editdate)</span>
         </div>
-      
+
     </article>
 
 
-
-
-</div>
 
 @<div class="form-group">
     <input type="submit" name="Command" value="Αποθήκευση" class="btn btn-default" />
@@ -126,7 +195,7 @@ End Code
 
 End Using
 
-<hr />
+                                                                                    <hr />
 <div>
     @Html.ActionLink("Επιστροφή", "Index", "Posts")
 </div>
@@ -143,7 +212,7 @@ End Using
 
     tinymce.init({
         selector: 'textarea',
-        height: 500,
+height: 500,
         menubar: false,
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
@@ -151,7 +220,7 @@ End Using
             'insertdatetime media table contextmenu paste code'
         ],
         toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        content_css: [
+content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css']
     });
