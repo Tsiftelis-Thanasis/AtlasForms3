@@ -9,11 +9,11 @@ End Code
     <div Class="wrapper">
         <div Class="content-wrap">
             <div Class="row">
-                <div Class="kopa-main-col">
+                @*<div Class="kopa-main-col">*@
                                        
                     <div id="divcommon" Class="widget-area-2">
                         <div Class="widget kopa-article-list-widget article-list-1">
-                            <h3 Class="widget-title style2">ολα τα αρθρα</h3>
+                            <h3 Class="widget-title style2">ολα τα αρθρα - date order problem</h3>
                             <table id="newstable">
                                 <thead>
                                     <tr>
@@ -66,7 +66,7 @@ End Code
     </div>
     <!-- wrapper -->
 
-</div>
+@*</div>*@
 <!-- main-content -->
 
 
@@ -90,7 +90,7 @@ End Code
                           {},
                           { "mData": "KatName" },                          
                           { "mData": "editBy"},
-                          { "mData": "editDate", "sType": "date-eu" },
+                          { "mData": "editDate", "sType": "date-uk" },
             ],
             "columnDefs": [
                     {

@@ -60,16 +60,7 @@ End Code
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
-                            <ul class="sub-menu">
-                                <li><a href="viewNews.aspx?typ=org&title=κανονες - οροι συμμετοχης">κανονες οροι συμμετοχης</a></li>
-                                <li><a href="gallery2.html">διακηρυξη πρωταθληματος 2016/17</a></li>
-                                <li><a href="gallery3.html">φυσιοθεραπειες</a></li>
-                                <li><a href="gallery4.html">υπηρεσιες</a></li>
-                                <li><a href="gallery4.html">ιατρικη ομαδα</a></li>
-                                <li><a href="gallery4.html">πειθαρχικο δικαιο</a></li>
-                                <li><a href="gallery4.html">συνεργατες</a></li>
-                                <li><a href="gallery4.html">εγγραφες</a></li>
-                                <li><a href="gallery4.html">επικοινωνια</a></li>
+                            <ul class="sub-menu" id="diorgarxhpostsid">                                                              
                             </ul>
                         </li>
                         @if User.Identity.IsAuthenticated Then
@@ -310,7 +301,7 @@ End Code
                                 ' <article class="entry-item"> ' +
                                 ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"> ' +
                                 ' <div class="entry-thumb"> ' +
-                                ' <img src="' + this.PostPhoto + '" alt="" style="height:30px;width:30px;"> ' +
+                                ' <img src="' + this.PostPhoto + '" alt="" style="height:90px;width:120px;"> ' +
                                 ' </div> </a>' +
                                 ' <h4 class="entry-title">' + this.PostTitle + '</h4> ' +
                                 ' </article> ' +
@@ -329,6 +320,30 @@ End Code
 
 
     $(document).ready(function () {
+
+
+        // get diorganwtria arxh arthra
+        $.ajax({
+             type: "POST",
+             url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
+             data: "{nCount : 10, k : 1}",
+             async: false,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (result) {              
+                 var choiceContainer = $("#diorgarxhpostsid");
+                 if (result.data.length > 0) {                  
+                     choiceContainer.empty();
+                     $.each(result.data, function () {
+                         var d = '<li><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></li>';
+                         choiceContainer.append(d);
+                     });
+                 }
+             },
+             error: function (result) {
+                 alert(result.status + ' ' + result.statusText);
+             }
+         });
 
         // get diorganwseis
             $.ajax({
@@ -388,7 +403,7 @@ End Code
                                 '</a> ' +
                                 '</div> ' +
                                 '</div>';
-                                   
+
                         choiceContainer.append(d);
                     });
                 }

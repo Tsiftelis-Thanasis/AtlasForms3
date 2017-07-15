@@ -195,7 +195,7 @@ End Code
 
 End Using
 
-                                                                                    <hr />
+<hr />
 <div>
     @Html.ActionLink("Επιστροφή", "Index", "Posts")
 </div>

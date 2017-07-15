@@ -804,7 +804,7 @@ End Code
                                '<article class="entry-item"> ' +
                                '<div class="entry-thumb"> ' +
                                '<a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
-                               '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" ></a> ' +
+                               '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" height:30px;width:30px; ></a> ' +
                                '<p class="new-icon"> ' +
                                '<span>' + this.PostTitle + '</span> ' +
                                '</p> ' +

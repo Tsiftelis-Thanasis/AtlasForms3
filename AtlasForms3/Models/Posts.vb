@@ -22,13 +22,11 @@ Public Class Posts
     <Display(Name:="Τίτλος")>
     Public Property PostTitle As String
 
-    <Required()>
     <StringLength(2000)>
     <Display(Name:="Περίληψη")>
     Public Property PostSummary As String
 
     <AllowHtml()>
-    <Required()>
     <Display(Name:="Κείμενο")>
     Public Property PostBody As String
 

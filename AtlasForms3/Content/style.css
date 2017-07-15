@@ -8191,3 +8191,13 @@ address {
     .kopa-search-box .search-form .search-text {
       width: 200px; } }
 
+
+
+.vertical-center {
+  height:100%;
+  width:100%;
+
+  text-align: center;  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;         /* remove the gap between inline(-block) elements */
+}
+
