@@ -16,6 +16,23 @@
     End Function
 
 
+
+    <AllowAnonymous>
+    Function SetGlobalDiorganwshid(ByVal id As Integer?) As Boolean
+
+
+        If id IsNot Nothing Then
+            If id > 0 Then
+                Session("GlobalDiorganwshid") = id
+            End If
+        End If
+
+        Return True
+
+    End Function
+
+
+
     <HttpPost>
     Public Function GetWeeklyReportStat1(ByVal thisid As Integer?) As JsonResult
 

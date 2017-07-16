@@ -9,4 +9,11 @@ Public Class MvcApplication
         RouteConfig.RegisterRoutes(RouteTable.Routes)
         BundleConfig.RegisterBundles(BundleTable.Bundles)
     End Sub
+
+    Protected Sub Session_Start()
+
+        Session("GlobalDiorganwshid") = 0
+
+    End Sub
+
 End Class

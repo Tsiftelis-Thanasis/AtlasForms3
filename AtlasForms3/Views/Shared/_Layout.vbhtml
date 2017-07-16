@@ -1,11 +1,17 @@
 ﻿@code
 
-    Dim pdb2 As New atlasStatisticsEntities
+    Dim pdb2 As New AtlasStatisticsEntities
 
     Dim firstDiorganwshid = (From d In pdb2.DiorganwshTable
                              Join s In pdb2.SeasonTable On d.Seasonid Equals s.Id
                              Where d.DiorganwshName.Contains("πρωταθλημα") And s.ActiveSeason = True
                              Select d.Id).FirstOrDefault
+
+    If Session("GlobalDiorganwshid") = 0 Then
+        Session("GlobalDiorganwshid") = firstDiorganwshid
+    Else
+        firstDiorganwshid = Session("GlobalDiorganwshid")
+    End If
 
 End Code
 
@@ -246,7 +252,9 @@ End Code
     //fillomiloinavbar
     function fillomiloinavbar(i) {
 
-        $("#firstDiorganwshid").val(i);
+        //$("#firstDiorganwshid").val(i);
+
+        postDiorganwshid(i);
         
         var choiceContainer = $("#diorganwseiulid");
         var choiceContainermobile = $("#diorganwseiulidmobile");
@@ -362,9 +370,26 @@ End Code
 
     }
 
+    
+        
+    function postDiorganwshid(id) {
+
+       // post diorganwsh id
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '@Url.Action("SetGlobalDiorganwshid", "Home")',
+            data: "{id : " + id + "}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function () {                
+            },
+            error: function () {                
+            }
+        });
+    }
 
     $(document).ready(function () {
-
 
         //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         //    alert("mob");
