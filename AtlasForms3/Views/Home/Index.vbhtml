@@ -208,7 +208,7 @@ End Code
                         <div class="widget-area-2">
 
                             <div class="widget kopa-tab-sync-carousel-widget">
-                                <h3 class="widget-title style1">watch now</h3>
+                                <h3 class="widget-title style1">παρακολουθηστε</h3>
                                 <div class="widget kopa-sync-carousel-2-widget">
                                     <div class="owl-carousel sync3">
                                         <div class="item">
@@ -356,7 +356,7 @@ End Code
                             <!-- widget -->
 
                             <div class="widget kopa-article-list-widget article-list-1">
-                                <h3 class="widget-title style2">Latest news</h3>
+                                <h3 class="widget-title style2">τελευταια νεα</h3>
                                 <ul id="latestnewsid"class="clearfix">                                  
                                 
                                 </ul>
@@ -525,7 +525,7 @@ End Code
                         <div class="widget-area-12">
 
                             <div class="widget kopa-result-widget">
-                                <h3 class="widget-title style6">PREVIOUS RESULTS</h3>
+                                <h3 class="widget-title style6">προηγουμενα αποτελεσματα</h3>
                                 <div class="widget-content">
                                     <div class="span-bg">
                                         <span class="c-tg"></span>

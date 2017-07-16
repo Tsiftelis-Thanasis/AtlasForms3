@@ -1016,7 +1016,7 @@ End Code
                                     <div class="t-col width3 mb-col">-5</div>
                                 </li>
                             </ul>
-                            <a class="kopa-view-all" href="http://atlasstatistics.gr/Rankings">Εμφάνιση υπόλοιπων στατιστικών<span class="fa fa-chevron-right"></span></a>
+                            @*<a class="kopa-view-all" href="http://atlasstatistics.gr/Rankings">Εμφάνιση υπόλοιπων στατιστικών<span class="fa fa-chevron-right"></span></a>*@
                         </div>
                     </div>
                     <div id="divstandings2" class="widget kopa-charts-widget">
@@ -1310,7 +1310,7 @@ End Code
                         </div>
                         <!-- widget -->
 
-                        <div id="divnextgames1" Class="widget kopa-fixture-widget">
+                        @*<div id="divnextgames1" Class="widget kopa-fixture-widget">
                             <h3 Class="widget-title style6">Επομενοι αγωνες</h3>
                             <div Class="widget-content">
                                 <div Class="owl-carousel owl-carousel-2">
@@ -1371,16 +1371,16 @@ End Code
                                 </div>
                                 <!-- owl-carousel-3 -->
                             </div>
-                        </div>
-                        <!-- widget -->
+                        </div>*@
+                       
 
                     </div>
                     <!-- widget-area-12 -->
 
                     <div id="divstandcommon1" Class="widget-area-13">
 
-                        @*<div Class="widget kopa-charts-widget">
-                            <h3 Class="widget-title style7"><span>βαθμολογια Α1</span></h3>
+                        <div Class="widget kopa-charts-widget">
+                            <h3 Class="widget-title style6"><span>βαθμολογια Α1</span></h3>
                             <div Class="widget-content">
                                 <header>
                                     <div Class="t-col">Α/Α</div>
@@ -1452,8 +1452,8 @@ End Code
                                 </ul>
                                 <a Class="kopa-view-all" href="http://atlasstatistics.gr/Rankings">Εμφάνιση υπόλοιπων στατιστικών<span class="fa fa-chevron-right"></span></a>
                             </div>
-                        </div>*@
-                        <!-- widget -->
+                        </div>
+                       
 
                     </div>
 
@@ -1537,7 +1537,7 @@ End Code
                         </div>
                         <!-- widget -->
 
-                        <div id="divnextgames2" Class="widget kopa-fixture-widget">
+                        @*<div id="divnextgames2" Class="widget kopa-fixture-widget">
                             <h3 Class="widget-title style6">Επομενοι αγωνες α2</h3>
                             <div Class="widget-content">
                                 <div Class="owl-carousel owl-carousel-2">
@@ -1598,16 +1598,16 @@ End Code
                                 </div>
                                 <!-- owl-carousel-3 -->
                             </div>
-                        </div>
+                        </div>*@
                         <!-- widget -->
 
                     </div>
                     <!-- widget-area-12 -->
 
-                    @*<div id="divstandcommon2" Class="widget-area-13">
+                    <div id="divstandcommon2" Class="widget-area-13">
 
                         <div Class="widget kopa-charts-widget">
-                            <h3 Class="widget-title style7"><span>βαθμολογια Α2</span></h3>
+                            <h3 Class="widget-title style6"><span>βαθμολογια Α2</span></h3>
                             <div Class="widget-content">
                                 <header>
                                     <div Class="t-col">Α/Α</div>
@@ -1681,9 +1681,7 @@ End Code
                             </div>
                         </div>
                         
-                    </div>*@
-
-                    <!-- widget-area-13 -->
+                    </div>
 
                 </div>
                 <!-- row -->
@@ -1722,8 +1720,8 @@ End Code
                 $("#divteams").hide();
             } else {
                 $("#divcommon").hide(); //includes divteams
-                $("#divstandcommon1").hide();
-                $("#divstandcommon2").hide();
+                //$("#divstandcommon1").hide();
+                //$("#divstandcommon2").hide();
             }
 
         //xrisimopoihse jquery kai oxi server metablites! NN: ναι ρε το ξερω. ειπαμε πρωτα να παιξει και μετα 

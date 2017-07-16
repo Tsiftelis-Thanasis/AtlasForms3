@@ -98,7 +98,7 @@ Modernizr.load([
   {
       //load: baseUrl + '/Scripts/superfish.js',
       load: baseUrl + '/Scripts/superfish.js',       
-    complete: function () {
+        complete: function () {
         
         var r_ul = $('.kopa-main-nav .sf-menu');
         r_ul.find('> li').each(function() {
@@ -118,6 +118,18 @@ Modernizr.load([
             speed: "fast",
             delay: "100"
         });
+
+           //thanasis mobile show lists!
+        var r_ul22 = $('.main-nav-mobile .sf-menu');
+        r_ul22.find('> li').each(function () {
+            r_ul22.prepend(this);
+        });
+
+        r_ul22.superfish({
+            speed: "fast",
+            delay: "100"
+        });
+
 
         $('.header-top-list ul').superfish({
             speed: "fast",
@@ -1131,10 +1143,11 @@ if ($('.kopa-map-1').length > 0) {
     Modernizr.load([{
         load: [baseUrl + '/Scripts/jquery.navgoco.js'],
         complete: function () {
-
+            
             $(".main-menu-mobile").navgoco({
                 accordion: true
             });
+
             $(".main-menu-mobile").find(".sf-mega").removeClass("sf-mega").addClass("sf-mega-mobile");
             $(".main-menu-mobile").find(".sf-mega-section").removeClass("sf-mega-section").addClass("sf-mega-section-mobile");
             

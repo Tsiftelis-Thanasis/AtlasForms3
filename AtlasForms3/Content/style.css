@@ -7558,7 +7558,9 @@ address {
     margin-left: -380px; }
 
   .kopa-main-nav, .kopa-main-nav-2, .bottom-nav {
-    display: none; }
+     display: none; 
+    
+  }
 
   .main-nav-mobile, .bottom-nav-mobile {
     display: block; }

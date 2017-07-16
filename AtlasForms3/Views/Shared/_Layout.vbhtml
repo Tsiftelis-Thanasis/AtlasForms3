@@ -44,12 +44,15 @@ End Code
 
             <div class="wrapper">
 
-                <div class="kopa-logo">
-                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>
-                </div>
+              
                 <!-- logo -->
 
                 <nav class="kopa-main-nav">
+                    <div class="kopa-logo">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>
+                    </div>
+                   
+                 
                     <ul class="main-menu sf-menu">
                         <li class="current-menu-item">
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
@@ -71,6 +74,33 @@ End Code
                     </ul>
                 </nav>
 
+
+                <nav class="main-nav-mobile">
+                    
+                    @*<div class="kopa-logo">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas-mobile.png" alt="logo"></a>
+                    </div>*@
+
+                    <ul class="main-menu sf-menu">
+                        <li class="current-menu-item">
+                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
+                        </li>
+                        <li class="current-menu-item">
+                            <a><span>διοργανώσεις</span></a>
+                            <ul class="sub-menu" id="diorganwseiulidmobile"> </ul>
+                        </li>
+                        <li class="current-menu-item">
+                            <a><span>διοργανωτρια αρχη</span></a>
+                            <ul class="sub-menu" id="diorgarxhpostsidmobile"></ul>
+                        </li>
+                        @if User.Identity.IsAuthenticated Then
+                            If User.IsInRole("Admins") Then
+                                @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
+                            End If
+                        End If
+                    </ul>
+                </nav>
+                
             </div>
             <!-- wrapper -->
 
@@ -82,25 +112,25 @@ End Code
             <div class="wrapper">
 
                 <nav class="kopa-main-nav-2">
+                   
                     <ul class="main-menu-2 sf-menu" id="omiloinavbarid">
                         <li>
                             <div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0">
                                 <div class="sf-mega-section col-md-3 col-xs-3 col-sm-3">
-                                    <div class="widget kopa-sub-list-widget">
-                                       ****na kanw edw to spasimo?? mhpws menei kai stis alles selides??
-                                         <ul class="sub-menu">
+                                    <div class="widget kopa-sub-list-widget">                                        
+                                        <ul class="sub-menu">
                                             <li>
-                                            </li> 
-                                        </ul> 
-                                    </div> 
-                                </div> 
-                            <div class="sf-mega-section col-md-9 col-xs-9 col-sm-9">
-                                <div class="widget kopa-sub-list-widget sub-list-1">
-                                    <h4></h4> 
-                                        <ul class="row"></ul> 
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                            </div> 
+                                <div class="sf-mega-section col-md-9 col-xs-9 col-sm-9">
+                                    <div class="widget kopa-sub-list-widget sub-list-1">
+                                        <h4></h4>
+                                        <ul class="row"></ul>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </nav>
@@ -109,13 +139,14 @@ End Code
             </div>
             <!-- wrapper -->
 
+
             <div class="kopa-sub-page kopa-single-page">
                 <div class="widget kopa-tab-score-widget">
                     <div class="kopa-tab style1">
                         <div class="tab-content">
                             <div class="tab-pane active" id="agroup">
                                 <div id="lastgamescarouselid" class="owl-carousel owl-carousel-1">
-                                    
+
                                 </div>
                             </div>
 
@@ -133,7 +164,7 @@ End Code
 
 
 
-    </header>
+</header>
     <!-- kopa-page-header -->
 
     <div class="kopa-sub-page kopa-single-page">
@@ -150,7 +181,7 @@ End Code
             <div class="wrapper">
 
                 <div class="kopa-logo">
-                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:auto;"></a>
                 </div>
                 <!-- logo -->
 
@@ -160,7 +191,15 @@ End Code
                     @Html.Partial("_LoginPartial")
 
                 </nav>
+                                
                 <!--/end bottom-nav-->
+
+                <nav class="bottom-nav-mobile">
+
+                    @Html.Partial("_LoginPartial")
+
+                </nav>
+
                 <!--/main-menu-mobile-->
 
             </div>
@@ -208,7 +247,12 @@ End Code
     function fillomiloinavbar(i) {
 
         $("#firstDiorganwshid").val(i);
-
+        
+        var choiceContainer = $("#diorganwseiulid");
+        var choiceContainermobile = $("#diorganwseiulidmobile");
+       choiceContainer.toggle();
+       choiceContainermobile.toggle();
+      
        $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetOmiloiByDiorganwsh", "Home")',
@@ -257,7 +301,7 @@ End Code
                                                 '</div> ' +
                                                 '<div class="sf-mega-section col-md-9 col-xs-9 col-sm-9"> ' +
                                                 '<div class="widget kopa-sub-list-widget sub-list-1"> ' +
-                                                '<h4>Τελευταια νεα ομιλου</h4> ' +
+                                                '<h4>Τελευταια νεα ' + this.OmilosName + ' ομίλου</h4> ' +
                                                 '<ul id="' + omilosnaming + '" class="row"></ul> ' +
                                                 '</div>' +
                                                 '</div>' +
@@ -322,6 +366,13 @@ End Code
     $(document).ready(function () {
 
 
+        //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        //    alert("mob");
+        //}
+        //else {
+        //    alert("pc");
+        //}
+
         // get diorganwtria arxh arthra
         $.ajax({
              type: "POST",
@@ -332,11 +383,14 @@ End Code
              dataType: "json",
              success: function (result) {              
                  var choiceContainer = $("#diorgarxhpostsid");
+                 var choiceContainermobile = $("#diorgarxhpostsidmobile");
                  if (result.data.length > 0) {                  
                      choiceContainer.empty();
+                     choiceContainermobile.empty();
                      $.each(result.data, function () {
                          var d = '<li><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></li>';
                          choiceContainer.append(d);
+                         choiceContainermobile.append(d);
                      });
                  }
              },
@@ -355,12 +409,16 @@ End Code
                 success: function (result) {
 
                     var choiceContainer = $("#diorganwseiulid");
+                    var choiceContainermobile = $("#diorganwseiulidmobile");
                     if (result.length > 0) {
 
-                            choiceContainer.empty();
+                        choiceContainer.empty();
+                        choiceContainermobile.empty();
+
                             $.each(result, function () {
-                            var d = '<li onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>'
+                                var d = '<li onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>'
                             choiceContainer.append(d);
+                            choiceContainermobile.append(d);
                         });
                     }
                 },

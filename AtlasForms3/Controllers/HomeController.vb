@@ -151,7 +151,7 @@
         Dim om = (From o In pdb.OmilosTable
                   Join d In pdb.DiorganwshTable On d.Id Equals o.Diorganwshid
                   Where d.Id = dId
-                  Order By o.OmilosName
+                  Order By o.id Descending
                   Select o.OmilosName, o.Id).ToList
 
         Return Json(om, JsonRequestBehavior.AllowGet)
