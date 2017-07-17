@@ -291,19 +291,19 @@ End Code
                                     '<div class="widget kopa-sub-list-widget"> ' +
                                         '<ul class="sub-menu"> ' +
                                             '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&yk=2">νεα</a> ' +
+                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11">νεα</a> ' +
                                                 '</li> ' +
                                                 '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&yk=3">ομάδες</a> ' +
+                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=12">ομάδες</a> ' +
                                                 '</li> ' +
                                                 '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&yk=4">τιμωριες</a> ' +
+                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=13">τιμωριες</a> ' +
                                                 '</li> ' +
                                                 '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&yk=5">προγραμμα</a> ' +
+                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=14">προγραμμα</a> ' +
                                                 '</li> ' +
                                                 '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&yk=6">βαθμολογια</a>' +
+                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=15">βαθμολογια</a>' +
                                                 '</li>' +
                                                 '</ul> ' +
                                                 '</div> ' +
