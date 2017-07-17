@@ -336,7 +336,7 @@ Namespace Controllers
                      Where (p1.KathgoriaId = k And p1.IsKathgoria = True)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                          PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
-                        KatName = p2.KathgoriaName).
+                        KatName = p2.KathgoriaName).Take(nCount).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                         .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
@@ -433,7 +433,7 @@ Namespace Controllers
                          Where p1.AtlasKathgoriaId = KathgoriaId And p1.IsKathgoria = True
                          Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                              PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
-                            KatName = p2.KathgoriaName).
+                            KatName = p2.KathgoriaName).Take(nCount).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                         .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
@@ -461,7 +461,7 @@ Namespace Controllers
                            Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                            Where p1.AtlasKathgoriaId = KathgoriaId And p1.IsAtlasOmilos = True
                            Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).
+                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .Kathgoria = o.kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                         .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink
@@ -499,7 +499,7 @@ Namespace Controllers
                            Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                            Where p1.AtlasKathgoriaId = KathgoriaId And p1.IsAtlasKathgoria = True
                            Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).
+                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .Kathgoria = o.kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                         .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink
@@ -550,7 +550,7 @@ Namespace Controllers
                            If(KathgoriaId > 0, p1.KathgoriaId = KathgoriaId, 1 = 1) And
                            If(AtlasOmilosid > 0, p1.AtlasKathgoriaId = AtlasOmilosid, 1 = 1)
                        Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                        PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).
+                        PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
                 AsEnumerable().[Select](
                 Function(o) New With {.Id = o.Id, .Kathgoria = o.kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                 .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink

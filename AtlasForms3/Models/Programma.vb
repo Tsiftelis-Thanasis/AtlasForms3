@@ -4,7 +4,6 @@ Imports System.ComponentModel
 Imports System.ComponentModel.DataAnnotations
 Imports System.ComponentModel.DataAnnotations.Schema
 Imports System.Globalization
-Imports System.Web.Script.Serialization
 
 Public Class Programma
 
