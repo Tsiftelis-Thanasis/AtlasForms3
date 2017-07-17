@@ -101,7 +101,7 @@ a, .kopa-tab.style1 .nav-tabs:after, .kopa-tab.style7 .nav-tabs > li > a:before,
     list-style: none;
     padding: 0; }
 
-.kopa-e-list li:first-child, .kopa-user ul li:first-child, .main-nav-mobile .main-menu-mobile li:first-child, .bottom-nav-mobile .main-menu-mobile li:first-child, .kopa-rating ul li:first-child, .kopa-list li:first-child, .kopa-point-widget > ul li:first-child, .item-list-entry li:first-child, .item-list-video li:first-child, .kopa-team-widget > ul li:first-child, .article-list-9 > ul li:first-child, .kopa-calendar-widget .widget-content > ul li:first-child, .kopa-footer-nav .footer-menu li:first-child {
+.kopa-e-list li:first-child, .kopa-user ul li:first-child, .main-nav-mobile .main-menu-mobile li:first-child,  .bottom-nav-mobile .main-menu-mobile li:first-child, .kopa-rating ul li:first-child, .kopa-list li:first-child, .kopa-point-widget > ul li:first-child, .item-list-entry li:first-child, .item-list-video li:first-child, .kopa-team-widget > ul li:first-child, .article-list-9 > ul li:first-child, .kopa-calendar-widget .widget-content > ul li:first-child, .kopa-footer-nav .footer-menu li:first-child {
   margin: 0;
   padding: 0;
   border: 0; }
@@ -109,7 +109,7 @@ a, .kopa-tab.style1 .nav-tabs:after, .kopa-tab.style7 .nav-tabs > li > a:before,
 .pricing-table:before, .nav-tabs:before, .kopa-tab.style9 .nav-tabs:before, .kopa-tab.style10 .nav-tabs:before, .button-wrap:before, .kopa-e-list li:before, .mb-5:before, .mb-10:before, .mb-20:before, .mb-30:before, .mb-40:before, .mb-50:before, .mb-60:before, .wrapper:before, .kopa-area:before, .area-neg:before, .header-top-left:before, .header-top-right:before, .kopa-main-nav:before, .main-menu:before, .main-menu-2:before, .sf-mega:before, .sf-mega .sf-mega-section:before, .sf-mega .sf-mega-section ul:before, .sf-mega .sf-mega-section ul.sub-menu:before, .main-nav-mobile .main-menu-mobile:before, .bottom-nav-mobile .main-menu-mobile:before, .sf-mega-mobile:before, .entry-item:before, .entry-item .entry-content > footer:before, .entry-item .item-wrap:before, .entry-meta:before, .kopa-pagination:before, .kopa-rating ul:before, .widget:before, .widget > header:before, .widget-content:before, #main-content:before, .kopa-newsletter-widget .newsletter-intro:before, .kopa-newsletter-widget .newsletter-content:before, .owl-carousel-1 .entry-item ul li:before, .content-top:before, .article-list-1 .entry-item:before, .widget-title.style4:before, .widget-title.style14:before, .kopa-point-widget .point-item:before, ul.style1 > li:before, .r-item:before, .r-item .r-side:before, .kopa-fixture-widget .r-item:before, .widget-title.style7:before, .kopa-charts-widget .widget-content > header:before, .kopa-charts-widget .widget-content ul li:before, .owl-carousel-7 .entry-item .entry-content > footer:before, .owl-carousel-8 .entry-item .entry-content > footer:before, .owl-carousel-9 .entry-item .entry-content > footer:before, .kopa-gallery-2-widget .entry-item .entry-wrap:before, .kopa-gallery-3-widget .entry-item .entry-wrap:before, .kopa-gallery-4-widget .entry-item .entry-wrap:before, .fixture-header:before, .fixture-time-line:before, .match-info:before, .match-item > header:before, .match-item > footer:before, .match-item.list-item .r-item:before, .match-item.list-item .r-item .r-side:before, .cl-item:before, .kopa-entry-list .entry-item:before, .kopa-shop-list > header:before, .product-bar:before, .woocommerce ul.products:before, .woocommerce-page ul.products:before, .woocommerce nav.woocommerce-pagination:before, .woocommerce #content nav.woocommerce-pagination:before, .woocommerce-page nav.woocommerce-pagination:before, .woocommerce-page #content nav.woocommerce-pagination:before, #comments .comments-list:before, #comments .comments-list .comment:before, #comments .comments-list .comment .comment-wrap:before, #comments .comments-list .comment .comment-wrap .media-body > header:before, .player-profile > ul > li:before, .bottom-menu:before, .bottom-menu > li:before, .bottom-area-1:before, .bottom-area-2:before, .bottom-area-3:before, .pricing-table:after, .nav-tabs:after, .kopa-tab.style9 .nav-tabs:after, .kopa-tab.style10 .nav-tabs:after, .button-wrap:after, .kopa-e-list li:after, .mb-5:after, .mb-10:after, .mb-20:after, .mb-30:after, .mb-40:after, .mb-50:after, .mb-60:after, .wrapper:after, .kopa-area:after, .area-neg:after, .header-top-left:after, .header-top-right:after, .kopa-main-nav:after, .main-menu:after, .main-menu-2:after, .sf-mega:after, .sf-mega .sf-mega-section:after, .sf-mega .sf-mega-section ul:after, .sf-mega .sf-mega-section ul.sub-menu:after, .main-nav-mobile .main-menu-mobile:after, .bottom-nav-mobile .main-menu-mobile:after, .sf-mega-mobile:after, .entry-item:after, .entry-item .entry-content > footer:after, .entry-item .item-wrap:after, .entry-meta:after, .kopa-pagination:after, .kopa-rating ul:after, .widget:after, .widget > header:after, .widget-content:after, #main-content:after, .kopa-newsletter-widget .newsletter-intro:after, .kopa-newsletter-widget .newsletter-content:after, .owl-carousel-1 .entry-item ul li:after, .content-top:after, .article-list-1 .entry-item:after, .widget-title.style4:after, .widget-title.style14:after, .kopa-point-widget .point-item:after, ul.style1 > li:after, .r-item:after, .r-item .r-side:after, .kopa-fixture-widget .r-item:after, .widget-title.style7:after, .kopa-charts-widget .widget-content > header:after, .kopa-charts-widget .widget-content ul li:after, .owl-carousel-7 .entry-item .entry-content > footer:after, .owl-carousel-8 .entry-item .entry-content > footer:after, .owl-carousel-9 .entry-item .entry-content > footer:after, .kopa-gallery-2-widget .entry-item .entry-wrap:after, .kopa-gallery-3-widget .entry-item .entry-wrap:after, .kopa-gallery-4-widget .entry-item .entry-wrap:after, .fixture-header:after, .fixture-time-line:after, .match-info:after, .match-item > header:after, .match-item > footer:after, .match-item.list-item .r-item:after, .match-item.list-item .r-item .r-side:after, .cl-item:after, .kopa-entry-list .entry-item:after, .kopa-shop-list > header:after, .product-bar:after, .woocommerce ul.products:after, .woocommerce-page ul.products:after, .woocommerce nav.woocommerce-pagination:after, .woocommerce #content nav.woocommerce-pagination:after, .woocommerce-page nav.woocommerce-pagination:after, .woocommerce-page #content nav.woocommerce-pagination:after, #comments .comments-list:after, #comments .comments-list .comment:after, #comments .comments-list .comment .comment-wrap:after, #comments .comments-list .comment .comment-wrap .media-body > header:after, .player-profile > ul > li:after, .bottom-menu:after, .bottom-menu > li:after, .bottom-area-1:after, .bottom-area-2:after, .bottom-area-3:after {
   content: "";
   display: table; }
-.pricing-table:after, .nav-tabs:after, .kopa-tab.style9 .nav-tabs:after, .kopa-tab.style10 .nav-tabs:after, .button-wrap:after, .kopa-e-list li:after, .mb-5:after, .mb-10:after, .mb-20:after, .mb-30:after, .mb-40:after, .mb-50:after, .mb-60:after, .wrapper:after, .kopa-area:after, .area-neg:after, .header-top-left:after, .header-top-right:after, .kopa-main-nav:after, .main-menu:after, .main-menu-2:after, .sf-mega:after, .sf-mega .sf-mega-section:after, .sf-mega .sf-mega-section ul:after, .sf-mega .sf-mega-section ul.sub-menu:after, .main-nav-mobile .main-menu-mobile:after, .bottom-nav-mobile .main-menu-mobile:after, .sf-mega-mobile:after, .entry-item:after, .entry-item .entry-content > footer:after, .entry-item .item-wrap:after, .entry-meta:after, .kopa-pagination:after, .kopa-rating ul:after, .widget:after, .widget > header:after, .widget-content:after, #main-content:after, .kopa-newsletter-widget .newsletter-intro:after, .kopa-newsletter-widget .newsletter-content:after, .owl-carousel-1 .entry-item ul li:after, .content-top:after, .article-list-1 .entry-item:after, .widget-title.style4:after, .widget-title.style14:after, .kopa-point-widget .point-item:after, ul.style1 > li:after, .r-item:after, .r-item .r-side:after, .kopa-fixture-widget .r-item:after, .widget-title.style7:after, .kopa-charts-widget .widget-content > header:after, .kopa-charts-widget .widget-content ul li:after, .owl-carousel-7 .entry-item .entry-content > footer:after, .owl-carousel-8 .entry-item .entry-content > footer:after, .owl-carousel-9 .entry-item .entry-content > footer:after, .kopa-gallery-2-widget .entry-item .entry-wrap:after, .kopa-gallery-3-widget .entry-item .entry-wrap:after, .kopa-gallery-4-widget .entry-item .entry-wrap:after, .fixture-header:after, .fixture-time-line:after, .match-info:after, .match-item > header:after, .match-item > footer:after, .match-item.list-item .r-item:after, .match-item.list-item .r-item .r-side:after, .cl-item:after, .kopa-entry-list .entry-item:after, .kopa-shop-list > header:after, .product-bar:after, .woocommerce ul.products:after, .woocommerce-page ul.products:after, .woocommerce nav.woocommerce-pagination:after, .woocommerce #content nav.woocommerce-pagination:after, .woocommerce-page nav.woocommerce-pagination:after, .woocommerce-page #content nav.woocommerce-pagination:after, #comments .comments-list:after, #comments .comments-list .comment:after, #comments .comments-list .comment .comment-wrap:after, #comments .comments-list .comment .comment-wrap .media-body > header:after, .player-profile > ul > li:after, .bottom-menu:after, .bottom-menu > li:after, .bottom-area-1:after, .bottom-area-2:after, .bottom-area-3:after {
+.pricing-table:after, .nav-tabs:after, .kopa-tab.style9 .nav-tabs:after, .kopa-tab.style10 .nav-tabs:after, .button-wrap:after, .kopa-e-list li:after, .mb-5:after, .mb-10:after, .mb-20:after, .mb-30:after, .mb-40:after, .mb-50:after, .mb-60:after, .wrapper:after, .kopa-area:after, .area-neg:after, .header-top-left:after, .header-top-right:after, .kopa-main-nav:after, .main-menu:after, .main-menu-2:after, .sf-mega:after, .sf-mega .sf-mega-section:after, .sf-mega .sf-mega-section ul:after, .sf-mega .sf-mega-section ul.sub-menu:after, .main-nav-mobile .main-menu-mobile:after,   .bottom-nav-mobile .main-menu-mobile:after, .sf-mega-mobile:after, .entry-item:after, .entry-item .entry-content > footer:after, .entry-item .item-wrap:after, .entry-meta:after, .kopa-pagination:after, .kopa-rating ul:after, .widget:after, .widget > header:after, .widget-content:after, #main-content:after, .kopa-newsletter-widget .newsletter-intro:after, .kopa-newsletter-widget .newsletter-content:after, .owl-carousel-1 .entry-item ul li:after, .content-top:after, .article-list-1 .entry-item:after, .widget-title.style4:after, .widget-title.style14:after, .kopa-point-widget .point-item:after, ul.style1 > li:after, .r-item:after, .r-item .r-side:after, .kopa-fixture-widget .r-item:after, .widget-title.style7:after, .kopa-charts-widget .widget-content > header:after, .kopa-charts-widget .widget-content ul li:after, .owl-carousel-7 .entry-item .entry-content > footer:after, .owl-carousel-8 .entry-item .entry-content > footer:after, .owl-carousel-9 .entry-item .entry-content > footer:after, .kopa-gallery-2-widget .entry-item .entry-wrap:after, .kopa-gallery-3-widget .entry-item .entry-wrap:after, .kopa-gallery-4-widget .entry-item .entry-wrap:after, .fixture-header:after, .fixture-time-line:after, .match-info:after, .match-item > header:after, .match-item > footer:after, .match-item.list-item .r-item:after, .match-item.list-item .r-item .r-side:after, .cl-item:after, .kopa-entry-list .entry-item:after, .kopa-shop-list > header:after, .product-bar:after, .woocommerce ul.products:after, .woocommerce-page ul.products:after, .woocommerce nav.woocommerce-pagination:after, .woocommerce #content nav.woocommerce-pagination:after, .woocommerce-page nav.woocommerce-pagination:after, .woocommerce-page #content nav.woocommerce-pagination:after, #comments .comments-list:after, #comments .comments-list .comment:after, #comments .comments-list .comment .comment-wrap:after, #comments .comments-list .comment .comment-wrap .media-body > header:after, .player-profile > ul > li:after, .bottom-menu:after, .bottom-menu > li:after, .bottom-area-1:after, .bottom-area-2:after, .bottom-area-3:after {
   clear: both; }
 
 /*--- Functions ---*/
@@ -1665,7 +1665,7 @@ img {
   display: none;
   float: right;
   position: relative; }
-  .main-nav-mobile .pull, .bottom-nav-mobile .pull {
+  .main-nav-mobile .pull,  .bottom-nav-mobile .pull {
     color: #fff;
     z-index: 99;
     position: relative;
@@ -1676,7 +1676,7 @@ img {
     background: #333333;
     padding: 5px 10px;
     margin: 6px 0 5px; }
-  .main-nav-mobile .main-menu-mobile, .bottom-nav-mobile .main-menu-mobile {
+  .main-nav-mobile .main-menu-mobile,  .bottom-nav-mobile .main-menu-mobile {
     position: absolute;
     top: 42px;
     right: 0;
@@ -1687,20 +1687,20 @@ img {
     border: 1px solid #e5e5e5;
     padding: 5px 15px 0;
     text-align: left; }
-    .main-nav-mobile .main-menu-mobile > li, .bottom-nav-mobile .main-menu-mobile > li {
+    .main-nav-mobile .main-menu-mobile > li,  .bottom-nav-mobile .main-menu-mobile > li {
       border-top: 1px solid #e5e5e5;
       position: relative;
       width: 100%; }
-      .main-nav-mobile .main-menu-mobile > li:first-child, .bottom-nav-mobile .main-menu-mobile > li:first-child {
+      .main-nav-mobile .main-menu-mobile > li:first-child,  .bottom-nav-mobile .main-menu-mobile > li:first-child {
         border: 0; }
-      .main-nav-mobile .main-menu-mobile > li > a, .bottom-nav-mobile .main-menu-mobile > li > a {
+      .main-nav-mobile .main-menu-mobile > li > a,  .bottom-nav-mobile .main-menu-mobile > li > a {
         color: #333333;
         font-family: "Open Sans", sans-serif;
         text-transform: capitalize;
         font-size: 14px;
         display: block;
         padding: 10px 25px 10px 0; }
-        .main-nav-mobile .main-menu-mobile > li > a:hover, .bottom-nav-mobile .main-menu-mobile > li > a:hover {
+        .main-nav-mobile .main-menu-mobile > li > a:hover,  .bottom-nav-mobile .main-menu-mobile > li > a:hover {
           color: #ef6018; }
         .main-nav-mobile .main-menu-mobile > li > a > span, .bottom-nav-mobile .main-menu-mobile > li > a > span {
           position: absolute;
@@ -1708,36 +1708,36 @@ img {
           top: 10px;
           cursor: pointer;
           font-size: 15px; }
-          .main-nav-mobile .main-menu-mobile > li > a > span:after, .bottom-nav-mobile .main-menu-mobile > li > a > span:after {
+          .main-nav-mobile .main-menu-mobile > li > a > span:after,  .bottom-nav-mobile .main-menu-mobile > li > a > span:after {
             content: '\f107'; }
-          .main-nav-mobile .main-menu-mobile > li > a > span:first-child, .bottom-nav-mobile .main-menu-mobile > li > a > span:first-child {
+          .main-nav-mobile .main-menu-mobile > li > a > span:first-child,  .bottom-nav-mobile .main-menu-mobile > li > a > span:first-child {
             position: relative;
             right: auto;
             top: auto;
             font-size: 14px; }
             .main-nav-mobile .main-menu-mobile > li > a > span:first-child:after, .bottom-nav-mobile .main-menu-mobile > li > a > span:first-child:after {
               display: none; }
-      .main-nav-mobile .main-menu-mobile > li.current-menu-item > a, .bottom-nav-mobile .main-menu-mobile > li.current-menu-item > a {
+      .main-nav-mobile .main-menu-mobile > li.current-menu-item > a,  .bottom-nav-mobile .main-menu-mobile > li.current-menu-item > a {
         color: #ef6018; }
-      .main-nav-mobile .main-menu-mobile > li .sub-menu li, .bottom-nav-mobile .main-menu-mobile > li .sub-menu li {
+      .main-nav-mobile .main-menu-mobile > li .sub-menu li,  .bottom-nav-mobile .main-menu-mobile > li .sub-menu li {
         border-top: 1px solid #e5e5e5; }
-        .main-nav-mobile .main-menu-mobile > li .sub-menu li a, .bottom-nav-mobile .main-menu-mobile > li .sub-menu li a {
+        .main-nav-mobile .main-menu-mobile > li .sub-menu li a,  .bottom-nav-mobile .main-menu-mobile > li .sub-menu li a {
           padding: 10px 10px;
           color: #333333;
           text-transform: capitalize;
           display: block;
           position: relative; }
-          .main-nav-mobile .main-menu-mobile > li .sub-menu li a:hover, .bottom-nav-mobile .main-menu-mobile > li .sub-menu li a:hover {
+          .main-nav-mobile .main-menu-mobile > li .sub-menu li a:hover,  .bottom-nav-mobile .main-menu-mobile > li .sub-menu li a:hover {
             color: #ef6018; }
-        .main-nav-mobile .main-menu-mobile > li .sub-menu li span, .bottom-nav-mobile .main-menu-mobile > li .sub-menu li span {
+        .main-nav-mobile .main-menu-mobile > li .sub-menu li span,  .bottom-nav-mobile .main-menu-mobile > li .sub-menu li span {
           display: none; }
-        .main-nav-mobile .main-menu-mobile > li .sub-menu li .sub-menu, .bottom-nav-mobile .main-menu-mobile > li .sub-menu li .sub-menu {
+        .main-nav-mobile .main-menu-mobile > li .sub-menu li .sub-menu,  .bottom-nav-mobile .main-menu-mobile > li .sub-menu li .sub-menu {
           display: block !important;
           margin: 0 !important;
           padding: 0 !important;
           height: auto !important;
           width: 100%; }
-        .main-nav-mobile .main-menu-mobile > li .sub-menu li.current-menu-item > a, .bottom-nav-mobile .main-menu-mobile > li .sub-menu li.current-menu-item > a {
+        .main-nav-mobile .main-menu-mobile > li .sub-menu li.current-menu-item > a,  .bottom-nav-mobile .main-menu-mobile > li .sub-menu li.current-menu-item > a {
           color: #ef6018; }
       .main-nav-mobile .main-menu-mobile > li > div h5, .bottom-nav-mobile .main-menu-mobile > li > div h5 {
         text-transform: uppercase;
@@ -1746,7 +1746,7 @@ img {
         margin-bottom: 15px; }
       .main-nav-mobile .main-menu-mobile > li .sub-menu-list-article, .bottom-nav-mobile .main-menu-mobile > li .sub-menu-list-article {
         display: block !important; }
-        .main-nav-mobile .main-menu-mobile > li .sub-menu-list-article li, .bottom-nav-mobile .main-menu-mobile > li .sub-menu-list-article li {
+      .main-nav-mobile .main-menu-mobile > li .sub-menu-list-article li, .bottom-nav-mobile .main-menu-mobile > li .sub-menu-list-article li {
           margin-bottom: 10px; }
       .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile {
         padding: 0;
@@ -1754,14 +1754,14 @@ img {
         left: 0;
         z-index: 99999;
         background: #fff; }
-        .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile {
+        .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile,  .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile {
           padding: 0;
           width: 100%;
           left: 0;
           margin-top: 10px;
           padding-top: 15px;
           border-top: 1px solid #e5e5e5; }
-          .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .sub-menu-list-article, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .sub-menu-list-article {
+       .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .sub-menu-list-article, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .sub-menu-list-article {
             margin-bottom: 10px; }
           .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile:first-child, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile:first-child {
             margin-top: 0;
@@ -1780,7 +1780,7 @@ img {
             .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .kopa-sub-list-widget > ul > li, .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .widget_nav_menu > ul > li, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .kopa-sub-list-widget > ul > li, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .widget_nav_menu > ul > li {
               width: 100%;
               padding: 0; }
-              .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .kopa-sub-list-widget > ul > li:first-child, .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .widget_nav_menu > ul > li:first-child, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .kopa-sub-list-widget > ul > li:first-child, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .widget_nav_menu > ul > li:first-child {
+              .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .kopa-sub-list-widget > ul > li:first-child,  .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .widget_nav_menu > ul > li:first-child, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .kopa-sub-list-widget > ul > li:first-child, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .sf-mega-section-mobile .widget_nav_menu > ul > li:first-child {
                 margin-top: 0; }
         .main-nav-mobile .main-menu-mobile > li .sf-mega-mobile .entry-title, .bottom-nav-mobile .main-menu-mobile > li .sf-mega-mobile .entry-title {
           font-family: "Open Sans", sans-serif;
@@ -1797,7 +1797,7 @@ img {
       position: relative;
       top: auto;
       right: auto; }
-      .main-nav-mobile .main-menu-mobile .entry-date:after, .bottom-nav-mobile .main-menu-mobile .entry-date:after {
+      .main-nav-mobile .main-menu-mobile .entry-date:after,   .bottom-nav-mobile .main-menu-mobile .entry-date:after {
         display: none !important; }
 
 .main-nav-mobile.style2 .main-menu-mobile {
@@ -7558,12 +7558,12 @@ address {
     margin-left: -380px; }
 
   .kopa-main-nav, .kopa-main-nav-2, .bottom-nav {
-     display: none; 
-    
+     display: none;     
   }
 
   .main-nav-mobile, .bottom-nav-mobile {
-    display: block; }
+    display: block; 
+  }
 
   .header-top-left .social-links {
     display: none; }

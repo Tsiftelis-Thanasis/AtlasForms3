@@ -1272,7 +1272,7 @@ End Code
                                             </a>
                                         </div>
                                         @*<span class="r-item mvp"><p><b>MVP</b> <a href="http://atlasstatistics.gr/Players/Details/2122">ΠΕΤΣΑΣ, ΙΩΑΝΝΗΣ #7</a> 13π, 2πασ, 22ριμπ</p></span>*@
-                                        <span Class="r-item mvp"><p><b>MVP</b> ΠΕΤΣΑΣ, ΙΩΑΝΝΗΣ #7 13π, 2πασ, 22ριμπ</p></span>
+                                        @*<span Class="r-item mvp"><p><b>MVP</b> ΠΕΤΣΑΣ, ΙΩΑΝΝΗΣ #7 13π, 2πασ, 22ριμπ</p></span>*@
                                     </div>
                                     <!-- item -->
                                     <div Class="item">
@@ -1499,7 +1499,7 @@ End Code
                                             </a>
                                         </div>
                                         @*<span class="r-item mvp"><p><b>MVP</b> <a href="http://atlasstatistics.gr/Players/Details/2122">ΠΕΤΣΑΣ, ΙΩΑΝΝΗΣ #7</a> 13π, 2πασ, 22ριμπ</p></span>*@
-                                        <span Class="r-item mvp"><p><b>MVP</b> ΠΕΤΣΑΣ, ΙΩΑΝΝΗΣ #7 13π, 2πασ, 22ριμπ</p></span>
+                                        @*<span Class="r-item mvp"><p><b>MVP</b> ΠΕΤΣΑΣ, ΙΩΑΝΝΗΣ #7 13π, 2πασ, 22ριμπ</p></span>*@
                                     </div>
                                     <!-- item -->
                                     <div Class="item">

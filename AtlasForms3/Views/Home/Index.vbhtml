@@ -210,144 +210,12 @@ End Code
                             <div class="widget kopa-tab-sync-carousel-widget">
                                 <h3 class="widget-title style1">παρακολουθηστε</h3>
                                 <div class="widget kopa-sync-carousel-2-widget">
-                                    <div class="owl-carousel sync3">
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/g1.PNG" alt=""></a>
-                                                    <a class="thumb-icon" href="https://www.youtube.com/watch?v=wrnWlsKHYcc" target="_blank"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h3 class=""><a href="https://www.youtube.com/watch?v=wrnWlsKHYcc" target="_blank">ΟΙΩΝΟΣ CELTICS vs HATERS</a></h3>
-                                                    <div class="content-top">
-                                                        <h4 class="entry-title"><a href="https://www.youtube.com/watch?v=wrnWlsKHYcc" target="_blank">PLAYOFFS TOP16-Α.Π.ΑΤΛΑΣ ΟΙΩΝΟΣ CELTICS vs HATERS 97-78 </a></h4>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/1x.jpg" alt=""></a>
-                                                    <a class="thumb-icon" href="#"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h3 class=""><a href="#">NORCAL UP ANTIOCH 2012</a></h3>
-                                                    <div class="content-top">
-                                                        <h4 class="entry-title"><a href="#">INLINE HOCKEY IS ONE OF THE FASTEST SPORTS AROUND. THAT'S WHY ICE PLAYERS </a></h4>
-                                                    </div>
-                                                    <footer>
-                                                        <p class="entry-author">by <a href="#">Michel bellar</a></p>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/1x.jpg" alt=""></a>
-                                                    <a class="thumb-icon" href="#"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h3 class=""><a href="#">NORCAL UP ANTIOCH 2012</a></h3>
-                                                    <div class="content-top">
-                                                        <h4 class="entry-title"><a href="#">INLINE HOCKEY IS ONE OF THE FASTEST SPORTS AROUND. THAT'S WHY ICE PLAYERS </a></h4>
-                                                    </div>
-                                                    <footer>
-                                                        <p class="entry-author">by <a href="#">Michel bellar</a></p>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/1x.jpg" alt=""></a>
-                                                    <a class="thumb-icon" href="#"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h3 class=""><a href="#">NORCAL UP ANTIOCH 2012</a></h3>
-                                                    <div class="content-top">
-                                                        <h4 class="entry-title"><a href="#">INLINE HOCKEY IS ONE OF THE FASTEST SPORTS AROUND. THAT'S WHY ICE PLAYERS </a></h4>
-                                                    </div>
-                                                    <footer>
-                                                        <p class="entry-author">by <a href="#">Michel bellar</a></p>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/g5.PNG" alt=""></a>
-                                                    <a class="thumb-icon" href="#"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h3 class=""><a href="https://www.youtube.com/watch?v=gA3nx4T6Q9A">ΤΡΕΝΟ BC vs HALLIGATORS</a></h3>
-                                                    <div class="content-top">
-                                                        <h4 class="entry-title"><a href="#">3H Α Π ΑΤΛΑΣ ΤΡΕΝΟ BC vs HALLIGATORS 36-51 </a></h4>
-                                                    </div>
-                                                    <footer>
-                                                        <p class="entry-author">by <a href="#">Michel bellar</a></p>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                        </div>
+                                    <div class="owl-carousel sync3" id="watchsync3">
+                                        
                                     </div>
                                     <!-- sync3 -->
-                                    <div class="owl-carousel sync4">
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/1.jpg" alt=""></a>
-                                                    <a class="thumb-icon" href="#"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h4 class="entry-title"><a href="#">USMNT friendly rostter about Dollovan</a></h4>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h4 class="entry-title"><a href="#">USMNT friendly rostter about Dollovan</a></h4>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/3.jpg" alt=""></a>
-                                                    <a class="thumb-icon" href="#"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h4 class="entry-title"><a href="#">USMNT friendly rostter about Dollovan</a></h4>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/4.jpg" alt=""></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h4 class="entry-title"><a href="#">USMNT friendly rostter about Dollovan</a></h4>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="entry-item video-post">
-                                                <div class="entry-thumb">
-                                                    <a href="#"><img src="~/Content/images/post1/1.jpg" alt=""></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h4 class="entry-title"><a href="#">USMNT friendly rostter about Dollovan</a></h4>
-                                                </div>
-                                            </article>
-                                        </div>
+                                    <div class="owl-carousel sync4" id="watchsync4">
+                                        
                                     </div>
                                     <!-- sync4 -->
                                 </div>
@@ -376,7 +244,9 @@ End Code
                         <!-- widget -->
 
                         <div class="widget ">
-                            <a href="#"><img src="~/Content/images/post1/g1.png" alt=""></a>
+                            <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
+                            <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
+                            <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
                         </div>
                         <!-- widget -->
 
@@ -660,83 +530,83 @@ End Code
                         </div>
                         <!-- widget-area-12 -->
 
-                        <div class="widget-area-13">
+                    <div id="divstandcommon1" Class="widget-area-13">
 
-                            <div class="widget kopa-charts-widget">
-                                <h3 class="widget-title style7"><span>table</span></h3>
-                                <div class="widget-content">
-                                    <header>
-                                        <div class="t-col">pos</div>
-                                        <div class="t-col width1">team</div>
-                                        <div class="t-col">p</div>
-                                        <div class="t-col">pts</div>
-                                    </header>
-                                    <ul class="clearfix">
-                                        <li>
-                                            <div class="t-col">1</div>
-                                            <div class="t-col width1">chelsen</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">19</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">2</div>
-                                            <div class="t-col width1">Men City</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">14</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">3</div>
-                                            <div class="t-col width1">Sonthampton</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">13</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">4</div>
-                                            <div class="t-col width1">mon utd</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">11</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">5</div>
-                                            <div class="t-col width1">swansen</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">11</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">6</div>
-                                            <div class="t-col width1">Spors</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">11</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col width1">West Hem</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">10</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">8</div>
-                                            <div class="t-col width1">arsenol</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">10</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">9</div>
-                                            <div class="t-col width1">Liverpunl</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">10</div>
-                                        </li>
-                                        <li>
-                                            <div class="t-col">10</div>
-                                            <div class="t-col width1">Astun Villo</div>
-                                            <div class="t-col">7</div>
-                                            <div class="t-col">10</div>
-                                        </li>
-                                    </ul>
-                                    <a class="kopa-view-all" href="#">View all<span class="fa fa-chevron-right"></span></a>
-                                </div>
+                        <div Class="widget kopa-charts-widget">
+                            <h3 Class="widget-title style6"><span>βαθμολογια Α1</span></h3>
+                            <div Class="widget-content">
+                                <header>
+                                    <div Class="t-col">Α/Α</div>
+                                    <div Class="t-col width1">ομαδα</div>
+                                    <div Class="t-col">Αγ.</div>
+                                    <div Class="t-col">βαθμ.</div>
+                                </header>
+                                <ul Class="clearfix">
+                                    <li>
+                                        <div Class="t-col">1</div>
+                                        <div Class="t-col width1">BROOKLYN BETS</div>
+                                        <div Class="t-col">20</div>
+                                        <div Class="t-col">35</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">2</div>
+                                        <div Class="t-col width1">CROCODILES</div>
+                                        <div Class="t-col">20</div>
+                                        <div Class="t-col">33</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">3</div>
+                                        <div Class="t-col width1">DEPORTIVO ΦΑΛΗΡΟ</div>
+                                        <div Class="t-col">20</div>
+                                        <div Class="t-col">33</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">4</div>
+                                        <div Class="t-col width1">mon utd</div>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col">11</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">5</div>
+                                        <div Class="t-col width1">swansen</div>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col">11</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">6</div>
+                                        <div Class="t-col width1">Spors</div>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col">11</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col width1">West Hem</div>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col">10</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">8</div>
+                                        <div Class="t-col width1">arsenol</div>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col">10</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">9</div>
+                                        <div Class="t-col width1">Liverpunl</div>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col">10</div>
+                                    </li>
+                                    <li>
+                                        <div Class="t-col">10</div>
+                                        <div Class="t-col width1">Astun Villo</div>
+                                        <div Class="t-col">7</div>
+                                        <div Class="t-col">10</div>
+                                    </li>
+                                </ul>                               
                             </div>
-                            <!-- widget -->
+                        </div>
+                       
+                                       
 
                         </div>
                         <!-- widget-area-13 -->
@@ -785,6 +655,62 @@ End Code
 
         $(document).ready(function () {
 
+
+            //append carousel sync3 and sync4            
+            $.ajax({
+                type: "POST",
+                url: baseUrl + '@Url.Action("GetLastNewswithVideo", "Posts")',
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var sync3container = $("#watchsync3");
+                    var sync4container = $("#watchsync4");
+                                        
+                    if (result.data.length > 0) {
+                        sync3container.empty();
+                        sync4container.empty();
+
+                        $.each(result.data, function () {
+                                                        
+                            d = ' <div class="item"> ' +
+                                '   <article class="entry-item video-post"> ' +
+                                '   <div class="entry-thumb"> ' +
+                                '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:420px;"></a> ' +
+                                '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
+                                '   </div> ' +
+                                '   <div class="entry-content"> ' +
+                                '       <h3 class=""><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h3> ' +
+                                '       <div class="content-top"> ' +
+                                '           <h4 class="entry-title">' + this.PostSummary + '</h4> ' +
+                                '       </div> ' +
+                                '   </div> ' +
+                                ' </article> ' +
+                                '</div>';
+                            sync3container.append(d);
+
+                            d = ' <div class="item"> ' +
+                                '   <article class="entry-item video-post"> ' +
+                                '   <div class="entry-thumb"> ' +
+                                '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:120px;width:120px;"></a> ' +
+                                '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
+                                '   </div> ' +
+                                '   <div class="entry-content"> ' +
+                                '       <h4 class="entry-title"><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4> ' +
+                                '   </div> ' +
+                                ' </article> ' +
+                                '</div>';
+                            sync4container.append(d);
+
+                        });
+                    }
+                },
+                error: function (result) {
+                    alert(result.status + ' ' + result.statusText);
+                }
+            });
+
             //apend kalyteresfaseisid
             $.ajax({
                 type: "POST",
@@ -825,7 +751,7 @@ End Code
             $.ajax({
                 type: "POST",
                 url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
-                data: "{nCount : 5}",
+                data: "{nCount : 10}",
                 async: false,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

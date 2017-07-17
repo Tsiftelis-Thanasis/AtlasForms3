@@ -354,6 +354,40 @@ Namespace Controllers
         End Function
 
 
+        Function GetLastNewswithVideo() As JsonResult
+
+            'image
+            'video
+            'title
+            'summary
+
+            Dim ar2 = (From p In pdb.BlogPostsTable
+                       Where Not p.Youtubelink Is Nothing
+                       Order By p.Id Descending
+                       Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink
+                           ).Take(5).AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = If(o.PostTitle Is Nothing, "", o.PostTitle.Substring(0, Math.Min(50, o.PostTitle.Length)) & "..."),
+                        .PostSummary = If(o.PostSummary Is Nothing, "", o.PostSummary.Substring(0, Math.Min(150, o.PostSummary.Length)) & "..."),
+                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                        .Youtubelink = o.Youtubelink
+                        }).ToArray
+
+            Dim dtm As New DataTableModel
+            If ar2 IsNot Nothing Then
+                dtm.data = ar2.Cast(Of Object).ToList
+            End If
+            dtm.draw = 0
+            dtm.recordsTotal = dtm.data.Count
+            dtm.recordsFiltered = dtm.recordsTotal
+
+            Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
+
+        End Function
+
+
+
 
         Function GetLastNewsByCategory2(ByVal nCount As Integer, ByVal KathgoriaId As Integer,
                                         Optional ByVal IsKathgoria As Integer = 0,

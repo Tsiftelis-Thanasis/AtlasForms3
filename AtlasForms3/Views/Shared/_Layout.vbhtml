@@ -117,7 +117,7 @@ End Code
 
             <div class="wrapper">
 
-                <nav class="kopa-main-nav-2">
+               <nav  class="th-kopa-main-nav-2">
                    
                     <ul class="main-menu-2 sf-menu" id="omiloinavbarid">
                         <li>
@@ -139,9 +139,10 @@ End Code
                             </div>
                         </li>
                     </ul>
+                
                 </nav>
                 <!--/end main-nav-2-->
-
+                
             </div>
             <!-- wrapper -->
 

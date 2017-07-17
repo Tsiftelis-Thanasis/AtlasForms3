@@ -109,6 +109,18 @@ Modernizr.load([
             delay: "100"
         });
 
+        // thanasis keeping the nav bar in mobile
+        var r_ul12 = $('.th-kopa-main-nav-2 .sf-menu');
+        r_ul12.find('> li').each(function () {
+            r_ul12.prepend(this);
+        });
+
+        r_ul12.superfish({
+            speed: "fast",
+            delay: "100"
+        });
+        
+
         var r_ul2 = $('.kopa-main-nav-2 .sf-menu');
         r_ul2.find('> li').each(function() {
             r_ul2.prepend(this);
@@ -119,7 +131,7 @@ Modernizr.load([
             delay: "100"
         });
 
-           //thanasis mobile show lists!
+        //thanasis mobile show lists!
         var r_ul22 = $('.main-nav-mobile .sf-menu');
         r_ul22.find('> li').each(function () {
             r_ul22.prepend(this);
@@ -129,6 +141,16 @@ Modernizr.load([
             speed: "fast",
             delay: "100"
         });
+
+        //var r_ul23 = $('.main-nav-mobile-2 .sf-menu');
+        //r_ul23.find('> li').each(function () {
+        //    r_ul23.prepend(this);
+        //});
+
+        //r_ul23.superfish({
+        //    speed: "fast",
+        //    delay: "100"
+        //});
 
 
         $('.header-top-list ul').superfish({
