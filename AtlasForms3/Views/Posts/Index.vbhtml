@@ -89,28 +89,83 @@ End Code
     <div Class="wrapper">
         <div Class="content-wrap">
             <div Class="row">
-                <div Class="kopa-main-col">
+                <div Class="kopa-main"> @*<div Class="kopa-main-col">*@
 
-                    <div id="divfixture" class="widget kopa-entry-list">
-                        <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
-                        <div class="tab-content ft-tab-content mb-30">
+                        <div id="divfixture" class="widget kopa-entry-list">
+                            <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
+                            <div class="tab-content ft-tab-content mb-30">
 
-                            <div class="tab-pane active" id="fixtures">
+                                <div class="tab-pane active" id="fixtures">
 
-                                @*<div class="widget kopa-match-list-widget">
+                                    @*<div class="widget kopa-match-list-widget">
 
-                                    <div class="match-item last-item style1">
+                            <div class="match-item last-item style1">
+                                <header>
+                                    <p>Wed 22nd Oct 19.45 Constant Vanden Stock</p>
+                                    <span><img src="~/Content/images/background/cl.png" alt=""></span>
+                                </header>
+                                <div class="r-item">
+                                    <a class="r-num" href="#">
+                                        <span>V</span>
+                                    </a>
+                                    <a class="r-side left" href="#">
+                                        <div class="r-thumb">
+                                            <img src="~/Content/images/result/1.png" alt="">
+                                        </div>
+                                        <div class="r-content">
+                                            <h5>arsenol</h5>
+                                        </div>
+                                    </a>
+                                    <a class="r-side right" href="#">
+                                        <div class="r-thumb">
+                                            <img src="~/Content/images/result/2.png" alt="">
+                                        </div>
+                                        <div class="r-content">
+                                            <h5>hon city</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <ul class="kopa-countdown">
+                                    <li>
+                                        <h3>50</h3>
+                                        <span>weeks</span>
+                                    </li>
+                                    <li>
+                                        <h3>51</h3>
+                                        <span>days</span>
+                                    </li>
+                                    <li>
+                                        <h3>22</h3>
+                                        <span>hours</span>
+                                    </li>
+                                    <li>
+                                        <h3>55</h3>
+                                        <span>mins</span>
+                                    </li>
+                                    <li>
+                                        <h3>17</h3>
+                                        <span>secs</span>
+                                    </li>
+                                </ul>
+                                <footer>
+                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                </footer>
+                            </div>
+
+                            <ul class="clearfix mb-60">
+                                <li>
+                                    <div class="match-item list-item">
                                         <header>
-                                            <p>Wed 22nd Oct 19.45 Constant Vanden Stock</p>
-                                            <span><img src="~/Content/images/background/cl.png" alt=""></span>
+                                            <p>Sat 27th Sep 17:30</p>
+                                            <span>UEFA Champions League</span>
                                         </header>
                                         <div class="r-item">
                                             <a class="r-num" href="#">
-                                                <span>V</span>
+                                                <span class="r-color">v</span>
                                             </a>
                                             <a class="r-side left" href="#">
                                                 <div class="r-thumb">
-                                                    <img src="~/Content/images/result/1.png" alt="">
+                                                    <img src="~/Content/images/club/1.png" alt="">
                                                 </div>
                                                 <div class="r-content">
                                                     <h5>arsenol</h5>
@@ -118,814 +173,747 @@ End Code
                                             </a>
                                             <a class="r-side right" href="#">
                                                 <div class="r-thumb">
-                                                    <img src="~/Content/images/result/2.png" alt="">
+                                                    <img src="~/Content/images/club/2.png" alt="">
                                                 </div>
                                                 <div class="r-content">
-                                                    <h5>hon city</h5>
+                                                    <h5>barcalona</h5>
                                                 </div>
                                             </a>
                                         </div>
-                                        <ul class="kopa-countdown">
-                                            <li>
-                                                <h3>50</h3>
-                                                <span>weeks</span>
-                                            </li>
-                                            <li>
-                                                <h3>51</h3>
-                                                <span>days</span>
-                                            </li>
-                                            <li>
-                                                <h3>22</h3>
-                                                <span>hours</span>
-                                            </li>
-                                            <li>
-                                                <h3>55</h3>
-                                                <span>mins</span>
-                                            </li>
-                                            <li>
-                                                <h3>17</h3>
-                                                <span>secs</span>
-                                            </li>
-                                        </ul>
+                                        <a class="match-info" href="#">
+                                            <p class="m-hl">h</p>
+                                            <p>KICK-OFF 10:45</p>
+                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                        </a>
                                         <footer>
                                             <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
                                         </footer>
                                     </div>
-
-                                    <ul class="clearfix mb-60">
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">v</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/1.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>arsenol</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/2.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>barcalona</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">v</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/3.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ranl madrid</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/4.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ac milen</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">v</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/1.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>arsenol</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/5.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>psb</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li><h4 id="fixture-november">November 2014</h4></li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">v</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/4.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ac milen</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/2.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>barcalona</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">v</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/3.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ranl madrid</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/1.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>arsenol</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                    @*<div class="kopa-pagination">
-                                        <ul class="clearfix">
-                                            <li><a href="#" class="prev fa fa-chevron-left"></a></li>
-                                            <li><a href="#">Older</a></li>
-                                            <li><span class="current">1</span></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">Newer</a></li>
-                                            <li><a href="#" class="next fa fa-chevron-right"></a></li>
-                                        </ul>
-                                    </div>*@
-
-                                @*</div>*@
-                                <!-- widget -->
-
-                            </div>
-                            <!-- tab-pane -->
-
-                            <div class="tab-pane" id="results">
-
-                                <div class="widget kopa-match-list-widget">
-
-                                    <div class="match-item last-item">
+                                </li>
+                                <li>
+                                    <div class="match-item list-item">
                                         <header>
-                                            <p>Wed 22nd Oct 19.45 Constant Vanden Stock</p>
-                                            <span><img src="~/Content/images/background/cl.png" alt=""></span>
+                                            <p>Sat 27th Sep 17:30</p>
+                                            <span>UEFA Champions League</span>
                                         </header>
                                         <div class="r-item">
-                                            <div class="span-bg">
-                                                <span class="c-tg"></span>
-                                            </div>
                                             <a class="r-num" href="#">
-                                                <span class="r-color">2</span>
-                                                <span>-</span>
-                                                <span>1</span>
+                                                <span class="r-color">v</span>
                                             </a>
                                             <a class="r-side left" href="#">
                                                 <div class="r-thumb">
-                                                    <img src="~/Content/images/result/1.png" alt="">
+                                                    <img src="~/Content/images/club/3.png" alt="">
                                                 </div>
                                                 <div class="r-content">
-                                                    <h5>arsenol</h5>
-                                                    <p>Sanchen (27 pen), Sanobo (78)</p>
+                                                    <h5>ranl madrid</h5>
                                                 </div>
                                             </a>
                                             <a class="r-side right" href="#">
                                                 <div class="r-thumb">
-                                                    <img src="~/Content/images/result/2.png" alt="">
+                                                    <img src="~/Content/images/club/4.png" alt="">
                                                 </div>
                                                 <div class="r-content">
-                                                    <h5>hon city</h5>
-                                                    <p>K. Benny (78)</p>
+                                                    <h5>ac milen</h5>
                                                 </div>
                                             </a>
                                         </div>
+                                        <a class="match-info" href="#">
+                                            <p class="m-hl">h</p>
+                                            <p>KICK-OFF 10:45</p>
+                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                        </a>
                                         <footer>
                                             <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
                                         </footer>
                                     </div>
-
-                                    <ul class="clearfix mb-60">
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">2</span>
-                                                        <span>-</span>
-                                                        <span>1</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/1.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>arsenol</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/2.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>barcalona</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">2</span>
-                                                        <span>-</span>
-                                                        <span>1</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/3.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ranl madrid</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/4.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ac milen</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">2</span>
-                                                        <span>-</span>
-                                                        <span>1</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/1.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>arsenol</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/5.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>psb</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li><h4 id="fixture-octorber">octorber 2014</h4></li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">2</span>
-                                                        <span>-</span>
-                                                        <span>1</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/4.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ac milen</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/2.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>barcalona</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="match-item list-item">
-                                                <header>
-                                                    <p>Sat 27th Sep 17:30</p>
-                                                    <span>UEFA Champions League</span>
-                                                </header>
-                                                <div class="r-item">
-                                                    <a class="r-num" href="#">
-                                                        <span class="r-color">2</span>
-                                                        <span>-</span>
-                                                        <span>1</span>
-                                                    </a>
-                                                    <a class="r-side left" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/3.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>ranl madrid</h5>
-                                                        </div>
-                                                    </a>
-                                                    <a class="r-side right" href="#">
-                                                        <div class="r-thumb">
-                                                            <img src="~/Content/images/club/1.png" alt="">
-                                                        </div>
-                                                        <div class="r-content">
-                                                            <h5>arsenol</h5>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <a class="match-info" href="#">
-                                                    <p class="m-hl">h</p>
-                                                    <p>KICK-OFF 10:45</p>
-                                                    <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                                </a>
-                                                <footer>
-                                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                                </footer>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                    <div class="kopa-pagination">
-                                        <ul class="clearfix">
-                                            <li><a href="#" class="prev fa fa-chevron-left"></a></li>
-                                            <li><a href="#">Older</a></li>
-                                            <li><span class="current">1</span></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">Newer</a></li>
-                                            <li><a href="#" class="next fa fa-chevron-right"></a></li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                                <!-- widget -->
-
-                            </div>
-                            <!-- tab-pane -->
-
-                            <div class="tab-pane" id="table">
-
-                                <div class="widget kopa-charts-widget">
-                                    <h3 class="widget-title style17">premier league 2014/15</h3>
-                                    <div class="widget-content">
+                                </li>
+                                <li>
+                                    <div class="match-item list-item">
                                         <header>
-                                            <div class="t-col width3">pos</div>
-                                            <div class="t-col width2">team</div>
-                                            <div class="t-col width3 tbl-col">p</div>
-                                            <div class="t-col width3 tbl-col">w</div>
-                                            <div class="t-col width3 tbl-col">d</div>
-                                            <div class="t-col width3 tbl-col">l</div>
-                                            <div class="t-col width3 mb-col">f</div>
-                                            <div class="t-col width3 mb-col">a</div>
-                                            <div class="t-col width3 mb-col">+/-</div>
-                                            <div class="t-col width3">pts</div>
+                                            <p>Sat 27th Sep 17:30</p>
+                                            <span>UEFA Champions League</span>
                                         </header>
-                                        <ul class="clearfix">
-                                            <li>
-                                                <div class="t-col width3">1</div>
-                                                <div class="t-col width2">chelsen</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">13</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">2</div>
-                                                <div class="t-col width2">Sonthampton</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">14</div>
-                                                <div class="t-col width3 mb-col">4</div>
-                                                <div class="t-col width3 mb-col">10</div>
-                                                <div class="t-col width3">12</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">3</div>
-                                                <div class="t-col width2">mon utd</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 mb-col">5</div>
-                                                <div class="t-col width3 mb-col">9</div>
-                                                <div class="t-col width3 mb-col">-4</div>
-                                                <div class="t-col width3">11</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">4</div>
-                                                <div class="t-col width2">Men City</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">11</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">5</div>
-                                                <div class="t-col width2">swansen</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">3</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">10</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">6</div>
-                                                <div class="t-col width2">West Hem</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">3</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 mb-col">11</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">3</div>
-                                                <div class="t-col width3">10</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">7</div>
-                                                <div class="t-col width2">arsenol</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">3</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">17</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">2</div>
-                                                <div class="t-col width3">9</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">8</div>
-                                                <div class="t-col width2">Spors</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 mb-col">5</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">-3</div>
-                                                <div class="t-col width3">8</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">9</div>
-                                                <div class="t-col width2">liver pool</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">7</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">10</div>
-                                                <div class="t-col width2">Astun Villo</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 mb-col">5</div>
-                                                <div class="t-col width3 mb-col">10</div>
-                                                <div class="t-col width3 mb-col">-5</div>
-                                                <div class="t-col width3">5</div>
-                                            </li>
-                                        </ul>
-                                        <a class="kopa-view-full" href="#">View full<span class="fa fa-chevron-right"></span></a>
+                                        <div class="r-item">
+                                            <a class="r-num" href="#">
+                                                <span class="r-color">v</span>
+                                            </a>
+                                            <a class="r-side left" href="#">
+                                                <div class="r-thumb">
+                                                    <img src="~/Content/images/club/1.png" alt="">
+                                                </div>
+                                                <div class="r-content">
+                                                    <h5>arsenol</h5>
+                                                </div>
+                                            </a>
+                                            <a class="r-side right" href="#">
+                                                <div class="r-thumb">
+                                                    <img src="~/Content/images/club/5.png" alt="">
+                                                </div>
+                                                <div class="r-content">
+                                                    <h5>psb</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a class="match-info" href="#">
+                                            <p class="m-hl">h</p>
+                                            <p>KICK-OFF 10:45</p>
+                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                        </a>
+                                        <footer>
+                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                        </footer>
                                     </div>
-                                </div>
-
-                                <div class="widget kopa-charts-widget">
-                                    <h3 class="widget-title style17">barclays u21 premier league</h3>
-                                    <div class="widget-content">
+                                </li>
+                                <li><h4 id="fixture-november">November 2014</h4></li>
+                                <li>
+                                    <div class="match-item list-item">
                                         <header>
-                                            <div class="t-col width3">pos</div>
-                                            <div class="t-col width2">team</div>
-                                            <div class="t-col width3 tbl-col">p</div>
-                                            <div class="t-col width3 tbl-col">w</div>
-                                            <div class="t-col width3 tbl-col">d</div>
-                                            <div class="t-col width3 tbl-col">l</div>
-                                            <div class="t-col width3 mb-col">f</div>
-                                            <div class="t-col width3 mb-col">a</div>
-                                            <div class="t-col width3 mb-col">+/-</div>
-                                            <div class="t-col width3">pts</div>
+                                            <p>Sat 27th Sep 17:30</p>
+                                            <span>UEFA Champions League</span>
                                         </header>
-                                        <ul class="clearfix">
+                                        <div class="r-item">
+                                            <a class="r-num" href="#">
+                                                <span class="r-color">v</span>
+                                            </a>
+                                            <a class="r-side left" href="#">
+                                                <div class="r-thumb">
+                                                    <img src="~/Content/images/club/4.png" alt="">
+                                                </div>
+                                                <div class="r-content">
+                                                    <h5>ac milen</h5>
+                                                </div>
+                                            </a>
+                                            <a class="r-side right" href="#">
+                                                <div class="r-thumb">
+                                                    <img src="~/Content/images/club/2.png" alt="">
+                                                </div>
+                                                <div class="r-content">
+                                                    <h5>barcalona</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a class="match-info" href="#">
+                                            <p class="m-hl">h</p>
+                                            <p>KICK-OFF 10:45</p>
+                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                        </a>
+                                        <footer>
+                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                        </footer>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="match-item list-item">
+                                        <header>
+                                            <p>Sat 27th Sep 17:30</p>
+                                            <span>UEFA Champions League</span>
+                                        </header>
+                                        <div class="r-item">
+                                            <a class="r-num" href="#">
+                                                <span class="r-color">v</span>
+                                            </a>
+                                            <a class="r-side left" href="#">
+                                                <div class="r-thumb">
+                                                    <img src="~/Content/images/club/3.png" alt="">
+                                                </div>
+                                                <div class="r-content">
+                                                    <h5>ranl madrid</h5>
+                                                </div>
+                                            </a>
+                                            <a class="r-side right" href="#">
+                                                <div class="r-thumb">
+                                                    <img src="~/Content/images/club/1.png" alt="">
+                                                </div>
+                                                <div class="r-content">
+                                                    <h5>arsenol</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a class="match-info" href="#">
+                                            <p class="m-hl">h</p>
+                                            <p>KICK-OFF 10:45</p>
+                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                        </a>
+                                        <footer>
+                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                        </footer>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            @*<div class="kopa-pagination">
+                                <ul class="clearfix">
+                                    <li><a href="#" class="prev fa fa-chevron-left"></a></li>
+                                    <li><a href="#">Older</a></li>
+                                    <li><span class="current">1</span></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">Newer</a></li>
+                                    <li><a href="#" class="next fa fa-chevron-right"></a></li>
+                                </ul>
+                            </div>*@
+
+                                    @*</div>*@
+                                    <!-- widget -->
+
+                                </div>
+                                <!-- tab-pane -->
+
+                                <div class="tab-pane" id="results">
+
+                                    <div class="widget kopa-match-list-widget">
+
+                                        <div class="match-item last-item">
+                                            <header>
+                                                <p>Wed 22nd Oct 19.45 Constant Vanden Stock</p>
+                                                <span><img src="~/Content/images/background/cl.png" alt=""></span>
+                                            </header>
+                                            <div class="r-item">
+                                                <div class="span-bg">
+                                                    <span class="c-tg"></span>
+                                                </div>
+                                                <a class="r-num" href="#">
+                                                    <span class="r-color">2</span>
+                                                    <span>-</span>
+                                                    <span>1</span>
+                                                </a>
+                                                <a class="r-side left" href="#">
+                                                    <div class="r-thumb">
+                                                        <img src="~/Content/images/result/1.png" alt="">
+                                                    </div>
+                                                    <div class="r-content">
+                                                        <h5>arsenol</h5>
+                                                        <p>Sanchen (27 pen), Sanobo (78)</p>
+                                                    </div>
+                                                </a>
+                                                <a class="r-side right" href="#">
+                                                    <div class="r-thumb">
+                                                        <img src="~/Content/images/result/2.png" alt="">
+                                                    </div>
+                                                    <div class="r-content">
+                                                        <h5>hon city</h5>
+                                                        <p>K. Benny (78)</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <footer>
+                                                <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                            </footer>
+                                        </div>
+
+                                        <ul class="clearfix mb-60">
                                             <li>
-                                                <div class="t-col width3">1</div>
-                                                <div class="t-col width2">chelsen</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">13</div>
+                                                <div class="match-item list-item">
+                                                    <header>
+                                                        <p>Sat 27th Sep 17:30</p>
+                                                        <span>UEFA Champions League</span>
+                                                    </header>
+                                                    <div class="r-item">
+                                                        <a class="r-num" href="#">
+                                                            <span class="r-color">2</span>
+                                                            <span>-</span>
+                                                            <span>1</span>
+                                                        </a>
+                                                        <a class="r-side left" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/1.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>arsenol</h5>
+                                                            </div>
+                                                        </a>
+                                                        <a class="r-side right" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/2.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>barcalona</h5>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <a class="match-info" href="#">
+                                                        <p class="m-hl">h</p>
+                                                        <p>KICK-OFF 10:45</p>
+                                                        <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                                    </a>
+                                                    <footer>
+                                                        <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                                    </footer>
+                                                </div>
                                             </li>
                                             <li>
-                                                <div class="t-col width3">2</div>
-                                                <div class="t-col width2">Sonthampton</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">14</div>
-                                                <div class="t-col width3 mb-col">4</div>
-                                                <div class="t-col width3 mb-col">10</div>
-                                                <div class="t-col width3">12</div>
+                                                <div class="match-item list-item">
+                                                    <header>
+                                                        <p>Sat 27th Sep 17:30</p>
+                                                        <span>UEFA Champions League</span>
+                                                    </header>
+                                                    <div class="r-item">
+                                                        <a class="r-num" href="#">
+                                                            <span class="r-color">2</span>
+                                                            <span>-</span>
+                                                            <span>1</span>
+                                                        </a>
+                                                        <a class="r-side left" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/3.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>ranl madrid</h5>
+                                                            </div>
+                                                        </a>
+                                                        <a class="r-side right" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/4.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>ac milen</h5>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <a class="match-info" href="#">
+                                                        <p class="m-hl">h</p>
+                                                        <p>KICK-OFF 10:45</p>
+                                                        <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                                    </a>
+                                                    <footer>
+                                                        <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                                    </footer>
+                                                </div>
                                             </li>
                                             <li>
-                                                <div class="t-col width3">3</div>
-                                                <div class="t-col width2">mon utd</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 mb-col">5</div>
-                                                <div class="t-col width3 mb-col">9</div>
-                                                <div class="t-col width3 mb-col">-4</div>
-                                                <div class="t-col width3">11</div>
+                                                <div class="match-item list-item">
+                                                    <header>
+                                                        <p>Sat 27th Sep 17:30</p>
+                                                        <span>UEFA Champions League</span>
+                                                    </header>
+                                                    <div class="r-item">
+                                                        <a class="r-num" href="#">
+                                                            <span class="r-color">2</span>
+                                                            <span>-</span>
+                                                            <span>1</span>
+                                                        </a>
+                                                        <a class="r-side left" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/1.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>arsenol</h5>
+                                                            </div>
+                                                        </a>
+                                                        <a class="r-side right" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/5.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>psb</h5>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <a class="match-info" href="#">
+                                                        <p class="m-hl">h</p>
+                                                        <p>KICK-OFF 10:45</p>
+                                                        <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                                    </a>
+                                                    <footer>
+                                                        <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                                    </footer>
+                                                </div>
+                                            </li>
+                                            <li><h4 id="fixture-octorber">octorber 2014</h4></li>
+                                            <li>
+                                                <div class="match-item list-item">
+                                                    <header>
+                                                        <p>Sat 27th Sep 17:30</p>
+                                                        <span>UEFA Champions League</span>
+                                                    </header>
+                                                    <div class="r-item">
+                                                        <a class="r-num" href="#">
+                                                            <span class="r-color">2</span>
+                                                            <span>-</span>
+                                                            <span>1</span>
+                                                        </a>
+                                                        <a class="r-side left" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/4.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>ac milen</h5>
+                                                            </div>
+                                                        </a>
+                                                        <a class="r-side right" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/2.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>barcalona</h5>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <a class="match-info" href="#">
+                                                        <p class="m-hl">h</p>
+                                                        <p>KICK-OFF 10:45</p>
+                                                        <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                                    </a>
+                                                    <footer>
+                                                        <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                                    </footer>
+                                                </div>
                                             </li>
                                             <li>
-                                                <div class="t-col width3">4</div>
-                                                <div class="t-col width2">Men City</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">11</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">5</div>
-                                                <div class="t-col width2">swansen</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">3</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">10</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">6</div>
-                                                <div class="t-col width2">West Hem</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">3</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 mb-col">11</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">3</div>
-                                                <div class="t-col width3">10</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">7</div>
-                                                <div class="t-col width2">arsenol</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">3</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">17</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">2</div>
-                                                <div class="t-col width3">9</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">8</div>
-                                                <div class="t-col width2">Spors</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 mb-col">5</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">-3</div>
-                                                <div class="t-col width3">8</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">9</div>
-                                                <div class="t-col width2">liver pool</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">4</div>
-                                                <div class="t-col width3 tbl-col">0</div>
-                                                <div class="t-col width3 mb-col">15</div>
-                                                <div class="t-col width3 mb-col">8</div>
-                                                <div class="t-col width3 mb-col">7</div>
-                                                <div class="t-col width3">7</div>
-                                            </li>
-                                            <li>
-                                                <div class="t-col width3">10</div>
-                                                <div class="t-col width2">Astun Villo</div>
-                                                <div class="t-col width3 tbl-col">5</div>
-                                                <div class="t-col width3 tbl-col">1</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 tbl-col">2</div>
-                                                <div class="t-col width3 mb-col">5</div>
-                                                <div class="t-col width3 mb-col">10</div>
-                                                <div class="t-col width3 mb-col">-5</div>
-                                                <div class="t-col width3">5</div>
+                                                <div class="match-item list-item">
+                                                    <header>
+                                                        <p>Sat 27th Sep 17:30</p>
+                                                        <span>UEFA Champions League</span>
+                                                    </header>
+                                                    <div class="r-item">
+                                                        <a class="r-num" href="#">
+                                                            <span class="r-color">2</span>
+                                                            <span>-</span>
+                                                            <span>1</span>
+                                                        </a>
+                                                        <a class="r-side left" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/3.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>ranl madrid</h5>
+                                                            </div>
+                                                        </a>
+                                                        <a class="r-side right" href="#">
+                                                            <div class="r-thumb">
+                                                                <img src="~/Content/images/club/1.png" alt="">
+                                                            </div>
+                                                            <div class="r-content">
+                                                                <h5>arsenol</h5>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <a class="match-info" href="#">
+                                                        <p class="m-hl">h</p>
+                                                        <p>KICK-OFF 10:45</p>
+                                                        <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
+                                                    </a>
+                                                    <footer>
+                                                        <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
+                                                    </footer>
+                                                </div>
                                             </li>
                                         </ul>
-                                        <a class="kopa-view-full" href="#">View full<span class="fa fa-chevron-right"></span></a>
+
+                                        <div class="kopa-pagination">
+                                            <ul class="clearfix">
+                                                <li><a href="#" class="prev fa fa-chevron-left"></a></li>
+                                                <li><a href="#">Older</a></li>
+                                                <li><span class="current">1</span></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li><a href="#">Newer</a></li>
+                                                <li><a href="#" class="next fa fa-chevron-right"></a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                    <!-- widget -->
+
+                                </div>
+                                <!-- tab-pane -->
+
+                                <div class="tab-pane" id="table">
+
+                                    <div class="widget kopa-charts-widget">
+                                        <h3 class="widget-title style17">premier league 2014/15</h3>
+                                        <div class="widget-content">
+                                            <header>
+                                                <div class="t-col width3">pos</div>
+                                                <div class="t-col width2">team</div>
+                                                <div class="t-col width3 tbl-col">p</div>
+                                                <div class="t-col width3 tbl-col">w</div>
+                                                <div class="t-col width3 tbl-col">d</div>
+                                                <div class="t-col width3 tbl-col">l</div>
+                                                <div class="t-col width3 mb-col">f</div>
+                                                <div class="t-col width3 mb-col">a</div>
+                                                <div class="t-col width3 mb-col">+/-</div>
+                                                <div class="t-col width3">pts</div>
+                                            </header>
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <div class="t-col width3">1</div>
+                                                    <div class="t-col width2">chelsen</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">13</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">2</div>
+                                                    <div class="t-col width2">Sonthampton</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">14</div>
+                                                    <div class="t-col width3 mb-col">4</div>
+                                                    <div class="t-col width3 mb-col">10</div>
+                                                    <div class="t-col width3">12</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">3</div>
+                                                    <div class="t-col width2">mon utd</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 mb-col">5</div>
+                                                    <div class="t-col width3 mb-col">9</div>
+                                                    <div class="t-col width3 mb-col">-4</div>
+                                                    <div class="t-col width3">11</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">4</div>
+                                                    <div class="t-col width2">Men City</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">11</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">5</div>
+                                                    <div class="t-col width2">swansen</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">3</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">10</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">6</div>
+                                                    <div class="t-col width2">West Hem</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">3</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 mb-col">11</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">3</div>
+                                                    <div class="t-col width3">10</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">7</div>
+                                                    <div class="t-col width2">arsenol</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">3</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">17</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">2</div>
+                                                    <div class="t-col width3">9</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">8</div>
+                                                    <div class="t-col width2">Spors</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 mb-col">5</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">-3</div>
+                                                    <div class="t-col width3">8</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">9</div>
+                                                    <div class="t-col width2">liver pool</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">7</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">10</div>
+                                                    <div class="t-col width2">Astun Villo</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 mb-col">5</div>
+                                                    <div class="t-col width3 mb-col">10</div>
+                                                    <div class="t-col width3 mb-col">-5</div>
+                                                    <div class="t-col width3">5</div>
+                                                </li>
+                                            </ul>
+                                            <a class="kopa-view-full" href="#">View full<span class="fa fa-chevron-right"></span></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget kopa-charts-widget">
+                                        <h3 class="widget-title style17">barclays u21 premier league</h3>
+                                        <div class="widget-content">
+                                            <header>
+                                                <div class="t-col width3">pos</div>
+                                                <div class="t-col width2">team</div>
+                                                <div class="t-col width3 tbl-col">p</div>
+                                                <div class="t-col width3 tbl-col">w</div>
+                                                <div class="t-col width3 tbl-col">d</div>
+                                                <div class="t-col width3 tbl-col">l</div>
+                                                <div class="t-col width3 mb-col">f</div>
+                                                <div class="t-col width3 mb-col">a</div>
+                                                <div class="t-col width3 mb-col">+/-</div>
+                                                <div class="t-col width3">pts</div>
+                                            </header>
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <div class="t-col width3">1</div>
+                                                    <div class="t-col width2">chelsen</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">13</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">2</div>
+                                                    <div class="t-col width2">Sonthampton</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">14</div>
+                                                    <div class="t-col width3 mb-col">4</div>
+                                                    <div class="t-col width3 mb-col">10</div>
+                                                    <div class="t-col width3">12</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">3</div>
+                                                    <div class="t-col width2">mon utd</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 mb-col">5</div>
+                                                    <div class="t-col width3 mb-col">9</div>
+                                                    <div class="t-col width3 mb-col">-4</div>
+                                                    <div class="t-col width3">11</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">4</div>
+                                                    <div class="t-col width2">Men City</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">11</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">5</div>
+                                                    <div class="t-col width2">swansen</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">3</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">10</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">6</div>
+                                                    <div class="t-col width2">West Hem</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">3</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 mb-col">11</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">3</div>
+                                                    <div class="t-col width3">10</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">7</div>
+                                                    <div class="t-col width2">arsenol</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">3</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">17</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">2</div>
+                                                    <div class="t-col width3">9</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">8</div>
+                                                    <div class="t-col width2">Spors</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 mb-col">5</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">-3</div>
+                                                    <div class="t-col width3">8</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">9</div>
+                                                    <div class="t-col width2">liver pool</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">4</div>
+                                                    <div class="t-col width3 tbl-col">0</div>
+                                                    <div class="t-col width3 mb-col">15</div>
+                                                    <div class="t-col width3 mb-col">8</div>
+                                                    <div class="t-col width3 mb-col">7</div>
+                                                    <div class="t-col width3">7</div>
+                                                </li>
+                                                <li>
+                                                    <div class="t-col width3">10</div>
+                                                    <div class="t-col width2">Astun Villo</div>
+                                                    <div class="t-col width3 tbl-col">5</div>
+                                                    <div class="t-col width3 tbl-col">1</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 tbl-col">2</div>
+                                                    <div class="t-col width3 mb-col">5</div>
+                                                    <div class="t-col width3 mb-col">10</div>
+                                                    <div class="t-col width3 mb-col">-5</div>
+                                                    <div class="t-col width3">5</div>
+                                                </li>
+                                            </ul>
+                                            <a class="kopa-view-full" href="#">View full<span class="fa fa-chevron-right"></span></a>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- tab-pane -->
                             </div>
-                            <!-- tab-pane -->
                         </div>
-                    </div>
 
 
-                    <div id="divteams" class="widget kopa-entry-list">
-                        <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
-                        <table id="teamstable">
-                            <tr>
-                                <td>
-                                    <ul class="clearfix"></ul>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div id="divcommon" Class="widget-area-2">
-                        <div Class="widget kopa-article-list-widget article-list-1">
-                            <h3 Class="widget-title style2">@innerTitle</h3>
-                            <table id="newstable">
+                        <div id="divteams" class="widget kopa-entry-list">
+                            <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
+                            <table id="teamstable">
                                 <tr>
                                     <td>
                                         <ul class="clearfix"></ul>
@@ -933,343 +921,354 @@ End Code
                                 </tr>
                             </table>
                         </div>
-                        <!-- widget -->
-                    </div>
-                    <!-- widget-area-2 -->
-                    <div id="divstandings1" class="widget kopa-charts-widget">                        
-                        <h3 class="widget-title style17">ομιλος Α, κατηγορια Α1</h3>
-                        <div class="widget-content">
-                            <header>
-                                <div class="t-col width3">α/α</div>
-                                <div class="t-col width2">ομαδα</div>
-                                <div class="t-col width3 tbl-col">βαθμοι</div>
-                                <div class="t-col width3 tbl-col">αγωνες</div>
-                                <div class="t-col width3 tbl-col">νικες</div>
-                                <div class="t-col width3 tbl-col">ηττες</div>
-                                <div class="t-col width3 mb-col">μηδεν.</div>
-                                <div class="t-col width3 mb-col">ποντοι</div>
-                                <div class="t-col width3 mb-col">+/-</div>
-                            </header>
-                            <ul class="clearfix">
-                                <li>
-                                    <div class="t-col width3">1</div>
-                                    <div class="t-col width2">chelsen</div>
-                                    <div class="t-col width3">12</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">2</div>
-                                    <div class="t-col width2">Sonthampton</div>
-                                    <div class="t-col width3">12</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">14</div>
-                                    <div class="t-col width3 mb-col">10</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">3</div>
-                                    <div class="t-col width2">mon utd</div>
-                                    <div class="t-col width3">11</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 mb-col">5</div>
-                                    <div class="t-col width3 mb-col">-4</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">4</div>
-                                    <div class="t-col width2">Men City</div>
-                                    <div class="t-col width3">11</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">5</div>
-                                    <div class="t-col width2">swansen</div>
-                                    <div class="t-col width3">10</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">3</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">6</div>
-                                    <div class="t-col width2">West Hem</div>
-                                    <div class="t-col width3">10</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">3</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 mb-col">11</div>
-                                    <div class="t-col width3 mb-col">3</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">7</div>
-                                    <div class="t-col width2">arsenol</div>
-                                    <div class="t-col width3">9</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">3</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">17</div>
-                                    <div class="t-col width3 mb-col">2</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">8</div>
-                                    <div class="t-col width2">Spors</div>
-                                    <div class="t-col width3">8</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 mb-col">5</div>
-                                    <div class="t-col width3 mb-col">-3</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">9</div>
-                                    <div class="t-col width2">liver pool</div>
-                                    <div class="t-col width3">7</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">10</div>
-                                    <div class="t-col width2">Astun Villo</div>
-                                    <div class="t-col width3">5</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 mb-col">5</div>
-                                    <div class="t-col width3 mb-col">-5</div>
-                                </li>
-                            </ul>
-                            @*<a class="kopa-view-all" href="http://atlasstatistics.gr/Rankings">Εμφάνιση υπόλοιπων στατιστικών<span class="fa fa-chevron-right"></span></a>*@
+
+                        <div id="divcommon" Class="widget-area-2">
+                            <div Class="widget kopa-article-list-widget article-list-1">
+                                <h3 Class="widget-title style2">@innerTitle</h3>
+                                <table id="newstable">
+                                    <tr>
+                                        <td>
+                                            <ul class="clearfix"></ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- widget -->
+                        </div>
+                        <!-- widget-area-2 -->
+                        <div id="divstandings1" class="widget kopa-charts-widget">
+                            <h3 class="widget-title style17">ομιλος Α, κατηγορια Α1</h3>
+                            <div class="widget-content">
+                                <header>
+                                    <div class="t-col width3">α/α</div>
+                                    <div class="t-col width2">ομαδα</div>
+                                    <div class="t-col width3 tbl-col">βαθμοι</div>
+                                    <div class="t-col width3 tbl-col">αγωνες</div>
+                                    <div class="t-col width3 tbl-col">νικες</div>
+                                    <div class="t-col width3 tbl-col">ηττες</div>
+                                    <div class="t-col width3 mb-col">μηδεν.</div>
+                                    <div class="t-col width3 mb-col">ποντοι</div>
+                                    <div class="t-col width3 mb-col">+/-</div>
+                                </header>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div class="t-col width3">1</div>
+                                        <div class="t-col width2">chelsen</div>
+                                        <div class="t-col width3">12</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">2</div>
+                                        <div class="t-col width2">Sonthampton</div>
+                                        <div class="t-col width3">12</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">14</div>
+                                        <div class="t-col width3 mb-col">10</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">3</div>
+                                        <div class="t-col width2">mon utd</div>
+                                        <div class="t-col width3">11</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 mb-col">5</div>
+                                        <div class="t-col width3 mb-col">-4</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">4</div>
+                                        <div class="t-col width2">Men City</div>
+                                        <div class="t-col width3">11</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">5</div>
+                                        <div class="t-col width2">swansen</div>
+                                        <div class="t-col width3">10</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">3</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">6</div>
+                                        <div class="t-col width2">West Hem</div>
+                                        <div class="t-col width3">10</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">3</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 mb-col">11</div>
+                                        <div class="t-col width3 mb-col">3</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">7</div>
+                                        <div class="t-col width2">arsenol</div>
+                                        <div class="t-col width3">9</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">3</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">17</div>
+                                        <div class="t-col width3 mb-col">2</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">8</div>
+                                        <div class="t-col width2">Spors</div>
+                                        <div class="t-col width3">8</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 mb-col">5</div>
+                                        <div class="t-col width3 mb-col">-3</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">9</div>
+                                        <div class="t-col width2">liver pool</div>
+                                        <div class="t-col width3">7</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">10</div>
+                                        <div class="t-col width2">Astun Villo</div>
+                                        <div class="t-col width3">5</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 mb-col">5</div>
+                                        <div class="t-col width3 mb-col">-5</div>
+                                    </li>
+                                </ul>
+                                @*<a class="kopa-view-all" href="http://atlasstatistics.gr/Rankings">Εμφάνιση υπόλοιπων στατιστικών<span class="fa fa-chevron-right"></span></a>*@
+                            </div>
+                        </div>
+                        <div id="divstandings2" class="widget kopa-charts-widget">
+                            <h3 class="widget-title style17">ομιλος Α, κατηγορια Α2</h3>
+                            <div class="widget-content">
+                                <header>
+                                    <div class="t-col width3">pos</div>
+                                    <div class="t-col width2">team</div>
+                                    <div class="t-col width3 tbl-col">p</div>
+                                    <div class="t-col width3 tbl-col">w</div>
+                                    <div class="t-col width3 tbl-col">d</div>
+                                    <div class="t-col width3 tbl-col">l</div>
+                                    <div class="t-col width3 mb-col">f</div>
+                                    <div class="t-col width3 mb-col">a</div>
+                                    <div class="t-col width3 mb-col">+/-</div>
+                                    <div class="t-col width3">pts</div>
+                                </header>
+                                <ul class="clearfix">
+                                    <li>
+                                        <div class="t-col width3">1</div>
+                                        <div class="t-col width2">chelsen</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">8</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                        <div class="t-col width3">13</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">2</div>
+                                        <div class="t-col width2">Sonthampton</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">14</div>
+                                        <div class="t-col width3 mb-col">4</div>
+                                        <div class="t-col width3 mb-col">10</div>
+                                        <div class="t-col width3">12</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">3</div>
+                                        <div class="t-col width2">mon utd</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 mb-col">5</div>
+                                        <div class="t-col width3 mb-col">9</div>
+                                        <div class="t-col width3 mb-col">-4</div>
+                                        <div class="t-col width3">11</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">4</div>
+                                        <div class="t-col width2">Men City</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">8</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                        <div class="t-col width3">11</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">5</div>
+                                        <div class="t-col width2">swansen</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">3</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">8</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                        <div class="t-col width3">10</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">6</div>
+                                        <div class="t-col width2">West Hem</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">3</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 mb-col">11</div>
+                                        <div class="t-col width3 mb-col">8</div>
+                                        <div class="t-col width3 mb-col">3</div>
+                                        <div class="t-col width3">10</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">7</div>
+                                        <div class="t-col width2">arsenol</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">3</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">17</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">2</div>
+                                        <div class="t-col width3">9</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">8</div>
+                                        <div class="t-col width2">Spors</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 mb-col">5</div>
+                                        <div class="t-col width3 mb-col">8</div>
+                                        <div class="t-col width3 mb-col">-3</div>
+                                        <div class="t-col width3">8</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">9</div>
+                                        <div class="t-col width2">liver pool</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">4</div>
+                                        <div class="t-col width3 tbl-col">0</div>
+                                        <div class="t-col width3 mb-col">15</div>
+                                        <div class="t-col width3 mb-col">8</div>
+                                        <div class="t-col width3 mb-col">7</div>
+                                        <div class="t-col width3">7</div>
+                                    </li>
+                                    <li>
+                                        <div class="t-col width3">10</div>
+                                        <div class="t-col width2">Astun Villo</div>
+                                        <div class="t-col width3 tbl-col">5</div>
+                                        <div class="t-col width3 tbl-col">1</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 tbl-col">2</div>
+                                        <div class="t-col width3 mb-col">5</div>
+                                        <div class="t-col width3 mb-col">10</div>
+                                        <div class="t-col width3 mb-col">-5</div>
+                                        <div class="t-col width3">5</div>
+                                    </li>
+                                </ul>
+                                <a class="kopa-view-full" href="#">View full<span class="fa fa-chevron-right"></span></a>
+                            </div>
                         </div>
                     </div>
-                    <div id="divstandings2" class="widget kopa-charts-widget">
-                        <h3 class="widget-title style17">ομιλος Α, κατηγορια Α2</h3>
-                        <div class="widget-content">
-                            <header>
-                                <div class="t-col width3">pos</div>
-                                <div class="t-col width2">team</div>
-                                <div class="t-col width3 tbl-col">p</div>
-                                <div class="t-col width3 tbl-col">w</div>
-                                <div class="t-col width3 tbl-col">d</div>
-                                <div class="t-col width3 tbl-col">l</div>
-                                <div class="t-col width3 mb-col">f</div>
-                                <div class="t-col width3 mb-col">a</div>
-                                <div class="t-col width3 mb-col">+/-</div>
-                                <div class="t-col width3">pts</div>
-                            </header>
-                            <ul class="clearfix">
-                                <li>
-                                    <div class="t-col width3">1</div>
-                                    <div class="t-col width2">chelsen</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">8</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                    <div class="t-col width3">13</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">2</div>
-                                    <div class="t-col width2">Sonthampton</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">14</div>
-                                    <div class="t-col width3 mb-col">4</div>
-                                    <div class="t-col width3 mb-col">10</div>
-                                    <div class="t-col width3">12</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">3</div>
-                                    <div class="t-col width2">mon utd</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 mb-col">5</div>
-                                    <div class="t-col width3 mb-col">9</div>
-                                    <div class="t-col width3 mb-col">-4</div>
-                                    <div class="t-col width3">11</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">4</div>
-                                    <div class="t-col width2">Men City</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">8</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                    <div class="t-col width3">11</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">5</div>
-                                    <div class="t-col width2">swansen</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">3</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">8</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                    <div class="t-col width3">10</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">6</div>
-                                    <div class="t-col width2">West Hem</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">3</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 mb-col">11</div>
-                                    <div class="t-col width3 mb-col">8</div>
-                                    <div class="t-col width3 mb-col">3</div>
-                                    <div class="t-col width3">10</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">7</div>
-                                    <div class="t-col width2">arsenol</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">3</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">17</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">2</div>
-                                    <div class="t-col width3">9</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">8</div>
-                                    <div class="t-col width2">Spors</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 mb-col">5</div>
-                                    <div class="t-col width3 mb-col">8</div>
-                                    <div class="t-col width3 mb-col">-3</div>
-                                    <div class="t-col width3">8</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">9</div>
-                                    <div class="t-col width2">liver pool</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">4</div>
-                                    <div class="t-col width3 tbl-col">0</div>
-                                    <div class="t-col width3 mb-col">15</div>
-                                    <div class="t-col width3 mb-col">8</div>
-                                    <div class="t-col width3 mb-col">7</div>
-                                    <div class="t-col width3">7</div>
-                                </li>
-                                <li>
-                                    <div class="t-col width3">10</div>
-                                    <div class="t-col width2">Astun Villo</div>
-                                    <div class="t-col width3 tbl-col">5</div>
-                                    <div class="t-col width3 tbl-col">1</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 tbl-col">2</div>
-                                    <div class="t-col width3 mb-col">5</div>
-                                    <div class="t-col width3 mb-col">10</div>
-                                    <div class="t-col width3 mb-col">-5</div>
-                                    <div class="t-col width3">5</div>
-                                </li>
-                            </ul>
-                            <a class="kopa-view-full" href="#">View full<span class="fa fa-chevron-right"></span></a>
-                        </div>
-                    </div>
+                    <!-- main-col -->
+                    @*<div Class="sidebar widget-area-11">
+
+                <div Class="widget kopa-ads-widget">
+                    <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
                 </div>
-                <!-- main-col -->
 
-                @*<div Class="sidebar widget-area-11">
+                <div Class="widget kopa-ads-widget">
+                    <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
+                </div>
 
-                    <div Class="widget kopa-ads-widget">
-                        <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
-                    </div>
+                <div Class="widget kopa-ads-widget">
+                    <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
+                </div>
+                <!-- widget -->
 
-                    <div Class="widget kopa-ads-widget">
-                        <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
-                    </div>
-
-                    <div Class="widget kopa-ads-widget">
-                        <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
-                    </div>
-                    <!-- widget -->
-
-                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                        <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
-                        <ul Class="clearfix">
-                            <li>
-                                <div Class="kopa-tab style3">
-                                    <ul Class="nav nav-tabs">
-                                        <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                        <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
-                                        <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
-                                        <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
-                                        <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
-                                    </ul>
-                                    <!-- nav-tabs -->
-                                    <div Class="tab-content">
-                                        <div Class="tab-pane active" id="points">
-                                            <ul Class="kopa-list clearfix" id="pointsul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="assist">
-                                            <ul Class="kopa-list clearfix" id="assistul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="reb">
-                                            <ul Class="kopa-list clearfix" id="reboundul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="steal">
-                                            <ul Class="kopa-list clearfix" id="stealsul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="block">
-                                            <ul Class="kopa-list clearfix" id="blocksul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
+                <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                    <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
+                    <ul Class="clearfix">
+                        <li>
+                            <div Class="kopa-tab style3">
+                                <ul Class="nav nav-tabs">
+                                    <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
+                                    <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
+                                    <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
+                                    <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
+                                    <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
+                                </ul>
+                                <!-- nav-tabs -->
+                                <div Class="tab-content">
+                                    <div Class="tab-pane active" id="points">
+                                        <ul Class="kopa-list clearfix" id="pointsul"></ul>
                                     </div>
+                                    <!-- tab-pane -->
+                                    <div Class="tab-pane" id="assist">
+                                        <ul Class="kopa-list clearfix" id="assistul"></ul>
+                                    </div>
+                                    <!-- tab-pane -->
+                                    <div Class="tab-pane" id="reb">
+                                        <ul Class="kopa-list clearfix" id="reboundul"></ul>
+                                    </div>
+                                    <!-- tab-pane -->
+                                    <div Class="tab-pane" id="steal">
+                                        <ul Class="kopa-list clearfix" id="stealsul"></ul>
+                                    </div>
+                                    <!-- tab-pane -->
+                                    <div Class="tab-pane" id="block">
+                                        <ul Class="kopa-list clearfix" id="blocksul"></ul>
+                                    </div>
+                                    <!-- tab-pane -->
                                 </div>
-                                <!-- kopa-tab -->
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- widget -->
+                            </div>
+                            <!-- kopa-tab -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- widget -->
 
 
-                </div>*@
-                <!-- sidebar -->
+            </div>*@
+                    <!-- sidebar -->
 
-            </div>
+                </div>
             <!-- row -->
 
         </div>
@@ -1513,7 +1512,7 @@ End Code
     $(document).ready(function () {
 
 
-        
+
         //'1   Διοργανώτρια Αρχή
         //'3   Γενικά Νέα
         //'6   MVP
@@ -1526,75 +1525,37 @@ End Code
         //'17  Διαφημίσεις
 
 
-        
+
         $("#divfixture").hide();
-                   
-        if (@ViewBag.kathgoria == 12) { //Ομάδες
-                $("#divcommon").hide();
-                $("#divstandings1").hide();
-                $("#divstandings2").hide();
-         } else if (@ViewBag.kathgoria == 13) {//Τιμωρίες
-             $("#divresults1").hide();
-             $("#divnextgames1").hide();
-             $("#divresults2").hide();
+        $("#divstandings1").hide();
+        $("#divstandings2").hide();
+        
+        if ($('#kathgoriaid').val() == 11) { //Νέα
+            $("#divteams").hide();          
+        } else if ($('#kathgoriaid').val() == 12){ //Ομάδες
+            $("#divcommon").hide();
+            $("#divstandings1").hide();
+            $("#divstandings2").hide();
+        } else if ($('#kathgoriaid').val() == 13) {//Τιμωρίες             
+            $("#divteams").hide();
+             $("#divnextgames1").hide();             
              $("#divnextgames2").hide();
-         }else if (@ViewBag.kathgoria == 14) { //Πρόγραμμα
-             $("#divresults1").hide();
+        } else if ($('#kathgoriaid').val() == 14) { //Πρόγραμμα
+            $("#divteams").hide();
              $("#divnextgames1").hide();
-             $("#divresults2").hide();
              $("#divnextgames2").hide();
-         } else if (@ViewBag.kathgoria == 15) { //βαθμολογια
+        } else if ($('#kathgoriaid').val() == 15) { //βαθμολογια
+             
              $("#divstandings1").hide();
              $("#divstandings2").hide();
              $("#divteams").hide();
              $("#divcommon").hide();
-         } 
-         //else {
-           ///  $("#divcommon").hide(); //includes divteams
-             //$("#divstandcommon1").hide();
-             //$("#divstandcommon2").hide();
-         //}
+         } else {
 
-        //xrisimopoihse jquery kai oxi server metablites! NN: ναι ρε το ξερω. ειπαμε πρωτα να παιξει και μετα
+         }
+         
 
-        //if ($('#ypokathgoriaid').val() == 2) { //news
-        //    $("#divstandings1").hide();
-        //    $("#divstandings2").hide();
-        //    $("#divfixture").hide();
-        //    $("#divteams").hide();
-        //}
-        //else if ($('#ypokathgoriaid').val() == 3) { //omades
-        //    $("#divcommon").hide();
-        //    $("#divstandings1").hide();
-        //    $("#divstandings2").hide();
-        //    $("#divfixture").hide();
-        //}
-
-        //if (@ViewBag.Ypokathgoria != 6) {//βαθμολογια
-        //    if (@ViewBag.Ypokathgoria == 3) { //ομαδες
-        //       $("#divcommon").hide();
-        //        $("#divstandings1").hide();
-        //        $("#divstandings2").hide();
-        //    } else if (@ViewBag.Ypokathgoria == 5) {//προγραμμα
-        //        $("#divresults1").hide();
-        //        $("#divnextgames1").hide();
-        //        $("#divresults2").hide();
-        //        $("#divnextgames2").hide();
-        //    } else {
-        //        $("#divstandings1").hide();
-        //        $("#divstandings2").hide();
-        //        $("#divteams").hide();
-        //    }
-        //    $("#divcommon").hide(); //includes divteams
-        //    $("#divstandcommon1").hide();
-        //    $("#divstandcommon2").hide();
-        //}
-        //else {
-        //    $("#divteams").hide();
-        //    $("#divcommon").hide();
-        //}
-
-        if ($("#divteams").is(":visible")) {         
+        if ($("#divteams").is(":visible")) {
             $('#teamstable').DataTable({
                 "sAjaxSource": baseUrl + '@Url.Action("GetLastNewsByCategory")',
                  "fnServerParams": function (aoData) {
@@ -1651,7 +1612,7 @@ End Code
         }
 
 
-        if ($("#divcommon").is(":visible")) {         
+        if ($("#divcommon").is(":visible")) {
             $('#newstable').DataTable({
                 "sAjaxSource": baseUrl + '@Url.Action("GetLastNewsByBothCategories")',
                 "fnServerParams": function (aoData) {
@@ -1835,7 +1796,7 @@ End Code
                                 r += 1;
                                 $("#team1ranking").append(tbrow);
                             });
-                       
+
                         }
                     },
                     error: function (result) {
@@ -1847,7 +1808,7 @@ End Code
 
         //append bathmologia 2
         if ($("#divstandcommon2").is(":visible")) {
-                      
+
             if ($("#atlaskathgoria2").val() > 0) {
                 $.ajax({
                     type: "POST",
@@ -1857,7 +1818,7 @@ End Code
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (result) {
-                  
+
                         if (result.length > 0) {
                             var r = 1;
                             $.each(result, function () {
@@ -1870,7 +1831,7 @@ End Code
                                 $("#team2ranking").append(tbrow);
                                 r += 1;
                             });
-                      
+
                         }
                     },
                     error: function (result) {
