@@ -910,6 +910,31 @@ End Code
                             </div>
                         </div>
 
+                
+                        <div id="divteamskat1">
+                            <div class="row">
+                                <div class="kopa-main">
+                                    <h3 class="widget-title style12">ομαδες κατηγορίας @atlaskathgoria1name<span class="ttg"></span></h3>
+                                    <div class="widget kopa-entry-list">
+                                        <ul class="row clearfix" id="ulteamskat1">                                       
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="divteamskat2">
+                            <div class="row">
+                                <div class="kopa-main">
+                                    <h3 class="widget-title style12">ομαδες κατηγοριας @atlaskathgoria2name<span class="ttg"></span></h3>
+                                    <div class="widget kopa-entry-list">
+                                        <ul class="row clearfix" id="ulteamskat2">                                   
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div id="divteams" class="widget kopa-entry-list">
                             <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
@@ -1529,26 +1554,36 @@ End Code
         $("#divfixture").hide();
         $("#divstandings1").hide();
         $("#divstandings2").hide();
-        
+        $("#divteams").hide();
+
         if ($('#kathgoriaid').val() == 11) { //Νέα
-            $("#divteams").hide();          
+            $("#divteams").hide();
+            $("#divteamskat1").hide();
+            $("#divteamskat2").hide();
+            
+            
         } else if ($('#kathgoriaid').val() == 12){ //Ομάδες
             $("#divcommon").hide();
             $("#divstandings1").hide();
             $("#divstandings2").hide();
         } else if ($('#kathgoriaid').val() == 13) {//Τιμωρίες             
             $("#divteams").hide();
+            $("#divteamskat1").hide();
+            $("#divteamskat2").hide();
              $("#divnextgames1").hide();             
              $("#divnextgames2").hide();
         } else if ($('#kathgoriaid').val() == 14) { //Πρόγραμμα
             $("#divteams").hide();
+            $("#divteamskat1").hide();
+            $("#divteamskat2").hide();
              $("#divnextgames1").hide();
              $("#divnextgames2").hide();
-        } else if ($('#kathgoriaid').val() == 15) { //βαθμολογια
-             
+        } else if ($('#kathgoriaid').val() == 15) { //βαθμολογια             
              $("#divstandings1").hide();
              $("#divstandings2").hide();
              $("#divteams").hide();
+             $("#divteamskat1").hide();
+             $("#divteamskat2").hide();
              $("#divcommon").hide();
          } else {
 
@@ -1841,6 +1876,89 @@ End Code
             }
         }
 
+
+
+        //GetTeamsbyKathgoria 1
+        if ($("#divteamskat1").is(":visible")) {
+                  
+            var choiceContainer = $("#ulteamskat1");
+            choiceContainer.empty();
+
+            $.ajax({
+                type: "POST",
+                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Posts")',
+                data: "{kid: " + $("#atlaskathgoria1").val() + "}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                                        
+                    if (result.data.length > 0) {                        
+                        $.each(result.data, function () {                            
+                            var d = '<li class="col-md-3 col-sm-3 col-xs-3 ms-item2">' +
+                                   '<article class="entry-item"> ' +
+                                   '<a class="entry-categories" href="#">' + this.KathgoriaName + '<span class="ttg"></span></a> ' +
+                                   '<div class="entry-thumb"> ' +
+                                   '<a href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank"><img src="' + this.TeamLogo + '" alt=""  style="height:120px;width:120px;"></a> ' +
+                                   '</div> ' +
+                                   '<div class="entry-content">  ' +
+                                   '<div class="content-top">  ' +
+                                   '<h4 class="entry-title" itemscope="" itemtype="http://schema.org/Event"><a itemprop="name" ' +
+                                   ' href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank">' + this.TeamName + '</a></h4> ' +
+                                   '</div> ' +
+                                   '</div> ' +
+                                   '</article> ' +
+                                   '</li>';
+                            choiceContainer.append(d); 
+                        });
+                    }
+                },
+                error: function (result) {
+                    //alert("Δεν έχετε διαλέξει όλες τις επιλογές!");
+                }
+            });
+        }
+           
+        //GetTeamsbyKathgoria 2
+        if ($("#divteamskat2").is(":visible")) {
+
+            var choiceContainer = $("#ulteamskat2");
+            choiceContainer.empty();
+
+            $.ajax({
+                type: "POST",
+                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Posts")',
+                data: "{kid: " + $("#atlaskathgoria1").val() + "}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    if (result.data.length > 0) {
+                        $.each(result.data, function () {
+                            var d = '<li class="col-md-3 col-sm-3 col-xs-3 ms-item2">' +
+                                   '<article class="entry-item"> ' +
+                                   '<a class="entry-categories" href="#">' + this.KathgoriaName + '<span class="ttg"></span></a> ' +
+                                   '<div class="entry-thumb"> ' +
+                                   '<a href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank"><img src="' + this.TeamLogo + '" alt=""  style="height:120px;width:120px;" ></a> ' +
+                                   '</div> ' +
+                                   '<div class="entry-content">  ' +
+                                   '<div class="content-top">  ' +
+                                   '<h4 class="entry-title" itemscope="" itemtype="http://schema.org/Event"><a itemprop="name" ' +
+                                   ' href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank">' + this.TeamName + '</a></h4> ' +
+                                   '</div> ' +
+                                   '</div> ' +
+                                   '</article> ' +
+                                   '</li>';
+                            choiceContainer.append(d);
+                        });
+                    }
+                },
+                error: function (result) {
+                    //alert("Δεν έχετε διαλέξει όλες τις επιλογές!");
+                }
+            });
+        }
     });
     </Script>
 End Section
