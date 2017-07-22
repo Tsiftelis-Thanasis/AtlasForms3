@@ -7,11 +7,11 @@
                              Where d.DiorganwshName.Contains("πρωταθλημα") And s.ActiveSeason = True
                              Select d.Id).FirstOrDefault
 
-    If Session("GlobalDiorganwshid") = 0 Then
-        Session("GlobalDiorganwshid") = firstDiorganwshid
-    Else
-        firstDiorganwshid = Session("GlobalDiorganwshid")
-    End If
+    'If Session("GlobalDiorganwshid") = 0 Then
+    Session("GlobalDiorganwshid") = firstDiorganwshid
+    'Else
+    'firstDiorganwshid = Session("GlobalDiorganwshid")
+    'End If
 
 End Code
 

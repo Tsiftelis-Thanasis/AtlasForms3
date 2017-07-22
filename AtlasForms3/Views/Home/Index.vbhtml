@@ -5,11 +5,11 @@ End Code
    
     <div class="wrapper mb-30">
 
-        @*<div class="widget-area-1">*@
+        <div class="widget-area-1">
 
-            @*<div class="widget kopa-sync-carousel-widget">
-                <div class="owl-carousel sync1">*@
-                    @*<div class="item">
+            <div class="widget kopa-sync-carousel-widget">
+                <div class="owl-carousel sync1">
+                    <div class="item">
                         <article class="entry-item">
                             <div class="entry-thumb">
                                 <a href="#"><img src="~/Content/images/slider/s1.png" alt=""></a>
@@ -47,8 +47,8 @@ End Code
                             </div>
                             <span></span>
                         </article>
-                    </div>*@
-                    @*<div class="item">
+                    </div>
+                    <div class="item">
                         <article class="entry-item">
                             <div class="entry-thumb">
                                 <a href="#"><img src="~/Content/images/slider/s4.png" alt=""></a>
@@ -60,8 +60,8 @@ End Code
                             </div>
                             <span></span>
                         </article>
-                    </div>*@
-                    @*<div class="item">
+                    </div>
+                    <div class="item">
                         <article class="entry-item">
                             <div class="entry-thumb">
                                 <a href="#"><img src="~/Content/images/slider/s5.png" alt=""></a>
@@ -74,7 +74,7 @@ End Code
                             <span></span>
                         </article>
                     </div>
-                </div>*@
+                </div>
                 <!-- sync1 -->
 
             @*</div>*@
@@ -222,6 +222,26 @@ End Code
                                 <!-- kopa sync carousel widget -->
                             </div>
                             <!-- widget -->
+
+
+                            <div class="widget-area-24 kopa-area kopa-area-2">
+
+                                <div class="widget kopa-product-list-widget">
+                                    <h3 class="widget-title style10">καλυτερες φασεις</h3>
+                                    <div class="content-wrap">
+                                        <div class="row">
+                                            <div id="kalyteresfaseisid" class="owl-carousel owl-carousel-4">
+                                            </div>
+                                            <!-- owl-carousel-4 -->
+                                        </div>
+                                        <!-- row -->
+                                    </div>
+                                </div>
+                                <!-- widget -->
+
+                            </div>
+                            <!-- widget-area-24 -->
+
 
                             <div class="widget kopa-article-list-widget article-list-1">
                                 <h3 class="widget-title style2">τελευταια νεα</h3>
@@ -620,23 +640,7 @@ End Code
             <!-- kopa-area-1 -->
 
             
-            <div class="widget-area-24 kopa-area kopa-area-2">
-
-                <div class="widget kopa-product-list-widget">
-                    <h3 class="widget-title style10">καλυτερες φασεις</h3>
-                    <div class="content-wrap">
-                        <div class="row">
-                            <div id="kalyteresfaseisid" class="owl-carousel owl-carousel-4">                              
-                            </div>
-                            <!-- owl-carousel-4 -->
-                        </div>
-                        <!-- row -->
-                    </div>
-                </div>
-                <!-- widget -->
-
-            </div>
-            <!-- widget-area-24 -->
+        
 
         </div>
         <!-- wrapper -->

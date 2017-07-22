@@ -1551,17 +1551,18 @@ End Code
 
 
 
+        if ($('#kathgoriaid').val() != 11) { //Νέα
+            $("#divstandings1").hide();
+            $("#divstandings2").hide();
+        }
+
         $("#divfixture").hide();
-        $("#divstandings1").hide();
-        $("#divstandings2").hide();
         $("#divteams").hide();
 
         if ($('#kathgoriaid').val() == 11) { //Νέα
             $("#divteams").hide();
             $("#divteamskat1").hide();
             $("#divteamskat2").hide();
-            
-            
         } else if ($('#kathgoriaid').val() == 12){ //Ομάδες
             $("#divcommon").hide();
             $("#divstandings1").hide();
@@ -1928,7 +1929,7 @@ End Code
             $.ajax({
                 type: "POST",
                 url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Posts")',
-                data: "{kid: " + $("#atlaskathgoria1").val() + "}",
+                data: "{kid: " + $("#atlaskathgoria2").val() + "}",
                 async: false,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
