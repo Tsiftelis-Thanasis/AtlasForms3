@@ -64,6 +64,9 @@ End Code
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
                         <li class="current-menu-item">
+                            <a><span>Πρωταθλημα</span></a>                            
+                        </li>
+                        <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
                             <ul class="sub-menu" id="diorganwseiulid"> </ul>
                         </li>
@@ -90,6 +93,9 @@ End Code
                     <ul class="main-menu sf-menu">
                         <li class="current-menu-item">
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
+                        </li>
+                        <li class="current-menu-item">
+                            <a><span>Πρωταθλημα</span></a>
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
@@ -147,24 +153,6 @@ End Code
             <!-- wrapper -->
 
 
-            <div class="kopa-sub-page kopa-single-page">
-                <div class="widget kopa-tab-score-widget">
-                    <div class="kopa-tab style1">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="agroup">
-                                <div id="lastgamescarouselid" class="owl-carousel owl-carousel-1">
-
-                                </div>
-                            </div>
-
-                            <!-- tab-pane -->
-                        </div>
-                    </div>
-                    <!-- kopa-tab -->
-
-                </div>
-                <!-- widget -->
-            </div>
 
         </div>
         <!-- kopa-header-bottom -->
