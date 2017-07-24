@@ -1474,7 +1474,7 @@ img {
   width: 100%;
   float: right; }
 
-.main-menu, .main-menu-2 {
+.main-menu, .main-menu-2, .main-menu-3 {
   position: relative;
   border: none;
   margin: 0; }
@@ -3017,7 +3017,7 @@ address {
   .owl-carousel-1 .entry-item {
       width: auto;/*200px;*/
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 20px;
     font-weight: 600;
     text-transform: uppercase;
@@ -3658,7 +3658,7 @@ address {
 
 /*--- main-top ---*/
 .main-top {
-  margin: 0 -10px 30px;
+  margin: 0 -20px 10px;
   height: 40px;
   background: #ef6018;
   color: #fff;
@@ -8203,3 +8203,7 @@ address {
   font: 0/0 a;         /* remove the gap between inline(-block) elements */
 }
 
+.lipointer { 
+    cursor: pointer; 
+    cursor: hand; 
+}

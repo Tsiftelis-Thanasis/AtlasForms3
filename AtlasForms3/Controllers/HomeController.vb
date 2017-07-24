@@ -168,8 +168,23 @@
         Dim om = (From o In pdb.OmilosTable
                   Join d In pdb.DiorganwshTable On d.Id Equals o.Diorganwshid
                   Where d.Id = dId
-                  Order By o.Id Descending
+                  Order By o.OmilosName
                   Select o.OmilosName, o.Id).ToList
+
+        Return Json(om, JsonRequestBehavior.AllowGet)
+
+
+    End Function
+
+
+    <HttpPost>
+    Public Function GetKathgoriesbyOmilos(ByVal OId As Integer) As JsonResult
+
+        Dim om = (From k In pdb.KathgoriesTable
+                  Join o In pdb.OmilosTable On o.Id Equals k.Omilosid
+                  Where o.Id = OId
+                  Order By k.KathgoriaName
+                  Select KathgoriaName = If(k.KathgoriaName.Contains("("), k.KathgoriaName.Split("(")(0), k.KathgoriaName), k.Id).ToList
 
         Return Json(om, JsonRequestBehavior.AllowGet)
 

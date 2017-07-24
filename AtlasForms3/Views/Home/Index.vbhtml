@@ -726,7 +726,7 @@ End Code
                                 d = ' <div class="item"> ' +
                                     ' <article class="entry-item"> ' +
                                     ' <div class="entry-thumb"> ' +
-                                    ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt=""></a> ' +
+                                    ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" style="height:520px;" alt=""></a> ' +
                                     ' <div class="thumb-hover"></div> ' +
                                     ' </div> ' +
                                     ' <div class="entry-content"> ' +

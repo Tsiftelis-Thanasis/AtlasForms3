@@ -64,7 +64,7 @@ End Code
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
                         <li class="current-menu-item">
-                            <a><span>Πρωταθλημα</span></a>                            
+                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>                         
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
@@ -85,17 +85,12 @@ End Code
 
 
                 <nav class="main-nav-mobile">
-                    
-                    @*<div class="kopa-logo">
-                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas-mobile.png" alt="logo"></a>
-                    </div>*@
-
                     <ul class="main-menu sf-menu">
                         <li class="current-menu-item">
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
                         <li class="current-menu-item">
-                            <a><span>Πρωταθλημα</span></a>
+                            <a class="lipointer"  onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>                         
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
@@ -123,49 +118,50 @@ End Code
 
             <div class="wrapper">
 
-               <nav  class="th-kopa-main-nav-2">
-                   
+                <nav class="th-kopa-main-nav-2">
+
                     <ul class="main-menu-2 sf-menu" id="omiloinavbarid">
-                        <li>
+                        @*<li>
                             <div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0">
-                                <div class="sf-mega-section col-md-3 col-xs-3 col-sm-3">
-                                    <div class="widget kopa-sub-list-widget">                                        
-                                        <ul class="sub-menu">
-                                            <li>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sf-mega-section col-md-9 col-xs-9 col-sm-9">
-                                    <div class="widget kopa-sub-list-widget sub-list-1">
-                                        <h4></h4>
-                                        <ul class="row"></ul>
-                                    </div>
+                            <div class="sf-mega-section col-md-3 col-xs-3 col-sm-3">
+                                <div class="widget kopa-sub-list-widget">
+                                    <ul class="sub-menu">
+                                        <li>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </li>
+                            <div class="sf-mega-section col-md-9 col-xs-9 col-sm-9">
+                                <div class="widget kopa-sub-list-widget sub-list-1">
+                                    <h4></h4>
+                                    <ul class="row"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        </li>*@
                     </ul>
-                
+
                 </nav>
-                <!--/end main-nav-2-->
-                
-            </div>
-            <!-- wrapper -->
 
+            </div>   
 
+            <div class="wrapper">
+                <nav class="th-kopa-main-nav-3">
+                    <ul class="main-menu-2"  id="kathgoriesnavbarid">
+                       
+                    </ul>
+                </nav>
+            </div>   
 
-        </div>
-        <!-- kopa-header-bottom -->
-
-
-
+            </div>            
+        
 </header>
-    <!-- kopa-page-header -->
+    
 
     <div class="kopa-sub-page kopa-single-page">
         <div class="container body-content">           
-                    @RenderBody()
-                <hr />           
+            @RenderBody()
+        <hr />           
         </div>
     </div>
 
@@ -178,52 +174,36 @@ End Code
                 <div class="kopa-logo">
                     <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:auto;"></a>
                 </div>
-                <!-- logo -->
-
-
                 <nav class="bottom-nav">
 
                     @Html.Partial("_LoginPartial")
 
                 </nav>
-                                
-                <!--/end bottom-nav-->
-
                 <nav class="bottom-nav-mobile">
 
                     @Html.Partial("_LoginPartial")
 
                 </nav>
 
-                <!--/main-menu-mobile-->
-
             </div>
-            <!-- wrapper -->
-        </div>
-        <!-- bottom-area-2 -->
-        <!-- bottom-area-2 -->
-
+        </div>        
     </div>
-    <!-- bottom-sidebar -->
-
+    
     <footer id="kopa-footer">
-
         <div class="wrapper clearfix">
-
             <p id="copyright" class="">Copyright © 2017 . All Rights Reserved. </p>
-
-        </div>
-        <!-- wrapper -->
-
+        </div>       
     </footer>
-    <!-- kopa-footer -->
+   
 
-    <a href="#" class="scrollup"><span class="fa fa-chevron-up"></span></a>
+<a href="#" class="scrollup"><span class="fa fa-chevron-up"></span></a>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required:=False)
+
 </body>
 </html>
 
@@ -239,18 +219,24 @@ End Code
     });
 
     //fillomiloinavbar
-    function fillomiloinavbar(i) {
+    function fillomiloinavbar(i, t) {
 
         //$("#firstDiorganwshid").val(i);
 
+        t = t || 0;
+
         postDiorganwshid(i);
-        
+
         var choiceContainer = $("#diorganwseiulid");
         var choiceContainermobile = $("#diorganwseiulidmobile");
-       choiceContainer.toggle();
-       choiceContainermobile.toggle();
-      
-       $.ajax({
+        if (t = 0) {
+            choiceContainer.toggle();
+            choiceContainermobile.toggle();           
+        }
+
+        $("#kathgoriesnavbarid").empty();
+
+        $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetOmiloiByDiorganwsh", "Home")',
             data: "{dId: " + i + "}",
@@ -272,9 +258,7 @@ End Code
                         }
                         var omilosnaming = 'omilos' + this.Id + 'row';
 
-                        var d = '<li> ' +
-                                '<span>' + omilos + '</span> ' +
-                                '<div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0"> ' +
+                        @*'<div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0"> ' +
                                 '<div class="sf-mega-section col-md-3 col-xs-3 col-sm-3"> ' +
                                     '<div class="widget kopa-sub-list-widget"> ' +
                                         '<ul class="sub-menu"> ' +
@@ -302,11 +286,17 @@ End Code
                                                 '<ul id="' + omilosnaming + '" class="row"></ul> ' +
                                                 '</div>' +
                                                 '</div>' +
-                                                '</div> ' +
-                                                '</li>';
-                        choiceContainer.append(d);
+                                                '</div> ' +*@
 
-                        appendnewstoOmilos(omilosnaming, this.Id);
+
+                        var d = '<li class="lipointer" onclick="appendKathgoriaNav(' + this.Id + ')"> ' +
+                                '<span>' + omilos + '</span> ' +
+                                '</li>';
+
+                        choiceContainer.prepend(d);
+
+                        //appendnewstoOmilos(omilosnaming, this.Id);
+
 
                     });
                 }
@@ -318,10 +308,46 @@ End Code
     }
 
 
-    function appendnewstoOmilos(containername, containerid) {
+    function appendKathgoriaNav(containerid) {
 
         //apend for each omilos
-        $.ajax({
+             $.ajax({
+                type: "POST",
+                url: baseUrl + '@Url.Action("GetKathgoriesbyOmilos", "Home")',
+                 data: "{OId: " + containerid + "}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var choiceContainer = $("#kathgoriesnavbarid");
+                    choiceContainer.empty();
+
+                    if (result.length > 0) {
+                       
+                        $.each(result, function () {
+
+                            //  Select k., k.Id).ToList
+                            var d = '<li class="lipointer"> <span>Νέα '+ this.KathgoriaName +'</span> </li> ' +
+                                    '<li class="lipointer"> <span>Ομάδες '+ this.KathgoriaName +'</span> </li> ' +
+                                    '<li class="lipointer"> <span>Τιμωρίες '+ this.KathgoriaName +'</span> </li> ' +
+                                    '<li class="lipointer"> <span>Πρόγραμμα '+ this.KathgoriaName +'</span> </li> ' +
+                                    '<li class="lipointer"> <span>Βαθμολογίες '+ this.KathgoriaName +'</span> </li> ';                                    
+                            choiceContainer.append(d);
+
+                        });
+                    }
+                },
+                error: function (result) {
+                    alert(result.status + ' ' + result.statusText);
+                }
+            });
+        }
+
+        function appendnewstoOmilos(containername, containerid) {
+
+            //apend for each omilos
+            $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetLastNewsByCategory2", "Posts")',
             data: "{nCount : 5, KathgoriaId : " + containerid + ", IsAtlasOmilos: 1}",
@@ -330,37 +356,37 @@ End Code
             dataType: "json",
             success: function (result) {
 
-                var choiceContainer = $("#" + containername);
+                    var choiceContainer = $("#" + containername);
 
-                if (result.data.length > 0) {
+                    if (result.data.length > 0) {
 
-                    choiceContainer.empty();
+                        choiceContainer.empty();
 
-                    $.each(result.data, function () {
+                        $.each(result.data, function () {
 
-                        var d = ' <li class="col-md-4 col-xs-4 col-sm-4"> ' +
-                                ' <article class="entry-item"> ' +
-                                ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"> ' +
-                                ' <div class="entry-thumb"> ' +
-                                ' <img src="' + this.PostPhoto + '" alt="" style="height:90px;width:120px;"> ' +
-                                ' </div> </a>' +
-                                ' <h4 class="entry-title">' + this.PostTitle + '</h4> ' +
-                                ' </article> ' +
-                                ' </li> ';
-                        choiceContainer.append(d);
+                            var d = ' <li class="col-md-4 col-xs-4 col-sm-4"> ' +
+                                    ' <article class="entry-item"> ' +
+                                    ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"> ' +
+                                    ' <div class="entry-thumb"> ' +
+                                    ' <img src="' + this.PostPhoto + '" alt="" style="height:90px;width:120px;"> ' +
+                                    ' </div> </a>' +
+                                    ' <h4 class="entry-title">' + this.PostTitle + '</h4> ' +
+                                    ' </article> ' +
+                                    ' </li> ';
+                            choiceContainer.append(d);
 
                     });
-                }
-            },
+             }
+        },
             error: function (result) {
-                alert(result.status + ' ' + result.statusText);
+                    alert(result.status + ' ' + result.statusText);
             }
         });
 
-    }
+        }
 
-    
-        
+
+
     function postDiorganwshid(id) {
 
        // post diorganwsh id
@@ -371,21 +397,15 @@ End Code
             async: false,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function () {                
+            success: function () {
             },
-            error: function () {                
+            error: function () {
             }
         });
     }
 
     $(document).ready(function () {
 
-        //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        //    alert("mob");
-        //}
-        //else {
-        //    alert("pc");
-        //}
 
         // get diorganwtria arxh arthra
         $.ajax({
@@ -395,10 +415,10 @@ End Code
              async: false,
              contentType: "application/json; charset=utf-8",
              dataType: "json",
-             success: function (result) {              
+             success: function (result) {
                  var choiceContainer = $("#diorgarxhpostsid");
                  var choiceContainermobile = $("#diorgarxhpostsidmobile");
-                 if (result.data.length > 0) {                  
+                 if (result.data.length > 0) {
                      choiceContainer.empty();
                      choiceContainermobile.empty();
                      $.each(result.data, function () {
@@ -430,7 +450,7 @@ End Code
                         choiceContainermobile.empty();
 
                             $.each(result, function () {
-                                var d = '<li onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>'
+                                var d = '<li class="lipointer" onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>'
                             choiceContainer.append(d);
                             choiceContainermobile.append(d);
                         });
@@ -488,7 +508,14 @@ End Code
 
     });
 
+    $(window).on('load', function() {
+        setTimeout(function () {
+            //$("#prwta8limaid").trigger("click");
+            fillomiloinavbar($("#firstDiorganwshid").val());
+        }, 200);
+    });
 
-    fillomiloinavbar($("#firstDiorganwshid").val());
+
+
 
 </script>
