@@ -334,11 +334,12 @@ End Code
                                  '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ' +
                                  '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ' +
                                  '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ' +
-                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li>';
-
+                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
 
                         });
-                                               
+
+                        d += '<li class="lipointer" > <a href="@Url.Action("Index", "Home")/?a=' + this.Id + '"> <span style="font-size: 12px; !important" >ομιλος</a> </span> </li> ';
+
                         choiceContainer.append(d);
                     }
                 },

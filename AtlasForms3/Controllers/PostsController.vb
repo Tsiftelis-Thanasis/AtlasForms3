@@ -6,12 +6,13 @@ Namespace Controllers
         Inherits Controller
 
         Private pdb As New AtlasBlogEntities
-        Private pdb2 As New atlasStatisticsEntities
+        Private pdb2 As New AtlasStatisticsEntities
 
         ' GET: Posts
-        Function Index(Optional a As Integer = 0,
+        Function Index(Optional a As Integer = 0, Optional ak As Integer = 0,
                       Optional ByVal k As Integer = 0) As ActionResult
 
+            ViewBag.AtlasKathgoria = ak
             ViewBag.AtlasOmilos = a
             ViewBag.Kathgoria = k
             Return View()
@@ -63,8 +64,8 @@ Namespace Controllers
         ' POST: Posts/Create
         <HttpPost()>
         <Authorize(Roles:="Admins")>
-        Function Create(ByVal p1 As Posts, ByVal kathgoria As String(), ByVal omilos As String(),
-            ByVal uploadEditorImage As HttpPostedFileBase) As ActionResult
+        Function Create(ByVal p1 As Posts, ByVal kathgoria As String(), ByVal omilos As String(), ByVal atlaskathgoria As String(),
+                        ByVal uploadEditorImage As HttpPostedFileBase) As ActionResult
 
             Dim logodata As Byte() = Nothing
 
@@ -81,7 +82,6 @@ Namespace Controllers
             If ModelState.IsValid Then
 
                 Try
-
 
                     Dim newpost As New BlogPostsTable
 
@@ -103,9 +103,10 @@ Namespace Controllers
 
                     Dim kat = If(kathgoria Is Nothing, Nothing, kathgoria(0))
                     Dim om = If(omilos Is Nothing, Nothing, omilos(0))
+                    Dim atlaskat = If(atlaskathgoria Is Nothing, Nothing, atlaskathgoria(0))
 
-                    If Not (kat Is Nothing And om Is Nothing) Then
-                        If kat <> "" Or om <> "" Then
+                    If Not (kat Is Nothing And om Is Nothing And atlaskat Is Nothing) Then
+                        If kat <> "" Or om <> "" Or atlaskat <> "" Then
 
                             Dim newlink As New BlogPostandKathgoriaTable
                             newlink.PostId = newpost.Id
@@ -113,9 +114,13 @@ Namespace Controllers
                                 newlink.KathgoriaId = CInt(kat)
                                 newlink.IsKathgoria = True
                             End If
-                            If om <> "" Then
+                            If om <> "" And atlaskat = "" Then
                                 newlink.AtlasKathgoriaId = CInt(om)
                                 newlink.IsAtlasOmilos = True
+                            End If
+                            If atlaskat <> "" Then
+                                newlink.AtlasKathgoriaId = CInt(atlaskat)
+                                newlink.IsAtlasKathgoria = True
                             End If
                             newlink.CreationDate = Now()
                             newlink.EditBy = User.Identity.Name
@@ -127,7 +132,7 @@ Namespace Controllers
 
                     End If
 
-                        Return RedirectToAction("Index", "Posts")
+                    Return RedirectToAction("Index", "Posts")
 
                 Catch ex As Exception
                     ModelState.AddModelError("error_msg", ex.Message)
@@ -175,7 +180,7 @@ Namespace Controllers
 
         <HttpPost()>
         <Authorize(Roles:="Admins")>
-        Function Edit(ByVal p1 As Posts, ByVal kathgoria As String(), ByVal omilos As String(),
+        Function Edit(ByVal p1 As Posts, ByVal kathgoria As String(), ByVal omilos As String(), ByVal atlaskathgoria As String(),
             ByVal uploadEditorImage As HttpPostedFileBase) As ActionResult
 
             Dim logodata As Byte() = Nothing
@@ -222,9 +227,10 @@ Namespace Controllers
 
                     Dim kat = If(kathgoria Is Nothing, Nothing, kathgoria(0))
                     Dim om = If(omilos Is Nothing, Nothing, omilos(0))
+                    Dim atlaskat = If(atlaskathgoria Is Nothing, Nothing, atlaskathgoria(0))
 
-                    If Not (kat Is Nothing And om Is Nothing) Then
-                        If kat <> "" Or om <> "" Then
+                    If Not (kat Is Nothing And om Is Nothing And atlaskat Is Nothing) Then
+                        If kat <> "" Or om <> "" Or atlaskat <> "" Then
 
                             Dim newlink As New BlogPostandKathgoriaTable
                             newlink.PostId = editpost.Id
@@ -232,9 +238,13 @@ Namespace Controllers
                                 newlink.KathgoriaId = CInt(kat)
                                 newlink.IsKathgoria = True
                             End If
-                            If om <> "" Then
+                            If om <> "" And atlaskat = "" Then
                                 newlink.AtlasKathgoriaId = CInt(om)
                                 newlink.IsAtlasOmilos = True
+                            End If
+                            If atlaskat <> "" Then
+                                newlink.AtlasKathgoriaId = CInt(atlaskat)
+                                newlink.IsAtlasKathgoria = True
                             End If
                             newlink.CreationDate = Now()
                             newlink.EditBy = User.Identity.Name
@@ -322,13 +332,7 @@ Namespace Controllers
             Return Json(dtm, JsonRequestBehavior.AllowGet)
         End Function
 
-        '''''''edw exw allagh!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         Function GetLastNewsByCategory(ByVal nCount As Integer, Optional ByVal k As Integer = 0) As JsonResult
-
-            'Thanasis - Erwtisi...
-            'na fernei ta posts tou omilou? ta posts twn ypokathgoriwn tou omilou?
-            'pws na to sxediasoume???
 
             Dim q = (From p In pdb.BlogPostsTable
                      Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
@@ -356,11 +360,6 @@ Namespace Controllers
 
         Function GetLastNewswithVideo() As JsonResult
 
-            'image
-            'video
-            'title
-            'summary
-
             Dim ar2 = (From p In pdb.BlogPostsTable
                        Where Not p.Youtubelink Is Nothing
                        Order By p.Id Descending
@@ -382,48 +381,13 @@ Namespace Controllers
 
             Return Json(dtm, JsonRequestBehavior.AllowGet)
 
-
-
         End Function
-
-
-
 
         Function GetLastNewsByCategory2(ByVal nCount As Integer, ByVal KathgoriaId As Integer,
                                         Optional ByVal IsKathgoria As Integer = 0,
                                         Optional ByVal IsYpokathgoria As Integer = 0,
                                         Optional ByVal IsAtlasOmilos As Integer = 0,
                                         Optional ByVal IsAtlasKathgoria As Integer = 0) As JsonResult
-
-
-            'Thanasis - Erwtisi...
-            'na fernei ta posts tou omilou? ta posts twn ypokathgoriwn tou omilou?
-            'pws na to sxediasoume???
-
-            'If IsYpokathgoria > 0 Then
-
-            '    Dim q = (From p In pdb.BlogPostsTable
-            '             Join p1 In pdb.BlogPostKathgoriaTable2 On p1.PostId Equals p.Id
-            '             Join p3 In pdb.BlogYpokathgoriesTable On p3.Id Equals p1.AtlasKathgoriaId
-            '             Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p3.KathgoriaId
-            '             Where p1.AtlasKathgoriaId = KathgoriaId And p1.IsYpokathgoria = True
-            '             Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-            '                     PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
-            '                    KatName = p2.KathgoriaName, Ypokatname = p3.YpokathgoriaName).
-            '         AsEnumerable().[Select](
-            '         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-            '         .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
-            '         .KatName = o.KatName, .Ypokatname = o.Ypokatname}).ToList
-
-            '    Dim dtm As New DataTableModel
-            '    If q IsNot Nothing Then
-            '        dtm.data = q.Cast(Of Object).ToList
-            '    End If
-            '    dtm.draw = 0
-            '    dtm.recordsTotal = dtm.data.Count
-            '    dtm.recordsFiltered = dtm.recordsTotal
-
-            '    Return Json(dtm, JsonRequestBehavior.AllowGet)
 
             If IsKathgoria > 0 Then
 
@@ -630,5 +594,20 @@ Namespace Controllers
         End Function
 
 
+        <HttpPost>
+        Public Function GetKathgories(ByVal id As Integer) As JsonResult
+
+            Dim q = (From d In pdb2.KathgoriesTable
+                     Join s In pdb2.OmilosTable On d.Omilosid Equals s.Id
+                     Where s.Id = id
+                     Select d.KathgoriaName, did = d.Id
+            ).AsEnumerable().[Select](
+            Function(o) New With {.text = o.KathgoriaName, .value = o.did})
+
+            Return Json(q.ToArray(), JsonRequestBehavior.AllowGet)
+
+        End Function
+
     End Class
+
 End Namespace

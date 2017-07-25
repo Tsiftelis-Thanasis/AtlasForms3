@@ -10,14 +10,28 @@
 
     Dim katlist As New List(Of SelectListItem)
     Dim omiloilist As New List(Of SelectListItem)
+    Dim atlaskatlist As New List(Of SelectListItem)
 
     Dim katid = (From pak In pdb.BlogPostandKathgoriaTable
                  Where pak.PostId = Model.Id
                  Select pak.KathgoriaId).FirstOrDefault
 
-    Dim omid = (From pak In pdb.BlogPostandKathgoriaTable
-                Where pak.PostId = Model.Id
+    Dim atlaskatid = (From pak In pdb.BlogPostandKathgoriaTable
+                      Where pak.PostId = Model.Id And pak.IsAtlasKathgoria = True
+                      Select pak.AtlasKathgoriaId).FirstOrDefault
+
+    Dim omid As Integer = 0
+    If atlaskatid Is Nothing Then
+        omid = (From pak In pdb.BlogPostandKathgoriaTable
+                Where pak.PostId = Model.Id And pak.IsAtlasOmilos = True
                 Select pak.AtlasKathgoriaId).FirstOrDefault
+    Else
+        omid = (From pk In pdb2.KathgoriesTable
+                Where pk.Id = atlaskatid
+                Select pk.Omilosid).FirstOrDefault
+    End If
+
+
 
     Dim list1 = (From p1 In pdb.BlogKathgoriesTable
                  Select p1.Id, p1.KathgoriaName).OrderBy(Function(p) p.KathgoriaName).ToList
@@ -45,6 +59,24 @@
             omiloilist.Add(New SelectListItem() With {.Selected = False, .Text = it.OmilosName, .Value = it.Id})
         End If
     Next
+
+
+    Dim list3 = (From k In pdb2.KathgoriesTable
+                 Join o In pdb2.OmilosTable On k.Omilosid Equals o.Id
+                 Join d In pdb2.DiorganwshTable On d.Id Equals o.Diorganwshid
+                 Join s In pdb2.SeasonTable On s.Id Equals d.Seasonid
+                 Where s.ActiveSeason = True And o.Id = omid
+                 Select k.Id, KathgoriaName = k.KathgoriaName).OrderBy(Function(p) p.KathgoriaName).ToList
+
+    For Each it In list3
+        If it.Id = atlaskatid Then
+            atlaskatlist.Add(New SelectListItem() With {.Selected = True, .Text = it.KathgoriaName, .Value = it.Id})
+        Else
+            atlaskatlist.Add(New SelectListItem() With {.Selected = False, .Text = it.KathgoriaName, .Value = it.Id})
+        End If
+
+    Next
+
 
     Dim imageSrc As String = ""
     If Model.PostPhoto IsNot Nothing Then
@@ -94,9 +126,17 @@ End Code
                     </div>
                     <div class="row form-horizontal">
                         <div class="form-group">
-                            <label for="title" class="col-md-1 control-label">Όμιλος</label>
+                            <label for="title" class="col-md-1 control-label">Όμιλος  (στατιστικά)</label>
                             <div class="col-sm-5">
                                 @Html.DropDownList("omilos", omiloilist, "Please select...", New With {.id = "omilos", .class = "form-control chosen-select"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-1 control-label">Κατηγορία  (στατιστικά)</label>
+                            <div class="col-sm-5">
+                                @Html.DropDownList("atlaskathgoria", atlaskatlist, "Please select...", New With {.id = "atlaskathgoria", .class = "form-control chosen-select"})
                             </div>
                         </div>
                     </div>
@@ -249,8 +289,56 @@ content_css: [
                 $('#uploaddone').hide();
             }
         });
+
+        //cleankathgories();
+        //fillkathgories();
+
+        $("#omilos").change(function () {
+            cleankathgories();
+            fillkathgories();
+        });
+
     });
 
+    function cleankathgories() {
+        $("#atlaskathgoria").empty();
+        $("#atlaskathgoria").trigger("chosen:updated");
+    }
+
+    function fillkathgories() {
+
+        var sid = $("#omilos").val();
+
+        if (sid > 0) {
+
+            setTimeout(function () {
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetKathgories", "Posts")',
+                    data: { id: sid },
+                    success: function (data) {
+                        var items = [];
+                        items.push("<option value=''>Παρακαλώ επιλέξτε...</option>");
+                        $.each(data, function () {
+                            items.push("<option value=" + this.value + ">" + this.text + "</option>");
+                        });
+                        $("#atlaskathgoria").html(items.join(' '));
+                        $("#atlaskathgoria").trigger("chosen:updated");
+                    },
+                    error: function (msg) { alert(msg); }
+                })
+
+            }, 10);
+
+        }
+
+        else {
+            $("#atlaskathgoria").empty();
+            $("#atlaskathgoria").trigger("chosen:updated");
+        }
+
+    }
 
     </script>
 End Section

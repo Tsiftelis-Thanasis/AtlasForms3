@@ -21,12 +21,26 @@
 
     Dim kathgorianamestr As String = ""
     Dim omilosnamestr As String = ""
+    Dim atlaskatnamestr As String = ""
 
     Dim postkathgoria = (From pk In pdb.BlogPostandKathgoriaTable
                          Where pk.PostId = Model.Id
-                         Select pk.KathgoriaId, pk.AtlasKathgoriaId).FirstOrDefault
+                         Select pk.KathgoriaId, pk.AtlasKathgoriaId, pk.IsAtlasKathgoria, pk.IsAtlasOmilos).FirstOrDefault
     Dim katid As Integer = If(postkathgoria.KathgoriaId Is Nothing, 0, postkathgoria.KathgoriaId)
-    Dim omid As Integer = If(postkathgoria.AtlasKathgoriaId Is Nothing, 0, postkathgoria.AtlasKathgoriaId)
+    Dim omid As Integer = 0
+    Dim atlaskatid As Integer = 0
+    If Not postkathgoria.AtlasKathgoriaId Is Nothing Then
+        If postkathgoria.IsAtlasOmilos = 1 Then
+            omid = postkathgoria.AtlasKathgoriaId
+        Else
+            atlaskatid = postkathgoria.AtlasKathgoriaId
+            omid = (From o In pdb2.OmilosTable
+                    Join k In pdb2.KathgoriesTable On o.Id Equals k.Omilosid
+                    Where k.Id = atlaskatid
+                    Select o.Id).FirstOrDefault
+        End If
+    End If
+
 
     If katid > 0 Then
         kathgorianamestr = (From k In pdb.BlogKathgoriesTable
@@ -38,6 +52,12 @@
                          Join d In pdb2.DiorganwshTable On d.Id Equals o.Diorganwshid
                          Where o.Id = omid
                          Select OmilosName = o.OmilosName & " (" & d.DiorganwshName & ")").FirstOrDefault
+    End If
+
+    If atlaskatid > 0 Then
+        atlaskatnamestr = (From k In pdb2.KathgoriesTable
+                           Where k.Id = atlaskatid
+                           Select KathgoriaName = k.KathgoriaName).FirstOrDefault
     End If
 
 
@@ -93,8 +113,11 @@ End Code
                                     @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
                                 End If
                             End Code
-
-
+                            @code
+                                If atlaskatnamestr <> "" Then
+                                    @<a href="@Url.Action("Index", "Posts", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
+                                End If
+                            End Code
                             @code
                                 If kathgorianamestr <> "" Then
                                     @<a href="@Url.Action("Index", "Posts", New With {.k = katid})">@kathgorianamestr</a>
@@ -175,88 +198,23 @@ End Code
                         </div>
         </article>
 </div>
-@*</div>*@
 
-
-@*<div class="sidebar widget-area-11">
-
-    <div class="widget kopa-ads-widget">
-        <a href="http://www.blue-ice.gr/"><img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
+@*<div Class="row form-horizontal">
+    <div Class="form-group">
+        <div Class="col-md-12">
+            <p>
+                @Html.ActionLink("Επιστροφή στην αρχική", "Index")
+            </p>
+        </div>
     </div>
-
-    <div class="widget kopa-ads-widget">
-        <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
-    </div>
-
-    <div class="widget kopa-ads-widget">
-        <a href="http://www.atlassportswear.gr/"><img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
-    </div>
-</div>
 </div>*@
-
-@*</div>
-
-
-</div>*@
-
-            <div Class="row form-horizontal">
-                <div Class="form-group">
-                    <div Class="col-md-12">
-                        <p>
-                            @Html.ActionLink("Επιστροφή στην αρχική", "Index")
-                        </p>
-                    </div>
-                </div>
-            </div>
 
 
 
 @Section Scripts
     <script type="text/javascript">
 
-        //tinymce.init({
-        //    selector: '#PostBody',
-        //    height: 400,
-        //    menubar: false,
-        //    readonly: true,
-        //    statusbar: false,
-        //    toolbar: false,
-        //    menubar: false,
-        //    branding: false,
-        //    content_css: [
-        //        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-        //        '//www.tinymce.com/css/codepen.min.css']
-        //});        
       
-        //tinymce.init({
-        //    selector: '#PostBody',
-        //    inline: true,
-        //    menubar: false,
-        //    readonly: true,
-        //    statusbar: false,
-        //    toolbar: false,
-        //    menubar: false,
-        //    branding: false,
-        //    content_css: [
-        //      '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-        //      '//www.tinymce.com/css/codepen.min.css']
-        //});
-
-
-        //tinymce.init({
-        //    selector: 'div.editable',
-        //    inline: true,                
-        //    menubar: false,
-        //    readonly: true,
-        //    statusbar: false,
-        //    toolbar: false,
-        //    menubar: false,
-        //    branding: false,
-        //    content_css: [
-        //        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-        //        '//www.tinymce.com/css/codepen.min.css']
-        //});
-
 
     </script>
 End Section

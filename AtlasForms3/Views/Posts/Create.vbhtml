@@ -9,6 +9,7 @@
 
     Dim katlist As New List(Of SelectListItem)
     Dim omiloilist As New List(Of SelectListItem)
+    Dim atlaskatlist As New List(Of SelectListItem)
 
     Dim list1 = (From p1 In pdb.BlogKathgoriesTable
                  Select p1.Id, p1.KathgoriaName).OrderBy(Function(p) p.KathgoriaName).ToList
@@ -26,8 +27,20 @@
 
     For Each it In list2
         omiloilist.Add(New SelectListItem() With {.Selected = False, .Text = it.OmilosName, .Value = it.Id})
-
     Next
+
+
+    Dim list3 = (From k In pdb2.KathgoriesTable
+                 Join o In pdb2.OmilosTable On k.Omilosid Equals o.Id
+                 Join d In pdb2.DiorganwshTable On d.Id Equals o.Diorganwshid
+                 Join s In pdb2.SeasonTable On s.Id Equals d.Seasonid
+                 Where s.ActiveSeason = True
+                 Select k.Id, KathgoriaName = k.KathgoriaName).OrderBy(Function(p) p.KathgoriaName).ToList
+
+    For Each it In list3
+        atlaskatlist.Add(New SelectListItem() With {.Selected = False, .Text = it.KathgoriaName, .Value = it.Id})
+    Next
+
 
 End Code
 
@@ -65,9 +78,17 @@ End Code
                     </div>
                     <div class="row form-horizontal">
                         <div class="form-group">
-                            <label for="title" class="col-md-1 control-label">Όμιλος</label>
+                            <label for="title" class="col-md-1 control-label">Όμιλος  (στατιστικά)</label>
                             <div class="col-sm-5">
                                 @Html.DropDownList("omilos", omiloilist, "Please select...", New With {.id = "omilos", .class = "form-control chosen-select"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-1 control-label">Κατηγορία  (στατιστικά)</label>
+                            <div class="col-sm-5">
+                                @Html.DropDownList("atlaskathgoria", atlaskatlist, "Please select...", New With {.id = "atlaskathgoria", .class = "form-control chosen-select"})
                             </div>
                         </div>
                     </div>
@@ -112,14 +133,6 @@ End Code
                             </div>
                         </div>
                     </div>
-                    @*<div class="row form-horizontal">
-                        <div class="form-group">
-                            <div class="col-md-6 entry-thumb">
-                                <img src="@imageSrc" style="height:160px;width:160px;" />
-                            </div>
-                        </div>
-                    </div>*@
-
                     
                     <div class="row form-horizontal">
                         <div class="form-group">
@@ -157,11 +170,10 @@ End Using
             $('.chosen-select').chosen();
             $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
         });
-
-
+        
     tinymce.init({
         selector: 'textarea',
-height: 500,
+        height: 500,
         menubar: false,
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
@@ -169,11 +181,10 @@ height: 500,
             'insertdatetime media table contextmenu paste code'
         ],
         toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-content_css: [
+        content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css']
     });
-          
 
 
     $(document).ready(function () {
@@ -190,7 +201,56 @@ content_css: [
                 $('#uploaddone').hide();
             }
         });
+
+        cleankathgories();
+        fillkathgories();
+
+        $("#omilos").change(function () {
+            cleankathgories();
+            fillkathgories();            
+        });
+
     });
+        
+    function cleankathgories() {
+        $("#atlaskathgoria").empty();
+        $("#atlaskathgoria").trigger("chosen:updated");
+    }
+
+    function fillkathgories() {
+
+        var sid = $("#omilos").val();
+
+        if (sid > 0) {
+
+            setTimeout(function () {
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetKathgories", "Posts")',
+                    data: { id: sid },
+                    success: function (data) {
+                        var items = [];
+                        items.push("<option value=''>Παρακαλώ επιλέξτε...</option>");
+                        $.each(data, function () {
+                            items.push("<option value=" + this.value + ">" + this.text + "</option>");
+                        });
+                        $("#atlaskathgoria").html(items.join(' '));
+                        $("#atlaskathgoria").trigger("chosen:updated");
+                    },
+                    error: function (msg) { alert(msg); }
+                })
+
+            }, 10);
+
+        }
+
+        else {
+            $("#atlaskathgoria").empty();
+            $("#atlaskathgoria").trigger("chosen:updated");
+        }
+
+    }
 
 
     </script>

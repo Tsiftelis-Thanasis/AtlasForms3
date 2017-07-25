@@ -10,8 +10,8 @@
 
     'Dim katName As String = If(a Is Nothing, 0, a)
 
-
     Dim atlasomilosid As Integer = If(ViewBag.AtlasOmilos Is Nothing, 0, ViewBag.AtlasOmilos)
+
 
     Dim atlaskathgories = (From k In pdb2.KathgoriesTable
                            Order By k.Id
