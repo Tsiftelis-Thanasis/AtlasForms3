@@ -184,7 +184,12 @@
                   Join o In pdb.OmilosTable On o.Id Equals k.Omilosid
                   Where o.Id = OId
                   Order By k.KathgoriaName
-                  Select KathgoriaName = If(k.KathgoriaName.Contains("("), k.KathgoriaName.Split("(")(0), k.KathgoriaName), k.Id).ToList
+                  Select k.KathgoriaName, k.Id).AsEnumerable.
+                  Select(Function(o) New With {
+                        .Id = o.Id, .KathgoriaName =
+                            If(o.KathgoriaName.Contains("("), o.KathgoriaName.Split("(").ToArray(0), o.KathgoriaName)
+                        }).ToList
+
 
         Return Json(om, JsonRequestBehavior.AllowGet)
 

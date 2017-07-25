@@ -231,7 +231,7 @@ End Code
         var choiceContainermobile = $("#diorganwseiulidmobile");
         if (t = 0) {
             choiceContainer.toggle();
-            choiceContainermobile.toggle();           
+            choiceContainermobile.toggle();
         }
 
         $("#kathgoriesnavbarid").empty();
@@ -254,7 +254,7 @@ End Code
 
                         var omilos = this.OmilosName;
                         if (omilos.length < 2) {
-                            omilos = omilos + ' ομιλος';
+                            omilos = omilos + ' Όμιλος';
                         }
                         var omilosnaming = 'omilos' + this.Id + 'row';
 
@@ -324,18 +324,22 @@ End Code
                     choiceContainer.empty();
 
                     if (result.length > 0) {
-                       
+                        var d = '';
+
                         $.each(result, function () {
 
                             //  Select k., k.Id).ToList
-                            var d = '<li class="lipointer"> <span>Νέα '+ this.KathgoriaName +'</span> </li> ' +
-                                    '<li class="lipointer"> <span>Ομάδες '+ this.KathgoriaName +'</span> </li> ' +
-                                    '<li class="lipointer"> <span>Τιμωρίες '+ this.KathgoriaName +'</span> </li> ' +
-                                    '<li class="lipointer"> <span>Πρόγραμμα '+ this.KathgoriaName +'</span> </li> ' +
-                                    '<li class="lipointer"> <span>Βαθμολογίες '+ this.KathgoriaName +'</span> </li> ';                                    
-                            choiceContainer.append(d);
+
+                            d += '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ' +
+                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ' +
+                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ' +
+                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ' +
+                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li>';
+
 
                         });
+                                               
+                        choiceContainer.append(d);
                     }
                 },
                 error: function (result) {
