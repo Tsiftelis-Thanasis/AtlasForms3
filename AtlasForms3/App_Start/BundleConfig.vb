@@ -43,7 +43,7 @@ Public Module BundleConfig
                   "~/Content/bootstrap-slider.css",
                   "~/Content/style.css",
                   "~/Content/DataTables/css/jquery.dataTables.min.css",
-                  "~/Content/fontawesome/font-awesome.css"))
+                  "~/Content/font-awesome.css"))
 
 
 

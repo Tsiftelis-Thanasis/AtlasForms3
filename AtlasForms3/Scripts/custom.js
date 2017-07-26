@@ -630,30 +630,30 @@ if ($('.kopa-sync-2-carousel-widget').length > 0) {
 8. Pie chart
 ============================================================ */
 
-Modernizr.load([
-  {
-      //load: [baseUrl + '/Scripts/excanvas.compiled.js', baseUrl + '/Scripts/excanvas.js', baseUrl + '/Scripts/jquery.easypiechart.js'],
-      load: [baseUrl + '/Scripts/excanvas.compiled.js', baseUrl + '/Scripts/excanvas.js', baseUrl  + '/Scripts/jquery.easypiechart.js'],
-    complete: function () {
+//Modernizr.load([
+//  {
+//      //load: [baseUrl + '/Scripts/excanvas.compiled.js', baseUrl + '/Scripts/excanvas.js', baseUrl + '/Scripts/jquery.easypiechart.js'],
+//      load: [baseUrl + '/Scripts/excanvas.compiled.js', baseUrl + '/Scripts/excanvas.js', baseUrl  + '/Scripts/jquery.easypiechart.js'],
+//    complete: function () {
 
-        var jQuerychart = $('.chart');
-        jQuerychart.easyPieChart({
-            barColor: '#ea2e2b',
-            trackColor: "#e5e5e5",
-            lineWidth: '8',
-            lineCap: "square",
-            size: '66',
-            scaleColor: false,
-            animate: 1000,
-            onStep: function(from, to, percent) {
-                $(this.el).find('.percent').text(Math.round(percent));
-            }
-        });
-        var chart = window.chart = jQuerychart.data('easyPieChart');
+//        var jQuerychart = $('.chart');
+//        jQuerychart.easyPieChart({
+//            barColor: '#ea2e2b',
+//            trackColor: "#e5e5e5",
+//            lineWidth: '8',
+//            lineCap: "square",
+//            size: '66',
+//            scaleColor: false,
+//            animate: 1000,
+//            onStep: function(from, to, percent) {
+//                $(this.el).find('.percent').text(Math.round(percent));
+//            }
+//        });
+//        var chart = window.chart = jQuerychart.data('easyPieChart');
 
-    }
-  }
-]);
+//    }
+//  }
+//]);
 
 
 
@@ -1064,79 +1064,79 @@ if ($('.kopa-map-1').length > 0) {
 16. Masonry
 ============================================================ */
 
-    Modernizr.load([{
-        load: [baseUrl + '/Scripts/masonry.pkgd.js',   baseUrl + '/Scripts/imagesloaded.js'],
-        complete: function () {
+    //Modernizr.load([{
+    //    load: [baseUrl + '/Scripts/masonry.pkgd.js',   baseUrl + '/Scripts/imagesloaded.js'],
+    //    complete: function () {
 
-            var jQuerymasonry1 = $('.kopa-masonry-wrap');
-            imagesLoaded(jQuerymasonry1, function () {
-                jQuerymasonry1.masonry({
-                    columnWidth: 1,
-                    itemSelector: '.ms-item1'
-                });
-                jQuerymasonry1.masonry('bindResize')
-            });
+    //        var jQuerymasonry1 = $('.kopa-masonry-wrap');
+    //        imagesLoaded(jQuerymasonry1, function () {
+    //            jQuerymasonry1.masonry({
+    //                columnWidth: 1,
+    //                itemSelector: '.ms-item1'
+    //            });
+    //            jQuerymasonry1.masonry('bindResize')
+    //        });
 
-            var jQuerymasonry2 = $('.kopa-gallery-2-widget > ul');
-            imagesLoaded(jQuerymasonry2, function () {
-                jQuerymasonry2.masonry({
-                    columnWidth: 1,
-                    itemSelector: '.gl-item2'
-                });
-                jQuerymasonry2.masonry('bindResize')
-            });
+    //        var jQuerymasonry2 = $('.kopa-gallery-2-widget > ul');
+    //        imagesLoaded(jQuerymasonry2, function () {
+    //            jQuerymasonry2.masonry({
+    //                columnWidth: 1,
+    //                itemSelector: '.gl-item2'
+    //            });
+    //            jQuerymasonry2.masonry('bindResize')
+    //        });
 
-            var jQuerymasonry3 = $('.kopa-gallery-3-widget > ul');
-            imagesLoaded(jQuerymasonry3, function () {
-                jQuerymasonry3.masonry({
-                    columnWidth: 1,
-                    itemSelector: '.gl-item3'
-                });
-                jQuerymasonry3.masonry('bindResize')
-            });
+    //        var jQuerymasonry3 = $('.kopa-gallery-3-widget > ul');
+    //        imagesLoaded(jQuerymasonry3, function () {
+    //            jQuerymasonry3.masonry({
+    //                columnWidth: 1,
+    //                itemSelector: '.gl-item3'
+    //            });
+    //            jQuerymasonry3.masonry('bindResize')
+    //        });
 
-            var jQuerymasonry4 = $('.kopa-gallery-4-widget > ul');
-            imagesLoaded(jQuerymasonry4, function () {
-                jQuerymasonry4.masonry({
-                    columnWidth: 1,
-                    itemSelector: '.gl-item4'
-                });
-                jQuerymasonry4.masonry('bindResize')
-            });
+    //        var jQuerymasonry4 = $('.kopa-gallery-4-widget > ul');
+    //        imagesLoaded(jQuerymasonry4, function () {
+    //            jQuerymasonry4.masonry({
+    //                columnWidth: 1,
+    //                itemSelector: '.gl-item4'
+    //            });
+    //            jQuerymasonry4.masonry('bindResize')
+    //        });
 
-            var jQuerymasonry5 = $('.team-masonry');
-            imagesLoaded(jQuerymasonry5, function () {
-                jQuerymasonry5.masonry({
-                    columnWidth: 1,
-                    itemSelector: '.t-item'
-                });
-                jQuerymasonry5.masonry('bindResize')
-            });
+    //        var jQuerymasonry5 = $('.team-masonry');
+    //        imagesLoaded(jQuerymasonry5, function () {
+    //            jQuerymasonry5.masonry({
+    //                columnWidth: 1,
+    //                itemSelector: '.t-item'
+    //            });
+    //            jQuerymasonry5.masonry('bindResize')
+    //        });
 
-            $(".team-tab").find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                jQuerymasonry5.masonry();
-            })
+    //        $(".team-tab").find('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    //            jQuerymasonry5.masonry();
+    //        })
 
-            var jQuerymasonry6 = $('.kopa-entry-list > ul');
-            imagesLoaded(jQuerymasonry6, function () {
-                jQuerymasonry6.masonry({
-                    columnWidth: 1,
-                    itemSelector: '.ms-item2'
-                });
-                jQuerymasonry6.masonry('bindResize')
-            });
+    //        var jQuerymasonry6 = $('.kopa-entry-list > ul');
+    //        imagesLoaded(jQuerymasonry6, function () {
+    //            jQuerymasonry6.masonry({
+    //                columnWidth: 1,
+    //                itemSelector: '.ms-item2'
+    //            });
+    //            jQuerymasonry6.masonry('bindResize')
+    //        });
 
-            var jQuerymasonry7 = $('.kopa-related-post > ul');
-            imagesLoaded(jQuerymasonry7, function () {
-                jQuerymasonry7.masonry({
-                    columnWidth: 1,
-                    itemSelector: '.col-md-3'
-                });
-                jQuerymasonry7.masonry('bindResize')
-            });
+    //        var jQuerymasonry7 = $('.kopa-related-post > ul');
+    //        imagesLoaded(jQuerymasonry7, function () {
+    //            jQuerymasonry7.masonry({
+    //                columnWidth: 1,
+    //                itemSelector: '.col-md-3'
+    //            });
+    //            jQuerymasonry7.masonry('bindResize')
+    //        });
 
-        }   
-    }]);
+    //    }   
+    //}]);
 
 /* ============================================
 17. Match height
@@ -1190,23 +1190,23 @@ if ($('.kopa-map-1').length > 0) {
 18. Countdown
 =============================================== */
 
-    Modernizr.load([{
-        load: [baseUrl + '/Scripts/countdown.js'],
-        complete: function () {
+    //Modernizr.load([{
+    //    load: [baseUrl + '/Scripts/countdown.js'],
+    //    complete: function () {
 
             
-          var nextYear = new Date(new Date().getFullYear() + 1, 0, 0, 0, 0, 0, 0);
-          $('.kopa-countdown').countdown(nextYear, function(event) {
-            var $this = $(this).html(event.strftime(''
-                +'<li><h3>%w</h3><span>weeks</span></li>' 
-                +'<li><h3>%d</h3><span>days</span></li>'
-                +'<li><h3>%H</h3><span>hours</span></li>'
-                +'<li><h3>%M</h3><span>mins</span></li>'
-                +'<li><h3>%S</h3><span>secs</span></li>'));
-          });
+    //      var nextYear = new Date(new Date().getFullYear() + 1, 0, 0, 0, 0, 0, 0);
+    //      $('.kopa-countdown').countdown(nextYear, function(event) {
+    //        var $this = $(this).html(event.strftime(''
+    //            +'<li><h3>%w</h3><span>weeks</span></li>' 
+    //            +'<li><h3>%d</h3><span>days</span></li>'
+    //            +'<li><h3>%H</h3><span>hours</span></li>'
+    //            +'<li><h3>%M</h3><span>mins</span></li>'
+    //            +'<li><h3>%S</h3><span>secs</span></li>'));
+    //      });
 
-        }
-    }]);
+    //    }
+    //}]);
 
 /* ============================================
 19. Bootstrap Slider
@@ -1228,12 +1228,12 @@ if (jQuery('.kopa-slider-ip').length > 0) {
 20. Sticky menu
 ============================================================ */ 
 
-    Modernizr.load([{
-        load: [baseUrl + '/Scripts/waypoints.js', baseUrl + '/Scripts/waypoints-sticky.js'],
-        complete: function () {
-           //thanasis - changed the divs to the header jQuery('kopa-header').waypoint('sticky');            
-        }
-    }]);
+    //Modernizr.load([{
+    //    load: [baseUrl + '/Scripts/waypoints.js', baseUrl + '/Scripts/waypoints-sticky.js'],
+    //    complete: function () {
+    //       //thanasis - changed the divs to the header jQuery('kopa-header').waypoint('sticky');            
+    //    }
+    //}]);
     
 });
 

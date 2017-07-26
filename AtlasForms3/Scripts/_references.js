@@ -1,4 +1,4 @@
-﻿/// <autosync enabled="true" />
+﻿/// <autosync enabled="false" />
 /// <reference path="angular.directive.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="chosen.jquery.min.js" />

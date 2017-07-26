@@ -169,10 +169,7 @@ End Code
                             </div>
                         </div>
                     </div>
-
-                    <div class="row form-horizontal">
-
-                    </div>
+                                
 
                     <div class="row form-horizontal">
                         <div class="form-group">
@@ -193,29 +190,17 @@ End Code
                         </div>
                     </div>
 
-
-
                     <div class="row form-horizontal">
                         <div class="form-group">
                             @Html.TextAreaFor(Function(m) m.PostBody)
-
-
                         </div>
                     </div>
 
 
                 </div>
                     </div>
-                </div>
-
-
-
-
-       
+                </div>       
     <p></p>
-    
-
-       
 
         <div Class="entry-meta">
             <span Class="entry-author">Created by @Html.DisplayFor(Function(model) model.createdby)</span>
