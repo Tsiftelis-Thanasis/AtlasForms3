@@ -2,16 +2,22 @@
 
     Dim pdb2 As New AtlasStatisticsEntities
 
+
+    Dim StaticfirstDiorganwshid = (From d In pdb2.DiorganwshTable
+                                   Join s In pdb2.SeasonTable On d.Seasonid Equals s.Id
+                                   Where d.DiorganwshName.Contains("πρωταθλημα") And s.ActiveSeason = True
+                                   Select d.Id).FirstOrDefault
+
     Dim firstDiorganwshid = (From d In pdb2.DiorganwshTable
                              Join s In pdb2.SeasonTable On d.Seasonid Equals s.Id
                              Where d.DiorganwshName.Contains("πρωταθλημα") And s.ActiveSeason = True
                              Select d.Id).FirstOrDefault
 
-    'If Session("GlobalDiorganwshid") = 0 Then
-    Session("GlobalDiorganwshid") = firstDiorganwshid
-    'Else
-    'firstDiorganwshid = Session("GlobalDiorganwshid")
-    'End If
+    If Session("GlobalDiorganwshid") = 0 Then
+        Session("GlobalDiorganwshid") = firstDiorganwshid
+    Else
+        firstDiorganwshid = Session("GlobalDiorganwshid")
+    End If
 
 End Code
 
@@ -64,7 +70,7 @@ End Code
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
                         <li class="current-menu-item">
-                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>                         
+                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@StaticfirstDiorganwshid , 1)"><span>Πρωταθλημα</span></a>                         
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
@@ -147,9 +153,9 @@ End Code
 
             <div class="wrapper">
                 <nav class="th-kopa-main-nav-3">
-                    <ul class="main-menu-2"  id="kathgoriesnavbarid">
+                    <ol class="main-menu-2"  id="kathgoriesnavbarid" dir="RTL">
                        
-                    </ul>
+                    </ol>
                 </nav>
             </div>   
 
@@ -221,94 +227,108 @@ End Code
     //fillomiloinavbar
     function fillomiloinavbar(i, t) {
 
-        //$("#firstDiorganwshid").val(i);
+        setTimeout(function () {
 
-        t = t || 0;
+            t = t || 0;
 
-        postDiorganwshid(i);
+            postDiorganwshid(i);
 
-        var choiceContainer = $("#diorganwseiulid");
-        var choiceContainermobile = $("#diorganwseiulidmobile");
-        if (t = 0) {
-            choiceContainer.toggle();
-            choiceContainermobile.toggle();
-        }
-
-        $("#kathgoriesnavbarid").empty();
-
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetOmiloiByDiorganwsh", "Home")',
-            data: "{dId: " + i + "}",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var choiceContainer = $("#omiloinavbarid");
-
-                if (result.length > 0) {
-                    choiceContainer.empty();
-
-                    $.each(result, function () {
-
-                        var omilos = this.OmilosName;
-                        if (omilos.length < 2) {
-                            omilos = omilos + ' Όμιλος';
-                        }
-                        var omilosnaming = 'omilos' + this.Id + 'row';
-
-                        @*'<div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0"> ' +
-                                '<div class="sf-mega-section col-md-3 col-xs-3 col-sm-3"> ' +
-                                    '<div class="widget kopa-sub-list-widget"> ' +
-                                        '<ul class="sub-menu"> ' +
-                                            '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11">νεα</a> ' +
-                                                '</li> ' +
-                                                '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=12">ομάδες</a> ' +
-                                                '</li> ' +
-                                                '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=13">τιμωριες</a> ' +
-                                                '</li> ' +
-                                                '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=14">προγραμμα</a> ' +
-                                                '</li> ' +
-                                                '<li> ' +
-                                                '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=15">βαθμολογια</a>' +
-                                                '</li>' +
-                                                '</ul> ' +
-                                                '</div> ' +
-                                                '</div> ' +
-                                                '<div class="sf-mega-section col-md-9 col-xs-9 col-sm-9"> ' +
-                                                '<div class="widget kopa-sub-list-widget sub-list-1"> ' +
-                                                '<h4>Τελευταια νεα ' + this.OmilosName + ' ομίλου</h4> ' +
-                                                '<ul id="' + omilosnaming + '" class="row"></ul> ' +
-                                                '</div>' +
-                                                '</div>' +
-                                                '</div> ' +*@
-
-
-                        var d = '<li class="lipointer" onclick="appendKathgoriaNav(' + this.Id + ')"> ' +
-                                '<span>' + omilos + '</span> ' +
-                                '</li>';
-
-                        choiceContainer.prepend(d);
-
-                        //appendnewstoOmilos(omilosnaming, this.Id);
-
-
-                    });
-                }
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
+            var choiceContainer = $("#diorganwseiulid");
+            var choiceContainermobile = $("#diorganwseiulidmobile");
+            if (t = 0) {
+                choiceContainer.toggle();
+                choiceContainermobile.toggle();
             }
-        });
+
+            $("#kathgoriesnavbarid").empty();
+
+            $.ajax({
+                type: "POST",
+                url: baseUrl + '@Url.Action("GetOmiloiByDiorganwsh", "Home")',
+                data: "{dId: " + i + "}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var choiceContainer = $("#omiloinavbarid");
+
+                    if (result.length > 0) {
+                        choiceContainer.empty();
+
+                        $.each(result, function () {
+
+                            var omilos = this.OmilosName;
+                            if (omilos.length < 2) {
+                                omilos = omilos + ' Όμιλος';
+                            }
+                            var omilosnaming = 'omilos' + this.Id + 'row';
+
+                            @*var a = '<div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0"> ' +
+                                     '<div class="sf-mega-section col-md-3 col-xs-3 col-sm-3"> ' +
+                                         '<div class="widget kopa-sub-list-widget"> ' +
+                                             '<ul class="sub-menu"> ' +
+                                                 '<li> ' +
+                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11">νεα</a> ' +
+                                                     '</li> ' +
+                                                     '<li> ' +
+                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=12">ομάδες</a> ' +
+                                                     '</li> ' +
+                                                     '<li> ' +
+                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=13">τιμωριες</a> ' +
+                                                     '</li> ' +
+                                                     '<li> ' +
+                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=14">προγραμμα</a> ' +
+                                                     '</li> ' +
+                                                     '<li> ' +
+                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=15">βαθμολογια</a>' +
+                                                     '</li>' +
+                                                     '</ul> ' +
+                                                     '</div> ' +
+                                                     '</div> ' +
+                                                     '<div class="sf-mega-section col-md-9 col-xs-9 col-sm-9"> ' +
+                                                     '<div class="widget kopa-sub-list-widget sub-list-1"> ' +
+                                                     '<h4>Τελευταια νεα ' + this.OmilosName + ' ομίλου</h4> ' +
+                                                     '<ul id="' + omilosnaming + '" class="row"></ul> ' +
+                                                     '</div>' +
+                                                     '</div>' +
+                                                     '</div> ';*@
+
+                            //onclick="appendKathgoriaNav(' + this.Id + ')
+                            var d = '<li class="lipointer" value = "' + this.Id + '"> ' +
+                                    '<a  <a href="' + baseUrl + '/Home/Index/?ak=' + this.Id + '"><span>' + omilos + '</span></a>' +
+                                    '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
+                                    '</li>';
+
+                            choiceContainer.append(d);
+                            appendnewstoOmilos(omilosnaming, this.Id);
+
+                        });
+
+                        setTimeout(function () {
+                            var li = choiceContainer.children("li");
+                            li.detach();
+                            li.sort(function (a, b) {
+                                return parseInt(a.id) > parseInt(b.id);
+                            }).each(function () {
+                                var elem = $(this);
+                                elem.remove();
+                                $(elem).prependTo(choiceContainer);
+                            })
+                        }, 100);                      
+
+                    }
+                },
+                error: function (result) {
+                    alert(result.status + ' ' + result.statusText);
+                }
+            });
+        }, 100);
+
     }
 
 
-    function appendKathgoriaNav(containerid) {
+    @*function appendKathgoriaNav(containerid) {
 
         //apend for each omilos
              $.ajax({
@@ -323,35 +343,107 @@ End Code
                     var choiceContainer = $("#kathgoriesnavbarid");
                     choiceContainer.empty();
 
-                    if (result.length > 0) {
+                    setTimeout(function () {
+                        var i = 1;
                         var d = '';
+                        if (result.length > 0) {
 
-                        $.each(result, function () {
+                            //d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Home")/?a=' + containerid + '"> <span style="font-size: 12px; !important" >ομιλος</a> </span> </li> ';
 
-                            //  Select k., k.Id).ToList
+                            $.each(result, function () {
+                                d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 3 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 5 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
+                                i += 5;
+                            });
 
-                            d += '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ' +
-                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ' +
-                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ' +
-                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ' +
-                                 '<li class="lipointer" > <a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
+                            choiceContainer.append(d);
 
-                        });
-
-                        d += '<li class="lipointer" > <a href="@Url.Action("Index", "Home")/?a=' + this.Id + '"> <span style="font-size: 12px; !important" >ομιλος</a> </span> </li> ';
-
-                        choiceContainer.append(d);
-                    }
+                            var li = choiceContainer.children("li");
+                            li.detach();
+                            li.sort(function (a, b) {
+                                return parseInt(a.id) > parseInt(b.id);
+                            }).each(function () {
+                                var elem = $(this);
+                                elem.remove();
+                                $(elem).prependTo(choiceContainer);
+                            })
+                        }
+                    }, 100);
                 },
                 error: function (result) {
                     alert(result.status + ' ' + result.statusText);
                 }
-            });
-        }
+             });
+
+
+
+        }*@
 
         function appendnewstoOmilos(containername, containerid) {
 
-            //apend for each omilos
+            $.ajax({
+                type: "POST",
+                url: baseUrl + '@Url.Action("GetKathgoriesbyOmilos", "Home")',
+                 data: "{OId: " + containerid + "}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var choiceContainer = $("#" + containername);
+                    choiceContainer.empty();
+
+                    setTimeout(function () {
+                        var i = 1;
+                        var d = '';
+                        if (result.length > 0) {
+                            $.each(result, function () {
+                                d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
+                                i++;
+                            });
+                            $.each(result, function () {
+                                d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ';
+                                i++;
+                            });
+                            $.each(result, function () {
+                                d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ';
+                                i++;
+                            });
+                            $.each(result, function () {
+                                d += '<li class="lipointer" id="' + i + 3 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
+                                i++;
+                            });
+                            $.each(result, function () {
+                                d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
+                                i++;
+                            });
+                            //i += 5;
+                            //d += '<li class="lipointer" id="' + i + 10 + '"> <a href="@Url.Action("Index", "Home")/?a=' + containerid + '"> <span style="font-size: 12px; !important" >ομιλος</a> </span> </li> ';
+                            choiceContainer.append(d);
+
+                            //var li = choiceContainer.children("li");
+                            //li.detach();
+                            //li.sort(function (a, b) {
+                            //    return parseInt(a.id) > parseInt(b.id);
+                            //}).each(function () {
+                            //    var elem = $(this);
+                            //    elem.remove();
+                            //    $(elem).prependTo(choiceContainer);
+                            //})
+                        }
+                    }, 100);
+                },
+                error: function (result) {
+                    alert(result.status + ' ' + result.statusText);
+                }
+             });
+
+
+
+            @*//apend for each omilos
             $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetLastNewsByCategory2", "Posts")',
@@ -386,7 +478,7 @@ End Code
             error: function (result) {
                     alert(result.status + ' ' + result.statusText);
             }
-        });
+        });*@
 
         }
 
@@ -455,7 +547,7 @@ End Code
                         choiceContainermobile.empty();
 
                             $.each(result, function () {
-                                var d = '<li class="lipointer" onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>'
+                                var d = '<li class="lipointer" onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>';
                             choiceContainer.append(d);
                             choiceContainermobile.append(d);
                         });
@@ -517,7 +609,7 @@ End Code
         setTimeout(function () {
             //$("#prwta8limaid").trigger("click");
             fillomiloinavbar($("#firstDiorganwshid").val());
-        }, 200);
+        }, 100);
     });
 
 

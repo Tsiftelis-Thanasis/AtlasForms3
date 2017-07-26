@@ -1796,8 +1796,8 @@ End Code
                 });
             }
         }
-        
-
+       
+     
         //GetTeamsbyKathgoria 1
         if ($("#divteamskat1").is(":visible")) {
                   
