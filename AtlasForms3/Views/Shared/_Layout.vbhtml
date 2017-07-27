@@ -208,8 +208,14 @@ End Code
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/custom")
+
     @RenderSection("scripts", required:=False)
 
+
+    <script src="~/Scripts/jquery.navgoco.js"></script>
+    <script src="~/Scripts/jquery.carouFredSel-6.2.1.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    
 </body>
 </html>
 
@@ -570,8 +576,6 @@ End Code
             fillomiloinavbar($("#firstDiorganwshid").val());
         }, 100);
     });
-
-
 
 
 </script>

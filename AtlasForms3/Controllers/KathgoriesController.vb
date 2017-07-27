@@ -2,6 +2,7 @@
 Imports System.Net.Http
 Imports System.Net
 
+<Compress>
 Public Class KathgoriesController
     Inherits System.Web.Mvc.Controller
 

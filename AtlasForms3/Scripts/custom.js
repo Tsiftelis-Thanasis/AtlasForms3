@@ -67,7 +67,7 @@ var kopa_variable = {
     }
 };
 
-var map;
+//var map;
 
 
 
@@ -93,11 +93,11 @@ var map;
 2. Main Menu
 ============================================================ */
 
-Modernizr.load([
-  {
-      //load: baseUrl + '/Scripts/superfish.js',
-      load: baseUrl + '/Scripts/superfish.js',       
-        complete: function () {
+//Modernizr.load([
+//  {
+//      //load: baseUrl + '/Scripts/superfish.js',
+//      load: baseUrl + '/Scripts/superfish.js',       
+//        complete: function () {
         
         var r_ul = $('.kopa-main-nav .sf-menu');
         r_ul.find('> li').each(function() {
@@ -176,9 +176,9 @@ Modernizr.load([
             "top": btnav_p
         });
 
-    }
-  }
-]);
+   // }
+//  }
+//]);
 
 
 /* =========================================================
@@ -219,147 +219,138 @@ var panel_titles = $('.kopa-accordion .panel-title a');
 
  /* =========================================================
 5. Owl Carousel
-============================================================ */
-
-    Modernizr.load([{
-        //load: [baseUrl + '/Scripts/owl.carousel.js'],
-        load: [baseUrl + '/Scripts/owl.carousel.js'],
-        complete: function () {
-
-            var owl1 = $(".owl-carousel-1");
-            owl1.owlCarousel({
-                items: 7,
-                itemsDesktopSmall : [979,2],
-                itemsTablet: [799,2],
-                itemsTabletSmall: [639,2],
-                pagination: false,
-                slideSpeed: 600,
-                navigationText: false,
-                navigation: true, 
-                itemsScaleUp: false,
-                autoPlay: 99999999
-            });
-
-            var owl2 = $(".owl-carousel-2");
-            owl2.owlCarousel({
-                singleItem: true,
-                pagination: false,
-                slideSpeed: 600,
-                navigationText: false,
-                navigation: true,
-                afterInit: function(){
-                   var ow = $(".owl-carousel-2").width(); 
-                   $(".owl-carousel-2").find(".owl-item").width(ow);
-                }
-            });
-
-            var owl3 = $(".owl-carousel-3");
-            owl3.owlCarousel({
-                singleItem: true,
-                pagination: false,
-                slideSpeed: 600,
-                navigationText: false,
-                navigation: true
-            });
-
-            var owl4 = $(".owl-carousel-4");
-            owl4.owlCarousel({
-                items : 4,
-                pagination: false,
-                navigationText: false,
-                navigation: true,
-                slideSpeed: 600
-            });
-
-            var owl5 = $(".owl-carousel-5");
-            owl5.owlCarousel({
-                items : 6,
-                pagination: false,
-                navigationText: false,
-                navigation: true,
-                autoPlay: true,
-                slideSpeed: 600
-            });
-
-            var owl6 = $(".owl-carousel-6");
-            owl6.owlCarousel({
-                singleItem: true,
-                slideSpeed: 1000,
-                navigation: false,
-                navigationText: false,
-                pagination: true
-            });
-
-            var owl7 = $(".owl-carousel-7");
-            owl7.owlCarousel({
-                items: 4,
-                itemsTablet: [799,4],
-                itemsTabletSmall: [719,3],
-                slideSpeed: 1000,
-                pagination: false,
-                navigation: true,
-                navigationText: false
-            });
-
-            var owl8 = $(".owl-carousel-8");
-            owl8.owlCarousel({
-                items: 4,
-                itemsTablet: [799,4],
-                itemsTabletSmall: [718,3],
-                slideSpeed: 1000,
-                pagination: false,
-                navigation: true,
-                navigationText: false
-            });
-
-            var owl9 = $(".owl-carousel-9");
-            owl9.owlCarousel({
-                items: 3,
-                itemsDesktop: [1160,3],
-                itemsTablet: [799,3],
-                itemsTabletSmall: [639,2],
-                slideSpeed: 1000,
-                pagination: false,
-                navigation: true,
-                navigationText: false
-            });
-
-            var owl10 = $(".owl-carousel-10");
-            owl10.owlCarousel({
-                singleItem: true,
-                slideSpeed: 1000,
-                navigation: false,
-                navigationText: false,
-                pagination: true,
-                afterInit: function(){
-                   $(".kopa-gallery-carousel-widget .loading").hide();    
-                }
-            });
-
-            var owl12 = $(".owl-carousel-12");
-            owl12.owlCarousel({
-                singleItem: true,
-                slideSpeed: 1000,
-                navigation: true, 
-                navigationText: false,
-                pagination: false
-            });
-
-        }   
-    }]);
-
-
-
-/* =========================================================
 6. Sync owl carousel
 ============================================================ */
- 
 
-if ($('.kopa-sync-carousel-widget').length > 0) {
-    Modernizr.load([{
-        //load: baseUrl + '/Scripts/owl.carousel.js',
-        load: baseUrl + '/Scripts/owl.carousel.js',
-        complete: function() {
+    $(document).ready(function () {
+
+
+        var owl1 = $(".owl-carousel-1");
+        owl1.owlCarousel({
+            items: 7,
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [799, 2],
+            itemsTabletSmall: [639, 2],
+            pagination: false,
+            slideSpeed: 600,
+            navigationText: false,
+            navigation: true,
+            itemsScaleUp: false,
+            autoPlay: 99999999
+        });
+
+        var owl2 = $(".owl-carousel-2");
+        owl2.owlCarousel({
+            singleItem: true,
+            pagination: false,
+            slideSpeed: 600,
+            navigationText: false,
+            navigation: true,
+            afterInit: function () {
+                var ow = $(".owl-carousel-2").width();
+                $(".owl-carousel-2").find(".owl-item").width(ow);
+            }
+        });
+
+        var owl3 = $(".owl-carousel-3");
+        owl3.owlCarousel({
+            singleItem: true,
+            pagination: false,
+            slideSpeed: 600,
+            navigationText: false,
+            navigation: true
+        });
+
+        var owl4 = $(".owl-carousel-4");
+        owl4.owlCarousel({
+            items: 4,
+            pagination: false,
+            navigationText: false,
+            navigation: true,
+            slideSpeed: 600
+        });
+
+        var owl5 = $(".owl-carousel-5");
+        owl5.owlCarousel({
+            items: 6,
+            pagination: false,
+            navigationText: false,
+            navigation: true,
+            autoPlay: true,
+            slideSpeed: 600
+        });
+
+        var owl6 = $(".owl-carousel-6");
+        owl6.owlCarousel({
+            singleItem: true,
+            slideSpeed: 1000,
+            navigation: false,
+            navigationText: false,
+            pagination: true
+        });
+
+        var owl7 = $(".owl-carousel-7");
+        owl7.owlCarousel({
+            items: 4,
+            itemsTablet: [799, 4],
+            itemsTabletSmall: [719, 3],
+            slideSpeed: 1000,
+            pagination: false,
+            navigation: true,
+            navigationText: false
+        });
+
+        var owl8 = $(".owl-carousel-8");
+        owl8.owlCarousel({
+            items: 4,
+            itemsTablet: [799, 4],
+            itemsTabletSmall: [718, 3],
+            slideSpeed: 1000,
+            pagination: false,
+            navigation: true,
+            navigationText: false
+        });
+
+        var owl9 = $(".owl-carousel-9");
+        owl9.owlCarousel({
+            items: 3,
+            itemsDesktop: [1160, 3],
+            itemsTablet: [799, 3],
+            itemsTabletSmall: [639, 2],
+            slideSpeed: 1000,
+            pagination: false,
+            navigation: true,
+            navigationText: false
+        });
+
+        var owl10 = $(".owl-carousel-10");
+        owl10.owlCarousel({
+            singleItem: true,
+            slideSpeed: 1000,
+            navigation: false,
+            navigationText: false,
+            pagination: true,
+            afterInit: function () {
+                $(".kopa-gallery-carousel-widget .loading").hide();
+            }
+        });
+
+        var owl12 = $(".owl-carousel-12");
+        owl12.owlCarousel({
+            singleItem: true,
+            slideSpeed: 1000,
+            navigation: true,
+            navigationText: false,
+            pagination: false
+        });
+
+
+
+        if ($('.kopa-sync-carousel-widget').length > 0) {
+            //Modernizr.load([{
+            //    //load: baseUrl + '/Scripts/owl.carousel.js',
+            //    load: baseUrl + '/Scripts/owl.carousel.js',
+            //    complete: function() {
             var sync1 = $(".kopa-sync-carousel-widget .sync1");
             var sync2 = $(".kopa-sync-carousel-widget .sync2");
 
@@ -372,8 +363,8 @@ if ($('.kopa-sync-carousel-widget').length > 0) {
                 pagination: false,
                 afterAction: syncPosition,
                 responsiveRefreshRate: 200,
-                afterInit: function(){
-                   $(".kopa-sync-carousel-widget .loading").hide();    
+                afterInit: function () {
+                    $(".kopa-sync-carousel-widget .loading").hide();
                 }
             });
 
@@ -381,13 +372,13 @@ if ($('.kopa-sync-carousel-widget').length > 0) {
                 items: 5,
                 itemsDesktop: [1199, 5],
                 itemsDesktopSmall: [979, 4],
-                itemsTablet: [799,3],
-                itemsMobile: [479,2],
+                itemsTablet: [799, 3],
+                itemsMobile: [479, 2],
                 pagination: false,
                 navigation: true,
                 navigationText: false,
                 responsiveRefreshRate: 100,
-                afterInit: function(el) {
+                afterInit: function (el) {
                     el.find(".owl-item").eq(0).addClass("synced");
                 }
             });
@@ -400,51 +391,51 @@ if ($('.kopa-sync-carousel-widget').length > 0) {
                 }
             }
 
-            $(".sync2").on("click", ".owl-item", function(e) {
+            $(".sync2").on("click", ".owl-item", function (e) {
                 e.preventDefault();
                 var number = $(this).data("owlItem");
                 sync1.trigger("owl.goTo", number);
             });
 
-            function center(number){
-                
+            function center(number) {
+
                 var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
                 var num = number;
                 var found = false;
-                for(var i in sync2visible){
-                  if(num === sync2visible[i]){
-                    var found = true;
-                  }
+                for (var i in sync2visible) {
+                    if (num === sync2visible[i]) {
+                        var found = true;
+                    }
                 }
-             
-                if(found===false){
-                    if (undefined != sync2visible){
-                        if(num > sync2visible[sync2visible.length-1]){
-                            sync2.trigger("owl.goTo", num - sync2visible.length+2)
-                        }else{
-                            if(num - 1 === -1){
+
+                if (found === false) {
+                    if (undefined != sync2visible) {
+                        if (num > sync2visible[sync2visible.length - 1]) {
+                            sync2.trigger("owl.goTo", num - sync2visible.length + 2)
+                        } else {
+                            if (num - 1 === -1) {
                                 num = 0;
                             }
                             sync2.trigger("owl.goTo", num);
-                        } 
+                        }
                     }
-                } else if(num === sync2visible[sync2visible.length-1]){
+                } else if (num === sync2visible[sync2visible.length - 1]) {
                     sync2.trigger("owl.goTo", sync2visible[1])
-                } else if(num === sync2visible[0]){
-                    sync2.trigger("owl.goTo", num-1)
+                } else if (num === sync2visible[0]) {
+                    sync2.trigger("owl.goTo", num - 1)
                 }
-                
-            }
-        }
-    }]);
-    
-};
 
-if ($('.kopa-sync-carousel-2-widget').length > 0) {
-    Modernizr.load([{
-        //load: baseUrl + '/Scripts/owl.carousel.js',
-        load: baseUrl + '/Scripts/owl.carousel.js',
-        complete: function() {
+            }
+            //}
+            //}]);
+
+        };
+
+        if ($('.kopa-sync-carousel-2-widget').length > 0) {
+            //Modernizr.load([{
+            //    //load: baseUrl + '/Scripts/owl.carousel.js',
+            //    load: baseUrl + '/Scripts/owl.carousel.js',
+            //    complete: function() {
             var sync3 = $(".kopa-sync-carousel-2-widget .sync3");
             var sync4 = $(".kopa-sync-carousel-2-widget .sync4");
 
@@ -456,20 +447,20 @@ if ($('.kopa-sync-carousel-2-widget').length > 0) {
                 pagination: false,
                 afterAction: syncPosition,
                 responsiveRefreshRate: 200,
-                afterInit: function(){
-                   $(".kopa-sync-carousel-2-widget .loading").hide();    
+                afterInit: function () {
+                    $(".kopa-sync-carousel-2-widget .loading").hide();
                 }
             });
 
             sync4.owlCarousel({
                 items: 4,
-                itemsTablet: [799,3],
-                itemsTabletSmall: [639,2],
+                itemsTablet: [799, 3],
+                itemsTabletSmall: [639, 2],
                 pagination: false,
                 navigation: true,
                 navigationText: false,
                 responsiveRefreshRate: 100,
-                afterInit: function(el) {
+                afterInit: function (el) {
                     el.find(".owl-item").eq(0).addClass("synced");
                 }
             });
@@ -482,51 +473,52 @@ if ($('.kopa-sync-carousel-2-widget').length > 0) {
                 }
             }
 
-            $(".sync4").on("click", ".owl-item", function(e) {
+            $(".sync4").on("click", ".owl-item", function (e) {
                 e.preventDefault();
                 var number = $(this).data("owlItem");
                 sync3.trigger("owl.goTo", number);
             });
 
-            function center(number){
-                
+            function center(number) {
+
                 var sync4visible = sync4.data("owlCarousel").owl.visibleItems;
                 var num = number;
                 var found = false;
-                for(var i in sync4visible){
-                  if(num === sync4visible[i]){
-                    var found = true;
-                  }
+                for (var i in sync4visible) {
+                    if (num === sync4visible[i]) {
+                        var found = true;
+                    }
                 }
-             
-                if(found===false){
-                    if (undefined != sync4visible){
-                        if(num > sync4visible[sync4visible.length-1]){
-                            sync4.trigger("owl.goTo", num - sync4visible.length+2)
-                        }else{
-                            if(num - 1 === -1){
+
+                if (found === false) {
+                    if (undefined != sync4visible) {
+                        if (num > sync4visible[sync4visible.length - 1]) {
+                            sync4.trigger("owl.goTo", num - sync4visible.length + 2)
+                        } else {
+                            if (num - 1 === -1) {
                                 num = 0;
                             }
                             sync4.trigger("owl.goTo", num);
-                        } 
+                        }
                     }
-                } else if(num === sync4visible[sync4visible.length-1]){
+                } else if (num === sync4visible[sync4visible.length - 1]) {
                     sync4.trigger("owl.goTo", sync4visible[1])
-                } else if(num === sync4visible[0]){
-                    sync4.trigger("owl.goTo", num-1)
+                } else if (num === sync4visible[0]) {
+                    sync4.trigger("owl.goTo", num - 1)
                 }
-                
-            }
-        }
-    }]);
-    
-};
 
-if ($('.kopa-sync-2-carousel-widget').length > 0) {
-    Modernizr.load([{
-        //load: baseUrl + '/Scripts/owl.carousel.js',
-        load: baseUrl + '/Scripts/owl.carousel.js',
-        complete: function() {
+            }
+            //    }
+            //}]);
+
+        };
+
+        if ($('.kopa-sync-2-carousel-widget').length > 0) {
+            //Modernizr.load([{
+            //    //load: baseUrl + '/Scripts/owl.carousel.js',
+            //    load: baseUrl + '/Scripts/owl.carousel.js',
+            //    complete: function() {
+
             var sync5 = $(".kopa-sync-2-carousel-widget .sync5");
             var sync6 = $(".kopa-sync-2-carousel-widget .sync6");
 
@@ -538,19 +530,19 @@ if ($('.kopa-sync-2-carousel-widget').length > 0) {
                 pagination: false,
                 afterAction: syncPosition,
                 responsiveRefreshRate: 200,
-                afterInit: function(){
-                   $(".kopa-sync-2-carousel-widget .loading").hide();    
+                afterInit: function () {
+                    $(".kopa-sync-2-carousel-widget .loading").hide();
                 }
             });
 
             sync6.owlCarousel({
                 items: 3,
-                itemsDesktop : [1160,3],
+                itemsDesktop: [1160, 3],
                 pagination: true,
                 navigation: false,
                 navigationText: false,
                 responsiveRefreshRate: 100,
-                afterInit: function(el) {
+                afterInit: function (el) {
                     el.find(".owl-item").eq(0).addClass("synced");
                 }
             });
@@ -563,48 +555,47 @@ if ($('.kopa-sync-2-carousel-widget').length > 0) {
                 }
             }
 
-            $(".sync6").on("click", ".owl-item", function(e) {
+            $(".sync6").on("click", ".owl-item", function (e) {
                 e.preventDefault();
                 var number = $(this).data("owlItem");
                 sync5.trigger("owl.goTo", number);
             });
 
-            function center(number){
-                
+            function center(number) {
+
                 var sync6visible = sync6.data("owlCarousel").owl.visibleItems;
                 var num = number;
                 var found = false;
-                for(var i in sync6visible){
-                  if(num === sync6visible[i]){
-                    var found = true;
-                  }
+                for (var i in sync6visible) {
+                    if (num === sync6visible[i]) {
+                        var found = true;
+                    }
                 }
-             
-                if(found===false){
-                    if (undefined != sync6visible){
-                        if(num > sync6visible[sync6visible.length-1]){
-                            sync6.trigger("owl.goTo", num - sync6visible.length+2)
-                        }else{
-                            if(num - 1 === -1){
+
+                if (found === false) {
+                    if (undefined != sync6visible) {
+                        if (num > sync6visible[sync6visible.length - 1]) {
+                            sync6.trigger("owl.goTo", num - sync6visible.length + 2)
+                        } else {
+                            if (num - 1 === -1) {
                                 num = 0;
                             }
                             sync6.trigger("owl.goTo", num);
-                        } 
+                        }
                     }
-                } else if(num === sync6visible[sync6visible.length-1]){
+                } else if (num === sync6visible[sync6visible.length - 1]) {
                     sync6.trigger("owl.goTo", sync6visible[1])
-                } else if(num === sync6visible[0]){
-                    sync6.trigger("owl.goTo", num-1)
+                } else if (num === sync6visible[0]) {
+                    sync6.trigger("owl.goTo", num - 1)
                 }
-                
+
             }
-        }
-    }]);
-    
-};
+            //    }
+            //}]);
 
+        };
 
-
+    });
 
 /* ============================================
 7. Search box
@@ -718,97 +709,97 @@ if ($('.kopa-sync-2-carousel-widget').length > 0) {
 ============================================================ */
 
 
-    if ($('.scroll-slider').length > 0) {
-        Modernizr.load([
-            {
-                //load: [baseUrl + '/Scripts/mCustomScrollbar.js', baseUrl + '/Scripts/jquery.mousewheel.min.js'],
-                load: [baseUrl + '/Scripts/mCustomScrollbar.js', baseUrl + '/Scripts/jquery.mousewheel.min.js'],
-                complete: function () {                  
+    //if ($('.scroll-slider').length > 0) {
+    //    Modernizr.load([
+    //        {
+    //            //load: [baseUrl + '/Scripts/mCustomScrollbar.js', baseUrl + '/Scripts/jquery.mousewheel.min.js'],
+    //            load: [baseUrl + '/Scripts/mCustomScrollbar.js', baseUrl + '/Scripts/jquery.mousewheel.min.js'],
+    //            complete: function () {                  
 
-                    $(".scroll-slider").each(function() {
-                        var slider = $(this);
-                        var itemList = slider.find("ul");
-                        var prevSlide = slider.find("a.s-prev");
-                        var nextSlide = slider.find("a.s-next");
-                        var pos = 0;
-                        var itemCount = itemList.find("li").length;
-                        slider.find('.loading').fadeOut(function(){$('.loading').remove()});
+    //                $(".scroll-slider").each(function() {
+    //                    var slider = $(this);
+    //                    var itemList = slider.find("ul");
+    //                    var prevSlide = slider.find("a.s-prev");
+    //                    var nextSlide = slider.find("a.s-next");
+    //                    var pos = 0;
+    //                    var itemCount = itemList.find("li").length;
+    //                    slider.find('.loading').fadeOut(function(){$('.loading').remove()});
 
-                        var w = Math.round((slider.find("ul").width() - 105) / 4);
-                        slider.find(".s-item").width(w);  
-                        var h = slider.find(".s-item").height();          
-                        slider.height(h + 20);
-                        var W = 0;
-                        slider.find("li").each(function(){
-                            W += $(this).width() + 30;
-                        });
-                        $(".mCSB_container").width(W - 15);
+    //                    var w = Math.round((slider.find("ul").width() - 105) / 4);
+    //                    slider.find(".s-item").width(w);  
+    //                    var h = slider.find(".s-item").height();          
+    //                    slider.height(h + 20);
+    //                    var W = 0;
+    //                    slider.find("li").each(function(){
+    //                        W += $(this).width() + 30;
+    //                    });
+    //                    $(".mCSB_container").width(W - 15);
 
-                        $(window).resize(function() {
-                            var w = Math.round((slider.find("ul").width() - 105) / 4);
-                            slider.find(".s-item").width(w);  
-                            var h = slider.find(".s-item").height();          
-                            slider.height(h + 20);
-                            var W = 0;
-                            slider.find("li").each(function(){
-                                W += $(this).width() + 30;
-                            });
-                            $(".mCSB_container").width(W - 15);
-                        });
+    //                    $(window).resize(function() {
+    //                        var w = Math.round((slider.find("ul").width() - 105) / 4);
+    //                        slider.find(".s-item").width(w);  
+    //                        var h = slider.find(".s-item").height();          
+    //                        slider.height(h + 20);
+    //                        var W = 0;
+    //                        slider.find("li").each(function(){
+    //                            W += $(this).width() + 30;
+    //                        });
+    //                        $(".mCSB_container").width(W - 15);
+    //                    });
                         
 
-                        var itemW = w + 30;
+    //                    var itemW = w + 30;
 
-                        itemList.mCustomScrollbar({
-                            horizontalScroll: true,
-                            mouseWheel: true,
-                            autoHideScrollbar: false,
-                            contentTouchScroll: true,
-                            scrollButtons: {
-                              enable: false
-                            },
-                            advanced:{
-                                updateOnContentResize: true,
-                                updateOnBrowserResize: true
-                            }
-                        });
+    //                    itemList.mCustomScrollbar({
+    //                        horizontalScroll: true,
+    //                        mouseWheel: true,
+    //                        autoHideScrollbar: false,
+    //                        contentTouchScroll: true,
+    //                        scrollButtons: {
+    //                          enable: false
+    //                        },
+    //                        advanced:{
+    //                            updateOnContentResize: true,
+    //                            updateOnBrowserResize: true
+    //                        }
+    //                    });
 
-                        nextSlide.click(function(e){                          
-                            e.preventDefault();
-                            if(pos < itemCount) {
-                                var offset;
-                                pos++;
-                                offset = (itemW * pos);
-                                itemList.mCustomScrollbar("scrollTo", offset);
-                                if(pos+3 >= itemCount){
-                                    pos=itemCount - 4;                        
-                                }
-                            }
+    //                    nextSlide.click(function(e){                          
+    //                        e.preventDefault();
+    //                        if(pos < itemCount) {
+    //                            var offset;
+    //                            pos++;
+    //                            offset = (itemW * pos);
+    //                            itemList.mCustomScrollbar("scrollTo", offset);
+    //                            if(pos+3 >= itemCount){
+    //                                pos=itemCount - 4;                        
+    //                            }
+    //                        }
                             
-                        });
+    //                    });
 
-                        prevSlide.click(function(e){                          
-                            e.preventDefault();
-                            if(pos > 0) {
-                                var offset;
-                                pos--;
-                                offset = itemW * pos;
-                                itemList.mCustomScrollbar("scrollTo", offset);
-                                if(pos - 3 >= itemCount){
-                                    pos=0;
-                                    offset = itemW * pos;
-                                    itemList.mCustomScrollbar("scrollTo", offset);
-                                }
-                            }           
+    //                    prevSlide.click(function(e){                          
+    //                        e.preventDefault();
+    //                        if(pos > 0) {
+    //                            var offset;
+    //                            pos--;
+    //                            offset = itemW * pos;
+    //                            itemList.mCustomScrollbar("scrollTo", offset);
+    //                            if(pos - 3 >= itemCount){
+    //                                pos=0;
+    //                                offset = itemW * pos;
+    //                                itemList.mCustomScrollbar("scrollTo", offset);
+    //                            }
+    //                        }           
                             
-                        });
+    //                    });
                         
-                    });
+    //                });
 
-                }
-            }
-        ]);
-    };
+    //            }
+    //        }
+    //    ]);
+    //};
 
 
 
@@ -816,9 +807,9 @@ if ($('.kopa-sync-2-carousel-widget').length > 0) {
 13. Breadking News
 ============================================================ */
 
-    Modernizr.load([{
-        load: baseUrl + '/Scripts/jquery.carouFredSel-6.2.1.js',
-        complete: function () {
+    //Modernizr.load([{
+    //    load: baseUrl + '/Scripts/jquery.carouFredSel-6.2.1.js',
+    //    complete: function () {
 
             var t_w = 0;
             $('.ticker-1').find("dd").each(function(){
@@ -850,214 +841,214 @@ if ($('.kopa-sync-2-carousel-widget').length > 0) {
             //    }
             //});
 
-        }
-    }]);
+    //    }
+    //}]);
 
 
 /* =========================================================
 14. Validate Form
 ============================================================ */
 
-    if ($('.contact-form').length > 0) {
-        Modernizr.load([
-          {
-              //load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
-              load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
-            complete: function () {
-                $('.contact-form').validate({
-                    // Add requirements to each of the fields
-                    rules: {
-                        name: {
-                            required: true,
-                            minlength: 8
-                        },
-                        email: {
-                            required: true,
-                            email: true
-                        },
-                        web: {
-                            required: true,
-                            minlength: 10
-                        },
-                        message: {
-                            required: true,
-                            minlength: 10
-                        }
-                    },
-                    // Specify what error messages to display
-                    // when the user does something horrid
-                    messages: {
-                        name: {
-                            required: "Please enter your name.",
-                            minlength: $.format("At least {0} characters required.")
-                        },
-                        email: {
-                            required: "Please enter your email.",
-                            email: "Please enter a valid email."
-                        },
-                        web: {
-                            required: "Please enter your website.",
-                            minlength: "Please enter a valid website url."
-                        },
-                        message: {
-                            required: "Please enter a message.",
-                            minlength: $.format("At least {0} characters required.")
-                        }
-                    },
-                    // Use Ajax to send everything to processForm.php
-                    submitHandler: function(form) {
-                        $("#input-submit").attr("value", "Sending...");
-                        $(form).ajaxSubmit({
-                            success: function(responseText, statusText, xhr, $form) {
-                                $("#response").html(responseText).hide().slideDown("fast");
-                                $("#input-submit").attr("value", "Submit");
-                            }
-                        });
-                        return false;
-                    }
-                });
-            }
-          }
-        ]);
-    };
+    //if ($('.contact-form').length > 0) {
+    //    Modernizr.load([
+    //      {
+    //          //load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
+    //          load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
+    //        complete: function () {
+    //            $('.contact-form').validate({
+    //                // Add requirements to each of the fields
+    //                rules: {
+    //                    name: {
+    //                        required: true,
+    //                        minlength: 8
+    //                    },
+    //                    email: {
+    //                        required: true,
+    //                        email: true
+    //                    },
+    //                    web: {
+    //                        required: true,
+    //                        minlength: 10
+    //                    },
+    //                    message: {
+    //                        required: true,
+    //                        minlength: 10
+    //                    }
+    //                },
+    //                // Specify what error messages to display
+    //                // when the user does something horrid
+    //                messages: {
+    //                    name: {
+    //                        required: "Please enter your name.",
+    //                        minlength: $.format("At least {0} characters required.")
+    //                    },
+    //                    email: {
+    //                        required: "Please enter your email.",
+    //                        email: "Please enter a valid email."
+    //                    },
+    //                    web: {
+    //                        required: "Please enter your website.",
+    //                        minlength: "Please enter a valid website url."
+    //                    },
+    //                    message: {
+    //                        required: "Please enter a message.",
+    //                        minlength: $.format("At least {0} characters required.")
+    //                    }
+    //                },
+    //                // Use Ajax to send everything to processForm.php
+    //                submitHandler: function(form) {
+    //                    $("#input-submit").attr("value", "Sending...");
+    //                    $(form).ajaxSubmit({
+    //                        success: function(responseText, statusText, xhr, $form) {
+    //                            $("#response").html(responseText).hide().slideDown("fast");
+    //                            $("#input-submit").attr("value", "Submit");
+    //                        }
+    //                    });
+    //                    return false;
+    //                }
+    //            });
+    //        }
+    //      }
+    //    ]);
+    //};
 
     /*-- comment form --*/
 
-    if ($('#comments-form').length > 0) {
-        Modernizr.load([
-          {
-              //load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
-              load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
-            complete: function () {
-                $('#comments-form').validate({
-                    // Add requirements to each of the fields
-                    rules: {
-                        name: {
-                            required: true,
-                            minlength: 8
-                        },
-                        email: {
-                            required: true,
-                            email: true
-                        },
-                        phone: {
-                            required: true,
-                            phone: true
-                        },
-                        message: {
-                            required: true,
-                            minlength: 15
-                        }
-                    },
-                    // Specify what error messages to display
-                    // when the user does something horrid
-                    messages: {
-                        name: {
-                            required: "Please enter your name.",
-                            minlength: $.format("At least {0} characters required.")
-                        },
-                        email: {
-                            required: "Please enter your email.",
-                            email: "Please enter a valid email."
-                        },
-                        phone: {
-                            required: "Please enter your phone.",
-                            url: "Please enter a valid phone."
-                        },
-                        message: {
-                            required: "Please enter a message.",
-                            minlength: $.format("At least {0} characters required.")
-                        }
-                    },
-                    // Use Ajax to send everything to processForm.php
-                    submitHandler: function(form) {
-                        $("#input-submit").attr("value", "Sending...");
-                        $(form).ajaxSubmit({
-                            success: function(responseText, statusText, xhr, $form) {
-                                $("#response").html(responseText).hide().slideDown("fast");
-                                $("#input-submit").attr("value", "Submit");
-                            }
-                        });
-                        return false;
-                    }
-                });
-            }
-          }
-        ]);
-    };
+    //if ($('#comments-form').length > 0) {
+    //    Modernizr.load([
+    //      {
+    //          //load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
+    //          load: [baseUrl + '/Scripts/jquery.form.js', baseUrl + '/Scripts/jquery.validate.js'],
+    //        complete: function () {
+    //            $('#comments-form').validate({
+    //                // Add requirements to each of the fields
+    //                rules: {
+    //                    name: {
+    //                        required: true,
+    //                        minlength: 8
+    //                    },
+    //                    email: {
+    //                        required: true,
+    //                        email: true
+    //                    },
+    //                    phone: {
+    //                        required: true,
+    //                        phone: true
+    //                    },
+    //                    message: {
+    //                        required: true,
+    //                        minlength: 15
+    //                    }
+    //                },
+    //                // Specify what error messages to display
+    //                // when the user does something horrid
+    //                messages: {
+    //                    name: {
+    //                        required: "Please enter your name.",
+    //                        minlength: $.format("At least {0} characters required.")
+    //                    },
+    //                    email: {
+    //                        required: "Please enter your email.",
+    //                        email: "Please enter a valid email."
+    //                    },
+    //                    phone: {
+    //                        required: "Please enter your phone.",
+    //                        url: "Please enter a valid phone."
+    //                    },
+    //                    message: {
+    //                        required: "Please enter a message.",
+    //                        minlength: $.format("At least {0} characters required.")
+    //                    }
+    //                },
+    //                // Use Ajax to send everything to processForm.php
+    //                submitHandler: function(form) {
+    //                    $("#input-submit").attr("value", "Sending...");
+    //                    $(form).ajaxSubmit({
+    //                        success: function(responseText, statusText, xhr, $form) {
+    //                            $("#response").html(responseText).hide().slideDown("fast");
+    //                            $("#input-submit").attr("value", "Submit");
+    //                        }
+    //                    });
+    //                    return false;
+    //                }
+    //            });
+    //        }
+    //      }
+    //    ]);
+    //};
    
 
 /* =========================================================
 15. Google Map
 ============================================================ */
 
-var map;
+//var map;
 
-if ($('.kopa-map').length > 0) {
-    Modernizr.load([{
-        //load: [baseUrl + '/Scripts/gmaps.js'],
-        load: [baseUrl + '/Scripts/gmaps.js'],
-            complete: function () {
-          var id_map = $('.kopa-map').attr('id');
-          var lat = parseFloat($('.kopa-map').attr('data-latitude'));
-          var lng = parseFloat($('.kopa-map').attr('data-longitude'));
-          var place = $('.kopa-map').attr('data-place');
+//if ($('.kopa-map').length > 0) {
+//    Modernizr.load([{
+//        //load: [baseUrl + '/Scripts/gmaps.js'],
+//        load: [baseUrl + '/Scripts/gmaps.js'],
+//            complete: function () {
+//          var id_map = $('.kopa-map').attr('id');
+//          var lat = parseFloat($('.kopa-map').attr('data-latitude'));
+//          var lng = parseFloat($('.kopa-map').attr('data-longitude'));
+//          var place = $('.kopa-map').attr('data-place');
 
-      map = new GMaps({
-          el: '#'+id_map,
-          lat: lat,
-          lng: lng,
-          zoomControl : true,
-          zoomControlOpt: {
-              style : 'SMALL',
-              position: 'TOP_LEFT'
-          },
-          panControl : false,
-          streetViewControl : false,
-          mapTypeControl: false,
-          overviewMapControl: false
-        });
-        map.addMarker({
-          lat: lat,
-            lng: lng,
-          title: place
-        });
-        }
-    }]);
-};
+//      map = new GMaps({
+//          el: '#'+id_map,
+//          lat: lat,
+//          lng: lng,
+//          zoomControl : true,
+//          zoomControlOpt: {
+//              style : 'SMALL',
+//              position: 'TOP_LEFT'
+//          },
+//          panControl : false,
+//          streetViewControl : false,
+//          mapTypeControl: false,
+//          overviewMapControl: false
+//        });
+//        map.addMarker({
+//          lat: lat,
+//            lng: lng,
+//          title: place
+//        });
+//        }
+//    }]);
+//};
 
-var map1;
-if ($('.kopa-map-1').length > 0) {
-    Modernizr.load([{
-        load: [ baseUrl + '/Scripts/gmaps.js'],
-            complete: function () {
-            var id_map = $('.kopa-map-1').attr('id');
-            var lat = parseFloat($('.kopa-map-1').attr('data-latitude'));
-            var lng = parseFloat($('.kopa-map-1').attr('data-longitude'));
-            var place = $('.kopa-map-1').attr('data-place');
+//var map1;
+//if ($('.kopa-map-1').length > 0) {
+//    Modernizr.load([{
+//        load: [ baseUrl + '/Scripts/gmaps.js'],
+//            complete: function () {
+//            var id_map = $('.kopa-map-1').attr('id');
+//            var lat = parseFloat($('.kopa-map-1').attr('data-latitude'));
+//            var lng = parseFloat($('.kopa-map-1').attr('data-longitude'));
+//            var place = $('.kopa-map-1').attr('data-place');
 
-        map1 = new GMaps({
-            el: '#'+id_map,
-            lat: lat,
-            lng: lng,
-            zoomControl : true,
-            zoomControlOpt: {
-                style : 'SMALL',
-                position: 'TOP_LEFT'
-            },
-            panControl : false,
-            streetViewControl : false,
-            mapTypeControl: false,
-            overviewMapControl: false
-        });
-        map1.addMarker({
-            lat: lat,
-            lng: lng,
-            title: place
-        });
-        }
-    }]);
-};
+//        map1 = new GMaps({
+//            el: '#'+id_map,
+//            lat: lat,
+//            lng: lng,
+//            zoomControl : true,
+//            zoomControlOpt: {
+//                style : 'SMALL',
+//                position: 'TOP_LEFT'
+//            },
+//            panControl : false,
+//            streetViewControl : false,
+//            mapTypeControl: false,
+//            overviewMapControl: false
+//        });
+//        map1.addMarker({
+//            lat: lat,
+//            lng: lng,
+//            title: place
+//        });
+//        }
+//    }]);
+//};
 
  /* =========================================================
 16. Masonry
@@ -1143,17 +1134,18 @@ if ($('.kopa-map-1').length > 0) {
 
     if ($('.article-list-5').length > 0) {
     
-        Modernizr.load([{
-            load: [baseUrl + '/Scripts/jquery.matchHeight.js'],
-            complete: function () {
+        //Thanasis an skasei kapou na balw to js na to fortwnei!
+        //Modernizr.load([{
+        //    load: [baseUrl + '/Scripts/jquery.matchHeight.js'],
+        //    complete: function () {
 
                 var post_1 = $('.cl-item');
                 
                 post_1.each(function() {
                     $(this).children('div').matchHeight();
                 });
-            }
-        }]);
+        //    }
+        //}]);
 
     };
 
@@ -1161,9 +1153,9 @@ if ($('.kopa-map-1').length > 0) {
 18. Mobile-menu
 =============================================== */
 
-    Modernizr.load([{
-        load: [baseUrl + '/Scripts/jquery.navgoco.js'],
-        complete: function () {
+    //Modernizr.load([{
+    //    load: [baseUrl + '/Scripts/jquery.navgoco.js'],
+    //    complete: function () {
             
             $(".main-menu-mobile").navgoco({
                 accordion: true
@@ -1181,8 +1173,8 @@ if ($('.kopa-map-1').length > 0) {
                 $(this).closest(".bottom-nav-mobile").find(".main-menu-mobile").slideToggle("slow");
             });
 
-        }
-    }]);
+    //    }
+    //}]);
 
 
 /* ============================================
@@ -1212,15 +1204,9 @@ if ($('.kopa-map-1').length > 0) {
 =============================================== */
 
 if (jQuery('.kopa-slider-ip').length > 0) {
-
-    Modernizr.load([{
-        load: [baseUrl + '/Scripts/bootstrap-slider.min.js'],
-        complete: function () {
-            jQuery('.kopa-slider-ip').slider({
-                tooltip: "show"
-            });
-        }
-    }]);
+    jQuery('.kopa-slider-ip').slider({
+        tooltip: "show"
+    });
 };
 
 /* =========================================================
@@ -1258,7 +1244,7 @@ function appendTop5Container(choiceContainer, result) {
                 _photo = this.pphoto;
             }
             else { 
-                _photo = "../Content/images/icons8-Basketball-Player-50.png";
+                _photo = baseUrl + "/Content/images/icons8-Basketball-Player-50.png";
             }
                         
             var d = ' <li> ' +

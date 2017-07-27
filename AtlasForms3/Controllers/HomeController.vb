@@ -1,4 +1,5 @@
-﻿Public Class HomeController
+﻿<Compress>
+Public Class HomeController
     Inherits System.Web.Mvc.Controller
     Function Index(Optional a As Integer = 0) As ActionResult
 
@@ -7,7 +8,7 @@
 
     End Function
 
-    Private pdb As New atlasStatisticsEntities
+    Private pdb As New AtlasStatisticsEntities
 
     <Authorize(Roles:="Admins")>
     Function Panel() As ActionResult
@@ -33,7 +34,7 @@
     End Function
 
 
-
+    <Compress>
     <HttpPost>
     Public Function GetWeeklyReportStat1(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
@@ -53,6 +54,7 @@
 
     End Function
 
+    <Compress>
     <HttpPost>
     Public Function GetWeeklyReportStat2(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
@@ -72,6 +74,7 @@
 
     End Function
 
+    <Compress>
     <HttpPost>
     Public Function GetWeeklyReportStat3(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
@@ -91,6 +94,7 @@
 
     End Function
 
+    <Compress>
     <HttpPost>
     Public Function GetWeeklyReportStat4(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
@@ -110,6 +114,7 @@
 
     End Function
 
+    <Compress>
     <HttpPost>
     Public Function GetWeeklyReportStat5(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
@@ -129,7 +134,7 @@
 
     End Function
 
-
+    <Compress>
     <HttpPost>
     Public Function GetRankingsStats(ByVal kathgoriaid As Integer) As JsonResult
 
@@ -163,7 +168,7 @@
 
     End Function
 
-
+    <Compress>
     <HttpPost>
     Public Function Getdiorganwseis() As JsonResult
 
@@ -178,6 +183,7 @@
 
     End Function
 
+    <Compress>
     <HttpPost>
     Public Function GetOmiloiByDiorganwsh(ByVal dId As Integer) As JsonResult
 
@@ -193,6 +199,7 @@
     End Function
 
 
+    <Compress>
     <HttpPost>
     Public Function GetKathgoriesbyOmilos(ByVal OId As Integer) As JsonResult
 
@@ -212,6 +219,7 @@
 
     End Function
 
+    <Compress>
     <HttpPost>
     Public Function Getlastgames(ByVal omilosid As Integer?) As JsonResult
 

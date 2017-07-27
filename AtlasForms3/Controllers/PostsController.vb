@@ -2,6 +2,8 @@
 Imports System.Web.Mvc
 
 Namespace Controllers
+
+    <Compress>
     Public Class PostsController
         Inherits Controller
 
@@ -292,7 +294,7 @@ Namespace Controllers
         'End Function
 
 
-
+        <Compress>
         Function GetNews() As JsonResult
 
             Dim q = (From p In pdb.BlogPostsTable
@@ -311,7 +313,7 @@ Namespace Controllers
             Return Json(dtm, JsonRequestBehavior.AllowGet)
         End Function
 
-
+        <Compress>
         Function GetLastNews(ByVal nCount As Integer) As JsonResult
 
             Dim q = (From p In pdb.BlogPostsTable
@@ -332,6 +334,7 @@ Namespace Controllers
             Return Json(dtm, JsonRequestBehavior.AllowGet)
         End Function
 
+        <Compress>
         Function GetLastNewsByCategory(ByVal nCount As Integer, Optional ByVal k As Integer = 0) As JsonResult
 
             Dim q = (From p In pdb.BlogPostsTable
@@ -357,7 +360,7 @@ Namespace Controllers
 
         End Function
 
-
+        <Compress>
         Function GetLastNewswithVideo() As JsonResult
 
             Dim ar2 = (From p In pdb.BlogPostsTable
@@ -383,6 +386,7 @@ Namespace Controllers
 
         End Function
 
+        <Compress>
         Function GetLastNewsByCategory2(ByVal nCount As Integer, ByVal KathgoriaId As Integer,
                                         Optional ByVal IsKathgoria As Integer = 0,
                                         Optional ByVal IsYpokathgoria As Integer = 0,
@@ -492,7 +496,7 @@ Namespace Controllers
 
         End Function
 
-
+        <Compress>
         Function GetLastNewsByBothCategories(ByVal nCount As Integer, ByVal AtlasOmilosid As Integer,
                                              ByVal KathgoriaId As Integer,
                                         Optional ByVal IsKathgoria As Integer = 0,
@@ -542,7 +546,7 @@ Namespace Controllers
 
         End Function
 
-
+        <Compress>
         Function GetAllNewsWithCategory() As JsonResult
 
 
@@ -567,6 +571,7 @@ Namespace Controllers
 
         End Function
 
+        <Compress>
         Function GetTeamsbyKathgoria(ByVal kid As Integer) As JsonResult
 
 
@@ -595,6 +600,7 @@ Namespace Controllers
 
 
         <HttpPost>
+        <Compress>
         Public Function GetKathgories(ByVal id As Integer) As JsonResult
 
             Dim q = (From d In pdb2.KathgoriesTable
