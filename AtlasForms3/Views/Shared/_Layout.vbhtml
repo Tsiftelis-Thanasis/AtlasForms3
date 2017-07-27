@@ -296,7 +296,7 @@ End Code
 
                             //onclick="appendKathgoriaNav(' + this.Id + ')
                             var d = '<li class="lipointer" value = "' + this.Id + '"> ' +
-                                    '<a  <a href="' + baseUrl + '/Home/Index/?ak=' + this.Id + '"><span>' + omilos + '</span></a>' +
+                                    '<a  <a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
                                     '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
                                     '</li>';
 
@@ -559,48 +559,7 @@ End Code
             });
 
 
-        //append lastgames carouselid
-
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("Getlastgames", "Home")',
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var choiceContainer = $("#lastgamescarouselid");
-                if (result.length > 0) {
-
-                    choiceContainer.empty();
-                    $.each(result, function () {
-
-                        var d= '<div class="item"> ' +
-                                '<div class="entry-item"> ' +
-                                '<a  target="_blank" href="http://www.atlasstatistics.gr/Games/Details/' + this.Id + '"> ' +
-                                '<p>' + this.Gamedate + '</p> ' +
-                                '<ul class="clearfix"> ' +
-                                '<li> ' +
-                                '<span title="' + this.team1 + '">' + this.team1 + '</span> ' +
-                                '<span>' + this.team1score + '</span> ' +
-                                '</li> ' +
-                                '<li> ' +
-                                '<span title="' + this.team2 + '">' + this.team2 + '</span> ' +
-                                '<span>' + this.team2score + '</span> ' +
-                                '</li> ' +
-                                '</ul> ' +
-                                '</a> ' +
-                                '</div> ' +
-                                '</div>';
-
-                        choiceContainer.append(d);
-                    });
-                }
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
+        
 
 
     });

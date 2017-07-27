@@ -75,19 +75,18 @@ var map;
 1. top Menu
 ============================================================ */
 
-Modernizr.load([
-  {
-      //load: baseUrl + '/Scripts/superfish.js',
-      load: baseUrl + '/Scripts/superfish.js',
-        complete: function () {
+//Modernizr.load([
+//  {
+//        load: baseUrl + '/Scripts/superfish.js',
+//        complete: function () {
 
-        //Main menu
-        $('.top-menu').superfish({
-        });
+//        //Main menu
+//        $('.top-menu').superfish({
+//        });
 
-    }
-  }
-]);
+//    }
+//  }
+//]);
 
 
 /* =========================================================
@@ -1259,7 +1258,7 @@ function appendTop5Container(choiceContainer, result) {
                 _photo = this.pphoto;
             }
             else { 
-                _photo = "../Content/images/icons8-Basketball Player-50.png";
+                _photo = "../Content/images/icons8-Basketball-Player-50.png";
             }
                         
             var d = ' <li> ' +

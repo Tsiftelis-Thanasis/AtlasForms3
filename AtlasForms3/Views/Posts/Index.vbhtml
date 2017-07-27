@@ -1643,7 +1643,7 @@ End Code
         $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetWeeklyReportStat1", "Home")',
-            data: "{thisid : 49 }",
+            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
             async: false,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1661,7 +1661,7 @@ End Code
         $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetWeeklyReportStat2", "Home")',
-            data: "{thisid : 49 }",
+            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
             async: false,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1679,7 +1679,7 @@ End Code
         $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetWeeklyReportStat3", "Home")',
-            data: "{thisid : 49}",
+            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
             async: false,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1698,7 +1698,7 @@ End Code
         $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetWeeklyReportStat4", "Home")',
-            data: "{thisid : 49}",
+            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
             async: false,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1716,7 +1716,7 @@ End Code
         $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetWeeklyReportStat5", "Home")',
-            data: "{thisid : 49}",
+            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
             async: false,
             contentType: "application/json; charset=utf-8",
             dataType: "json",

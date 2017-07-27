@@ -1,35 +1,66 @@
 ﻿@Code
-    ViewData("Title") = "ατλας μπασκετ"
+
+
+
+    Dim atlasomilosid As Integer = If(ViewBag.AtlasOmilos Is Nothing, 0, ViewBag.AtlasOmilos)
+    Dim atlasomilosname As String = ""
+
+    Using pdb2 As New AtlasStatisticsEntities
+
+        If atlasomilosid > 0 Then
+
+            atlasomilosname = (From k In pdb2.OmilosTable
+                               Where k.Id = atlasomilosid
+                               Select k.OmilosName).FirstOrDefault
+        End If
+
+    End Using
+
+    'Dim innerTitle As String = ""
+    If atlasomilosname = "" Then
+        ViewData("Title") = "ατλας μπασκετ"
+    Else
+        If atlasomilosname.Count < 2 Then
+            atlasomilosname = atlasomilosname & " Όμιλος"
+        End If
+
+        ViewData("Title") = atlasomilosname
+    End If
+
+
 End Code
 
 
-<div id="main-content" class="style1">
+@Html.Hidden("atlasomilosid", atlasomilosid)
 
 
-    <div class="main-top">
+<div id = "main-content" Class="style1">
+
+
+    <div Class="main-top">
 
 
 
-        <div class="social-links style1">
-            <ul class="clearfix">
-                <li><a href="#" class="fa fa-facebook"></a></li>
-                <li><a href="#" class="fa fa-twitter"></a></li>
-                <li><a href="#" class="fa fa-google-plus"></a></li>
-                <li><a href="#" class="fa fa-instagram"></a></li>
+        <div Class="social-links style1">
+            <ul Class="clearfix">
+                <li> <a href = "#" Class="fa fa-facebook"></a></li>
+                <li> <a href = "#" Class="fa fa-twitter"></a></li>
+                <li> <a href = "#" Class="fa fa-google-plus"></a></li>
+                <li> <a href = "#" Class="fa fa-instagram"></a></li>
             </ul>
         </div>
 
     </div>
 
     <!-- main-top -->
-        <div class="wrapper">
+        <div Class="wrapper">
 
-            <div class="kopa-page">
-                <div class="widget kopa-tab-score-widget">
-                    <div class="kopa-tab style1">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="agroup">
-                                <div id="lastgamescarouselid" class="owl-carousel owl-carousel-1">
+            <div Class="kopa-page">
+                <div Class="widget kopa-tab-score-widget">
+                    <div Class="kopa-tab style1">
+                        <div Class="tab-content">
+                            <div Class="tab-pane active" id="agroup">
+                                <div id = "lastgamescarouselid" Class="owl-carousel owl-carousel-1">
 
                                 </div>
                             </div>
@@ -44,12 +75,12 @@ End Code
             </div>
         </div>
 
-    <div class="wrapper mb-30">
+    <div Class="wrapper mb-30">
 
-        <div class="widget-area-1">
+        <div Class="widget-area-1">
 
-            <div class="widget kopa-sync-carousel-widget">
-                <div class="owl-carousel sync1"  id="mainnewscarouselid">                   
+            <div Class="widget kopa-sync-carousel-widget">
+                <div Class="owl-carousel sync1"  id="mainnewscarouselid">                   
                  
                 </div>
                 <!-- sync1 -->
@@ -156,25 +187,25 @@ End Code
             @*</div>*@
             <!-- wrapper -->
 
-            <div class="wrapper">
+            <div Class="wrapper">
 
                 
 
-                <div class="content-wrap">
+                <div Class="content-wrap">
 
-                    <div class="row">
+                    <div Class="row">
 
-                        <div class="kopa-main-col">
+                        <div Class="kopa-main-col">
 
-                            <div class="widget-area-2">
+                            <div Class="widget-area-2">
 
-                                <div class="widget kopa-tab-sync-carousel-widget">
-                                    <h3 class="widget-title style1">τοπ 10</h3>
-                                    <div class="widget kopa-sync-carousel-2-widget">
-                                        <div class="owl-carousel sync3" id="watchsync3">
+                                <div Class="widget kopa-tab-sync-carousel-widget">
+                                    <h3 Class="widget-title style1">τοπ 10</h3>
+                                    <div Class="widget kopa-sync-carousel-2-widget">
+                                        <div Class="owl-carousel sync3" id="watchsync3">
                                         </div>
                                         <!-- sync3 -->
-                                        <div class="owl-carousel sync4" id="watchsync4">
+                                        <div Class="owl-carousel sync4" id="watchsync4">
                                         </div>
                                         <!-- sync4 -->
                                     </div>
@@ -183,9 +214,9 @@ End Code
                                 <!-- widget -->                             
 
 
-                                <div class="widget kopa-article-list-widget article-list-1">
-                                    <h3 class="widget-title style2">τελευταια νεα</h3>
-                                    <ul id="latestnewsid" class="clearfix"></ul>
+                                <div Class="widget kopa-article-list-widget article-list-1">
+                                    <h3 Class="widget-title style2">τελευταια νεα</h3>
+                                    <ul id = "latestnewsid" Class="clearfix"></ul>
                                 </div>
                                 <!-- widget -->
 
@@ -196,50 +227,50 @@ End Code
                         </div>
                         <!-- main-col -->
 
-                        <div class="sidebar widget-area-11">
+                        <div Class="sidebar widget-area-11">
 
 
                             <!-- widget -->
 
-                            <div class="widget ">
-                                <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
-                                <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
-                                <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
+                            <div Class="widget ">
+                                <a href = "http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
+                                <a href = "https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
+                                <a href = "http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
                             </div>
                             <!-- widget -->
                             @*<div class="widget kopa-point-widget">*@
-                            <div class="widget kopa-tab-1-widget kopa-point-widget">
-                                <h3 class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
-                                <ul class="clearfix">
+                            <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                                <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
+                                <ul Class="clearfix">
                                     <li>
-                                        <div class="kopa-tab style3">
-                                            <ul class="nav nav-tabs">
-                                                <li class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                                <li><a href="#assist" data-toggle="tab">Πασ.</a></li>
-                                                <li><a href="#reb" data-toggle="tab">Ριμ.</a></li>
-                                                <li><a href="#steal" data-toggle="tab">Κλ.</a></li>
-                                                <li><a href="#block" data-toggle="tab">Κοψ.</a></li>
+            <div Class="kopa-tab style3">
+                                            <ul Class="nav nav-tabs">
+                                                <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
+                                                <li> <a href = "#assist" data-toggle="tab">Πασ.</a></li>
+                                                <li> <a href = "#reb" data-toggle="tab">Ριμ.</a></li>
+                                                <li> <a href = "#steal" data-toggle="tab">Κλ.</a></li>
+                                                <li> <a href = "#block" data-toggle="tab">Κοψ.</a></li>
                                             </ul>
                                             <!-- nav-tabs -->
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="points">
-                                                    <ul class="kopa-list clearfix" id="pointsul"></ul>
+                                            <div Class="tab-content">
+                                                <div Class="tab-pane active" id="points">
+                                                    <ul Class="kopa-list clearfix" id="pointsul"></ul>
                                                 </div>
                                                 <!-- tab-pane -->
-                                                <div class="tab-pane" id="assist">
-                                                    <ul class="kopa-list clearfix" id="assistul"></ul>
+                                                <div Class="tab-pane" id="assist">
+                                                    <ul Class="kopa-list clearfix" id="assistul"></ul>
                                                 </div>
                                                 <!-- tab-pane -->
-                                                <div class="tab-pane" id="reb">
-                                                    <ul class="kopa-list clearfix" id="reboundul"></ul>
+                                                <div Class="tab-pane" id="reb">
+                                                    <ul Class="kopa-list clearfix" id="reboundul"></ul>
                                                 </div>
                                                 <!-- tab-pane -->
-                                                <div class="tab-pane" id="steal">
-                                                    <ul class="kopa-list clearfix" id="stealsul"></ul>
+                                                <div Class="tab-pane" id="steal">
+                                                    <ul Class="kopa-list clearfix" id="stealsul"></ul>
                                                 </div>
                                                 <!-- tab-pane -->
-                                                <div class="tab-pane" id="block">
-                                                    <ul class="kopa-list clearfix" id="blocksul"></ul>
+                                                <div Class="tab-pane" id="block">
+                                                    <ul Class="kopa-list clearfix" id="blocksul"></ul>
                                                 </div>
                                                 <!-- tab-pane -->
 
@@ -581,13 +612,13 @@ End Code
             <!-- wrapper -->
         </div>
 
-    <div class="widget-area-24 kopa-area kopa-area-2">
+    <div Class="widget-area-24 kopa-area kopa-area-2">
 
-        <div class="widget kopa-product-list-widget">
-            <h3 class="widget-title style10">καλυτερες φασεις -- > Gallery !</h3>
-            <div class="content-wrap">
-                <div class="row">
-                    <div id="kalyteresfaseisid" class="owl-carousel owl-carousel-4">
+        <div Class="widget kopa-product-list-widget">
+            <h3 Class="widget-title style10">καλυτερες φασεις -- > Gallery !</h3>
+            <div Class="content-wrap">
+                <div Class="row">
+                    <div id = "kalyteresfaseisid" Class="owl-carousel owl-carousel-4">
                     </div>
                     <!-- owl-carousel-4 -->
                 </div>
@@ -608,10 +639,14 @@ End Code
     @Section Scripts
 
 
-        <script type="text/javascript">
+ <script type="text/javascript">
 
             $(document).ready(function () {
 
+
+                var omilosid = $("#atlasomilosid").val();
+
+                
                 //url: baseUrl + '@Url.Action("GetLastNewswithVideo", "Posts")',
                 //append carousel sync3 and sync4
                 $.ajax({
@@ -631,12 +666,7 @@ End Code
                             sync4container.empty();
 
                             $.each(result.data, function () {
-
-                                //'       <div class="content-top"> ' +
-                                //    '           <h4 class="entry-title">' + this.PostSummary + '</h4> ' +
-                                //    '       </div> ' +
-
-
+                                                       
                                 d = ' <div class="item"> ' +
                                     '   <article class="entry-item video-post"> ' +
                                     '   <div class="entry-thumb"> ' +
@@ -789,7 +819,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat1", "Home")',
-                    data: "{thisid : 0}",
+                    data: "{omid : " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -808,7 +838,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat2", "Home")',
-                    data: "{thisid : 0}",
+                    data: "{omid : " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -827,7 +857,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat3", "Home")',
-                    data: "{thisid : 0}",
+                    data: "{omid : " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -846,7 +876,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat4", "Home")',
-                    data: "{thisid : 0}",
+                    data: "{omid : " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -864,7 +894,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat5", "Home")',
-                    data: "{thisid : 0}",
+                    data: "{omid : " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -872,6 +902,51 @@ End Code
 
                         var choiceContainer = $("#blocksul");
                         appendTop5Container(choiceContainer, result);
+                    },
+                    error: function (result) {
+                        alert(result.status + ' ' + result.statusText);
+                    }
+                });
+
+
+                //append lastgames carouselid
+
+                $.ajax({
+                    type: "POST",
+                    url: baseUrl + '@Url.Action("Getlastgames", "Home")',
+                    data: "{omilosid : " + omilosid + "}",
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+
+                        var choiceContainer = $("#lastgamescarouselid");
+                        if (result.length > 0) {
+
+                            choiceContainer.empty();
+                            $.each(result, function () {
+
+                                var d = '<div class="item"> ' +
+                                        '<div class="entry-item"> ' +
+                                        '<a  target="_blank" href="http://www.atlasstatistics.gr/Games/Details/' + this.Id + '"> ' +
+                                        '<p>' + this.Gamedate + '</p> ' +
+                                        '<ul class="clearfix"> ' +
+                                        '<li> ' +
+                                        '<span title="' + this.team1 + '">' + this.team1 + '</span> ' +
+                                        '<span>' + this.team1score + '</span> ' +
+                                        '</li> ' +
+                                        '<li> ' +
+                                        '<span title="' + this.team2 + '">' + this.team2 + '</span> ' +
+                                        '<span>' + this.team2score + '</span> ' +
+                                        '</li> ' +
+                                        '</ul> ' +
+                                        '</a> ' +
+                                        '</div> ' +
+                                        '</div>';
+
+                                choiceContainer.append(d);
+                            });
+                        }
                     },
                     error: function (result) {
                         alert(result.status + ' ' + result.statusText);

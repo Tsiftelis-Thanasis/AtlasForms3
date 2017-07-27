@@ -26,6 +26,7 @@ Public Module BundleConfig
                   "~/Scripts/DataTables/jquery.dataTables.min.js",
                    "~/Scripts/chosen.jquery.js",
                   "~/Scripts/custom.js",
+                  "~/Scripts/superfish.js",
                   "~/Scripts/modernizr.custom.js",
                   "~/Scripts/tinymce/tinymce.min.js"))
 

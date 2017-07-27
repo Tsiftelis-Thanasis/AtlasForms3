@@ -1,10 +1,11 @@
 ﻿Public Class HomeController
     Inherits System.Web.Mvc.Controller
+    Function Index(Optional a As Integer = 0) As ActionResult
 
-    Function Index() As ActionResult
+        ViewBag.AtlasOmilos = a
         Return View()
-    End Function
 
+    End Function
 
     Private pdb As New atlasStatisticsEntities
 
@@ -34,9 +35,12 @@
 
 
     <HttpPost>
-    Public Function GetWeeklyReportStat1(ByVal thisid As Integer?) As JsonResult
+    Public Function GetWeeklyReportStat1(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
-        Dim s = (From proc In pdb.GetWeeklyReportStat1All(thisid)
+        If omid Is Nothing Then omid = 0
+        If kid Is Nothing Then kid = 0
+
+        Dim s = (From proc In pdb.GetWeeklyReportStat1All(omid, kid)
                  Select proc).ToList
 
         Dim stats
@@ -50,9 +54,12 @@
     End Function
 
     <HttpPost>
-    Public Function GetWeeklyReportStat2(ByVal thisid As Integer?) As JsonResult
+    Public Function GetWeeklyReportStat2(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
-        Dim s = (From proc In pdb.GetWeeklyReportStat2All(thisid)
+        If omid Is Nothing Then omid = 0
+        If kid Is Nothing Then kid = 0
+
+        Dim s = (From proc In pdb.GetWeeklyReportStat2All(omid, kid)
                  Select proc).ToList
 
         Dim stats
@@ -66,9 +73,12 @@
     End Function
 
     <HttpPost>
-    Public Function GetWeeklyReportStat3(ByVal thisid As Integer?) As JsonResult
+    Public Function GetWeeklyReportStat3(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
-        Dim s = (From proc In pdb.GetWeeklyReportStat3All(thisid)
+        If omid Is Nothing Then omid = 0
+        If kid Is Nothing Then kid = 0
+
+        Dim s = (From proc In pdb.GetWeeklyReportStat3All(omid, kid)
                  Select proc).ToList
 
         Dim stats
@@ -82,9 +92,12 @@
     End Function
 
     <HttpPost>
-    Public Function GetWeeklyReportStat4(ByVal thisid As Integer?) As JsonResult
+    Public Function GetWeeklyReportStat4(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
-        Dim s = (From proc In pdb.GetWeeklyReportStat4All(thisid)
+        If omid Is Nothing Then omid = 0
+        If kid Is Nothing Then kid = 0
+
+        Dim s = (From proc In pdb.GetWeeklyReportStat4All(omid, kid)
                  Select proc).ToList
 
         Dim stats
@@ -98,9 +111,12 @@
     End Function
 
     <HttpPost>
-    Public Function GetWeeklyReportStat5(ByVal thisid As Integer?) As JsonResult
+    Public Function GetWeeklyReportStat5(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
-        Dim s = (From proc In pdb.GetWeeklyReportStat5All(thisid)
+        If omid Is Nothing Then omid = 0
+        If kid Is Nothing Then kid = 0
+
+        Dim s = (From proc In pdb.GetWeeklyReportStat5All(omid, kid)
                  Select proc).ToList
 
         Dim stats
@@ -197,7 +213,7 @@
     End Function
 
     <HttpPost>
-    Public Function Getlastgames() As JsonResult
+    Public Function Getlastgames(ByVal omilosid As Integer?) As JsonResult
 
 
         'Link
@@ -206,13 +222,15 @@
         'omada a, pontoi a,
         'omada b, pontoi b         
 
+        If omilosid Is Nothing Then omilosid = 0
 
         Dim lastgames = (From g In pdb.GamesTable
                          Join ta In pdb.TeamsStatisticsTable On ta.Gameid Equals g.Id
                          Join teama In pdb.TeamsTable On ta.Teamid Equals teama.Id
                          Join tb In pdb.TeamsStatisticsTable On tb.Gameid Equals g.Id
                          Join teamb In pdb.TeamsTable On tb.Teamid Equals teamb.Id
-                         Where ta.gipedouxos = 1 And tb.gipedouxos = 0
+                         Where ta.gipedouxos = 1 And tb.gipedouxos = 0 And
+                             If(omilosid = 0, 1 = 1, g.Omilosid = omilosid)
                          Order By g.Id Descending
                          Select g.Id, Gamedate = g.Gamedate,
                              g.Gamestadium, team1 = teama.TeamName, team1score = ta.ptstotal,

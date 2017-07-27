@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="atlasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="atlasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DiorganwshTable">
           <Key>
             <PropertyRef Name="Id" />
@@ -219,18 +219,23 @@
           <Parameter Name="kathgoria" Type="int" Mode="In" />
         </Function>
         <Function Name="GetWeeklyReportStat1All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="omid" Type="int" Mode="In" />
           <Parameter Name="kid" Type="int" Mode="In" />
         </Function>
         <Function Name="GetWeeklyReportStat2All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="omid" Type="int" Mode="In" />
           <Parameter Name="kid" Type="int" Mode="In" />
         </Function>
         <Function Name="GetWeeklyReportStat3All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="omid" Type="int" Mode="In" />
           <Parameter Name="kid" Type="int" Mode="In" />
         </Function>
         <Function Name="GetWeeklyReportStat4All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="omid" Type="int" Mode="In" />
           <Parameter Name="kid" Type="int" Mode="In" />
         </Function>
         <Function Name="GetWeeklyReportStat5All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="omid" Type="int" Mode="In" />
           <Parameter Name="kid" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="atlasModelStoreContainer">
@@ -247,8 +252,7 @@
           <EntitySet Name="TeamsStatisticsTable" EntityType="Self.TeamsStatisticsTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeamsTable" EntityType="Self.TeamsTable" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="atlasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -479,18 +483,23 @@
             <Parameter Name="kathgoria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWeeklyReportStat1All" ReturnType="Collection(atlasModel.GetWeeklyReportStat1All_Result)">
+          <Parameter Name="omid" Mode="In" Type="Int32" />
             <Parameter Name="kid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWeeklyReportStat2All" ReturnType="Collection(atlasModel.GetWeeklyReportStat2All_Result)">
+          <Parameter Name="omid" Mode="In" Type="Int32" />
             <Parameter Name="kid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWeeklyReportStat3All" ReturnType="Collection(atlasModel.GetWeeklyReportStat3All_Result)">
+          <Parameter Name="omid" Mode="In" Type="Int32" />
             <Parameter Name="kid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWeeklyReportStat4All" ReturnType="Collection(atlasModel.GetWeeklyReportStat4All_Result)">
+          <Parameter Name="omid" Mode="In" Type="Int32" />
             <Parameter Name="kid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWeeklyReportStat5All" ReturnType="Collection(atlasModel.GetWeeklyReportStat5All_Result)">
+          <Parameter Name="omid" Mode="In" Type="Int32" />
             <Parameter Name="kid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>

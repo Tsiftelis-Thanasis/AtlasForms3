@@ -49,34 +49,44 @@ Partial Public Class AtlasStatisticsEntities
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of getallteamsrankings_Result)("getallteamsrankings", seasonParameter, diorganwshParameter, omilosParameter, kathgoriaParameter)
     End Function
 
-    Public Overridable Function GetWeeklyReportStat1All(kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat1All_Result)
+    Public Overridable Function GetWeeklyReportStat1All(omid As Nullable(Of Integer), kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat1All_Result)
+        Dim omidParameter As ObjectParameter = If(omid.HasValue, New ObjectParameter("omid", omid), New ObjectParameter("omid", GetType(Integer)))
+
         Dim kidParameter As ObjectParameter = If(kid.HasValue, New ObjectParameter("kid", kid), New ObjectParameter("kid", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat1All_Result)("GetWeeklyReportStat1All", kidParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat1All_Result)("GetWeeklyReportStat1All", omidParameter, kidParameter)
     End Function
 
-    Public Overridable Function GetWeeklyReportStat2All(kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat2All_Result)
+    Public Overridable Function GetWeeklyReportStat2All(omid As Nullable(Of Integer), kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat2All_Result)
+        Dim omidParameter As ObjectParameter = If(omid.HasValue, New ObjectParameter("omid", omid), New ObjectParameter("omid", GetType(Integer)))
+
         Dim kidParameter As ObjectParameter = If(kid.HasValue, New ObjectParameter("kid", kid), New ObjectParameter("kid", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat2All_Result)("GetWeeklyReportStat2All", kidParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat2All_Result)("GetWeeklyReportStat2All", omidParameter, kidParameter)
     End Function
 
-    Public Overridable Function GetWeeklyReportStat3All(kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat3All_Result)
+    Public Overridable Function GetWeeklyReportStat3All(omid As Nullable(Of Integer), kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat3All_Result)
+        Dim omidParameter As ObjectParameter = If(omid.HasValue, New ObjectParameter("omid", omid), New ObjectParameter("omid", GetType(Integer)))
+
         Dim kidParameter As ObjectParameter = If(kid.HasValue, New ObjectParameter("kid", kid), New ObjectParameter("kid", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat3All_Result)("GetWeeklyReportStat3All", kidParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat3All_Result)("GetWeeklyReportStat3All", omidParameter, kidParameter)
     End Function
 
-    Public Overridable Function GetWeeklyReportStat4All(kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat4All_Result)
+    Public Overridable Function GetWeeklyReportStat4All(omid As Nullable(Of Integer), kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat4All_Result)
+        Dim omidParameter As ObjectParameter = If(omid.HasValue, New ObjectParameter("omid", omid), New ObjectParameter("omid", GetType(Integer)))
+
         Dim kidParameter As ObjectParameter = If(kid.HasValue, New ObjectParameter("kid", kid), New ObjectParameter("kid", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat4All_Result)("GetWeeklyReportStat4All", kidParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat4All_Result)("GetWeeklyReportStat4All", omidParameter, kidParameter)
     End Function
 
-    Public Overridable Function GetWeeklyReportStat5All(kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat5All_Result)
+    Public Overridable Function GetWeeklyReportStat5All(omid As Nullable(Of Integer), kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyReportStat5All_Result)
+        Dim omidParameter As ObjectParameter = If(omid.HasValue, New ObjectParameter("omid", omid), New ObjectParameter("omid", GetType(Integer)))
+
         Dim kidParameter As ObjectParameter = If(kid.HasValue, New ObjectParameter("kid", kid), New ObjectParameter("kid", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat5All_Result)("GetWeeklyReportStat5All", kidParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat5All_Result)("GetWeeklyReportStat5All", omidParameter, kidParameter)
     End Function
 
 End Class
