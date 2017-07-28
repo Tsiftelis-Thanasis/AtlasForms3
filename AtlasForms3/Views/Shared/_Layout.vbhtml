@@ -264,23 +264,23 @@ End Code
                         var d = '';
                         if (result.length > 0) {
                             $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >νεα ' + this.KathgoriaName + '        </a> </span> </li> ';
                                 i++;
                             });
                             $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >ομαδες ' + this.KathgoriaName + '     </a> </span> </li> ';
                                 i++;
                             });
                             $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >βαθμολογιες ' + this.KathgoriaName + '</a> </span> </li> ';
                                 i++;
                             });
                             $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 3 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 3 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >προγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
                                 i++;
                             });
                             $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
+                                d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >τιμωριες ' + this.KathgoriaName + '   </a> </span> </li> ';
                                 i++;
                             });
                             choiceContainer.append(d);

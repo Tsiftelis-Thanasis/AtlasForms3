@@ -64,7 +64,7 @@
 
     If ViewBag.kathgoria = 11 Then
         ViewData("Title") = "Τελευταία νέα " '& katName
-        innerTitle = "τελευταια νεα " '& katName
+        innerTitle = "τελευταια νεα " & atlaskathgoria1name
     End If
     If ViewBag.kathgoria = 12 Then
         ViewData("Title") = "Ομάδες " '& katName
@@ -98,7 +98,7 @@ End Code
     <div Class="wrapper">
         <div Class="content-wrap">
             <div Class="row">
-                <div Class="kopa-main"> @*<div Class="kopa-main-col">*@
+                <div Class="kopa-main-col"> @*<div Class="kopa-main-col">*@
 
                         <div id="divfixture" class="widget kopa-entry-list" style="display: none;">
                             <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
@@ -987,59 +987,66 @@ End Code
                         </div>
                     </div>
                
-                    @*<div Class="sidebar widget-area-11">
+               <div Class="sidebar widget-area-11">
+                       <div Class="widget kopa-ads-widget">
+                           <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
+                       </div>
 
-               
-                <!-- widget -->
+                       <div Class="widget kopa-ads-widget">
+                           <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
+                       </div>
 
-                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                    <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
-                    <ul Class="clearfix">
-                        <li>
-                            <div Class="kopa-tab style3">
-                                <ul Class="nav nav-tabs">
-                                    <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                    <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
-                                    <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
-                                    <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
-                                    <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
-                                </ul>
-                                <!-- nav-tabs -->
-                                <div Class="tab-content">
-                                    <div Class="tab-pane active" id="points">
-                                        <ul Class="kopa-list clearfix" id="pointsul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="assist">
-                                        <ul Class="kopa-list clearfix" id="assistul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="reb">
-                                        <ul Class="kopa-list clearfix" id="reboundul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="steal">
-                                        <ul Class="kopa-list clearfix" id="stealsul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="block">
-                                        <ul Class="kopa-list clearfix" id="blocksul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                </div>
-                            </div>
-                            <!-- kopa-tab -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- widget -->
+                       <div Class="widget kopa-ads-widget">
+                           <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
+                       </div>
+                       <!-- widget -->
 
 
-            </div>*@
+                       <!-- widget -->
+                       <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                           <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
+                           <ul Class="clearfix">
+                               <li>
+                                   <div Class="kopa-tab style3">
+                                       <ul Class="nav nav-tabs">
+                                           <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
+                                           <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
+                                           <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
+                                           <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
+                                           <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
+                                       </ul>
+                                       <!-- nav-tabs -->
+                                       <div Class="tab-content">
+                                           <div Class="tab-pane active" id="points">
+                                               <ul Class="kopa-list clearfix" id="pointsul"></ul>
+                                           </div>
+                                           <!-- tab-pane -->
+                                           <div Class="tab-pane" id="assist">
+                                               <ul Class="kopa-list clearfix" id="assistul"></ul>
+                                           </div>
+                                           <!-- tab-pane -->
+                                           <div Class="tab-pane" id="reb">
+                                               <ul Class="kopa-list clearfix" id="reboundul"></ul>
+                                           </div>
+                                           <!-- tab-pane -->
+                                           <div Class="tab-pane" id="steal">
+                                               <ul Class="kopa-list clearfix" id="stealsul"></ul>
+                                           </div>
+                                           <!-- tab-pane -->
+                                           <div Class="tab-pane" id="block">
+                                               <ul Class="kopa-list clearfix" id="blocksul"></ul>
+                                           </div>
+                                           <!-- tab-pane -->
+                                       </div>
+                                   </div>
+                                   <!-- kopa-tab -->
+                               </li>
+                           </ul>
+                       </div>
+                       <!-- widget -->
+                   </div>
           
-                </div>
-          
-
+            </div>
         </div>
         
         <section Class="kopa-area kopa-area-1 mb-30" id="divresultsandstandings" style="display: none;">
@@ -1056,7 +1063,7 @@ End Code
                                  
                         <div id = "divresults1" Class="widget-area-12"  style="display: none;">
                         <div Class="widget kopa-result-widget">
-                            <h3 Class="widget-title style6">αποτελεσματα α1</h3>
+                            <h3 Class="widget-title style6">αποτελεσματα @atlaskathgoria1name</h3>
                             <div Class="widget-content">
                                 <div Class="span-bg">
                                     <span Class="c-tg"></span>
@@ -1122,7 +1129,7 @@ End Code
                         @<div Class="row">
 
                         <div id = "divresults2" Class="widget kopa-result-widget"  style="display: none;">
-                                <h3 Class="widget-title style6">αποτελεσματα α2</h3>
+                                <h3 Class="widget-title style6">αποτελεσματα @atlaskathgoria1name</h3>
                                 <div Class="widget-content">
                                     <div Class="span-bg">
                                         <span Class="c-tg"></span>
@@ -1313,7 +1320,7 @@ End Code
                 "fnServerParams": function (aoData) {
                     aoData.push({
                         "name": "AtlasOmilosid",
-                        "value": $('#atlasomilosid').val()
+                        "value": $('#atlaskathgoria1').val()
                     })
                     aoData.push({
                         "name": "nCount",
@@ -1361,7 +1368,7 @@ End Code
                                     '   </div> ' +
                                     '   <p>' + row.PostSummary + ' .... </p> ' +
                                     '   <footer> ' +
-                                    '       <p class="entry-author"> by ' + row.editby + '</p> ' +
+                                    '       <p class="entry-author"> από ' + row.editBy + '</p> ' +
                                     '   </footer> ' +
                                     ' </div>    ' +
                                     ' </a> ' +

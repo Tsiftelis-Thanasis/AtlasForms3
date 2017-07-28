@@ -595,11 +595,10 @@
     <Content Include="Content\images\black_twill.png" />
     <Content Include="Content\images\cl.png" />
     <Content Include="Content\images\favicon.html" />
-    <Content Include="Content\images\icons8-Basketball-Player-40.png" />
-    <Content Include="Content\images\icons8-Basketball-Player-50.png" />
+    <Content Include="Content\images\icons8-Basketball Player-40.png" />
+    <Content Include="Content\images\icons8-Basketball Player-50.png" />
     <Content Include="Content\images\logo-2.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\logoAtlas-mobile.png" />
     <Content Include="Content\images\logoAtlas.png" />
     <Content Include="Content\images\t1.png" />
     <Content Include="Content\images\t2.png" />
@@ -694,7 +693,6 @@
     </None>
     <None Include="My Project\PublishProfiles\Local.pubxml" />
     <None Include="My Project\PublishProfiles\LocalHost.pubxml" />
-    <None Include="My Project\PublishProfiles\ThanasisLocal.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

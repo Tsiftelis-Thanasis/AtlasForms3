@@ -203,11 +203,11 @@ End Code
     <p></p>
 
         <div Class="entry-meta">
-            <span Class="entry-author">Created by @Html.DisplayFor(Function(model) model.createdby)</span>
-            <span Class="entry-date">Created on @Html.DisplayFor(Function(model) model.creationdate)</span>
+            <span Class="entry-author">δημιουργήθηκε από @Html.DisplayFor(Function(model) model.createdby)</span>
+            <span Class="entry-date">στης @Html.DisplayFor(Function(model) model.creationdate)</span>
             <br />
-            <span Class="entry-author">Edit by @Html.DisplayFor(Function(model) model.editby)</span>
-            <span Class="entry-date">Edited on @Html.DisplayFor(Function(model) model.editdate)</span>
+            <span Class="entry-author">επεξεργάστηκε από @Html.DisplayFor(Function(model) model.editby)</span>
+            <span Class="entry-date">στης @Html.DisplayFor(Function(model) model.editdate)</span>
         </div>
 
     </article>
