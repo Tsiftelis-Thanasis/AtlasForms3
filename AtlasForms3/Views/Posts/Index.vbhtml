@@ -100,276 +100,14 @@ End Code
             <div Class="row">
                 <div Class="kopa-main"> @*<div Class="kopa-main-col">*@
 
-                        <div id="divfixture" class="widget kopa-entry-list">
+                        <div id="divfixture" class="widget kopa-entry-list" style="display: none;">
                             <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
                             <div class="tab-content ft-tab-content mb-30">
 
                                 <div class="tab-pane active" id="fixtures">
-
-                                    @*<div class="widget kopa-match-list-widget">
-
-                            <div class="match-item last-item style1">
-                                <header>
-                                    <p>Wed 22nd Oct 19.45 Constant Vanden Stock</p>
-                                    <span><img src="~/Content/images/background/cl.png" alt=""></span>
-                                </header>
-                                <div class="r-item">
-                                    <a class="r-num" href="#">
-                                        <span>V</span>
-                                    </a>
-                                    <a class="r-side left" href="#">
-                                        <div class="r-thumb">
-                                            <img src="~/Content/images/result/1.png" alt="">
-                                        </div>
-                                        <div class="r-content">
-                                            <h5>arsenol</h5>
-                                        </div>
-                                    </a>
-                                    <a class="r-side right" href="#">
-                                        <div class="r-thumb">
-                                            <img src="~/Content/images/result/2.png" alt="">
-                                        </div>
-                                        <div class="r-content">
-                                            <h5>hon city</h5>
-                                        </div>
-                                    </a>
+                                                                    
                                 </div>
-                                <ul class="kopa-countdown">
-                                    <li>
-                                        <h3>50</h3>
-                                        <span>weeks</span>
-                                    </li>
-                                    <li>
-                                        <h3>51</h3>
-                                        <span>days</span>
-                                    </li>
-                                    <li>
-                                        <h3>22</h3>
-                                        <span>hours</span>
-                                    </li>
-                                    <li>
-                                        <h3>55</h3>
-                                        <span>mins</span>
-                                    </li>
-                                    <li>
-                                        <h3>17</h3>
-                                        <span>secs</span>
-                                    </li>
-                                </ul>
-                                <footer>
-                                    <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                </footer>
-                            </div>
-
-                            <ul class="clearfix mb-60">
-                                <li>
-                                    <div class="match-item list-item">
-                                        <header>
-                                            <p>Sat 27th Sep 17:30</p>
-                                            <span>UEFA Champions League</span>
-                                        </header>
-                                        <div class="r-item">
-                                            <a class="r-num" href="#">
-                                                <span class="r-color">v</span>
-                                            </a>
-                                            <a class="r-side left" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/1.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>arsenol</h5>
-                                                </div>
-                                            </a>
-                                            <a class="r-side right" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/2.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>barcalona</h5>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <a class="match-info" href="#">
-                                            <p class="m-hl">h</p>
-                                            <p>KICK-OFF 10:45</p>
-                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                        </a>
-                                        <footer>
-                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                        </footer>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="match-item list-item">
-                                        <header>
-                                            <p>Sat 27th Sep 17:30</p>
-                                            <span>UEFA Champions League</span>
-                                        </header>
-                                        <div class="r-item">
-                                            <a class="r-num" href="#">
-                                                <span class="r-color">v</span>
-                                            </a>
-                                            <a class="r-side left" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/3.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>ranl madrid</h5>
-                                                </div>
-                                            </a>
-                                            <a class="r-side right" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/4.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>ac milen</h5>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <a class="match-info" href="#">
-                                            <p class="m-hl">h</p>
-                                            <p>KICK-OFF 10:45</p>
-                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                        </a>
-                                        <footer>
-                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                        </footer>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="match-item list-item">
-                                        <header>
-                                            <p>Sat 27th Sep 17:30</p>
-                                            <span>UEFA Champions League</span>
-                                        </header>
-                                        <div class="r-item">
-                                            <a class="r-num" href="#">
-                                                <span class="r-color">v</span>
-                                            </a>
-                                            <a class="r-side left" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/1.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>arsenol</h5>
-                                                </div>
-                                            </a>
-                                            <a class="r-side right" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/5.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>psb</h5>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <a class="match-info" href="#">
-                                            <p class="m-hl">h</p>
-                                            <p>KICK-OFF 10:45</p>
-                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                        </a>
-                                        <footer>
-                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                        </footer>
-                                    </div>
-                                </li>
-                                <li><h4 id="fixture-november">November 2014</h4></li>
-                                <li>
-                                    <div class="match-item list-item">
-                                        <header>
-                                            <p>Sat 27th Sep 17:30</p>
-                                            <span>UEFA Champions League</span>
-                                        </header>
-                                        <div class="r-item">
-                                            <a class="r-num" href="#">
-                                                <span class="r-color">v</span>
-                                            </a>
-                                            <a class="r-side left" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/4.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>ac milen</h5>
-                                                </div>
-                                            </a>
-                                            <a class="r-side right" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/2.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>barcalona</h5>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <a class="match-info" href="#">
-                                            <p class="m-hl">h</p>
-                                            <p>KICK-OFF 10:45</p>
-                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                        </a>
-                                        <footer>
-                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                        </footer>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="match-item list-item">
-                                        <header>
-                                            <p>Sat 27th Sep 17:30</p>
-                                            <span>UEFA Champions League</span>
-                                        </header>
-                                        <div class="r-item">
-                                            <a class="r-num" href="#">
-                                                <span class="r-color">v</span>
-                                            </a>
-                                            <a class="r-side left" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/3.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>ranl madrid</h5>
-                                                </div>
-                                            </a>
-                                            <a class="r-side right" href="#">
-                                                <div class="r-thumb">
-                                                    <img src="~/Content/images/club/1.png" alt="">
-                                                </div>
-                                                <div class="r-content">
-                                                    <h5>arsenol</h5>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <a class="match-info" href="#">
-                                            <p class="m-hl">h</p>
-                                            <p>KICK-OFF 10:45</p>
-                                            <p><i class="fa fa-map-marker"></i>SouTH LANARKSHIRE, UK</p>
-                                        </a>
-                                        <footer>
-                                            <a href="#" class="more-detail">Match news<i class="fa fa-chevron-right"></i></a>
-                                        </footer>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            @*<div class="kopa-pagination">
-                                <ul class="clearfix">
-                                    <li><a href="#" class="prev fa fa-chevron-left"></a></li>
-                                    <li><a href="#">Older</a></li>
-                                    <li><span class="current">1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">Newer</a></li>
-                                    <li><a href="#" class="next fa fa-chevron-right"></a></li>
-                                </ul>
-                            </div>*@
-
-                                    @*</div>*@
-                                    <!-- widget -->
-
-                                </div>
-                                <!-- tab-pane -->
-
+                                
                                 <div class="tab-pane" id="results">
 
                                     <div class="widget kopa-match-list-widget">
@@ -629,8 +367,7 @@ End Code
                                     <!-- widget -->
 
                                 </div>
-                                <!-- tab-pane -->
-
+                            
                                 <div class="tab-pane" id="table">
 
                                     <div class="widget kopa-charts-widget">
@@ -915,14 +652,14 @@ End Code
                                         </div>
                                     </div>
                                 </div>
-                                <!-- tab-pane -->
+                                
                             </div>
                         </div>
 
                 
                         @code
                             If atlaskathgoria1 > 0 then
-                              @<div id = "divteamskat1" >
+                              @<div id = "divteamskat1" style="display: none;">
                                 <div class="row">
                                     <div class="kopa-main">
                                         <h3 class="widget-title style12">ομαδες κατηγορίας @atlaskathgoria1name<span class="ttg"></span></h3>
@@ -940,7 +677,7 @@ End Code
 
                         @code
                             If atlaskathgoria2 > 0 Then
-                            @<div id = "divteamskat2" >
+                            @<div id = "divteamskat2" style="display: none;">
                                 <div class="row">
                                     <div class="kopa-main">
                                     <h3 class="widget-title style12">ομαδες κατηγοριας γοριας @atlaskathgoria2name<span class="ttg"></span></h3>
@@ -954,7 +691,7 @@ End Code
                             End If
                         End code
 
-                        <div id="divteams" class="widget kopa-entry-list">
+                        <div id="divteams" class="widget kopa-entry-list" style="display: none;">
                             <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
                             <table id="teamstable">
                                 <tr>
@@ -965,7 +702,7 @@ End Code
                             </table>
                         </div>
 
-                        <div id="divcommon" Class="widget-area-2">
+                        <div id="divcommon" Class="widget-area-2" style="display: none;">
                             <div Class="widget kopa-article-list-widget article-list-1">
                                 <h3 Class="widget-title style2">@innerTitle</h3>
                                 <table id="newstable">
@@ -979,7 +716,7 @@ End Code
                
                         </div>
                
-                        <div id="divstandings1" class="widget kopa-charts-widget">
+                        <div id="divstandings1" class="widget kopa-charts-widget" style="display: none;">
                             <h3 class="widget-title style17">ομιλος Α, κατηγορια Α1</h3>
                             <div class="widget-content">
                                 <header>
@@ -1108,7 +845,7 @@ End Code
                                 @*<a class="kopa-view-all" href="http://atlasstatistics.gr/Rankings">Εμφάνιση υπόλοιπων στατιστικών<span class="fa fa-chevron-right"></span></a>*@
                             </div>
                         </div>
-                        <div id="divstandings2" class="widget kopa-charts-widget">
+                        <div id="divstandings2" class="widget kopa-charts-widget" style="display: none;">
                             <h3 class="widget-title style17">ομιλος Α, κατηγορια Α2</h3>
                             <div class="widget-content">
                                 <header>
@@ -1305,7 +1042,7 @@ End Code
 
         </div>
         
-        <section Class="kopa-area kopa-area-1 mb-30">
+        <section Class="kopa-area kopa-area-1 mb-30" id="divresultsandstandings" style="display: none;">
 
             <span Class="t1"></span>
             <span Class="t2"></span>
@@ -1314,9 +1051,10 @@ End Code
                
                  @code
                      If atlaskathgoria1 > 0 Then
-                           @<div Class="row">
 
-                        <div id = "divresults1" Class="widget-area-12">
+                           @<div Class="row">
+                                 
+                        <div id = "divresults1" Class="widget-area-12"  style="display: none;">
                         <div Class="widget kopa-result-widget">
                             <h3 Class="widget-title style6">αποτελεσματα α1</h3>
                             <div Class="widget-content">
@@ -1353,40 +1091,37 @@ End Code
 
                             </div>
                         </div>
-
-
                     </div>
 
-                            <div id = "divstandcommon1" Class="widget-area-13">
+                        <div id = "divstandcommon1" Class="widget-area-13"  style="display: none;">
 
-                                <div Class="widget kopa-charts-widget">
-                                    <h3 Class="widget-title style6"><span>βαθμολογια @atlaskathgoria1name</span></h3>
-                                    <div Class="widget-content">
-                                        <header>
-                                            <div Class="t-col">Α/Α</div>
-                                            <div Class="t-col width1">ομαδα</div>
-                                            <div Class="t-col">Αγ.</div>
-                                            <div Class="t-col">βαθμ.</div>
-                                        </header>
-                                        <ul Class="clearfix" id="team1ranking">
+                            <div Class="widget kopa-charts-widget">
+                                <h3 Class="widget-title style6"><span>βαθμολογια @atlaskathgoria1name</span></h3>
+                                <div Class="widget-content">
+                                    <header>
+                                        <div Class="t-col">Α/Α</div>
+                                        <div Class="t-col width1">ομαδα</div>
+                                        <div Class="t-col">Αγ.</div>
+                                        <div Class="t-col">βαθμ.</div>
+                                    </header>
+                                    <ul Class="clearfix" id="team1ranking">
                                  
-                                        </ul>                                
-                                    </div>
-                                </div>                       
+                                    </ul>                                
+                                </div>
+                            </div>                       
 
-                            </div>                                    
+                        </div>                                    
 
-                        </div>
-
+                     </div>
 
                      End If
                 End code
                 @code
                     If atlaskathgoria2 > 0 Then
 
-                    @<div Class="row">
+                        @<div Class="row">
 
-                        <div id = "divresults2" Class="widget kopa-result-widget">
+                        <div id = "divresults2" Class="widget kopa-result-widget"  style="display: none;">
                                 <h3 Class="widget-title style6">αποτελεσματα α2</h3>
                                 <div Class="widget-content">
                                     <div Class="span-bg">
@@ -1422,7 +1157,7 @@ End Code
                                     </div>
                             </div>
 
-                        <div id = "divstandcommon2" Class="widget-area-13">
+                        <div id = "divstandcommon2" Class="widget-area-13"  style="display: none;">
 
                             <div Class="widget kopa-charts-widget">
                                 <h3 Class="widget-title style6"><span>βαθμολογια @atlaskathgoria2name</span></h3>
@@ -1474,40 +1209,43 @@ End Code
         //'17  Διαφημίσεις
         
         //if ($('#kathgoriaid').val() != 11) { //Νέα
-            $("#divstandings1").hide();
-            $("#divstandings2").hide();
+        //    $("#divstandings1").hide();
+        //    $("#divstandings2").hide();
         //}
 
-        $("#divfixture").hide();
-        $("#divteams").hide();
+        //$("#divfixture").hide();
+        //$("#divteams").hide();
 
         if ($('#kathgoriaid').val() == 11) { //Νέα
-            $("#divteams").hide();
-            $("#divteamskat1").hide();
-            $("#divteamskat2").hide();
-        } else if ($('#kathgoriaid').val() == 12){ //Ομάδες
-            $("#divcommon").hide();
-            $("#divstandings1").hide();
-            $("#divstandings2").hide();
-        } else if ($('#kathgoriaid').val() == 13) {//Τιμωρίες             
-            $("#divteams").hide();
-            $("#divteamskat1").hide();
-            $("#divteamskat2").hide();
-             $("#divnextgames1").hide();             
-             $("#divnextgames2").hide();
+            $("#divcommon").show();
+            //$("#divteams").hide();
+        //    $("#divteamskat1").hide();
+        //    $("#divteamskat2").hide();
+        } else if ($('#kathgoriaid').val() == 12) { //Ομάδες
+            $("#divteamskat1").show();
+        //    $("#divcommon").hide();
+        //    $("#divstandings1").hide();
+        //    $("#divstandings2").hide();
+        } else if ($('#kathgoriaid').val() == 13) {//Τιμωρίες   
+            $("#divcommon").show();
+            //$("#divteams").hide();
+        //    $("#divteamskat1").hide();
+        //    $("#divteamskat2").hide();            
         } else if ($('#kathgoriaid').val() == 14) { //Πρόγραμμα
-            $("#divteams").hide();
-            $("#divteamskat1").hide();
-            $("#divteamskat2").hide();
-             $("#divnextgames1").hide();
-             $("#divnextgames2").hide();
-        } else if ($('#kathgoriaid').val() == 15) { //βαθμολογια             
-             $("#divstandings1").hide();
-             $("#divstandings2").hide();
-             $("#divteams").hide();
-             $("#divteamskat1").hide();
-             $("#divteamskat2").hide();
-             $("#divcommon").hide();
+            $("#divcommon").show();
+            //$("#divteams").hide();
+       //     $("#divteamskat1").hide();
+       //     $("#divteamskat2").hide();
+        } else if ($('#kathgoriaid').val() == 15) { //βαθμολογια       
+            $("#divresultsandstandings").show();
+            $("#divresults1").show();
+            $("#divstandcommon1").show();            
+        //    $("#divstandings1").hide();
+        //    $("#divstandings2").hide();
+            //$("#divteams").hide();
+        //    $("#divteamskat1").hide();
+        //    $("#divteamskat2").hide();
+        //    $("#divcommon").hide();
          } else {
 
          }
@@ -1563,8 +1301,7 @@ End Code
 
                                 return dd;
                             }
-
-                        }
+                       }
                 ]
             });
         }*@

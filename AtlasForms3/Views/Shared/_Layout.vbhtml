@@ -48,22 +48,14 @@ End Code
 <body>
 
     @Html.Hidden("firstDiorganwshid", firstDiorganwshid)
-
-
+    
     <header class="kopa-header">
-
         <div class="kopa-header-middle">
-
             <div class="wrapper">
-
-              
-                <!-- logo -->
-
                 <nav class="kopa-main-nav">
                     <div class="kopa-logo">
                         <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>
-                    </div>
-                   
+                    </div>                   
                  
                     <ul class="main-menu sf-menu">
                         <li class="current-menu-item">
@@ -112,58 +104,21 @@ End Code
                             End If
                         End If
                     </ul>
-                </nav>
-                
-            </div>
-            <!-- wrapper -->
-
+                </nav>                
+            </div> 
         </div>
-        <!-- kopa-header-middle -->
-
+      
         <div class="kopa-header-bottom">
-
             <div class="wrapper">
-
-                <nav class="th-kopa-main-nav-2">
-
-                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid">
-                        @*<li>
-                            <div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0">
-                            <div class="sf-mega-section col-md-3 col-xs-3 col-sm-3">
-                                <div class="widget kopa-sub-list-widget">
-                                    <ul class="sub-menu">
-                                        <li>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="sf-mega-section col-md-9 col-xs-9 col-sm-9">
-                                <div class="widget kopa-sub-list-widget sub-list-1">
-                                    <h4></h4>
-                                    <ul class="row"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        </li>*@
+              <nav class="th-kopa-main-nav-2">
+                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid">                        
                     </ul>
-
-                </nav>
-
-            </div>   
-
-            <div class="wrapper">
-                <nav class="th-kopa-main-nav-3">
-                    <ol class="main-menu-2"  id="kathgoriesnavbarid" dir="RTL">
-                       
-                    </ol>
                 </nav>
             </div>   
-
-            </div>            
+     </div>            
         
 </header>
     
-
     <div class="kopa-sub-page kopa-single-page">
         <div class="container body-content">           
             @RenderBody()
@@ -172,25 +127,17 @@ End Code
     </div>
 
     <div id="bottom-sidebar">
-
         <div class="bottom-area-1">
-
             <div class="wrapper">
-
                 <div class="kopa-logo">
                     <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:auto;"></a>
                 </div>
                 <nav class="bottom-nav">
-
                     @Html.Partial("_LoginPartial")
-
                 </nav>
                 <nav class="bottom-nav-mobile">
-
                     @Html.Partial("_LoginPartial")
-
                 </nav>
-
             </div>
         </div>        
     </div>
@@ -210,8 +157,7 @@ End Code
     @Scripts.Render("~/bundles/custom")
 
     @RenderSection("scripts", required:=False)
-
-
+    
     <script src="~/Scripts/jquery.navgoco.js"></script>
     <script src="~/Scripts/jquery.carouFredSel-6.2.1.js"></script>
     <script src="~/Scripts/owl.carousel.js"></script>
@@ -246,8 +192,6 @@ End Code
                 choiceContainermobile.toggle();
             }
 
-            $("#kathgoriesnavbarid").empty();
-
             $.ajax({
                 type: "POST",
                 url: baseUrl + '@Url.Action("GetOmiloiByDiorganwsh", "Home")',
@@ -269,38 +213,6 @@ End Code
                                 omilos = omilos + ' Όμιλος';
                             }
                             var omilosnaming = 'omilos' + this.Id + 'row';
-
-                            @*var a = '<div class="sf-mega col-md-push-0 col-xs-push-0 col-sm-push-0"> ' +
-                                     '<div class="sf-mega-section col-md-3 col-xs-3 col-sm-3"> ' +
-                                         '<div class="widget kopa-sub-list-widget"> ' +
-                                             '<ul class="sub-menu"> ' +
-                                                 '<li> ' +
-                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=11">νεα</a> ' +
-                                                     '</li> ' +
-                                                     '<li> ' +
-                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=12">ομάδες</a> ' +
-                                                     '</li> ' +
-                                                     '<li> ' +
-                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=13">τιμωριες</a> ' +
-                                                     '</li> ' +
-                                                     '<li> ' +
-                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=14">προγραμμα</a> ' +
-                                                     '</li> ' +
-                                                     '<li> ' +
-                                                     '<a href="@Url.Action("Index", "Posts")/?a=' + this.Id + '&k=15">βαθμολογια</a>' +
-                                                     '</li>' +
-                                                     '</ul> ' +
-                                                     '</div> ' +
-                                                     '</div> ' +
-                                                     '<div class="sf-mega-section col-md-9 col-xs-9 col-sm-9"> ' +
-                                                     '<div class="widget kopa-sub-list-widget sub-list-1"> ' +
-                                                     '<h4>Τελευταια νεα ' + this.OmilosName + ' ομίλου</h4> ' +
-                                                     '<ul id="' + omilosnaming + '" class="row"></ul> ' +
-                                                     '</div>' +
-                                                     '</div>' +
-                                                     '</div> ';*@
-
-                            //onclick="appendKathgoriaNav(' + this.Id + ')
                             var d = '<li class="lipointer" value = "' + this.Id + '"> ' +
                                     '<a  <a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
                                     '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
@@ -311,7 +223,7 @@ End Code
 
                         });
 
-                        setTimeout(function () {
+                        //setTimeout(function () {
                             var li = choiceContainer.children("li");
                             li.detach();
                             li.sort(function (a, b) {
@@ -321,7 +233,7 @@ End Code
                                 elem.remove();
                                 $(elem).prependTo(choiceContainer);
                             })
-                        }, 100);                      
+                        //}, 100);                      
 
                     }
                 },
@@ -332,62 +244,7 @@ End Code
         }, 100);
 
     }
-
-
-    @*function appendKathgoriaNav(containerid) {
-
-        //apend for each omilos
-             $.ajax({
-                type: "POST",
-                url: baseUrl + '@Url.Action("GetKathgoriesbyOmilos", "Home")',
-                 data: "{OId: " + containerid + "}",
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
-
-                    var choiceContainer = $("#kathgoriesnavbarid");
-                    choiceContainer.empty();
-
-                    setTimeout(function () {
-                        var i = 1;
-                        var d = '';
-                        if (result.length > 0) {
-
-                            //d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Home")/?a=' + containerid + '"> <span style="font-size: 12px; !important" >ομιλος</a> </span> </li> ';
-
-                            $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
-                                d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ';
-                                d += '<li class="lipointer" id="' + i + 3 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ';
-                                d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
-                                d += '<li class="lipointer" id="' + i + 5 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
-                                i += 5;
-                            });
-
-                            choiceContainer.append(d);
-
-                            var li = choiceContainer.children("li");
-                            li.detach();
-                            li.sort(function (a, b) {
-                                return parseInt(a.id) > parseInt(b.id);
-                            }).each(function () {
-                                var elem = $(this);
-                                elem.remove();
-                                $(elem).prependTo(choiceContainer);
-                            })
-                        }
-                    }, 100);
-                },
-                error: function (result) {
-                    alert(result.status + ' ' + result.statusText);
-                }
-             });
-
-
-
-        }*@
-
+    
         function appendnewstoOmilos(containername, containerid) {
 
             $.ajax({
@@ -402,7 +259,7 @@ End Code
                     var choiceContainer = $("#" + containername);
                     choiceContainer.empty();
 
-                    setTimeout(function () {
+                    //setTimeout(function () {
                         var i = 1;
                         var d = '';
                         if (result.length > 0) {
@@ -426,69 +283,16 @@ End Code
                                 d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
                                 i++;
                             });
-                            //i += 5;
-                            //d += '<li class="lipointer" id="' + i + 10 + '"> <a href="@Url.Action("Index", "Home")/?a=' + containerid + '"> <span style="font-size: 12px; !important" >ομιλος</a> </span> </li> ';
                             choiceContainer.append(d);
 
-                            //var li = choiceContainer.children("li");
-                            //li.detach();
-                            //li.sort(function (a, b) {
-                            //    return parseInt(a.id) > parseInt(b.id);
-                            //}).each(function () {
-                            //    var elem = $(this);
-                            //    elem.remove();
-                            //    $(elem).prependTo(choiceContainer);
-                            //})
                         }
-                    }, 100);
+                    //}, 100);
                 },
                 error: function (result) {
                     alert(result.status + ' ' + result.statusText);
                 }
              });
-
-
-
-            @*//apend for each omilos
-            $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetLastNewsByCategory2", "Posts")',
-            data: "{nCount : 5, KathgoriaId : " + containerid + ", IsAtlasOmilos: 1}",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                    var choiceContainer = $("#" + containername);
-
-                    if (result.data.length > 0) {
-
-                        choiceContainer.empty();
-
-                        $.each(result.data, function () {
-
-                            var d = ' <li class="col-md-4 col-xs-4 col-sm-4"> ' +
-                                    ' <article class="entry-item"> ' +
-                                    ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"> ' +
-                                    ' <div class="entry-thumb"> ' +
-                                    ' <img src="' + this.PostPhoto + '" alt="" style="height:90px;width:120px;"> ' +
-                                    ' </div> </a>' +
-                                    ' <h4 class="entry-title">' + this.PostTitle + '</h4> ' +
-                                    ' </article> ' +
-                                    ' </li> ';
-                            choiceContainer.append(d);
-
-                    });
-             }
-        },
-            error: function (result) {
-                    alert(result.status + ' ' + result.statusText);
-            }
-        });*@
-
         }
-
-
 
     function postDiorganwshid(id) {
 
@@ -508,8 +312,7 @@ End Code
     }
 
     $(document).ready(function () {
-
-
+        
         // get diorganwtria arxh arthra
         $.ajax({
              type: "POST",
@@ -563,11 +366,7 @@ End Code
                     alert(result.status + ' ' + result.statusText);
                 }
             });
-
-
         
-
-
     });
 
     $(window).on('load', function() {
