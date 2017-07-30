@@ -1,4 +1,4 @@
-﻿@Modeltype atlasbasketstatistics.RegisterViewModel
+﻿@Modeltype AtlasForms3.RegisterViewModel
 
 @Code
     ViewBag.Title = "Create"
@@ -37,7 +37,7 @@ end code
     </div>
 
 
-    @<div class="form-group">
+    @*@<div class="form-group">
         @Html.LabelFor(Function(model) model.Address, New With {.class = "control-label col-md-2"})
         <div class="col-md-10">
             @Html.TextBoxFor(Function(m) m.Address, New With {.class = "form-control"})
@@ -86,7 +86,7 @@ end code
             @Html.TextBoxFor(Function(m) m.Phone, New With {.class = "form-control"})
             @Html.ValidationMessageFor(Function(model) model.Phone)
         </div>
-    </div>
+    </div>*@
 
 
     @<div class="form-group">

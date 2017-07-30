@@ -314,49 +314,124 @@ Namespace Controllers
         End Function
 
         <Compress>
-        Function GetLastNews(ByVal nCount As Integer) As JsonResult
+        Function GetLastNews(ByVal nCount As Integer, ByVal atlasomilosid As Integer?) As JsonResult
 
-            Dim q = (From p In pdb.BlogPostsTable
-                     Select p
-                     Order By p.Id Descending
+            If atlasomilosid Is Nothing Then atlasomilosid = 0
+
+            Dim kl = (From o In pdb2.OmilosTable
+                      Join k In pdb2.KathgoriesTable On k.Omilosid Equals o.Id
+                      Where o.Id = atlasomilosid
+                      Select k.Id).ToList
+
+            If kl.Count > 0 Then
+
+                Dim q = (From p In pdb.BlogPostsTable
+                         Join pk In pdb.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
+                         Join klist In kl On klist Equals pk.AtlasKathgoriaId
+                         Select p
+                         Order By p.Id Descending
                          ).Take(nCount).AsEnumerable().[Select](
                     Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
                     .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList()
 
-            Dim dtm As New DataTableModel
-            If q IsNot Nothing Then
-                dtm.data = q.Cast(Of Object).ToList
-            End If
-            dtm.draw = 0
-            dtm.recordsTotal = dtm.data.Count
-            dtm.recordsFiltered = dtm.recordsTotal
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
 
-            Return Json(dtm, JsonRequestBehavior.AllowGet)
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
+
+            Else
+                Dim q = (From p In pdb.BlogPostsTable
+                         Select p
+                         Order By p.Id Descending
+                         ).Take(nCount).AsEnumerable().[Select](
+                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList()
+
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
+
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+            End If
+
         End Function
 
         <Compress>
-        Function GetLastNewsByCategory(ByVal nCount As Integer, Optional ByVal k As Integer = 0) As JsonResult
+        Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlasomilosid As Integer?) As JsonResult
 
-            Dim q = (From p In pdb.BlogPostsTable
-                     Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
-                     Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
-                     Where (p1.KathgoriaId = k And p1.IsKathgoria = True)
-                     Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                         PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
-                        KatName = p2.KathgoriaName).Take(nCount).
-                        AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
-                        .KatName = o.KatName}).ToList
-            Dim dtm As New DataTableModel
-            If q IsNot Nothing Then
-                dtm.data = q.Cast(Of Object).ToList
+            If atlasomilosid Is Nothing Then atlasomilosid = 0
+
+            Dim k As Integer = 3 'Teleutaia nea!
+            Dim k2 As Integer = 11 'Teleutaia nea omilou!
+
+            If atlasomilosid = 0 Then
+
+                Dim q = (From p In pdb.BlogPostsTable
+                         Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                         Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                         Where (p1.KathgoriaId = k And p1.IsKathgoria = True)
+                         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
+                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                            KatName = p2.KathgoriaName).Take(nCount).
+                            AsEnumerable().[Select](
+                            Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
+                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
+                            .KatName = o.KatName}).ToList
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
+
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+            Else
+
+                Dim kl = (From o In pdb2.OmilosTable
+                          Join k1 In pdb2.KathgoriesTable On k1.Omilosid Equals o.Id
+                          Where o.Id = atlasomilosid
+                          Select k1.Id).ToList
+
+                Dim q = (From p In pdb.BlogPostsTable
+                         Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                         Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                         Join klist In kl On klist Equals p1.AtlasKathgoriaId
+                         Where (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
+                         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
+                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                            KatName = p2.KathgoriaName).Take(nCount).
+                            AsEnumerable().[Select](
+                            Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
+                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
+                            .KatName = o.KatName}).ToList
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
+
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
             End If
-            dtm.draw = 0
-            dtm.recordsTotal = dtm.data.Count
-            dtm.recordsFiltered = dtm.recordsTotal
 
-            Return Json(dtm, JsonRequestBehavior.AllowGet)
+
 
         End Function
 

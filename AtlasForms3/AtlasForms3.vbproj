@@ -240,6 +240,18 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\AspNetRoles.vb">
+      <DependentUpon>AtlasStatistics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\AspNetUserClaims.vb">
+      <DependentUpon>AtlasStatistics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\AspNetUserLogins.vb">
+      <DependentUpon>AtlasStatistics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\AspNetUsers.vb">
+      <DependentUpon>AtlasStatistics.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\IdentityConfig.vb" />
@@ -259,18 +271,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AtlasStatistics.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\AspNetRoles.vb">
-      <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\AspNetUserClaims.vb">
-      <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\AspNetUserLogins.vb">
-      <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\AspNetUsers.vb">
-      <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Data\AtlasBlog2Model.Context.vb">
       <AutoGen>True</AutoGen>

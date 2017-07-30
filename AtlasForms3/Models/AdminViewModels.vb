@@ -45,16 +45,6 @@ Public Class EditUserViewModel
     End Property
     Private m_Id As String
 
-    Public Property Company() As Integer
-        Get
-            Return m_Company
-        End Get
-        Set(value As Integer)
-            m_Company = value
-        End Set
-    End Property
-    Private m_Company As Integer
-
     <Required(AllowEmptyStrings:=False)> _
     <Display(Name:="Username")> _
     Public Property Username() As String
@@ -93,23 +83,7 @@ Public Class EditUserViewModel
     End Property
     Private m_Email As String
 
-    
-    <Display(Name:="Address")> _
-    Public Property Address As String
-
-    <Display(Name:="Perioxi")> _
-    Public Property Perioxi As String
-
-    <Display(Name:="Poli")> _
-    Public Property Poli As String
-
-    <Display(Name:="Tk")> _
-    Public Property Tk As String
-
-    <Display(Name:="Afm")> _
-    Public Property Afm As String
-
-    <Display(Name:="Phone")> _
+    <Display(Name:="Phone")>
     Public Property Phone As String
 
     Public Property RolesList() As IEnumerable(Of SelectListItem)
@@ -121,16 +95,6 @@ Public Class EditUserViewModel
         End Set
     End Property
     Private m_RolesList As IEnumerable(Of SelectListItem)
-
-    Public Property CompaniesList() As IEnumerable(Of SelectListItem)
-        Get
-            Return m_CompaniesList
-        End Get
-        Set(value As IEnumerable(Of SelectListItem))
-            m_CompaniesList = value
-        End Set
-    End Property
-    Private m_CompaniesList As IEnumerable(Of SelectListItem)
 
     Public Property IsLocked() As Integer
         Get
@@ -153,7 +117,6 @@ Public Class EditUserViewModel
     Private m_IsEnabled As Integer
 
     Public Property _showroles As Boolean
-    Public Property _showcompanies As Boolean
     Public Property _showdates As Boolean
 
 End Class

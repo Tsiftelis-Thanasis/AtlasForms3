@@ -14,6 +14,9 @@ End code
     <tr>
         <th>
             @Html.DisplayNameFor(Function(model) model.UserName)
+        </th>
+        <th>
+            Ενεργός Χρήστης
         </th>        
         <th>
             @Html.Label("Actions")
@@ -25,6 +28,9 @@ End code
             <td>
                 @Html.Displayfor(Function(modelItem) item.UserName)
             </td>
+        <td>
+            @*@Html.DisplayFor(Function(model) model.IsEnabled)*@
+        </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", New With {.id = item.Id}) |
                 @Html.ActionLink("Details", "Details", New With {.id = item.Id}) 

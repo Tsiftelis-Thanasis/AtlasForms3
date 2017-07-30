@@ -1,4 +1,4 @@
-﻿@*@modeltype atlasbasketstatistics.EditUserViewModel
+﻿@modeltype AtlasForms3.EditUserViewModel
 
 @code
     ViewBag.Title = "Edit"
@@ -16,27 +16,8 @@ End code
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
         @Html.HiddenFor(Function(m) m.Id)
-         @Html.HiddenFor(Function(m) m._showcompanies)
          @Html.HiddenFor(Function(m) m._showdates)
          @Html.HiddenFor(Function(m) m._showroles)
-
-
-         <div class="form-group">
-             @Html.LabelFor(Function(m) m.Username, New With {.class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.TextBoxFor(Function(m) m.Username, New With {.class = "form-control"})
-                 @Html.ValidationMessageFor(Function(m) m.Username)
-             </div>
-         </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(Function(m) m.Email, New With {.class = "control-label col-md-2"})
-            <div class="col-md-10">
-               @Html.TextBoxFor(Function(m) m.Email, New With {.class = "form-control" })
-               @Html.ValidationMessageFor(Function(m) m.Email)
-            </div>
-        </div>
 
 
          <div class="form-group">
@@ -48,48 +29,25 @@ End code
          </div>
 
 
-         <div class="form-group">
-             @Html.LabelFor(Function(m) m.Address, New With {.class = "control-label col-md-2"})
+     <div class="form-group">
+             @Html.LabelFor(Function(m) m.Username, New With {.class = "control-label col-md-2"})
              <div class="col-md-10">
-                 @Html.TextBoxFor(Function(m) m.Address, New With {.class = "form-control"})
-                 @Html.ValidationMessageFor(Function(m) m.Address)
+                 @Html.TextBoxFor(Function(m) m.Username, New With {.class = "form-control"})
+                 @Html.ValidationMessageFor(Function(m) m.Username)
              </div>
          </div>
 
 
-         <div class="form-group">
-             @Html.LabelFor(Function(m) m.Perioxi, New With {.class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.TextBoxFor(Function(m) m.Perioxi, New With {.class = "form-control"})
-                 @Html.ValidationMessageFor(Function(m) m.Perioxi)
-             </div>
-         </div>
+        <div class="form-group">
+            @Html.LabelFor(Function(m) m.Email, New With {.class = "control-label col-md-2"})
+            <div class="col-md-10">
+               @Html.TextBoxFor(Function(m) m.Email, New With {.class = "form-control"})
+               @Html.ValidationMessageFor(Function(m) m.Email)
+            </div>
+        </div>
 
 
-         <div class="form-group">
-             @Html.LabelFor(Function(m) m.Poli, New With {.class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.TextBoxFor(Function(m) m.Poli, New With {.class = "form-control"})
-                 @Html.ValidationMessageFor(Function(m) m.Poli)
-             </div>
-         </div>
-
-
-         <div class="form-group">
-             @Html.LabelFor(Function(m) m.Tk, New With {.class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.TextBoxFor(Function(m) m.Tk, New With {.class = "form-control"})
-                 @Html.ValidationMessageFor(Function(m) m.Tk)
-             </div>
-         </div>
-
-         <div class="form-group">
-             @Html.LabelFor(Function(m) m.Afm, New With {.class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.TextBoxFor(Function(m) m.Afm, New With {.class = "form-control"})
-                 @Html.ValidationMessageFor(Function(m) m.Afm)
-             </div>
-         </div>
+    
 
          <div class="form-group">
              @Html.LabelFor(Function(m) m.Phone, New With {.class = "control-label col-md-2"})
@@ -139,4 +97,4 @@ End Using
     </script>
     
 
-End Section*@
+End Section

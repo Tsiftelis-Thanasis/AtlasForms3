@@ -127,14 +127,17 @@ End Code
                             <a>@Html.DisplayFor(Function(model) cTitle)</a>
                         </p>
 
-
-                        <div class="row form-horizontal vertical-center">
-                            <div class="form-group">
-                                <div class="col-md-6 entry-thumb">
-                                    <img src="@imageSrc" style="height:160px;width:160px;" />
+                        @code
+                            If imageSrc <> "" Then
+                                @<div Class="row form-horizontal vertical-center">
+                                    <div Class="form-group">
+                                        <div Class="col-md-6 entry-thumb">
+                                            <img src = "@imageSrc" style="height:160px;width:160px;" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            End If
+                        End Code
 
                         @code
                             If Model.PostSummary.ToString <> "" Then

@@ -10,6 +10,8 @@ Public Class HomeController
 
     Private pdb As New AtlasStatisticsEntities
 
+    Private pdb_blog As New AtlasBlogEntities
+
     <Authorize(Roles:="Admins")>
     Function Panel() As ActionResult
         ViewData("Message") = "Control panel page."
@@ -223,7 +225,6 @@ Public Class HomeController
     <HttpPost>
     Public Function Getlastgames(ByVal omilosid As Integer?) As JsonResult
 
-
         'Link
         'Date as Σαβ 01/06/2017 
         'gipedo ??
@@ -253,9 +254,21 @@ Public Class HomeController
         Return Json(lastgames, JsonRequestBehavior.AllowGet)
 
 
-
     End Function
 
+    <Compress>
+    <HttpPost>
+    Public Function GetProgrammaidbyKathgoria(ByVal atlaskathgoriaid As Integer?) As JsonResult
+
+        If atlaskathgoriaid Is Nothing Then atlaskathgoriaid = 0
+
+        Dim thisid = (From t In pdb_blog.BlogPostandKathgoriaTable
+                      Where t.AtlasKathgoriaId = atlaskathgoriaid And t.KathgoriaId = 14
+                      Select t.PostId).FirstOrDefault
+
+        Return Json(thisid, JsonRequestBehavior.AllowGet)
+
+    End Function
 
 
 End Class

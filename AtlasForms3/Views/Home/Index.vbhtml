@@ -204,8 +204,6 @@ End Code
 
                 var omilosid = $("#atlasomilosid").val();
 
-
-
                 //append lastgames carouselid
                 $.ajax({
                     type: "POST",
@@ -254,7 +252,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
-                    data: "{nCount : 10, k: 7}",
+                    data: "{nCount : 10, atlasomilosid: " +  omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -307,7 +305,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
-                    data: "{nCount : 5}",
+                    data: "{nCount : 5, atlasomilosid: " +  omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -347,7 +345,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
-                    data: "{nCount : 10}",
+                    data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -384,8 +382,8 @@ End Code
                 //apend kalyteresfaseisid
                 $.ajax({
                     type: "POST",
-                    url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
-                    data: "{nCount : 10, k: 7}",
+                    url: baseUrl + '@Url.Action("GetLastNewswithVideo", "Posts")',
+                    //data: "{nCount : 10, k: 7}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",

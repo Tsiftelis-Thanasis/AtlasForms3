@@ -24,17 +24,28 @@ End Code
                     @Html.ValidationMessageFor(Function(m) m.Password, "", New With {.class = "text-danger"})
                 </div>
                 <div class="form-group">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(Function(m) m.RememberMe)
-                            @Html.LabelFor(Function(m) m.RememberMe)
-                        </div>                    
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(Function(m) m.RememberMe)
+                        @Html.LabelFor(Function(m) m.RememberMe)
+                    </div>                    
                 </div>
             
             <div class="form-group">
                 <input type="submit" value="Log in" class="btn btn-default" />
                 <p>
+
+                </p>
+
+                <p>
                     @Html.ActionLink("Forgot your password?", "ForgotPassword")
                 </p>
+
+
+                <p>
+                    @Html.ActionLink("Register new user?", "Register")
+                </p>
+
+
             </div>
 
                 </text>

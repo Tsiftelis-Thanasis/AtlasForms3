@@ -1313,7 +1313,7 @@ End Code
                 "fnServerParams": function (aoData) {
                     aoData.push({
                         "name": "AtlasOmilosid",
-                        "value": $('#atlasomilosid').val()
+                        "value": $('#atlaskathgoria1').val()
                     })
                     aoData.push({
                         "name": "nCount",

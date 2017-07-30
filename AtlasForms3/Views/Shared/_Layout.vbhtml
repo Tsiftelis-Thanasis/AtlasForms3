@@ -19,14 +19,18 @@
         firstDiorganwshid = Session("GlobalDiorganwshid")
     End If
 
-End Code
+
+    Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
+
+End code
+
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset = "utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
+        <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
     <link rel="shortcut icon" type="image/ico" href="~/favicon.ico">
 
     @Styles.Render("~/Content/css")
@@ -48,7 +52,8 @@ End Code
 <body>
 
     @Html.Hidden("firstDiorganwshid", firstDiorganwshid)
-    
+    @Html.Hidden("UserisAuthenticated", UserisAuthenticated)
+        
     <header class="kopa-header">
         <div class="kopa-header-middle">
             <div class="wrapper">
@@ -73,12 +78,19 @@ End Code
                             <ul class="sub-menu" id="diorgarxhpostsid">                                                              
                             </ul>
                         </li>
-                        @if User.Identity.IsAuthenticated Then
+                        
+                        <li class="current-menu-item"><a>Δηλώσεις</a></li>
+
+                        @If User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
-                            @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
+                                @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
                             End If
                         End If
+
+                        @*<li class="current-menu-item"><a href="/Account/Login" id="loginLink">Log in</a></li>*@
+
                     </ul>
+                   
                 </nav>
 
 
@@ -98,11 +110,17 @@ End Code
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsidmobile"></ul>
                         </li>
+                        <li class="current-menu-item"><a >Δηλώσεις</a></li>
+ 
                         @if User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
                                 @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
                             End If
                         End If
+
+                        @*<li class="current-menu-item"><a href="/Account/Login" id="loginLink">Log in</a></li>*@
+
+
                     </ul>
                 </nav>                
             </div> 
@@ -132,21 +150,27 @@ End Code
                 <div class="kopa-logo">
                     <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:auto;"></a>
                 </div>
+            </div>
+
+            <div class="wrapper">
                 <nav class="bottom-nav">
                     @Html.Partial("_LoginPartial")
                 </nav>
                 <nav class="bottom-nav-mobile">
                     @Html.Partial("_LoginPartial")
                 </nav>
+                </div>
             </div>
-        </div>        
+
     </div>
     
     <footer id="kopa-footer">
         <div class="wrapper clearfix">
             <p id="copyright" class="">Copyright © 2017 . All Rights Reserved. </p>
         </div>       
-    </footer>
+    
+       
+</footer>
    
 
 <a href="#" class="scrollup"><span class="fa fa-chevron-up"></span></a>
@@ -224,16 +248,16 @@ End Code
                         });
 
                         //setTimeout(function () {
-                            var li = choiceContainer.children("li");
-                            li.detach();
-                            li.sort(function (a, b) {
-                                return parseInt(a.id) > parseInt(b.id);
-                            }).each(function () {
-                                var elem = $(this);
-                                elem.remove();
-                                $(elem).prependTo(choiceContainer);
-                            })
-                        //}, 100);                      
+                        var li = choiceContainer.children("li");
+                        li.detach();
+                        li.sort(function (a, b) {
+                            return parseInt(a.id) > parseInt(b.id);
+                        }).each(function () {
+                            var elem = $(this);
+                            elem.remove();
+                            $(elem).prependTo(choiceContainer);
+                        })
+                        //}, 100);
 
                     }
                 },
@@ -244,59 +268,13 @@ End Code
         }, 100);
 
     }
-    
-        function appendnewstoOmilos(containername, containerid) {
 
-            $.ajax({
-                type: "POST",
-                url: baseUrl + '@Url.Action("GetKathgoriesbyOmilos", "Home")',
-                 data: "{OId: " + containerid + "}",
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
-
-                    var choiceContainer = $("#" + containername);
-                    choiceContainer.empty();
-
-                    //setTimeout(function () {
-                        var i = 1;
-                        var d = '';
-                        if (result.length > 0) {
-                            $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
-                                i++;
-                            });
-                            $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ';
-                                i++;
-                            });
-                            $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ';
-                                i++;
-                            });
-                            $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 3 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=14"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
-                                i++;
-                            });
-                            $.each(result, function () {
-                                d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
-                                i++;
-                            });
-                            choiceContainer.append(d);
-
-                        }
-                    //}, 100);
-                },
-                error: function (result) {
-                    alert(result.status + ' ' + result.statusText);
-                }
-             });
-        }
-
+    /* =========================================================
+post diorganwsh
+============================================================ */
     function postDiorganwshid(id) {
 
-       // post diorganwsh id
+        // post diorganwsh id
         $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("SetGlobalDiorganwshid", "Home")',
@@ -311,65 +289,146 @@ End Code
         });
     }
 
-    $(document).ready(function () {
-        
-        // get diorganwtria arxh arthra
+
+
+    /* =========================================================
+    get programma id
+    ============================================================ */
+    function getProgrammaId(atlaskathgoriaid) {
+
+        var progid;
         $.ajax({
-             type: "POST",
-             url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
-             data: "{nCount : 10, k : 1}",
-             async: false,
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             success: function (result) {
-                 var choiceContainer = $("#diorgarxhpostsid");
-                 var choiceContainermobile = $("#diorgarxhpostsidmobile");
-                 if (result.data.length > 0) {
-                     choiceContainer.empty();
-                     choiceContainermobile.empty();
-                     $.each(result.data, function () {
-                         var d = '<li><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></li>';
-                         choiceContainer.append(d);
-                         choiceContainermobile.append(d);
-                     });
-                 }
-             },
-             error: function (result) {
-                 alert(result.status + ' ' + result.statusText);
-             }
-         });
+            type: "POST",
+            url: baseUrl + '@Url.Action("GetProgrammaidbyKathgoria", "Home")',
+            data: "{atlaskathgoriaid: " + atlaskathgoriaid + "}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                progid = result;
+            },
+            error: function (result) {
+                progid = 0;
+            }
+        });
 
-        // get diorganwseis
-            $.ajax({
-                type: "POST",
-                url: baseUrl + '@Url.Action("Getdiorganwseis", "Home")',
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
+        return progid;
+    }
 
-                    var choiceContainer = $("#diorganwseiulid");
-                    var choiceContainermobile = $("#diorganwseiulidmobile");
-                    if (result.length > 0) {
 
-                        choiceContainer.empty();
-                        choiceContainermobile.empty();
+    //append news in omilos
+    function appendnewstoOmilos(containername, containerid) {
 
-                            $.each(result, function () {
-                                var d = '<li class="lipointer" onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>';
-                            choiceContainer.append(d);
-                            choiceContainermobile.append(d);
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '@Url.Action("GetKathgoriesbyOmilos", "Home")',
+            data: "{OId: " + containerid + "}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var choiceContainer = $("#" + containername);
+                choiceContainer.empty();
+
+                //setTimeout(function () {
+                var i = 1;
+                var d = '';
+                if (result.length > 0) {
+                    $.each(result, function () {
+                        d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
+                        i++;
+                    });
+                    $.each(result, function () {
+                        d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ';
+                        i++;
+                    });
+                    $.each(result, function () {
+                        d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ';
+                        i++;
+                    });
+                    if ($("#UserisAuthenticated").val() > 0) {
+                        $.each(result, function () {
+                            d += '<li class="lipointer" id="' + i + 3 + '"> <a href="' + baseUrl + '/Posts/Details/' + getProgrammaId(this.Id) + '"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
+                            i++;
                         });
                     }
-                },
-                error: function (result) {
-                    alert(result.status + ' ' + result.statusText);
+
+                    $.each(result, function () {
+                        d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
+                        i++;
+                    });
+                    choiceContainer.append(d);
+
                 }
-            });
-        
+                //}, 100);
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+
+        // get diorganwtria arxh arthra
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
+            data: "{nCount : 10, k : 1}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var choiceContainer = $("#diorgarxhpostsid");
+                var choiceContainermobile = $("#diorgarxhpostsidmobile");
+                if (result.data.length > 0) {
+                    choiceContainer.empty();
+                    choiceContainermobile.empty();
+                    $.each(result.data, function () {
+                        var d = '<li><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></li>';
+                        choiceContainer.append(d);
+                        choiceContainermobile.append(d);
+                    });
+                }
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+
+        // get diorganwseis
+        $.ajax({
+            type: "POST",
+            url: baseUrl + '@Url.Action("Getdiorganwseis", "Home")',
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var choiceContainer = $("#diorganwseiulid");
+                var choiceContainermobile = $("#diorganwseiulidmobile");
+                if (result.length > 0) {
+
+                    choiceContainer.empty();
+                    choiceContainermobile.empty();
+
+                    $.each(result, function () {
+                        var d = '<li class="lipointer" onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>';
+                        choiceContainer.append(d);
+                        choiceContainermobile.append(d);
+                    });
+                }
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+
     });
 
-    $(window).on('load', function() {
+    $(window).on('load', function () {
         setTimeout(function () {
             //$("#prwta8limaid").trigger("click");
             fillomiloinavbar($("#firstDiorganwshid").val());

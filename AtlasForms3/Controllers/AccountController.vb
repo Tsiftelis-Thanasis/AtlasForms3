@@ -205,7 +205,7 @@ Public Class AccountController
 
 
                 'check any other roles
-                Dim aspdb As New AtlasBlogEntities
+                Dim aspdb As New AtlasStatisticsEntities
                 Dim countroles = (From t In aspdb.AspNetRoles).Count
                 If countroles = 0 Then
 
@@ -213,8 +213,6 @@ Public Class AccountController
 
                     Dim rm = New RoleManager(Of IdentityRole)(New RoleStore(Of IdentityRole)(New ApplicationDbContext()))
                     Dim str = rm.Create(New IdentityRole("Admins"))
-                    str = rm.Create(New IdentityRole("CMSUsers"))
-                    str = rm.Create(New IdentityRole("CompanyManagers"))
                     str = rm.Create(New IdentityRole("Users"))
 
                 End If
@@ -230,9 +228,9 @@ Public Class AccountController
 
 
                 ViewBag.Message = "Check your email and confirm your account, you must be confirmed before you can log in."
-                Return View("Info")
+                'Return View("Info")
 
-                'Return RedirectToAction("Index", "Home")
+                Return RedirectToAction("Index", "Home")
 
             End If
             AddErrors(result)

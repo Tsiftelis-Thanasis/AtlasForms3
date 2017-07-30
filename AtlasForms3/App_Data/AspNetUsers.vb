@@ -26,11 +26,6 @@ Partial Public Class AspNetUsers
     Public Property IsLocked As Nullable(Of Integer)
     Public Property IsEnabled As Nullable(Of Integer)
     Public Property Fullname As String
-    Public Property Address As String
-    Public Property Perioxi As String
-    Public Property Poli As String
-    Public Property Tk As String
-    Public Property Afm As String
     Public Property Phone As String
 
     Public Overridable Property AspNetUserClaims As ICollection(Of AspNetUserClaims) = New HashSet(Of AspNetUserClaims)

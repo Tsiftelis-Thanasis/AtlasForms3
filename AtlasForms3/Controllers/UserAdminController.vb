@@ -14,7 +14,7 @@ Imports System.Web.Mvc
 Public Class UsersAdminController
     Inherits Controller
 
-    Dim aspdb As New AtlasBlogEntities
+    Dim aspdb As New AtlasStatisticsEntities
 
     Public Sub New()
     End Sub
@@ -175,37 +175,36 @@ Public Class UsersAdminController
         Next
 
         Dim cl As New List(Of SelectListItem)
-        Dim aspdb As New AtlasBlogEntities
+        Dim aspdb As New AtlasStatisticsEntities
 
+        ', u.Address, u.Perioxi, u.Poli, u.Tk, u.Afm, _
         Dim userdb = (From u In aspdb.AspNetUsers
-                                    Where u.Id = useredited.Id
-                                    Select u.Fullname, u.Address, u.Perioxi, u.Poli, u.Tk, u.Afm, u.Phone, _
-                                    islocked = If(u.IsLocked Is Nothing, False, True), isenabled = If(u.IsEnabled Is Nothing, False, True)).First
+                      Where u.Id = useredited.Id
+                      Select u.Fullname, u.Phone, islocked = If(u.IsLocked Is Nothing, False, True), isenabled = If(u.IsEnabled Is Nothing, False, True)).First
 
-        Dim e As New EditUserViewModel() With { _
-            .Id = useredited.Id, _
-            .Username = useredited.UserName, _
-            .Email = useredited.Email, _
-            .Fullname = If(userdb.Fullname Is Nothing, "", userdb.Fullname), _
-            .Address = If(userdb.Address Is Nothing, "", userdb.Address), _
-            .Perioxi = If(userdb.Perioxi Is Nothing, "", userdb.Perioxi), _
-            .Poli = If(userdb.Poli Is Nothing, "", userdb.Poli), _
-            .Tk = If(userdb.Tk Is Nothing, "", userdb.Tk), _
-            .Afm = If(userdb.Afm Is Nothing, "", userdb.Afm), _
-            .Phone = If(userdb.Phone Is Nothing, "", userdb.Phone), _
-            .IsEnabled = userdb.isenabled, _
-            .IsLocked = userdb.islocked, _
+        Dim e As New EditUserViewModel() With {
+            .Id = useredited.Id,
+            .Username = useredited.UserName,
+            .Email = useredited.Email,
+            .Fullname = If(userdb.Fullname Is Nothing, "", userdb.Fullname),
+            .IsEnabled = userdb.isenabled,
+            .IsLocked = userdb.islocked,
+            .Phone = userdb.Phone,
             .RolesList = rl
             }
+        '.Address = If(userdb.Address Is Nothing, "", userdb.Address), _
+        '.Perioxi = If(userdb.Perioxi Is Nothing, "", userdb.Perioxi), _
+        '.Poli = If(userdb.Poli Is Nothing, "", userdb.Poli), _
+        '.Tk = If(userdb.Tk Is Nothing, "", userdb.Tk), _
+        '.Afm = If(userdb.Afm Is Nothing, "", userdb.Afm), _
+        '.Phone = If(userdb.Phone Is Nothing, "", userdb.Phone), _
 
         e._showroles = False
-        e._showcompanies = False
         e._showdates = False
 
         For Each role In userlogginedRoles
             If role.ToString = "Admins" Or role.ToString = "Superusers" Then
                 e._showroles = True
-                e._showcompanies = True
                 e._showdates = True
             End If
         Next
@@ -259,11 +258,11 @@ Public Class UsersAdminController
             e.UserName = editUser.Username
             e.Email = editUser.Email
             e.Fullname = editUser.Fullname
-            e.Address = editUser.Address
-            e.Perioxi = editUser.Perioxi
-            e.Poli = editUser.Poli
-            e.Tk = editUser.Tk
-            e.Afm = editUser.Afm
+            'e.Address = editUser.Address
+            'e.Perioxi = editUser.Perioxi
+            'e.Poli = editUser.Poli
+            'e.Tk = editUser.Tk
+            'e.Afm = editUser.Afm
             e.Phone = editUser.Phone
             e.IsEnabled = editUser.IsEnabled
             e.IsLocked = editUser.IsLocked
