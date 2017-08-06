@@ -227,7 +227,7 @@ End Using
 
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("GetKathgories", "Posts")',
+                    url: '@Url.Action("GetKathgories", "Home")',
                     data: { id: sid },
                     success: function (data) {
                         var items = [];

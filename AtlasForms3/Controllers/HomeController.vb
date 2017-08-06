@@ -270,5 +270,48 @@ Public Class HomeController
 
     End Function
 
+    <HttpPost>
+    <Compress>
+    Public Function GetKathgories(ByVal id As Integer) As JsonResult
+
+        Dim q = (From d In pdb.KathgoriesTable
+                 Join s In pdb.OmilosTable On d.Omilosid Equals s.Id
+                 Where s.Id = id
+                 Select d.KathgoriaName, did = d.Id
+            ).AsEnumerable().[Select](
+            Function(o) New With {.text = o.KathgoriaName, .value = o.did})
+
+        Return Json(q.ToArray(), JsonRequestBehavior.AllowGet)
+
+    End Function
+
+
+    <Compress>
+    Function GetTeamsbyKathgoria(ByVal kid As Integer) As JsonResult
+
+
+        Dim q = (From t In pdb.TeamsTable
+                 Join tk In pdb.TeamsandKathgoriesTable On t.Id Equals tk.TeamId
+                 Join k In pdb.KathgoriesTable On k.Id Equals tk.KathgoriaId
+                 Join o In pdb.OmilosTable On o.Id Equals k.Omilosid
+                 Where k.Id = kid
+                 Select Id = t.Id, Teamname = t.TeamName, Teamlogo = t.TeamLogo, k.KathgoriaName, o.OmilosName).
+                     AsEnumerable().[Select](
+                    Function(o) New With {.Id = o.Id, .TeamName = o.Teamname, .TeamLogo = If(o.Teamlogo Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.Teamlogo))),
+                    .KathgoriaName = o.KathgoriaName, .OmilosName = o.OmilosName}).ToList
+
+        Dim dtm As New DataTableModel
+        If q IsNot Nothing Then
+            dtm.data = q.Cast(Of Object).ToList
+        End If
+        dtm.draw = 0
+        dtm.recordsTotal = dtm.data.Count
+        dtm.recordsFiltered = dtm.recordsTotal
+
+        Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
+    End Function
+
 
 End Class

@@ -1543,7 +1543,7 @@ End Code
 
             $.ajax({
                 type: "POST",
-                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Posts")',
+                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Home")',
                 data: "{kid: " + $("#atlaskathgoria1").val() + "}",
                 async: false,
                 contentType: "application/json; charset=utf-8",
@@ -1584,7 +1584,7 @@ End Code
 
             $.ajax({
                 type: "POST",
-                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Posts")',
+                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Home")',
                 data: "{kid: " + $("#atlaskathgoria2").val() + "}",
                 async: false,
                 contentType: "application/json; charset=utf-8",

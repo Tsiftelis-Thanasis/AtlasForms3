@@ -19,25 +19,18 @@ End Code
                                     <tr>
                                         <th>Άρθρο</th>
                                         <th>Κατηγορία</th>
+                                        <th>Όμιλος (στατιστικά)</th>
+                                        <th>Κατηγορία (στατιστικά)</th>
                                         <th>Αλλαγή απο</th>
                                         <th>Ημερομηνία</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
-                                @*<tr>
-                                    <td>
-                                        <ul class="clearfix"></ul>
-                                    </td>
-                                </tr>*@
-                            </table>
+                             </table>
                         </div>
-                        <!-- widget -->
                     </div>
-                    <!-- widget-area-2 -->
-                
                 </div>
-                <!-- main-col -->
-
+                
                 <div Class="sidebar widget-area-11">
 
                     <div Class="widget kopa-ads-widget">
@@ -51,11 +44,9 @@ End Code
                     <div Class="widget kopa-ads-widget">
                         <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
                     </div>
-                    <!-- widget -->
-
+                
                 </div>
-                <!-- sidebar -->
-
+                
             </div>
             <!-- row -->
 
@@ -75,10 +66,9 @@ End Code
 @Section Scripts
     <Script type="text/javascript" language="javascript">
     $(document).ready(function () {
-                     
-
+        
         $('#newstable').DataTable({
-            "sAjaxSource": baseUrl + '@Url.Action("GetAllNewsWithCategory")',           
+            "sAjaxSource": baseUrl + '@Url.Action("GetAllthePosts")',           
             "contentType": "application/json; charset=utf-8",
             "language": {
                 "url": baseUrl + "/Scripts/DataTables/Greek.json"
@@ -88,7 +78,9 @@ End Code
             "bProcessing": true,           
             "aoColumns": [
                           {},
-                          { "mData": "KatName" },                          
+                          { "mData": "KathgoriaName" },     
+                            { "mData": "AtlasOmilos" },  
+                            { "mData": "AtlasKathgoria" },  
                           { "mData": "editBy"},
                           { "mData": "editDate", "sType": "date-uk" },
             ],

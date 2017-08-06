@@ -622,16 +622,49 @@ Namespace Controllers
         End Function
 
         <Compress>
-        Function GetAllNewsWithCategory() As JsonResult
+        Function GetAllthePosts() As JsonResult
 
 
-            Dim q = (From p In pdb.BlogPostsTable
-                     Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
-                     Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
-                     Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary,
-                     editBy = p.EditBy, editDate = p.EditDate, KatName = p2.KathgoriaName).AsEnumerable().[Select](
-                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
-                    .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"), .KatName = o.KatName}).ToList
+            'Dim q = (From p In pdb.BlogPostsTable
+            '         Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+            '         Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+            '         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary,
+            '         editBy = p.EditBy, editDate = p.EditDate, KatName = p2.KathgoriaName).AsEnumerable().[Select](
+            '        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
+            '        .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"), .KatName = o.KatName}).ToList
+
+
+            Dim ar1 = (From o In pdb2.OmilosTable
+                       Join k In pdb2.KathgoriesTable On k.Omilosid Equals o.Id
+                       Select Omilos = o.Id, o.OmilosName, Kathgoria = k.Id, k.KathgoriaName).
+                    AsEnumerable().Select(Function(a) New With {
+                    .Omilos = a.Omilos, .Omilosname = a.OmilosName, .Kathgoria = a.Kathgoria, .KathgoriaName = a.KathgoriaName
+                    }).ToArray
+
+            Dim ar2 = (From p In pdb.BlogPostsTable
+                       Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                       Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                       Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
+                         editBy = p.EditBy, editDate = p.EditDate, KathgoriaName = p2.KathgoriaName, atlaskathgoria = p1.AtlasKathgoriaId).
+                AsEnumerable().[Select](
+                Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                        .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"), .KathgoriaName = o.KathgoriaName, .atlaskathgoria = o.atlaskathgoria}).ToArray
+
+            Dim q = (From a2 In ar2
+                     Where a2.atlaskathgoria Is Nothing
+                     Select a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody, a2.editBy, a2.editDate, a2.KathgoriaName).
+                        AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy, .editDate = o.editDate,
+                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = "", .AtlasOmilos = ""
+                        }).
+                        Union(From a2 In ar2
+                              Where Not a2.atlaskathgoria Is Nothing
+                              Join a1 In ar1 On a1.Kathgoria Equals a2.atlaskathgoria
+                              Select a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody, a2.editBy, a2.editDate, a2.KathgoriaName, AtlasKathgoria = a1.KathgoriaName, AtlasOmilos = a1.Omilosname).
+                        AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy, .editDate = o.editDate,
+                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos
+                        }).ToList
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then
@@ -646,48 +679,7 @@ Namespace Controllers
 
         End Function
 
-        <Compress>
-        Function GetTeamsbyKathgoria(ByVal kid As Integer) As JsonResult
 
-
-            Dim q = (From t In pdb2.TeamsTable
-                     Join tk In pdb2.TeamsandKathgoriesTable On t.Id Equals tk.TeamId
-                     Join k In pdb2.KathgoriesTable On k.Id Equals tk.KathgoriaId
-                     Join o In pdb2.OmilosTable On o.Id Equals k.Omilosid
-                     Where k.Id = kid
-                     Select Id = t.Id, Teamname = t.TeamName, Teamlogo = t.TeamLogo, k.KathgoriaName, o.OmilosName).
-                     AsEnumerable().[Select](
-                    Function(o) New With {.Id = o.Id, .TeamName = o.Teamname, .TeamLogo = If(o.Teamlogo Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.Teamlogo))),
-                    .KathgoriaName = o.KathgoriaName, .OmilosName = o.OmilosName}).ToList
-
-            Dim dtm As New DataTableModel
-            If q IsNot Nothing Then
-                dtm.data = q.Cast(Of Object).ToList
-            End If
-            dtm.draw = 0
-            dtm.recordsTotal = dtm.data.Count
-            dtm.recordsFiltered = dtm.recordsTotal
-
-            Return Json(dtm, JsonRequestBehavior.AllowGet)
-
-
-        End Function
-
-
-        <HttpPost>
-        <Compress>
-        Public Function GetKathgories(ByVal id As Integer) As JsonResult
-
-            Dim q = (From d In pdb2.KathgoriesTable
-                     Join s In pdb2.OmilosTable On d.Omilosid Equals s.Id
-                     Where s.Id = id
-                     Select d.KathgoriaName, did = d.Id
-            ).AsEnumerable().[Select](
-            Function(o) New With {.text = o.KathgoriaName, .value = o.did})
-
-            Return Json(q.ToArray(), JsonRequestBehavior.AllowGet)
-
-        End Function
 
     End Class
 
