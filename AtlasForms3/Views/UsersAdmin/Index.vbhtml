@@ -23,19 +23,32 @@ End code
         </th>     
     </tr>
 
+@code
+
+    Dim pdb2 As New AtlasStatisticsEntities
+
     @For Each item In Model
+
+        Dim enableduser = (From u In pdb2.AspNetUsers
+                           Where u.Id = item.Id
+                           Select If(u.IsEnabled Is Nothing, 0, u.IsEnabled)).FirstOrDefault
+
+
         @<tr>
             <td>
-                @Html.Displayfor(Function(modelItem) item.UserName)
+                @Html.DisplayFor(Function(modelItem) item.UserName)
             </td>
         <td>
-            @*@Html.DisplayFor(Function(model) model.IsEnabled)*@
+            @Html.CheckBox("enableduser", If(enableduser = 0, False, True), New With {.style = "enabled=false;"})
         </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", New With {.id = item.Id}) |
                 @Html.ActionLink("Details", "Details", New With {.id = item.Id}) 
             </td>
         </tr>
+
     Next
+
+End Code
 
 </table>

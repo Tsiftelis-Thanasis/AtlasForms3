@@ -96,21 +96,21 @@ Public Class EditUserViewModel
     End Property
     Private m_RolesList As IEnumerable(Of SelectListItem)
 
-    Public Property IsLocked() As Integer
+    Public Property IsLocked() As Integer?
         Get
             Return m_IsLocked
         End Get
-        Set(value As Integer)
+        Set(value As Integer?)
             m_IsLocked = value
         End Set
     End Property
     Private m_IsLocked As Integer
 
-    Public Property IsEnabled() As Integer
+    Public Property IsEnabled() As Integer?
         Get
             Return m_IsEnabled
         End Get
-        Set(value As Integer)
+        Set(value As Integer?)
             m_IsEnabled = value
         End Set
     End Property

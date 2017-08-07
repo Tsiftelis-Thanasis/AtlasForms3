@@ -57,6 +57,20 @@ End code
              </div>
          </div>
 
+         <div class="form-group">
+             @Html.LabelFor(Function(m) m.IsEnabled, New With {.class = "control-label col-md-2"})
+             <div class="col-md-10">
+                 @code
+                     Dim isenabledvar As Boolean = If(Model.IsEnabled Is Nothing, False, If(Model.IsEnabled = 0, False, True))
+                     @Html.CheckBox("isenabledvar", isenabledvar, New With {.class = "form-control"})
+                     @Html.ValidationMessageFor(Function(m) m.IsEnabled)
+
+                End Code
+       
+             </div>
+         </div>
+
+
        
         @If (Model._showroles) Then
              @<div class="form-group">
