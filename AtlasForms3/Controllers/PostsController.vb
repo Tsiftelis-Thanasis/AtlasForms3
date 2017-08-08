@@ -35,25 +35,34 @@ Namespace Controllers
         ' GET: Posts/Details/5
         Function Details(ByVal id As Integer, Optional ByVal k As Integer = 0, Optional ByVal yk As Integer = 0) As ActionResult
 
-            Dim q = (From t In pdb.BlogPostsTable
-                     Where t.Id = id
-                     Select t).First
+            If id > 0 Then
 
-            Dim t1 As New Posts
-            t1.Id = q.Id
-            t1.Activepost = q.Activepost
-            t1.PostTitle = q.PostTitle
-            t1.PostBody = q.PostBody
-            t1.PostPhoto = q.PostPhoto
-            t1.PostSummary = q.PostSummary
-            t1.Youtubelink = "https://www.youtube.com/embed/" & q.Youtubelink & "?rel=0"
-            t1.Statslink = q.Statslink
-            t1.createdby = q.CreatedBy
-            t1.creationdate = q.CreationDate
-            t1.editby = q.EditBy
-            t1.editdate = q.EditDate
 
-            Return View(t1)
+                Dim q = (From t In pdb.BlogPostsTable
+                         Where t.Id = id
+                         Select t).First
+
+                Dim t1 As New Posts
+                t1.Id = q.Id
+                t1.Activepost = q.Activepost
+                t1.PostTitle = q.PostTitle
+                t1.PostBody = q.PostBody
+                t1.PostPhoto = q.PostPhoto
+                t1.PostSummary = q.PostSummary
+                t1.Youtubelink = "https://www.youtube.com/embed/" & q.Youtubelink & "?rel=0"
+                t1.Statslink = q.Statslink
+                t1.createdby = q.CreatedBy
+                t1.creationdate = q.CreationDate
+                t1.editby = q.EditBy
+                t1.editdate = q.EditDate
+
+                Return View(t1)
+
+            Else
+
+                Return Nothing
+
+            End If
 
         End Function
 
