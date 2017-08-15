@@ -445,12 +445,20 @@ Namespace Controllers
         End Function
 
         <Compress>
-        Function GetLastNewswithVideo() As JsonResult
+        Function GetKalyteresFaseisVideo(ByVal atlasomilosid As Integer?) As JsonResult
 
-            Dim ar2 = (From p In pdb.BlogPostsTable
-                       Where Not p.Youtubelink Is Nothing
-                       Order By p.Id Descending
-                       Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink
+            If atlasomilosid Is Nothing Then atlasomilosid = 0
+
+            Dim k As Integer = 7 'Καλυτερες φάσεις!
+
+            If atlasomilosid = 0 Then
+
+                Dim ar2 = (From p In pdb.BlogPostsTable
+                           Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                           Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                           Where Not p.Youtubelink Is Nothing And p2.Id = k And p1.IsAtlasKathgoria = False
+                           Order By p.Id Descending
+                           Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink
                            ).Take(5).AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = If(o.PostTitle Is Nothing, "", o.PostTitle.Substring(0, Math.Min(50, o.PostTitle.Length)) & "..."),
                         .PostSummary = If(o.PostSummary Is Nothing, "", o.PostSummary.Substring(0, Math.Min(150, o.PostSummary.Length)) & "..."),
@@ -458,79 +466,9 @@ Namespace Controllers
                         .Youtubelink = o.Youtubelink
                         }).ToArray
 
-            Dim dtm As New DataTableModel
-            If ar2 IsNot Nothing Then
-                dtm.data = ar2.Cast(Of Object).ToList
-            End If
-            dtm.draw = 0
-            dtm.recordsTotal = dtm.data.Count
-            dtm.recordsFiltered = dtm.recordsTotal
-
-            Return Json(dtm, JsonRequestBehavior.AllowGet)
-
-        End Function
-
-        <Compress>
-        Function GetLastNewsByCategory2(ByVal nCount As Integer, ByVal KathgoriaId As Integer,
-                                        Optional ByVal IsKathgoria As Integer = 0,
-                                        Optional ByVal IsYpokathgoria As Integer = 0,
-                                        Optional ByVal IsAtlasOmilos As Integer = 0,
-                                        Optional ByVal IsAtlasKathgoria As Integer = 0) As JsonResult
-
-            If IsKathgoria > 0 Then
-
-                Dim q = (From p In pdb.BlogPostsTable
-                         Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
-                         Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.AtlasKathgoriaId
-                         Where p1.AtlasKathgoriaId = KathgoriaId And p1.IsKathgoria = True
-                         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
-                            KatName = p2.KathgoriaName).Take(nCount).
-                        AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
-                        .KatName = o.KatName}).ToList
                 Dim dtm As New DataTableModel
-                If q IsNot Nothing Then
-                    dtm.data = q.Cast(Of Object).ToList
-                End If
-                dtm.draw = 0
-                dtm.recordsTotal = dtm.data.Count
-                dtm.recordsFiltered = dtm.recordsTotal
-
-                Return Json(dtm, JsonRequestBehavior.AllowGet)
-
-            ElseIf IsAtlasOmilos > 0 Then
-
-                Dim ar1 = (From o In pdb2.OmilosTable
-                           Join k In pdb2.KathgoriesTable On k.Omilosid Equals o.Id
-                           Select Omilos = o.Id, o.OmilosName, Kathgoria = k.Id, k.KathgoriaName).
-                           AsEnumerable().Select(Function(a) New With {
-                           .Omilos = a.Omilos, .Omilosname = a.OmilosName, .Kathgoria = a.Kathgoria, .KathgoriaName = a.KathgoriaName
-                           }).ToArray
-
-                Dim ar2 = (From p In pdb.BlogPostsTable
-                           Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
-                           Where p1.AtlasKathgoriaId = KathgoriaId And p1.IsAtlasOmilos = True
-                           Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
-                        AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .Kathgoria = o.kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink
-                        }).ToArray
-
-                Dim q = (From a2 In ar2
-                         Join a1 In ar1 On a2.Kathgoria Equals a1.Kathgoria
-                         Select a1.Omilos, a1.Omilosname, a1.Kathgoria, a1.KathgoriaName, a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody,
-                         a2.PostPhoto, a2.Youtubelink, a2.editBy).
-                        AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .Kathgoria = o.Kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                        .PostPhoto = o.PostPhoto, .Youtubelink = o.Youtubelink, .KatName = o.Omilosname & "-" & o.KathgoriaName
-                        }).ToList
-
-                Dim dtm As New DataTableModel
-                If q IsNot Nothing Then
-                    dtm.data = q.Cast(Of Object).ToList
+                If ar2 IsNot Nothing Then
+                    dtm.data = ar2.Cast(Of Object).ToList
                 End If
                 dtm.draw = 0
                 dtm.recordsTotal = dtm.data.Count
@@ -540,31 +478,24 @@ Namespace Controllers
 
             Else
 
-                Dim ar1 = (From o In pdb2.OmilosTable
-                           Join k In pdb2.KathgoriesTable On k.Omilosid Equals o.Id
-                           Select Omilos = o.Id, o.OmilosName, Kathgoria = k.Id, k.KathgoriaName).
-                           AsEnumerable().Select(Function(a) New With {
-                           .Omilos = a.Omilos, .Omilosname = a.OmilosName, .Kathgoria = a.Kathgoria, .KathgoriaName = a.KathgoriaName
-                           }).ToArray
+                Dim kl = (From o In pdb2.OmilosTable
+                          Join k1 In pdb2.KathgoriesTable On k1.Omilosid Equals o.Id
+                          Where o.Id = atlasomilosid
+                          Select k1.Id).ToList
 
-                Dim ar2 = (From p In pdb.BlogPostsTable
-                           Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
-                           Where p1.AtlasKathgoriaId = KathgoriaId And p1.IsAtlasKathgoria = True
-                           Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
-                        AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .Kathgoria = o.kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink
+                Dim q = (From p In pdb.BlogPostsTable
+                         Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                         Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                         Join klist In kl On klist Equals p1.AtlasKathgoriaId
+                         Where Not p.Youtubelink Is Nothing And p2.Id = k And p1.IsAtlasKathgoria = True
+                         Order By p.Id Descending
+                         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink
+                           ).Take(5).AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = If(o.PostTitle Is Nothing, "", o.PostTitle.Substring(0, Math.Min(50, o.PostTitle.Length)) & "..."),
+                        .PostSummary = If(o.PostSummary Is Nothing, "", o.PostSummary.Substring(0, Math.Min(150, o.PostSummary.Length)) & "..."),
+                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                        .Youtubelink = o.Youtubelink
                         }).ToArray
-
-                Dim q = (From a2 In ar2
-                         Join a1 In ar1 On a2.Kathgoria Equals a1.Kathgoria
-                         Select a1.Omilos, a1.Omilosname, a1.Kathgoria, a1.KathgoriaName, a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody,
-                         a2.PostPhoto, a2.Youtubelink, a2.editBy).
-                        AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .Kathgoria = o.Kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                        .PostPhoto = o.PostPhoto, .Youtubelink = o.Youtubelink, .KatName = o.Omilosname & "-" & o.KathgoriaName
-                        }).ToList
 
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
@@ -576,7 +507,9 @@ Namespace Controllers
 
                 Return Json(dtm, JsonRequestBehavior.AllowGet)
 
+
             End If
+
 
         End Function
 
@@ -633,16 +566,6 @@ Namespace Controllers
         <Compress>
         Function GetAllthePosts() As JsonResult
 
-
-            'Dim q = (From p In pdb.BlogPostsTable
-            '         Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
-            '         Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
-            '         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary,
-            '         editBy = p.EditBy, editDate = p.EditDate, KatName = p2.KathgoriaName).AsEnumerable().[Select](
-            '        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
-            '        .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"), .KatName = o.KatName}).ToList
-
-
             Dim ar1 = (From o In pdb2.OmilosTable
                        Join k In pdb2.KathgoriesTable On k.Omilosid Equals o.Id
                        Select Omilos = o.Id, o.OmilosName, Kathgoria = k.Id, k.KathgoriaName).
@@ -657,23 +580,30 @@ Namespace Controllers
                          editBy = p.EditBy, editDate = p.EditDate, KathgoriaName = p2.KathgoriaName, atlaskathgoria = p1.AtlasKathgoriaId).
                 AsEnumerable().[Select](
                 Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
-                        .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"), .KathgoriaName = o.KathgoriaName, .atlaskathgoria = o.atlaskathgoria}).ToArray
+                        .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"),
+                        .KathgoriaName = o.KathgoriaName, .atlaskathgoria = o.atlaskathgoria}).ToArray
 
-            Dim q = (From a2 In ar2
-                     Where a2.atlaskathgoria Is Nothing
-                     Select a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody, a2.editBy, a2.editDate, a2.KathgoriaName).
+            Dim q1 = (From a2 In ar2
+                      Where (a2.atlaskathgoria Is Nothing)
+                      Select a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody,
+                        a2.editBy, a2.editDate, a2.KathgoriaName, AtlasKathgoria = "", AtlasOmilos = "").
                         AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy, .editDate = o.editDate,
-                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = "", .AtlasOmilos = ""
-                        }).
-                        Union(From a2 In ar2
-                              Where Not a2.atlaskathgoria Is Nothing
-                              Join a1 In ar1 On a1.Kathgoria Equals a2.atlaskathgoria
-                              Select a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody, a2.editBy, a2.editDate, a2.KathgoriaName, AtlasKathgoria = a1.KathgoriaName, AtlasOmilos = a1.Omilosname).
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
+                        .PostBody = o.PostBody, .editBy = o.editBy, .editDate = o.editDate,
+                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos}).ToArray
+
+            Dim q2 = (From a2 In ar2
+                      Join a1 In ar1 On a1.Kathgoria Equals a2.atlaskathgoria
+                      Where Not (a2.atlaskathgoria Is Nothing)
+                      Select a2.Id, a2.PostTitle, a2.PostSummary, a2.PostBody,
+                        a2.editBy, a2.editDate, a2.KathgoriaName, AtlasKathgoria = a1.KathgoriaName, AtlasOmilos = a1.Omilosname).
                         AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy, .editDate = o.editDate,
-                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos
-                        }).ToList
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
+                        .PostBody = o.PostBody, .editBy = o.editBy, .editDate = o.editDate,
+                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos}).ToArray
+
+            Dim q = q1.Concat(q2)
+
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then

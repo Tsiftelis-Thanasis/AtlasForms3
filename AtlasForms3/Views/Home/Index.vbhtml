@@ -382,8 +382,8 @@ End Code
                 //apend kalyteresfaseisid
                 $.ajax({
                     type: "POST",
-                    url: baseUrl + '@Url.Action("GetLastNewswithVideo", "Posts")',
-                    //data: "{nCount : 10, k: 7}",
+                    url: baseUrl + '@Url.Action("GetKalyteresFaseisVideo", "Posts")',
+                    data: "{atlasomilosid: " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",

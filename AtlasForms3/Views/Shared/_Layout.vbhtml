@@ -77,9 +77,7 @@ End code
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsid">                                                              
                             </ul>
-                        </li>
-                        
-                        <li class="current-menu-item"><a>Δηλώσεις</a></li>
+                        </li>                        
 
                         @If User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
@@ -109,8 +107,7 @@ End code
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsidmobile"></ul>
-                        </li>
-                        <li class="current-menu-item"><a >Δηλώσεις</a></li>
+                        </li>                        
  
                         @if User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
