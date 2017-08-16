@@ -28,7 +28,7 @@ End code
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset = "utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
     <link rel="shortcut icon" type="image/ico" href="~/favicon.ico">

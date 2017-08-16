@@ -64,7 +64,7 @@
 
     If ViewBag.kathgoria = 11 Then
         ViewData("Title") = "Τελευταία νέα " '& katName
-        innerTitle = "τελευταια νεα " '& katName
+        innerTitle = "τελευταια νεα " & atlaskathgoria1name
     End If
     If ViewBag.kathgoria = 12 Then
         ViewData("Title") = "Ομάδες " '& katName
@@ -98,7 +98,7 @@ End Code
     <div Class="wrapper">
         <div Class="content-wrap">
             <div Class="row">
-                <div Class="kopa-main"> @*<div Class="kopa-main-col">*@
+                <div Class="kopa-main-col"> @*<div Class="kopa-main">*@
 
                         <div id="divfixture" class="widget kopa-entry-list" style="display: none;">
                             <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
@@ -987,7 +987,7 @@ End Code
                         </div>
                     </div>
                
-                    @*<div Class="sidebar widget-area-11">
+                    <div Class="sidebar widget-area-11">
 
                
                 <!-- widget -->
@@ -1035,7 +1035,7 @@ End Code
                 <!-- widget -->
 
 
-            </div>*@
+            </div>
           
                 </div>
           
@@ -1056,7 +1056,7 @@ End Code
                                  
                         <div id = "divresults1" Class="widget-area-12"  style="display: none;">
                         <div Class="widget kopa-result-widget">
-                            <h3 Class="widget-title style6">αποτελεσματα α1</h3>
+                            <h3 Class="widget-title style6">αποτελεσματα @atlaskathgoria1name</h3>
                             <div Class="widget-content">
                                 <div Class="span-bg">
                                     <span Class="c-tg"></span>
@@ -1122,7 +1122,7 @@ End Code
                         @<div Class="row">
 
                         <div id = "divresults2" Class="widget kopa-result-widget"  style="display: none;">
-                                <h3 Class="widget-title style6">αποτελεσματα α2</h3>
+                                <h3 Class="widget-title style6">αποτελεσματα @atlaskathgoria1name</h3>
                                 <div Class="widget-content">
                                     <div Class="span-bg">
                                         <span Class="c-tg"></span>
@@ -1361,7 +1361,7 @@ End Code
                                     '   </div> ' +
                                     '   <p>' + row.PostSummary + ' .... </p> ' +
                                     '   <footer> ' +
-                                    '       <p class="entry-author"> by ' + row.editby + '</p> ' +
+                                    '       <p class="entry-author"> από ' + row.editBy + '</p> ' +
                                     '   </footer> ' +
                                     ' </div>    ' +
                                     ' </a> ' +
