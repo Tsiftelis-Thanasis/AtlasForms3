@@ -252,7 +252,7 @@ End Code
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
-                    data: "{nCount : 10, atlasomilosid: " +  omilosid + "}",
+                    data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -302,10 +302,11 @@ End Code
                 });
 
                 //append mainnewscarouselid
+               
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
-                    data: "{nCount : 5, atlasomilosid: " +  omilosid + "}",
+                    data: "{nCount : 5, atlasomilosid: " + omilosid + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -342,6 +343,7 @@ End Code
                 });
 
                 //apend latestnewsid
+               
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
@@ -376,46 +378,9 @@ End Code
                         alert(result.status + ' ' + result.statusText);
                     }
                 });
-                                
-                
-
-                //apend kalyteresfaseisid
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetKalyteresFaseisVideo", "Posts")',
-                    data: "{atlasomilosid: " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var choiceContainer = $("#kalyteresfaseisid");
-                        if (result.data.length > 0) {
-                            choiceContainer.empty();
-                            $.each(result.data, function () {
-                                d = '<div class="item"> ' +
-                                    '<article class="entry-item"> ' +
-                                    '<div class="entry-thumb"> ' +
-                                    '<a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
-                                    '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" height:30px;width:30px; ></a> ' +
-                                    '<p class="new-icon"> ' +
-                                    '<span>' + this.PostTitle + '</span> ' +
-                                    '</p> ' +
-                                    '</div> ' +
-                                    '</article> ' +
-                                    '</div> ';
-                                choiceContainer.append(d);
-                            });
-                        }
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-               
-
+                            
                 //append pointsul
+                
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat1", "Home")',
@@ -432,7 +397,6 @@ End Code
                         alert(result.status + ' ' + result.statusText);
                     }
                 });
-
 
                 //append assistul
                 $.ajax({
@@ -454,6 +418,7 @@ End Code
 
 
                 //append reboundul
+               
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat3", "Home")',
@@ -473,6 +438,7 @@ End Code
 
 
                 //append stealsul
+                
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetWeeklyReportStat4", "Home")',
@@ -508,8 +474,41 @@ End Code
                     }
                 });
 
+                //apend kalyteresfaseisid
+                
+                $.ajax({
+                    type: "POST",
+                    url: baseUrl + '@Url.Action("GetKalyteresFaseisVideo", "Posts")',
+                    data: "{atlasomilosid: " + omilosid + "}",
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
 
-              
+                        var choiceContainer = $("#kalyteresfaseisid");
+                        if (result.data.length > 0) {
+                            choiceContainer.empty();
+                            $.each(result.data, function () {
+                                d = '<div class="item"> ' +
+                                    '<article class="entry-item"> ' +
+                                    '<div class="entry-thumb"> ' +
+                                    '<a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
+                                    '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" height:30px;width:30px; ></a> ' +
+                                    '<p class="new-icon"> ' +
+                                    '<span>' + this.PostTitle + '</span> ' +
+                                    '</p> ' +
+                                    '</div> ' +
+                                    '</article> ' +
+                                    '</div> ';
+                                choiceContainer.append(d);
+                            });
+                        }
+                    },
+                    error: function (result) {
+                        alert(result.status + ' ' + result.statusText);
+                    }
+                });
+
 
             });
         </script>
