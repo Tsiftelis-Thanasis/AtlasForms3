@@ -998,55 +998,52 @@ End Code
                                        
                 <!-- widget -->
 
-                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                    <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
-                    <ul Class="clearfix">
-                        <li>
-                            <div Class="kopa-tab style3">
-                                <ul Class="nav nav-tabs">
-                                    <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                    <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
-                                    <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
-                                    <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
-                                    <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
-                                </ul>
-                                <!-- nav-tabs -->
-                                <div Class="tab-content">
-                                    <div Class="tab-pane active" id="points">
-                                        <ul Class="kopa-list clearfix" id="pointsul"></ul>
+                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                        <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
+                        <ul Class="clearfix">
+                            <li>
+                                <div Class="kopa-tab style3">
+                                    <ul Class="nav nav-tabs">
+                                        <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
+                                        <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
+                                        <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
+                                        <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
+                                        <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
+                                    </ul>
+                                    <!-- nav-tabs -->
+                                    <div Class="tab-content">
+                                        <div Class="tab-pane active" id="points">
+                                            <ul Class="kopa-list clearfix" id="pointsul"></ul>
+                                        </div>
+                                        <!-- tab-pane -->
+                                        <div Class="tab-pane" id="assist">
+                                            <ul Class="kopa-list clearfix" id="assistul"></ul>
+                                        </div>
+                                        <!-- tab-pane -->
+                                        <div Class="tab-pane" id="reb">
+                                            <ul Class="kopa-list clearfix" id="reboundul"></ul>
+                                        </div>
+                                        <!-- tab-pane -->
+                                        <div Class="tab-pane" id="steal">
+                                            <ul Class="kopa-list clearfix" id="stealsul"></ul>
+                                        </div>
+                                        <!-- tab-pane -->
+                                        <div Class="tab-pane" id="block">
+                                            <ul Class="kopa-list clearfix" id="blocksul"></ul>
+                                        </div>
+                                        <!-- tab-pane -->
                                     </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="assist">
-                                        <ul Class="kopa-list clearfix" id="assistul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="reb">
-                                        <ul Class="kopa-list clearfix" id="reboundul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="steal">
-                                        <ul Class="kopa-list clearfix" id="stealsul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
-                                    <div Class="tab-pane" id="block">
-                                        <ul Class="kopa-list clearfix" id="blocksul"></ul>
-                                    </div>
-                                    <!-- tab-pane -->
                                 </div>
-                            </div>
-                            <!-- kopa-tab -->
-                        </li>
-                    </ul>
-                </div>
+                                <!-- kopa-tab -->
+                            </li>
+                        </ul>
+                    </div>
                 <!-- widget -->
 
-
-
-            </div>
-          
                 </div>
           
-
+            </div>
+          
         </div>
         
         <section Class="kopa-area kopa-area-1 mb-30" id="divresultsandstandings" style="display: none;">

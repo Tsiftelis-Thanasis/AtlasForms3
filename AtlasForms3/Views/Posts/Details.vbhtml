@@ -102,7 +102,7 @@ End Code
 
         <div class="row">
 
-            @*<div class="kopa-main-col">*@
+            <div class="kopa-main-col">
                 <div class="kopa-entry-post">
                     <article class="entry-item">
 
@@ -199,25 +199,46 @@ End Code
                                 </div>
                             </div>
                         </div>
-        </article>
-</div>
 
-@*<div Class="row form-horizontal">
-    <div Class="form-group">
-        <div Class="col-md-12">
-            <p>
-                @Html.ActionLink("Επιστροφή στην αρχική", "Index")
-            </p>
-        </div>
-    </div>
-</div>*@
+                    </article>
+                </div>
+                @*change url*@
+                <div Class="row form-horizontal">
+                    <div class="fb-like"
+                         data-href="http://localhost:55555/Posts/Details/@katid"
+                         data-layout="standard"
+                         data-action="like"
+                         data-show-faces="true">
+                    </div>
+                </div>
+            </div>
+
+            <div Class="sidebar widget-area-11">
+                <div id="divads" Class="widget kopa-tab-1-widget kopa-point-widget">
+                    <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
+                    <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
+                    <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
+                </div>
+            </div>
+
+   
+    @*<div Class="row form-horizontal">
+            <div Class="form-group">
+                <div Class="col-md-12">
+                    <p>
+                        @Html.ActionLink("Επιστροφή στην αρχική", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>*@
 
 
 
-@Section Scripts
-    <script type="text/javascript">
 
-      
+    @Section Scripts
+        <script type="text/javascript">
 
-    </script>
-End Section
+
+
+        </script>
+    End Section
