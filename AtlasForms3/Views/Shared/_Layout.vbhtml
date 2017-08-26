@@ -102,7 +102,21 @@ End code
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsid">                                                              
                             </ul>
-                        </li>                        
+                        </li>    
+                        
+
+                        <li class="current-menu-item">
+                            <a><span>εγγραφες </span></a>
+                            <ul class="sub-menu" >
+                                <li>
+                                    <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>                            
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>   
+                                </li>
+                            </ul>
+                        </li>
+                    
 
                         @If User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
@@ -132,7 +146,20 @@ End code
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsidmobile"></ul>
-                        </li>                        
+                        </li>        
+                        
+                        <li class="current-menu-item">
+                            <a><span>εγγραφες </span></a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
+                                </li>
+                            </ul>
+                        </li>
+            
  
                         @if User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
@@ -423,6 +450,7 @@ End code
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
+                
                 var choiceContainer = $("#diorgarxhpostsid");
                 var choiceContainermobile = $("#diorgarxhpostsidmobile");
                 if (result.data.length > 0) {

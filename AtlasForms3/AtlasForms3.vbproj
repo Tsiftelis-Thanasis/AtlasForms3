@@ -252,6 +252,12 @@
     <Compile Include="App_Data\AspNetUsers.vb">
       <DependentUpon>AtlasStatistics.tt</DependentUpon>
     </Compile>
+    <Compile Include="App_Data\BlogNewPlayer.vb">
+      <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\BlogNewTeam.vb">
+      <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\IdentityConfig.vb" />
@@ -302,6 +308,7 @@
     <Compile Include="CompressAttribute.vb" />
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\KathgoriesController.vb" />
+    <Compile Include="Controllers\NewPlayerController.vb" />
     <Compile Include="Controllers\PostsController.vb" />
     <Compile Include="Controllers\ProgrammaController.vb" />
     <Compile Include="Controllers\UserAdminController.vb" />
@@ -592,10 +599,12 @@
     <Content Include="Content\images\3.png" />
     <Content Include="Content\images\apple-touch-icon-114x114.png" />
     <Content Include="Content\images\apple-touch-icon.png" />
+    <Content Include="Content\images\atlassportwear.png" />
     <Content Include="Content\images\atlastop10.PNG" />
     <Content Include="Content\images\bg-top-2.png" />
     <Content Include="Content\images\bg-top.png" />
     <Content Include="Content\images\black_twill.png" />
+    <Content Include="Content\images\blueiceok.png" />
     <Content Include="Content\images\cl.png" />
     <Content Include="Content\images\favicon.html" />
     <Content Include="Content\images\icons8-Basketball-Player-40.png" />
@@ -604,6 +613,7 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logoAtlas-mobile.png" />
     <Content Include="Content\images\logoAtlas.png" />
+    <Content Include="Content\images\risko.jpg" />
     <Content Include="Content\images\t1.png" />
     <Content Include="Content\images\t2.png" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
@@ -922,7 +932,6 @@
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Views\Posts\Details.vbhtml" />
     <Content Include="Views\Posts\Index.vbhtml" />
-    <Content Include="Views\Posts\Edit.vbhtml" />
     <Content Include="Views\Account\ConfirmEmail.vbhtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.vbhtml" />
     <Content Include="Views\Account\ExternalLoginFailure.vbhtml" />
@@ -948,6 +957,11 @@
     <Content Include="Views\Posts\All.vbhtml" />
     <Content Include="Views\Posts\Create.vbhtml" />
     <Content Include="Views\Programma\Create.vbhtml" />
+    <Content Include="Views\NewPlayer\Index.vbhtml" />
+    <Content Include="Views\NewPlayer\Details.vbhtml" />
+    <Content Include="Views\NewPlayer\Create.vbhtml" />
+    <Content Include="Views\NewPlayer\Delete.vbhtml" />
+    <Content Include="Views\Posts\Edit.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

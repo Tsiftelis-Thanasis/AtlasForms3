@@ -8,7 +8,7 @@ End Code
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4><i class="icon-cpanel homeicons"></i> άρθρα - διαφημίσεις</h4>
+                <h4><i class="icon-cpanel homeicons"></i> αρθρα - διαφημισεις</h4>
             </div>
             <div class="panel-body">
                 <p>  @Html.ActionLink("Νέο Άρθρο", "Create", "Posts") </p>
@@ -36,6 +36,20 @@ End Code
         </div>
     </div>
       
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="icon-cpanel homeicons"></i> Εγγραφες </h4>
+            </div>
+            <div class="panel-body">
+                <p> @Html.ActionLink("Εγγραφές παιχτών", "Index", "Newplayer") </p>
+            </div>
+            <div class="panel-body">
+                <p> @Html.ActionLink("Εγγραφές ομάδων", "Index", "Newteam") </p>
+            </div>
+        </div>
+    </div>
+
     
 </div>
 

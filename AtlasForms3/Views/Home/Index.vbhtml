@@ -18,7 +18,7 @@
 
     'Dim innerTitle As String = ""
     If atlasomilosname = "" Then
-        ViewData("Title") = "ατλας μπασκετ"
+        ViewData("Title") = "Κεντρική σελίδα"
     Else
         If atlasomilosname.Count < 2 Then
             atlasomilosname = atlasomilosname & " Όμιλος"
@@ -36,10 +36,7 @@ End Code
 
 <div id = "main-content" Class="style1">
 
-
     <div Class="main-top">
-
-
 
         <div Class="social-links style1">
             <ul Class="clearfix">
@@ -199,7 +196,7 @@ End Code
 
     //append lastgames carouselid
      function GetLastGames(omilosid) {
-        return $.ajaxQueue({
+         return $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("Getlastgames", "Home")',
             data: "{omilosid : " + omilosid + "}",
@@ -245,7 +242,7 @@ End Code
 
     //append carousel sync3 and sync4
      function AppendCarousel1(omilosid) {
-        return $.ajaxQueue({
+        return $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
             data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
@@ -258,6 +255,7 @@ End Code
                 var sync4container = $("#watchsync4");
 
                 if (result.data.length > 0) {
+                    
                     sync3container.empty();
                     sync4container.empty();
 
@@ -312,6 +310,7 @@ End Code
                 var synccontainer = $("#mainnewscarouselid");
 
                 if (result.data.length > 0) {
+
                     synccontainer.empty();
 
                     $.each(result.data, function () {

@@ -72,7 +72,8 @@
 
     ViewData("Title") = cTitle
 
-
+    Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
+    ' + baseUrl + '/Posts/Details/' + this.Id + '
 
 End Code
 
@@ -204,20 +205,21 @@ End Code
                 </div>
                 @*change url*@
                 <div Class="row form-horizontal">
-                    <div class="fb-like"
-                         data-href="http://localhost:55555/Posts/Details/@katid"
+                    <div Class="fb-like"                                               
+                         data-href=@urlwithid
                          data-layout="standard"
                          data-action="like"
                          data-show-faces="true">
                     </div>
                 </div>
+                
             </div>
 
             <div Class="sidebar widget-area-11">
                 <div id="divads" Class="widget kopa-tab-1-widget kopa-point-widget">
-                    <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
-                    <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
-                    <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
+                        <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
+                        <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
+                        <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
                 </div>
             </div>
 

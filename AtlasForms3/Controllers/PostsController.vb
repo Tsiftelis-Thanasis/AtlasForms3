@@ -143,7 +143,7 @@ Namespace Controllers
 
                     End If
 
-                    Return RedirectToAction("Index", "Posts")
+                    Return RedirectToAction("All", "Posts")
 
                 Catch ex As Exception
                     ModelState.AddModelError("error_msg", ex.Message)
@@ -267,7 +267,7 @@ Namespace Controllers
 
                     End If
 
-                    Return RedirectToAction("Index", "Posts")
+                    Return RedirectToAction("All", "Posts")
 
                 Catch ex As Exception
                     ModelState.AddModelError("error_msg", ex.Message)
@@ -378,12 +378,13 @@ Namespace Controllers
         End Function
 
         <Compress>
-        Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlasomilosid As Integer?) As JsonResult
+        Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlasomilosid As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As JsonResult
 
             If atlasomilosid Is Nothing Then atlasomilosid = 0
-
-            Dim k As Integer = 3 'Teleutaia nea!
-            Dim k2 As Integer = 11 'Teleutaia nea omilou!
+            If k Is Nothing Then k = 3 'Teleutaia nea!
+            If k2 Is Nothing Then k2 = 11 'Teleutaia nea omilou!
+            'Dim k As Integer = 3 'Teleutaia nea!
+            'Dim k2 As Integer = 11 'Teleutaia nea omilou!
 
             If atlasomilosid = 0 Then
 

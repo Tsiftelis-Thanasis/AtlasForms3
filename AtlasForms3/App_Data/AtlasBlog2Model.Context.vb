@@ -26,5 +26,7 @@ Partial Public Class AtlasBlogEntities
     Public Overridable Property BlogPostandKathgoriaTable() As DbSet(Of BlogPostandKathgoriaTable)
     Public Overridable Property BlogPostsTable() As DbSet(Of BlogPostsTable)
     Public Overridable Property BlogProgramma() As DbSet(Of BlogProgramma)
-
+    Public Overridable Property BlogNewPlayer() As DbSet(Of BlogNewPlayer)
+    Public Overridable Property BlogNewTeam() As DbSet(Of BlogNewTeam)
+    Public Property NewPlayers As System.Data.Entity.DbSet(Of NewPlayer)
 End Class

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ATLASBLOG2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ATLASBLOG2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BlogKathgoriesTable">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +12,36 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KathgoriaName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ActiveKathgoria" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="BlogNewPlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="playername" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="playeremail" Type="varchar" MaxLength="100" />
+          <Property Name="playerphone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="playerbirthdate" Type="varchar" MaxLength="50" />
+          <Property Name="playerheight" Type="varchar" MaxLength="10" />
+          <Property Name="playerposition" Type="varchar" MaxLength="10" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="BlogNewTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teamname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="teamemail" Type="varchar" MaxLength="100" />
+          <Property Name="teamphone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="teamroster" Type="image" />
           <Property Name="CreationDate" Type="datetime" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
           <Property Name="EditDate" Type="datetime" />
@@ -68,12 +98,13 @@
         </EntityType>
         <EntityContainer Name="ATLASBLOG2ModelStoreContainer">
           <EntitySet Name="BlogKathgoriesTable" EntityType="Self.BlogKathgoriesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogNewPlayer" EntityType="Self.BlogNewPlayer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogNewTeam" EntityType="Self.BlogNewTeam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlogPostandKathgoriaTable" EntityType="Self.BlogPostandKathgoriaTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlogPostsTable" EntityType="Self.BlogPostsTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlogProgramma" EntityType="Self.BlogProgramma" Schema="dbo" store:Type="Tables" />
-          </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ATLASBLOG2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -143,7 +174,39 @@
           <EntitySet Name="BlogPostandKathgoriaTable" EntityType="Self.BlogPostandKathgoriaTable" />
           <EntitySet Name="BlogPostsTable" EntityType="Self.BlogPostsTable" />
           <EntitySet Name="BlogProgramma" EntityType="Self.BlogProgramma" />
+          <EntitySet Name="BlogNewPlayer" EntityType="ATLASBLOG2Model.BlogNewPlayer" />
+          <EntitySet Name="BlogNewTeam" EntityType="ATLASBLOG2Model.BlogNewTeam" />
         </EntityContainer>
+        <EntityType Name="BlogNewPlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playername" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="playeremail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="playerphone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="playerbirthdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="playerheight" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="playerposition" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BlogNewTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teamname" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="teamemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="teamphone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="teamroster" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -212,6 +275,38 @@
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="EditDate" ColumnName="EditDate" />
                 <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogNewPlayer">
+            <EntityTypeMapping TypeName="ATLASBLOG2Model.BlogNewPlayer">
+              <MappingFragment StoreEntitySet="BlogNewPlayer">
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="playerposition" ColumnName="playerposition" />
+                <ScalarProperty Name="playerheight" ColumnName="playerheight" />
+                <ScalarProperty Name="playerbirthdate" ColumnName="playerbirthdate" />
+                <ScalarProperty Name="playerphone" ColumnName="playerphone" />
+                <ScalarProperty Name="playeremail" ColumnName="playeremail" />
+                <ScalarProperty Name="playername" ColumnName="playername" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogNewTeam">
+            <EntityTypeMapping TypeName="ATLASBLOG2Model.BlogNewTeam">
+              <MappingFragment StoreEntitySet="BlogNewTeam">
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="teamroster" ColumnName="teamroster" />
+                <ScalarProperty Name="teamphone" ColumnName="teamphone" />
+                <ScalarProperty Name="teamemail" ColumnName="teamemail" />
+                <ScalarProperty Name="teamname" ColumnName="teamname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
