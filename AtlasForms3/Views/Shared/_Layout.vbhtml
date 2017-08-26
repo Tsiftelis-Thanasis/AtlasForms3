@@ -30,7 +30,19 @@ End code
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
+    
+
+   
+    <meta property="fb:app_id" content="238332292965135" /> @*use ATLAS ID*@
+    <meta property="og:site_name" content="Atlas" />
+    <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
+    <meta property="og:type" content="website" /> @*or article*@
+    <meta property="og:image" content="" /> @*image to show for each page*@
+    <meta property="og:description" content="" /> @*description for each page*@
+    <meta property="og:url" content="" />   @*url of the page*@
+
+
+    <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
     <link rel="shortcut icon" type="image/ico" href="~/favicon.ico">
 
     @Styles.Render("~/Content/css")
@@ -50,6 +62,19 @@ End code
 
 
 <body>
+
+    @*change AppId to ATLAS one*@
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=238332292965135";
+          fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    </script>
+
 
     @Html.Hidden("firstDiorganwshid", firstDiorganwshid)
     @Html.Hidden("UserisAuthenticated", UserisAuthenticated)
@@ -183,6 +208,18 @@ End code
     <script src="~/Scripts/jquery.carouFredSel-6.2.1.js"></script>
     <script src="~/Scripts/owl.carousel.js"></script>
     
+
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+   </script>
+
 </body>
 </html>
 
@@ -341,26 +378,26 @@ End code
                 var d = '';
                 if (result.length > 0) {
                     $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νέα ' + this.KathgoriaName + '        </a> </span> </li> ';
+                        d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νεα ' + this.KathgoriaName + '        </a> </span> </li> ';
                         i++;
                     });
                     $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομάδες ' + this.KathgoriaName + '     </a> </span> </li> ';
+                        d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομαδες ' + this.KathgoriaName + '     </a> </span> </li> ';
                         i++;
                     });
                     $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογίες ' + this.KathgoriaName + '</a> </span> </li> ';
+                        d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογιες ' + this.KathgoriaName + '</a> </span> </li> ';
                         i++;
                     });
                     if ($("#UserisAuthenticated").val() > 0) {
                         $.each(result, function () {
-                            d += '<li class="lipointer" id="' + i + 3 + '"> <a href="' + baseUrl + '/Posts/Details/' + getProgrammaId(this.Id) + '"> <span style="font-size: 12px; !important" >Πρόγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
+                            d += '<li class="lipointer" id="' + i + 3 + '"> <a href="' + baseUrl + '/Posts/Details/' + getProgrammaId(this.Id) + '"> <span style="font-size: 12px; !important" >Προγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
                             i++;
                         });
                     }
 
                     $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωρίες ' + this.KathgoriaName + '   </a> </span> </li> ';
+                        d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωριες ' + this.KathgoriaName + '   </a> </span> </li> ';
                         i++;
                     });
                     choiceContainer.append(d);
