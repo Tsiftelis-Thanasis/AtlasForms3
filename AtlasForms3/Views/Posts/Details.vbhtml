@@ -73,7 +73,6 @@
     ViewData("Title") = cTitle
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
-    ' + baseUrl + '/Posts/Details/' + this.Id + '
 
 End Code
 
@@ -82,11 +81,6 @@ End Code
 @Html.ValidationSummary(True)
 @Html.HiddenFor(Function(model) model.Id)
 
-
-@*<div id="main-content" class="container">
-    <div class="wrapper">*@
-
-
         <div class="main-top">
             <div class="kopa-ticker">
                 <span Class="ticker-title"><i class="fa fa-angle-double-right"></i>@cTitle</span>
@@ -94,7 +88,7 @@ End Code
                     <dl Class="ticker-1">
                         <dt></dt>
                         <dd>
-                            <a> <span>&nbsp; </span></a> @*&nbsp; @Html.DisplayFor(Function(model) model.PostTitle)</span></a>*@
+                            <a> <span>&nbsp; </span></a> 
                         </dd>
                     </dl>
                 </div>
@@ -224,23 +218,8 @@ End Code
             </div>
 
    
-    @*<div Class="row form-horizontal">
-            <div Class="form-group">
-                <div Class="col-md-12">
-                    <p>
-                        @Html.ActionLink("Επιστροφή στην αρχική", "Index")
-                    </p>
-                </div>
-            </div>
-        </div>*@
-
-
-
-
     @Section Scripts
         <script type="text/javascript">
-
-
 
         </script>
     End Section
