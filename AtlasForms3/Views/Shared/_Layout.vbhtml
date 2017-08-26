@@ -189,6 +189,14 @@ End code
 
 <script type="text/javascript" language="javascript">
 
+    //$(document)
+    //    .ajaxStart(function () {
+    //        alert('started');
+    //    })
+    //    .ajaxStop(function () {
+    //        alert('finished');
+    //    });
+
     /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
     $.widget.bridge('uibutton', $.ui.button);
     $.widget.bridge('uitooltip', $.ui.tooltip);
@@ -267,8 +275,8 @@ End code
     }
 
     /* =========================================================
-post diorganwsh
-============================================================ */
+    post diorganwsh
+    ============================================================ */
     function postDiorganwshid(id) {
 
         // post diorganwsh id
@@ -367,10 +375,10 @@ post diorganwsh
     }
 
 
-    $(document).ready(function () {
+    // get diorganwtria arxh arthra
+    function GetDiorganwtria() {
 
-        // get diorganwtria arxh arthra
-        $.ajax({
+        return $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
             data: "{nCount : 10, k : 1}",
@@ -395,8 +403,13 @@ post diorganwsh
             }
         });
 
+    }
+
+    function GetDiorganwseis() {
+
+
         // get diorganwseis
-        $.ajax({
+      return  $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("Getdiorganwseis", "Home")',
             async: false,
@@ -423,11 +436,27 @@ post diorganwsh
             }
         });
 
+    }
+    $(document).ready(function () {
+
+        
+        var newPromise = $.Deferred();
+
+        $.when(newPromise).done(function () {
+            GetDiorganwtria();
+        });
+        
+        newPromise.then(function () {
+            GetDiorganwseis();
+        });
+
+        newPromise.resolve();
+
+
     });
 
     $(window).on('load', function () {
         setTimeout(function () {
-            //$("#prwta8limaid").trigger("click");
             fillomiloinavbar($("#firstDiorganwshid").val());
         }, 100);
     });

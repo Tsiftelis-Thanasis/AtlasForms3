@@ -122,9 +122,9 @@ End Code
                             <div Class="sidebar widget-area-11">
 
                                 <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                                    <a href="http://www.blue-ice.gr/"> <img src="http://www.atlasbasket.gr/images/banners/blueiceok.png" alt=""></a>
-                                    <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="http://www.atlasbasket.gr/images/banners/risko.jpg" alt=""></a>
-                                    <a href="http://www.atlassportswear.gr/"> <img src="http://www.atlasbasket.gr/images/banners/65c14b0a-e3b2-4e15-8f14-1ba31c041f20.png" alt=""></a>
+                                    <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
+                                    <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
+                                    <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
                                 </div>
 
                                
@@ -194,18 +194,434 @@ End Code
         </div>
   
 
-    @Section Scripts
-
-
+@Section Scripts        
  <script type="text/javascript">
+
+    //append lastgames carouselid
+     function GetLastGames(omilosid) {
+        return $.ajaxQueue({
+            type: "POST",
+            url: baseUrl + '@Url.Action("Getlastgames", "Home")',
+            data: "{omilosid : " + omilosid + "}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                
+                var choiceContainer = $("#lastgamescarouselid");
+                if (result.length > 0) {
+ 
+                    choiceContainer.empty();
+                    $.each(result, function () {
+
+                        var d = '<div class="item"> ' +
+                                '<div class="entry-item"> ' +
+                                '<a  target="_blank" href="http://www.atlasstatistics.gr/Games/Details/' + this.Id + '"> ' +
+                                '<p>' + this.Gamedate + '</p> ' +
+                                '<ul class="clearfix"> ' +
+                                '<li> ' +
+                                '<span title="' + this.team1 + '">' + this.team1 + '</span> ' +
+                                '<span>' + this.team1score + '</span> ' +
+                                '</li> ' +
+                                '<li> ' +
+                                '<span title="' + this.team2 + '">' + this.team2 + '</span> ' +
+                                '<span>' + this.team2score + '</span> ' +
+                                '</li> ' +
+                                '</ul> ' +
+                                '</a> ' +
+                                '</div> ' +
+                                '</div>';
+
+                        choiceContainer.append(d);
+                    });
+                }
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+    }
+
+
+    //append carousel sync3 and sync4
+     function AppendCarousel1(omilosid) {
+        return $.ajaxQueue({
+            type: "POST",
+            url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
+            data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var sync3container = $("#watchsync3");
+                var sync4container = $("#watchsync4");
+
+                if (result.data.length > 0) {
+                    sync3container.empty();
+                    sync4container.empty();
+
+                    $.each(result.data, function () {
+
+                        d = ' <div class="item"> ' +
+                            '   <article class="entry-item video-post"> ' +
+                            '   <div class="entry-thumb"> ' +
+                            '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:315px;"></a> ' +
+                            '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
+                            '   </div> ' +
+                            '   <div class="entry-content"> ' +
+                            '       <h3 class=""><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h3> ' +
+                            '   </div> ' +
+                            ' </article> ' +
+                            '</div>';
+                        sync3container.append(d);
+
+                        d = ' <div class="item"> ' +
+                            '   <article class="entry-item video-post"> ' +
+                            '   <div class="entry-thumb"> ' +
+                            '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:100px;width:100px;"></a> ' +
+                            '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
+                            '   </div> ' +
+                            '   <div class="entry-content"> ' +
+                            '       <h4 class="entry-title"><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4> ' +
+                            '   </div> ' +
+                            ' </article> ' +
+                            '</div>';
+                        sync4container.append(d);
+
+                    });
+                }
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+    }
+
+    //append mainnewscarouselid               
+     function AppendMainCarousel(omilosid) {
+        return $.ajaxQueue({
+            type: "POST",
+            url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
+            data: "{nCount : 5, atlasomilosid: " + omilosid + "}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var synccontainer = $("#mainnewscarouselid");
+
+                if (result.data.length > 0) {
+                    synccontainer.empty();
+
+                    $.each(result.data, function () {
+
+                        d = ' <div class="item"> ' +
+                            ' <article class="entry-item"> ' +
+                            ' <div class="entry-thumb"> ' +
+                            ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" style="height:520px;" alt=""></a> ' +
+                            ' <div class="thumb-hover"></div> ' +
+                            ' </div> ' +
+                            ' <div class="entry-content"> ' +
+                            ' <h4 class="entry-title"><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4>  ' +
+                            ' <h5><span><b>' + this.PostSummary + '</b></span></h5> ' +
+                            ' </div> ' +
+                            ' <span></span> ' +
+                            ' </article> ' +
+                            ' </div>';
+                        synccontainer.append(d);
+
+                    });
+                }
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+    }
+
+    //apend latestnewsid
+     function AppendLatestNews(omilosid) {
+        return $.ajaxQueue({
+            type: "POST",
+            url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
+            data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
+            async: true,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var choiceContainer = $("#latestnewsid");
+                if (result.data.length > 0) {
+                    choiceContainer.empty();
+                    $.each(result.data, function () {
+
+                        d = '<li> ' +
+                            ' <article class="entry-item"> ' +
+                            ' <div class="entry-thumb"> ' +
+                            ' <a href="#"><img src="' + this.PostPhoto + '" alt=""></a> ' +
+                            ' </div> ' +
+                            ' <div class="entry-content"> ' +
+                            ' <div class="content-top"> ' +
+                            ' <h4 class="entry-title"><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4> ' +
+                            ' </div> ' +
+                            ' <p>' + this.PostSummary + '.... </p> ' +
+                            ' </div> ' +
+                            ' </article> ' +
+                            ' </li> '
+                        choiceContainer.append(d);
+                    });
+                }
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+    }
+
+    //apend kalyteresfaseisid
+     function AppendKalyteresFaseis(omilosid) {
+        return $.ajaxQueue({
+            type: "POST",
+            url: baseUrl + '@Url.Action("GetKalyteresFaseisVideo", "Posts")',
+            data: "{atlasomilosid: " + omilosid + "}",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var choiceContainer = $("#kalyteresfaseisid");
+                if (result.data.length > 0) {
+                    choiceContainer.empty();
+                    $.each(result.data, function () {
+                        d = '<div class="item"> ' +
+                            '<article class="entry-item"> ' +
+                            '<div class="entry-thumb"> ' +
+                            '<a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
+                            '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" height:30px;width:30px; ></a> ' +
+                            '<p class="new-icon"> ' +
+                            '<span>' + this.PostTitle + '</span> ' +
+                            '</p> ' +
+                            '</div> ' +
+                            '</article> ' +
+                            '</div> ';
+                        choiceContainer.append(d);
+                    });
+                }
+            },
+            error: function (result) {
+                alert(result.status + ' ' + result.statusText);
+            }
+        });
+    }
+
+
+
+
+
+     //append pointsul
+     function AppendPoints(omilosid) {
+         return $.ajaxQueue({
+             type: "POST",
+             url: baseUrl + '@Url.Action("GetWeeklyReportStat1", "Home")',
+             data: "{omid : " + omilosid + "}",
+             async: true,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (result) {
+
+                 var choiceContainer = $("#pointsul");
+                 appendTop5Container(choiceContainer, result);
+             },
+             error: function (result) {
+                 alert(result.status + ' ' + result.statusText);
+             }
+         });
+     }
+
+     //append assistul
+     function AppendAssists(omilosid) {
+         return $.ajaxQueue({
+             type: "POST",
+             url: baseUrl + '@Url.Action("GetWeeklyReportStat2", "Home")',
+             data: "{omid : " + omilosid + "}",
+             async: true,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (result) {
+
+                 var choiceContainer = $("#assistul");
+                 appendTop5Container(choiceContainer, result);
+             },
+             error: function (result) {
+                 alert(result.status + ' ' + result.statusText);
+             }
+         });
+     }
+
+     //append reboundul
+     function AppendRebound(omilosid) {
+         return $.ajaxQueue({
+             type: "POST",
+             url: baseUrl + '@Url.Action("GetWeeklyReportStat3", "Home")',
+             data: "{omid : " + omilosid + "}",
+             async: true,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (result) {
+
+                 var choiceContainer = $("#reboundul");
+                 appendTop5Container(choiceContainer, result);
+             },
+             error: function (result) {
+                 alert(result.status + ' ' + result.statusText);
+             }
+         });
+     }
+
+     //append stealsul
+     function AppendSteals(omilosid) {
+         return $.ajaxQueue({
+             type: "POST",
+             url: baseUrl + '@Url.Action("GetWeeklyReportStat4", "Home")',
+             data: "{omid : " + omilosid + "}",
+             async: true,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (result) {
+                 var choiceContainer = $("#stealsul");
+                 appendTop5Container(choiceContainer, result);
+             },
+             error: function (result) {
+                 alert(result.status + ' ' + result.statusText);
+             }
+         });
+     }
+
+     //append blocksul
+     function AppendBlocks(omilosid) {
+         return $.ajaxQueue({
+             type: "POST",
+             url: baseUrl + '@Url.Action("GetWeeklyReportStat5", "Home")',
+             data: "{omid : " + omilosid + "}",
+             async: true,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (result) {
+
+                 var choiceContainer = $("#blocksul");
+                 appendTop5Container(choiceContainer, result);
+             },
+             error: function (result) {
+                 alert(result.status + ' ' + result.statusText);
+             }
+         });
+     }
+
+
 
             $(document).ready(function () {
 
 
+
+                (function ($) {
+
+                    // jQuery on an empty object, we are going to use this as our Queue
+                    var ajaxQueue = $({});
+
+                    $.ajaxQueue = function (ajaxOpts) {
+                        var jqXHR,
+                            dfd = $.Deferred(),
+                            promise = dfd.promise();
+
+                        // queue our ajax request
+                        ajaxQueue.queue(doRequest);
+
+                        // add the abort method
+                        promise.abort = function (statusText) {
+
+                            // proxy abort to the jqXHR if it is active
+                            if (jqXHR) {
+                                return jqXHR.abort(statusText);
+                            }
+
+                            // if there wasn't already a jqXHR we need to remove from queue
+                            var queue = ajaxQueue.queue(),
+                                index = $.inArray(doRequest, queue);
+
+                            if (index > -1) {
+                                queue.splice(index, 1);
+                            }
+
+                            // and then reject the deferred
+                            dfd.rejectWith(ajaxOpts.context || ajaxOpts,
+                                [promise, statusText, ""]);
+
+                            return promise;
+                        };
+
+                        // run the actual query
+                        function doRequest(next) {
+                            jqXHR = $.ajax(ajaxOpts)
+                                .then(next, next)
+                                .done(dfd.resolve)
+                                .fail(dfd.reject);
+                        }
+
+                        return promise;
+                    };
+                })(jQuery);
+
                 var omilosid = $("#atlasomilosid").val();
 
-                //append lastgames carouselid
-                $.ajax({
+
+                var newPromise = $.Deferred();
+
+                $.when(newPromise).done(function () {
+                    
+                });
+
+                newPromise.always(function () {
+                    GetLastGames(omilosid);
+                }).always(function () {                    
+                    AppendCarousel1(omilosid);
+                }).always(function () {
+                    AppendMainCarousel(omilosid);
+                }).always(function () {
+                    AppendLatestNews(omilosid);
+                }).always(function () {
+                    AppendKalyteresFaseis(omilosid);
+                }).always(function () {
+                    AppendPoints(omilosid);
+                }).always(function () {
+                    AppendAssists(omilosid);
+                }).always(function () {
+                    AppendRebound(omilosid);
+                }).always(function () {
+                    AppendSteals(omilosid);
+                }).always(function () {
+                    AppendBlocks(omilosid);
+                });
+                                
+               
+
+
+                //newPromise.resolve();
+
+                
+                $.when(GetLastGames(omilosid),
+                    AppendCarousel1(omilosid),
+                    AppendMainCarousel(omilosid),
+                    AppendLatestNews(omilosid),
+                    AppendKalyteresFaseis(omilosid),
+                    AppendPoints(omilosid),
+                    AppendAssists(omilosid),
+                    AppendRebound(omilosid),
+                    AppendSteals(omilosid),
+                    AppendBlocks(omilosid)
+                    );
+                
+
+                @*$.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("Getlastgames", "Home")',
                     data: "{omilosid : " + omilosid + "}",
@@ -245,269 +661,7 @@ End Code
                     error: function (result) {
                         alert(result.status + ' ' + result.statusText);
                     }
-                });
-
-
-                //append carousel sync3 and sync4
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
-                    data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var sync3container = $("#watchsync3");
-                        var sync4container = $("#watchsync4");
-
-                        if (result.data.length > 0) {
-                            sync3container.empty();
-                            sync4container.empty();
-
-                            $.each(result.data, function () {
-
-                                d = ' <div class="item"> ' +
-                                    '   <article class="entry-item video-post"> ' +
-                                    '   <div class="entry-thumb"> ' +
-                                    '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:315px;"></a> ' +
-                                    '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
-                                    '   </div> ' +
-                                    '   <div class="entry-content"> ' +
-                                    '       <h3 class=""><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h3> ' +
-                                    '   </div> ' +
-                                    ' </article> ' +
-                                    '</div>';
-                                sync3container.append(d);
-
-                                d = ' <div class="item"> ' +
-                                    '   <article class="entry-item video-post"> ' +
-                                    '   <div class="entry-thumb"> ' +
-                                    '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:100px;width:100px;"></a> ' +
-                                    '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
-                                    '   </div> ' +
-                                    '   <div class="entry-content"> ' +
-                                    '       <h4 class="entry-title"><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4> ' +
-                                    '   </div> ' +
-                                    ' </article> ' +
-                                    '</div>';
-                                sync4container.append(d);
-
-                            });
-                        }
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-                //append mainnewscarouselid
-               
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
-                    data: "{nCount : 5, atlasomilosid: " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var synccontainer = $("#mainnewscarouselid");
-
-                        if (result.data.length > 0) {
-                            synccontainer.empty();
-
-                            $.each(result.data, function () {
-
-                                d = ' <div class="item"> ' +
-                                    ' <article class="entry-item"> ' +
-                                    ' <div class="entry-thumb"> ' +
-                                    ' <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" style="height:520px;" alt=""></a> ' +
-                                    ' <div class="thumb-hover"></div> ' +
-                                    ' </div> ' +
-                                    ' <div class="entry-content"> ' +
-                                    ' <h4 class="entry-title"><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4>  ' +
-                                    ' <h5><span><b>' + this.PostSummary + '</b></span></h5> ' +
-                                    ' </div> ' +
-                                    ' <span></span> ' +
-                                    ' </article> ' +
-                                    ' </div>';
-                                synccontainer.append(d);
-
-                            });
-                        }
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-                //apend latestnewsid
-               
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
-                    data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-                        var choiceContainer = $("#latestnewsid");
-                        if (result.data.length > 0) {
-                            choiceContainer.empty();
-                            $.each(result.data, function () {
-
-                                d = '<li> ' +
-                                    ' <article class="entry-item"> ' +
-                                    ' <div class="entry-thumb"> ' +
-                                    ' <a href="#"><img src="' + this.PostPhoto + '" alt=""></a> ' +
-                                    ' </div> ' +
-                                    ' <div class="entry-content"> ' +
-                                    ' <div class="content-top"> ' +
-                                    ' <h4 class="entry-title"><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4> ' +
-                                    ' </div> ' +
-                                    ' <p>' + this.PostSummary + '.... </p> ' +
-                                    ' </div> ' +
-                                    ' </article> ' +
-                                    ' </li> '
-                                choiceContainer.append(d);
-                            });
-                        }
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-                            
-                //append pointsul
-                
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetWeeklyReportStat1", "Home")',
-                    data: "{omid : " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var choiceContainer = $("#pointsul");
-                        appendTop5Container(choiceContainer, result);
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-                //append assistul
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetWeeklyReportStat2", "Home")',
-                    data: "{omid : " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var choiceContainer = $("#assistul");
-                        appendTop5Container(choiceContainer, result);
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-
-                //append reboundul
-               
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetWeeklyReportStat3", "Home")',
-                    data: "{omid : " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var choiceContainer = $("#reboundul");
-                        appendTop5Container(choiceContainer, result);
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-
-                //append stealsul
-                
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetWeeklyReportStat4", "Home")',
-                    data: "{omid : " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var choiceContainer = $("#stealsul");
-                        appendTop5Container(choiceContainer, result);
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-                //append blocksul
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetWeeklyReportStat5", "Home")',
-                    data: "{omid : " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var choiceContainer = $("#blocksul");
-                        appendTop5Container(choiceContainer, result);
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
-
-                //apend kalyteresfaseisid
-                
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetKalyteresFaseisVideo", "Posts")',
-                    data: "{atlasomilosid: " + omilosid + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        var choiceContainer = $("#kalyteresfaseisid");
-                        if (result.data.length > 0) {
-                            choiceContainer.empty();
-                            $.each(result.data, function () {
-                                d = '<div class="item"> ' +
-                                    '<article class="entry-item"> ' +
-                                    '<div class="entry-thumb"> ' +
-                                    '<a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
-                                    '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" height:30px;width:30px; ></a> ' +
-                                    '<p class="new-icon"> ' +
-                                    '<span>' + this.PostTitle + '</span> ' +
-                                    '</p> ' +
-                                    '</div> ' +
-                                    '</article> ' +
-                                    '</div> ';
-                                choiceContainer.append(d);
-                            });
-                        }
-                    },
-                    error: function (result) {
-                        alert(result.status + ' ' + result.statusText);
-                    }
-                });
+                });*@
 
 
             });
