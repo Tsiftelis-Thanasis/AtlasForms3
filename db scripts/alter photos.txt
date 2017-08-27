@@ -1,0 +1,6 @@
+alter TABLE [dbo].[BlogPostsTable]
+add PostPhoto30_30 [image] NULL,
+	PostPhoto160_160 [image] NULL
+
+	--PostPhoto520 [image] NULL
+

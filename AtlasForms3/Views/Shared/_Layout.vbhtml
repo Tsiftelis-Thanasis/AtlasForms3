@@ -1,5 +1,8 @@
 ﻿@code
 
+    'Dim u As New Utils
+    'u.resizepostimages()
+
     Dim pdb2 As New AtlasStatisticsEntities
 
 
@@ -62,6 +65,10 @@ End code
 
 
 <body>
+
+
+    <div id="loadingDiv" class="modalloader"></div>
+
 
     @*change AppId to ATLAS one*@
     <div id="fb-root"></div>
@@ -253,13 +260,7 @@ End code
 
 <script type="text/javascript" language="javascript">
 
-    //$(document)
-    //    .ajaxStart(function () {
-    //        alert('started');
-    //    })
-    //    .ajaxStop(function () {
-    //        alert('finished');
-    //    });
+   
 
     /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
     $.widget.bridge('uibutton', $.ui.button);
@@ -502,7 +503,22 @@ End code
         });
 
     }
+
+
+
     $(document).ready(function () {
+
+
+
+        $('#loadingDiv')
+             .hide()  // Hide it initially
+             .ajaxStart(function () {
+                 $(this).show();
+             })
+             .ajaxStop(function () {
+                 $(this).hide();
+             })
+        ;
 
         
         var newPromise = $.Deferred();

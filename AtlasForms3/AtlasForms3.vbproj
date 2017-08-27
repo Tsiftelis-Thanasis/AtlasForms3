@@ -305,6 +305,7 @@
     <Compile Include="App_Data\BlogProgramma.vb">
       <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Utils.vb" />
     <Compile Include="CompressAttribute.vb" />
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\KathgoriesController.vb" />

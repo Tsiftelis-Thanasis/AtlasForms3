@@ -277,7 +277,7 @@ End Code
                         d = ' <div class="item"> ' +
                             '   <article class="entry-item video-post"> ' +
                             '   <div class="entry-thumb"> ' +
-                            '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:100px;width:100px;"></a> ' +
+                            '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto2 + '" alt="" style="height:100px;width:100px;"></a> ' +
                             '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
                             '   </div> ' +
                             '   <div class="entry-content"> ' +
@@ -357,7 +357,7 @@ End Code
                         d = '<li> ' +
                             ' <article class="entry-item"> ' +
                             ' <div class="entry-thumb"> ' +
-                            ' <a href="#"><img src="' + this.PostPhoto + '" alt=""></a> ' +
+                            ' <a href="#"><img src="' + this.PostPhoto2 + '" alt=""></a> ' +
                             ' </div> ' +
                             ' <div class="entry-content"> ' +
                             ' <div class="content-top"> ' +
@@ -396,7 +396,7 @@ End Code
                             '<article class="entry-item"> ' +
                             '<div class="entry-thumb"> ' +
                             '<a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
-                            '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" height:30px;width:30px; ></a> ' +
+                            '<a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto + '" alt="" style="height:30px;width:30px;" ></a> ' +                            
                             '<p class="new-icon"> ' +
                             '<span>' + this.PostTitle + '</span> ' +
                             '</p> ' +

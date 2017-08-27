@@ -80,6 +80,8 @@
           <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
           <Property Name="EditDate" Type="datetime" />
           <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="PostPhoto30_30" Type="image" />
+          <Property Name="PostPhoto160_160" Type="image" />
         </EntityType>
         <EntityType Name="BlogProgramma">
           <Key>
@@ -153,6 +155,8 @@
           <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EditDate" Type="DateTime" Precision="3" />
           <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PostPhoto30_30" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PostPhoto160_160" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="BlogProgramma">
           <Key>
@@ -247,6 +251,8 @@
           <EntitySetMapping Name="BlogPostsTable">
             <EntityTypeMapping TypeName="ATLASBLOG2Model.BlogPostsTable">
               <MappingFragment StoreEntitySet="BlogPostsTable">
+                <ScalarProperty Name="PostPhoto160_160" ColumnName="PostPhoto160_160" />
+                <ScalarProperty Name="PostPhoto30_30" ColumnName="PostPhoto30_30" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Activepost" ColumnName="Activepost" />
                 <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />

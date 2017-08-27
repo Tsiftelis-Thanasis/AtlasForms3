@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Imports System.Web.Mvc
+Imports System.Drawing
+Imports System.Drawing.Imaging
 
 Namespace Controllers
 
@@ -100,6 +102,20 @@ Namespace Controllers
                     newpost.PostBody = p1.PostBody
                     If Not logodata Is Nothing Then
                         newpost.PostPhoto = logodata
+                        Using original As Image = DirectCast((New ImageConverter()).ConvertFrom(logodata), Bitmap)
+                            Using newimage160160 As Image = Utils.ResizeImage(original, New Size(160, 160))
+                                Using memoryStream As New MemoryStream()
+                                    newimage160160.Save(memoryStream, ImageFormat.Png)
+                                    newpost.PostPhoto160_160 = memoryStream.ToArray()
+                                End Using
+                            End Using
+                            Using newimage3030 As Image = Utils.ResizeImage(original, New Size(30, 30))
+                                Using memoryStream As New MemoryStream()
+                                    newimage3030.Save(memoryStream, ImageFormat.Png)
+                                    newpost.PostPhoto30_30 = memoryStream.ToArray()
+                                End Using
+                            End Using
+                        End Using
                     End If
                     newpost.PostSummary = p1.PostSummary
                     newpost.Youtubelink = p1.Youtubelink
@@ -217,6 +233,20 @@ Namespace Controllers
                     editpost.PostSummary = p1.PostSummary
                     If Not logodata Is Nothing Then
                         editpost.PostPhoto = logodata
+                        Using original As Image = DirectCast((New ImageConverter()).ConvertFrom(logodata), Bitmap)
+                            Using newimage160160 As Image = Utils.ResizeImage(original, New Size(160, 160))
+                                Using memoryStream As New MemoryStream()
+                                    newimage160160.Save(memoryStream, ImageFormat.Png)
+                                    editpost.PostPhoto160_160 = memoryStream.ToArray()
+                                End Using
+                            End Using
+                            Using newimage3030 As Image = Utils.ResizeImage(original, New Size(30, 30))
+                                Using memoryStream As New MemoryStream()
+                                    newimage3030.Save(memoryStream, ImageFormat.Png)
+                                    editpost.PostPhoto30_30 = memoryStream.ToArray()
+                                End Using
+                            End Using
+                        End Using
                     End If
                     editpost.Youtubelink = p1.Youtubelink
                     editpost.Statslink = p1.Statslink
@@ -341,7 +371,9 @@ Namespace Controllers
                          Order By p.Id Descending
                          ).Take(nCount).AsEnumerable().[Select](
                     Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
-                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList()
+                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                    .PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
+                    }).ToList()
 
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
@@ -361,7 +393,9 @@ Namespace Controllers
                          Order By p.Id Descending
                          ).Take(nCount).AsEnumerable().[Select](
                     Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
-                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList()
+                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                    .PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
+                }).ToList()
 
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
@@ -393,11 +427,13 @@ Namespace Controllers
                          Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                          Where (p1.KathgoriaId = k And p1.IsKathgoria = True)
                          Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                             PostPhoto = p.PostPhoto, PostPhoto2 = p.PostPhoto160_160, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                             KatName = p2.KathgoriaName).Take(nCount).
                             AsEnumerable().[Select](
                             Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
+                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+                            .Youtubelink = o.Youtubelink,
                             .KatName = o.KatName}).ToList
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
@@ -459,7 +495,7 @@ Namespace Controllers
                            Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                            Where Not p.Youtubelink Is Nothing And p2.Id = k And p1.IsAtlasKathgoria = False
                            Order By p.Id Descending
-                           Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink
+                           Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto30_30, Youtubelink = p.Youtubelink
                            ).Take(5).AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = If(o.PostTitle Is Nothing, "", o.PostTitle.Substring(0, Math.Min(50, o.PostTitle.Length)) & "..."),
                         .PostSummary = If(o.PostSummary Is Nothing, "", o.PostSummary.Substring(0, Math.Min(150, o.PostSummary.Length)) & "..."),

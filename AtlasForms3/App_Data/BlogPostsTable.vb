@@ -23,5 +23,7 @@ Partial Public Class BlogPostsTable
     Public Property CreatedBy As String
     Public Property EditDate As Nullable(Of Date)
     Public Property EditBy As String
+    Public Property PostPhoto30_30 As Byte()
+    Public Property PostPhoto160_160 As Byte()
 
 End Class
