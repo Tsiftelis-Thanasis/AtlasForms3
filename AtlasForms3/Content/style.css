@@ -519,7 +519,8 @@ blockquote {
     border-left: 20px solid #4b4b4b;
     top: 0;
     right: -20px;
-    right: -20px; }
+    right: -20px; 
+    }
   .kopa-tab.style1 .nav-tabs:after {
     content: '';
     position: absolute;
@@ -996,12 +997,12 @@ blockquote {
       font-size: 18px;
       background: #333333;
       color: #e5e5e5;
-      border-left: 1px solid #454545; }
+      border-right: 1px solid #454545; }
       .social-links.style1 ul li a:hover {
         color: #333333;
         background: #e5e5e5; }
     .social-links.style1 ul li:first-child a {
-      border-left: none; }
+      border-right: none; }
 
 .kopa-social-widget .widget-title {
   margin-bottom: 20px !important; }
@@ -3666,21 +3667,36 @@ address {
   .main-top .social-links.style1 {
     position: absolute;
     top: 0;
-    right: 0;
-    padding-left: 10px;
+    left: 0;
+    padding-left: 0px;
     background: #ef6018; }
     .main-top .social-links.style1:before {
+      /*content: '';
+      position: absolute;
+      border-left: 0px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #171717;
+      bottom: -10px;
+      left: 100%;
+      margin-left: 0px;
+      left: auto;
+      right: 0;
+      z-index: 999; */}
+
+
+      .main-top:after{
       content: '';
       position: absolute;
       border-left: 0px solid transparent;
       border-right: 10px solid transparent;
       border-top: 10px solid #171717;
       bottom: -10px;
-      left: 50%;
-      margin-left: 0px;
       left: auto;
+      margin-left: 0px;
+      /*left: auto;*/
       right: 0;
       z-index: 999; }
+
   .main-top:before {
     content: '';
     position: absolute;
@@ -5865,6 +5881,14 @@ ul.style1 > li {
   float: left;
   min-height: 1px;
   position: relative; }
+
+.sidebar2 {
+  width: 19.82456%;
+  padding: 0 15px;
+  float: left;
+  min-height: 1px;
+  position: relative; }
+
 
 .widget-area-wrap {
   margin-bottom: 0; }

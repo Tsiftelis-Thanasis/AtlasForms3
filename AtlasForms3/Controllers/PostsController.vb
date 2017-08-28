@@ -458,11 +458,13 @@ Namespace Controllers
                          Join klist In kl On klist Equals p1.AtlasKathgoriaId
                          Where (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
                          Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                             PostPhoto = p.PostPhoto, PostPhoto2 = p.PostPhoto160_160, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                             KatName = p2.KathgoriaName).Take(nCount).
                             AsEnumerable().[Select](
                             Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink,
+                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+                            .Youtubelink = o.Youtubelink,
                             .KatName = o.KatName}).ToList
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then

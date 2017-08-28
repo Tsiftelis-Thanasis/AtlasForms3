@@ -40,10 +40,10 @@ End Code
 
         <div Class="social-links style1">
             <ul Class="clearfix">
-                <li> <a href = "#" Class="fa fa-facebook"></a></li>
-                <li> <a href = "#" Class="fa fa-twitter"></a></li>
-                <li> <a href = "#" Class="fa fa-google-plus"></a></li>
-                <li> <a href = "#" Class="fa fa-instagram"></a></li>
+                <li> <a href = "https://www.facebook.com/atlasbasket.gr/" Class="fa fa-facebook"></a></li>
+                <li> <a href = "https://twitter.com/atlasteam1" Class="fa fa-twitter"></a></li>
+                <li> <a href = "http://www.google.com/profiles/117211032484470772194" Class="fa fa-google-plus"></a></li>
+                <li> <a href = "https://www.youtube.com/channel/UCRTTtMCMaxoKT11U1MekmwQ" Class="fa fa-youtube"></a></li>
             </ul>
         </div>
 
@@ -116,57 +116,68 @@ End Code
 
                             </div>
 
-                            <div Class="sidebar widget-area-11">
+                            @*<div Class="sidebar2 widget-area-11">
 
                                 <div Class="widget kopa-tab-1-widget kopa-point-widget">
                                     <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
                                     <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
                                     <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
                                 </div>
+                            </div>*@
 
-                               
-                                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                                    <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
-                                    <ul Class="clearfix">
-                                        <li>
-                                            <div Class="kopa-tab style3">
-                                                <ul Class="nav nav-tabs">
-                                                    <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                                    <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
-                                                    <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
-                                                    <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
-                                                    <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
-                                                </ul>
-                                                
-                                                <div Class="tab-content">
-                                                    <div Class="tab-pane active" id="points">
-                                                        <ul Class="kopa-list clearfix" id="pointsul"></ul>
-                                                    </div>
-                                                    
-                                                    <div Class="tab-pane" id="assist">
-                                                        <ul Class="kopa-list clearfix" id="assistul"></ul>
-                                                    </div>
-                                                    
-                                                    <div Class="tab-pane" id="reb">
-                                                        <ul Class="kopa-list clearfix" id="reboundul"></ul>
-                                                    </div>
-                                                    
-                                                    <div Class="tab-pane" id="steal">
-                                                        <ul Class="kopa-list clearfix" id="stealsul"></ul>
-                                                    </div>
-                                                    
-                                                    <div Class="tab-pane" id="block">
-                                                        <ul Class="kopa-list clearfix" id="blocksul"></ul>
-                                                    </div>
-                                                   
 
+                                <div Class="sidebar widget-area-11">
+
+                                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                                        <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
+                                        <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
+                                        <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
+                                    </div>
+
+
+                                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                                        <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
+                                        <ul Class="clearfix">
+                                            <li>
+                                                <div Class="kopa-tab style3">
+                                                    <ul Class="nav nav-tabs">
+                                                        <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
+                                                        <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
+                                                        <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
+                                                        <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
+                                                        <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
+                                                    </ul>
+
+                                                    <div Class="tab-content">
+                                                        <div Class="tab-pane active" id="points">
+                                                            <ul Class="kopa-list clearfix" id="pointsul"></ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="assist">
+                                                            <ul Class="kopa-list clearfix" id="assistul"></ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="reb">
+                                                            <ul Class="kopa-list clearfix" id="reboundul"></ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="steal">
+                                                            <ul Class="kopa-list clearfix" id="stealsul"></ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="block">
+                                                            <ul Class="kopa-list clearfix" id="blocksul"></ul>
+                                                        </div>
+
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>                              
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
                      
                     </div>
                    
@@ -175,6 +186,7 @@ End Code
             </div>
            
         </div>
+    
 
     <div Class="widget-area-24 kopa-area kopa-area-2">
 
@@ -277,7 +289,7 @@ End Code
                         d = ' <div class="item"> ' +
                             '   <article class="entry-item video-post"> ' +
                             '   <div class="entry-thumb"> ' +
-                            '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto2 + '" alt="" style="height:100px;width:100px;"></a> ' +
+                            '       <a href="' + baseUrl + '/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto2 + '" alt="" style="height:100px;width:120px;"></a> ' +
                             '       <a class="thumb-icon" href="https://www.youtube.com/watch?v=' + this.Youtubelink + '" target="_blank"></a> ' +
                             '   </div> ' +
                             '   <div class="entry-content"> ' +
