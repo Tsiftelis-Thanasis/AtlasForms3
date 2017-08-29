@@ -234,7 +234,7 @@ End code
     @*@Scripts.Render("~/bundles/tinymce")*@
     @Scripts.Render("~/bundles/custom2")
 
-    <script type="text/javascript" src="../Scripts/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/tinymce/tinymce.min.js"></script>
 
     @RenderSection("scripts", required:=False)
     

@@ -27,68 +27,6 @@ end code
         </div>
     </div>
 
-
-    @<div class="form-group">
-        @Html.LabelFor(Function(model) model.Fullname, New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Fullname, New With {.class = "form-control"})
-            @Html.ValidationMessageFor(Function(model) model.Fullname)
-        </div>
-    </div>
-
-
-    @*@<div class="form-group">
-        @Html.LabelFor(Function(model) model.Address, New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Address, New With {.class = "form-control"})
-            @Html.ValidationMessageFor(Function(model) model.Address)
-        </div>
-    </div>
-
-
-    @<div class="form-group">
-        @Html.LabelFor(Function(model) model.Perioxi, New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Perioxi, New With {.class = "form-control"})
-            @Html.ValidationMessageFor(Function(model) model.Perioxi)
-        </div>
-    </div>
-
-
-    @<div class="form-group">
-        @Html.LabelFor(Function(model) model.Poli, New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Poli, New With {.class = "form-control"})
-            @Html.ValidationMessageFor(Function(model) model.Poli)
-        </div>
-    </div>
-
-
-    @<div class="form-group">
-        @Html.LabelFor(Function(model) model.Tk, New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Tk, New With {.class = "form-control"})
-            @Html.ValidationMessageFor(Function(model) model.Tk)
-        </div>
-    </div>
-
-    @<div class="form-group">
-        @Html.LabelFor(Function(model) model.Afm, New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Afm, New With {.class = "form-control"})
-            @Html.ValidationMessageFor(Function(model) model.Afm)
-        </div>
-    </div>
-
-    @<div class="form-group">
-        @Html.LabelFor(Function(model) model.Phone, New With {.class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Phone, New With {.class = "form-control"})
-            @Html.ValidationMessageFor(Function(model) model.Phone)
-        </div>
-    </div>*@
-
-
     @<div class="form-group">
         @Html.LabelFor(Function(m) m.Password, New With {.class = "col-md-2 control-label" })
         <div class="col-md-10">

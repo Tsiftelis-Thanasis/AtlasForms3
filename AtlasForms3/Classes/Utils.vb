@@ -118,30 +118,37 @@ Public Class Utils
         Return newImage
     End Function
 
-    Public Async Function sendEmailsync(ByVal usernameto As String,
+    Public Async Function sendEmailsync(ByVal useremailaddress As String,
                                         ByVal subject As String,
                                          ByVal body As String) As Task
 
 
         Dim fromAddress = New MailAddress("atlassupport@atlasbasket.gr", "Support @ atlas basket")
 
+        'Dim smtp = New SmtpClient() With {
+        '    .Host = "smtp.gmail.com",
+        '    .Port = 465,
+        '    .DeliveryMethod = SmtpDeliveryMethod.Network,
+        '    .EnableSsl = True,
+        '    .UseDefaultCredentials = False,
+        '    .Credentials = New NetworkCredential("tsiftelis.thanasis@gmail.com", "ircool!!10")
+        '}
+
+
         Dim smtp = New SmtpClient() With {
-             .Host = "mail.atlasstatistics.gr",
-            .Port = 465,
+             .Host = "mail.yourideas.gr",
+            .Port = 25,
             .DeliveryMethod = SmtpDeliveryMethod.Network,
-            .EnableSsl = True,
             .UseDefaultCredentials = False,
-            .Credentials = New NetworkCredential("atlassupport@atlasstatistics.gr", "rAv84*8c")
+            .Credentials = New NetworkCredential("admin@yourideas.gr", "aayi2004!")
         }
 
         Dim message As New MailMessage()
-            message.From = fromAddress
-            message.Subject = subject
-            message.Body = body
-        message.To.Add(usernameto)
-
+        message.From = fromAddress
+        message.Subject = subject
+        message.Body = body
+        message.To.Add(useremailaddress)
         Try
-
 
             Await smtp.SendMailAsync(message)
 

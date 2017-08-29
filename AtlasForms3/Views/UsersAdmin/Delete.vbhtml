@@ -1,4 +1,4 @@
-﻿@ModelType atlasbasketstatistics.ApplicationUser
+﻿@ModelType AtlasForms3.ApplicationUser
 
 @code
     ViewBag.Title = "Delete"

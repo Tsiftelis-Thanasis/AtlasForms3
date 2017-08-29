@@ -63,13 +63,29 @@ Public Class AccountController
         If user IsNot Nothing Then
             If Not Await UserManager.IsEmailConfirmedAsync(user.Id) Then
 
-                Dim callbackUrl As String = Await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend")
-
+                Dim callbackUrl As String = Await SendEmailConfirmationTokenAsync(user.Id, user.Email, "Confirm your account-Resend")
                 ViewBag.errorMessage = "You must have a confirmed email to log on."
-                Return View("Error")
+                ModelState.AddModelError("", "You must have a confirmed email to log on.")
+                Return View(model)
             End If
         End If
 
+        Dim webdb As New AtlasStatisticsEntities
+        Dim userisenabled = (From u In webdb.AspNetUsers
+                             Where u.UserName = user.UserName
+                             Select u.IsEnabled).FirstOrDefault
+        If userisenabled Is Nothing Then
+            ViewBag.errorMessage = "You must have an enabled account to proceed, please contact with an administrator."
+            ModelState.AddModelError("", "You must have an enabled account to proceed, please contact with an administrator.")
+            Return View(model)
+
+        Else
+            If userisenabled.Value = 0 Then
+                ViewBag.errorMessage = "You must have an enabled account to proceed, please contact with an administrator."
+                ModelState.AddModelError("", "You must have an enabled account to proceed, please contact with an administrator.")
+                Return View(model)
+            End If
+        End If
 
 
         ' This doesn't count login failures towards account lockout
@@ -196,12 +212,13 @@ Public Class AccountController
                 ' Await SignInManager.SignInAsync(user, isPersistent:=False, rememberBrowser:=False)
 
 
-                Dim callbackUrl As String = Await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account")
+                Dim callbackUrl As String = Await SendEmailConfirmationTokenAsync(user.Id, user.Email, "Confirm your account")
 
 
                 'Dim code = Await UserManager.GenerateEmailConfirmationTokenAsync(user.Id)
-                'Dim callbackUrl = Url.Action("ConfirmEmail", "Account", New With {.userId = user.Id, .code = code}, protocol:=Request.Url.Scheme)
                 'Await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=""" & callbackUrl & """>here</a>")
+                'Dim e As New Utils
+                'Await e.sendEmailsync(user., "Confirm your account", "Please confirm your account by clicking <a href=""" & callbackUrl & """>here</a>")
 
 
                 'check any other roles
@@ -276,7 +293,10 @@ Public Class AccountController
             ' Send an email with this link
             Dim code = Await UserManager.GeneratePasswordResetTokenAsync(user.Id)
             Dim callbackUrl = Url.Action("ResetPassword", "Account", New With {.userId = user.Id, .code = code}, protocol:=Request.Url.Scheme)
-            Await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=""" & callbackUrl & """>here</a>")
+            'Await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=""" & callbackUrl & """>here</a>")
+            Dim e As New Utils
+            Await e.sendEmailsync(user.Email, "Reset Password", "Please reset your password by clicking <a href=""" & callbackUrl & """>here</a>")
+
             Return RedirectToAction("ForgotPasswordConfirmation", "Account")
 
         End If
@@ -491,14 +511,18 @@ Public Class AccountController
         MyBase.Dispose(disposing)
     End Sub
 
-    Private Async Function SendEmailConfirmationTokenAsync(userID As String, subject As String) As Task(Of String)
+    Private Async Function SendEmailConfirmationTokenAsync(userID As String, userEmail As String, subject As String) As Task(Of String)
 
         Dim code As String = Await UserManager.GenerateEmailConfirmationTokenAsync(userID)
-        Dim callbackUrl = Url.Action("ConfirmEmail", "Account", New With { _
-            Key .userId = userID, _
-            Key .code = code _
+        Dim callbackUrl = Url.Action("ConfirmEmail", "Account", New With {
+            Key .userId = userID,
+            Key .code = code
         }, protocol:=Request.Url.Scheme)
-        Await UserManager.SendEmailAsync(userID, subject, "Please confirm your account by clicking <a href=""" + callbackUrl + """>here</a>")
+
+        Dim e As New Utils
+        Await e.sendEmailsync(userEmail, subject, "Please confirm your account by clicking <a href=""" + callbackUrl + """>here</a>")
+
+        'Await UserManager.SendEmailAsync(userID, subject, "Please confirm your account by clicking <a href=""" + callbackUrl + """>here</a>")
 
         Return callbackUrl
 

@@ -180,14 +180,14 @@ Public Class UsersAdminController
         ', u.Address, u.Perioxi, u.Poli, u.Tk, u.Afm, _
         Dim userdb = (From u In aspdb.AspNetUsers
                       Where u.Id = useredited.Id
-                      Select u.Fullname, u.Phone, islocked = If(u.IsLocked Is Nothing, False, True), isenabled = If(u.IsEnabled Is Nothing, False, True)).First
+                      Select u.Fullname, u.Phone, islocked = If(u.IsLocked Is Nothing, False, True), isenabled = If(u.IsEnabled Is Nothing, 0, u.IsEnabled)).First
 
         Dim e As New EditUserViewModel() With {
             .Id = useredited.Id,
             .Username = useredited.UserName,
             .Email = useredited.Email,
             .Fullname = If(userdb.Fullname Is Nothing, "", userdb.Fullname),
-            .IsEnabled = userdb.isenabled,
+            .IsEnabled = If(userdb.isenabled = 1, True, False),
             .IsLocked = userdb.islocked,
             .Phone = userdb.Phone,
             .RolesList = rl
@@ -216,11 +216,10 @@ Public Class UsersAdminController
 
     '
     ' POST: /Users/Edit/5
-    <HttpPost> _
-    <ValidateAntiForgeryToken> _
-    Public Async Function Edit(editUser As EditUserViewModel, _
+    <HttpPost>
+    <ValidateAntiForgeryToken>
+    Public Async Function Edit(editUser As EditUserViewModel,
                                selectedRole As String()) As Task(Of ActionResult)
-
 
         If ModelState.IsValid Then
 
@@ -264,7 +263,7 @@ Public Class UsersAdminController
             'e.Tk = editUser.Tk
             'e.Afm = editUser.Afm
             e.Phone = editUser.Phone
-            e.IsEnabled = editUser.IsEnabled
+            e.IsEnabled = If(editUser.IsEnabled = True, 1, 0)
             e.IsLocked = editUser.IsLocked
             aspdb.SaveChanges()
 

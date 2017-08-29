@@ -6,30 +6,22 @@ End code
 
 <h2>Edit.</h2>
 
-@Using (Html.BeginForm)
+
+@Using (Html.BeginForm("Edit", "UsersAdmin", FormMethod.Post, New With {.class = "form-horizontal", .role = "form"}))
+
     @Html.AntiForgeryToken()
 
     @<div class="form-horizontal">
         <h4>Edit User Form.</h4>
         <hr />
         
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary(True)
         @Html.HiddenFor(Function(m) m.Id)
          @Html.HiddenFor(Function(m) m._showdates)
          @Html.HiddenFor(Function(m) m._showroles)
 
-
-         <div class="form-group">
-             @Html.LabelFor(Function(m) m.Fullname, New With {.class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.TextBoxFor(Function(m) m.Fullname, New With {.class = "form-control"})
-                 @Html.ValidationMessageFor(Function(m) m.Fullname)
-             </div>
-         </div>
-
-
-     <div class="form-group">
+         
+       <div class="form-group">
              @Html.LabelFor(Function(m) m.Username, New With {.class = "control-label col-md-2"})
              <div class="col-md-10">
                  @Html.TextBoxFor(Function(m) m.Username, New With {.class = "form-control"})
@@ -61,9 +53,13 @@ End code
              @Html.LabelFor(Function(m) m.IsEnabled, New With {.class = "control-label col-md-2"})
              <div class="col-md-10">
                  @code
-                     Dim isenabledvar As Boolean = If(Model.IsEnabled Is Nothing, False, If(Model.IsEnabled = 0, False, True))
-                     @Html.CheckBox("isenabledvar", isenabledvar, New With {.class = "form-control"})
-                     @Html.ValidationMessageFor(Function(m) m.IsEnabled)
+                     If Model.IsEnabled Then
+                        @Html.CheckBox("IsEnabled", New With {.id = "IsEnabled", .class = "form-control", .checked = "checked", .value = True})
+                     Else
+                        @Html.CheckBox("IsEnabled", New With {.id = "IsEnabled", .class = "form-control", .value = False})
+                     End If
+
+                    @Html.ValidationMessageFor(Function(m) m.IsEnabled)
 
                 End Code
        
@@ -91,8 +87,8 @@ End code
                  </div>
              </div>
          </div>
-    
-End Using
+
+                     End Using
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -106,6 +102,16 @@ End Using
         $(function () {
             $('.chosen-select').chosen();
             $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+
+            $('#IsEnabled').click(function () {
+                if (!$(this).is(':checked')) {
+                    $('#IsEnabled').val(false);
+                }
+                else {
+                    $('#IsEnabled').val(true);                    
+                }
+            });
+
         });
     
     </script>

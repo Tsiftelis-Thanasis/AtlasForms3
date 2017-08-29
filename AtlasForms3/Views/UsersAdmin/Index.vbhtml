@@ -39,7 +39,7 @@ End code
                 @Html.DisplayFor(Function(modelItem) item.UserName)
             </td>
         <td>
-            @Html.CheckBox("enableduser", If(enableduser = 0, False, True), New With {.style = "enabled=false;"})
+            @Html.CheckBox("enableduser", If(enableduser = 0, False, True), New With {.disabled = "disabled"})
         </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", New With {.id = item.Id}) |

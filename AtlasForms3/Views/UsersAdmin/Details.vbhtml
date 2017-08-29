@@ -38,8 +38,7 @@ end if
 </table>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", New With {.id = Model.Id}) |
-    @Html.ActionLink("Back to List", "Index")
+   @Html.ActionLink("Back to List", "Index")
 </p>
 
 

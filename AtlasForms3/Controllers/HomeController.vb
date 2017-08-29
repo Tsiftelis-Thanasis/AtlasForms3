@@ -325,15 +325,15 @@ Public Class HomeController
     End Sub
 
 
-    Public Async Function sendtheemail() As Threading.Tasks.Task
+    'Public Async Function sendtheemail() As Threading.Tasks.Task
 
 
 
-        Dim ha As New Utils
-        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "test")
+    '    Dim ha As New Utils
+    '    Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "test")
 
 
-    End Function
+    'End Function
 
 
 End Class

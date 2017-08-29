@@ -57,7 +57,6 @@ Public Class EditUserViewModel
     End Property
     Private m_Username As String
 
-    <Required(AllowEmptyStrings:=False)> _
     <Display(Name:="Fullname")> _
     Public Property Fullname() As String
         Get
@@ -106,15 +105,15 @@ Public Class EditUserViewModel
     End Property
     Private m_IsLocked As Integer
 
-    Public Property IsEnabled() As Integer?
+    Public Property IsEnabled() As Boolean
         Get
             Return m_IsEnabled
         End Get
-        Set(value As Integer?)
+        Set(value As Boolean)
             m_IsEnabled = value
         End Set
     End Property
-    Private m_IsEnabled As Integer
+    Private m_IsEnabled As Boolean
 
     Public Property _showroles As Boolean
     Public Property _showdates As Boolean
