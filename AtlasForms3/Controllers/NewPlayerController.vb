@@ -7,6 +7,10 @@ Namespace Controllers
         Private pdb As New AtlasBlogEntities
 
 
+
+
+
+
         ' GET: NewPlayer
         Function Index() As ActionResult
             Return View()
@@ -186,7 +190,7 @@ Namespace Controllers
 
                 Next
 
-                Return RedirectToAction("Index", "Home")
+                Return RedirectToAction("Index", "NewPlayer")
 
             Catch ex As Exception
                 Return View()

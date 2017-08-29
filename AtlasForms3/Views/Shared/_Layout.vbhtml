@@ -1,10 +1,6 @@
 ﻿@code
 
-    'Dim u As New Utils
-    'u.resizepostimages()
-
     Dim pdb2 As New AtlasStatisticsEntities
-
 
     Dim StaticfirstDiorganwshid = (From d In pdb2.DiorganwshTable
                                    Join s In pdb2.SeasonTable On d.Seasonid Equals s.Id
@@ -235,14 +231,13 @@ End code
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/custom")
+    @*@Scripts.Render("~/bundles/tinymce")*@
+    @Scripts.Render("~/bundles/custom2")
+
+    <script type="text/javascript" src="../Scripts/tinymce/tinymce.min.js"></script>
 
     @RenderSection("scripts", required:=False)
     
-    <script src="~/Scripts/jquery.navgoco.js"></script>
-    <script src="~/Scripts/jquery.carouFredSel-6.2.1.js"></script>
-    <script src="~/Scripts/owl.carousel.js"></script>
-    
-
     <div id="fb-root"></div>
     <script>
         (function(d, s, id) {

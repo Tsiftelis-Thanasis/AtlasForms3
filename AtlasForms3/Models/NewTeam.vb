@@ -18,6 +18,10 @@ Public Class NewTeam
     Public Property teamname As String
 
     <StringLength(100)>
+    <Display(Name:="Όνομα αρχηγού")>
+    Public Property teamleadername As String
+
+    <StringLength(100)>
     <Display(Name:="Email αρχηγού")>
     Public Property teamemail As String
 
@@ -29,6 +33,9 @@ Public Class NewTeam
     <Display(Name:="Roster")>
     Public Property teamroster As Byte()
 
+
+    <Display(Name:="file extension")>
+    Public Property teamrosterext As String
 
     <Display(Name:="Δημιουργία απο")>
     Public Property createdby As String

@@ -75,33 +75,12 @@ Public Class RegisterViewModel
     <Compare("Password", ErrorMessage:="The password and confirmation password do not match.")>
     Public Property ConfirmPassword As String
 
-    <Required(AllowEmptyStrings:=False)> _
     <Display(Name:="Fullname")> _
     Public Property Fullname As String
-    
-    <Display(Name:="Address")> _
-    Public Address As String
-
-    <Display(Name:="Perioxi")> _
-    Public Perioxi As String
-
-    <Display(Name:="Poli")> _
-    Public Poli As String
-
-    <Display(Name:="Tk")> _
-    Public Tk As String
-
-    <Display(Name:="Afm")> _
-    Public Afm As String
-
-    <Display(Name:="Phone")> _
-    Public Phone As String
 
     Public Property IsLocked As Integer
     Public Property IsEnabled As Integer
 
-    Public Property CompaniesList() As IEnumerable(Of SelectListItem)
-     
 End Class
 
 Public Class ResetPasswordViewModel

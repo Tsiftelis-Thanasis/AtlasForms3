@@ -70,6 +70,31 @@ End Code
     </div>
 </div>
 
+@*<div class="row ">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="icon-useralt homeicons"></i> Resize images</h4>
+            </div>
+            <div class="panel-body">
+                <p> @Html.ActionLink("Resize images", "Resizeimages", "Home") </p>
 
+            </div>
+        </div>
+    </div>
+</div>*@
 
+<div class="row ">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="icon-useralt homeicons"></i> sendtheemail </h4>
+                </div>
+                <div class="panel-body">
+                    <p> @Html.ActionLink("sendtheemail", "sendtheemail", "Home") </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
 

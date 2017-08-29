@@ -27,8 +27,20 @@ Public Module BundleConfig
                    "~/Scripts/chosen.jquery.js",
                   "~/Scripts/custom.js",
                   "~/Scripts/superfish.js",
-                  "~/Scripts/modernizr.custom.js",
+                  "~/Scripts/modernizr.custom.js"))
+
+
+        bundles.Add(New ScriptBundle("~/bundles/tinymce").Include(
                   "~/Scripts/tinymce/tinymce.min.js"))
+
+
+        bundles.Add(New ScriptBundle("~/bundles/custom2").Include(
+                  "~/Scripts/jquery.navgoco.js",
+                   "~/Scripts/jquery.carouFredSel-6.2.1.js",
+                    "~/Scripts/owl.carousel.js"))
+
+
+
 
         bundles.Add(New StyleBundle("~/Content/css").Include(
                   "~/Content/bootstrap.css",
@@ -47,6 +59,7 @@ Public Module BundleConfig
                   "~/Content/font-awesome.css"))
 
 
+        'BundleTable.EnableOptimizations = True
 
     End Sub
 End Module

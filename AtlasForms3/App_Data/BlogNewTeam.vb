@@ -20,5 +20,7 @@ Partial Public Class BlogNewTeam
     Public Property CreatedBy As String
     Public Property EditDate As Nullable(Of Date)
     Public Property EditBy As String
+    Public Property teamleadername As String
+    Public Property teamrosterext As String
 
 End Class

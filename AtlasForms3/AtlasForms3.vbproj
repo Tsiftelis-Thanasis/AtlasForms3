@@ -309,6 +309,7 @@
     <Compile Include="CompressAttribute.vb" />
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\KathgoriesController.vb" />
+    <Compile Include="Controllers\NewTeamController.vb" />
     <Compile Include="Controllers\NewPlayerController.vb" />
     <Compile Include="Controllers\PostsController.vb" />
     <Compile Include="Controllers\ProgrammaController.vb" />
@@ -963,6 +964,10 @@
     <Content Include="Views\NewPlayer\Create.vbhtml" />
     <Content Include="Views\NewPlayer\Delete.vbhtml" />
     <Content Include="Views\Posts\Edit.vbhtml" />
+    <Content Include="Views\NewTeam\Create.vbhtml" />
+    <Content Include="Views\NewTeam\Delete.vbhtml" />
+    <Content Include="Views\NewTeam\Details.vbhtml" />
+    <Content Include="Views\NewTeam\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

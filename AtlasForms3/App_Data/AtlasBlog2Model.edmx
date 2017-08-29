@@ -46,6 +46,8 @@
           <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
           <Property Name="EditDate" Type="datetime" />
           <Property Name="EditBy" Type="varchar" MaxLength="100" />
+          <Property Name="teamleadername" Type="varchar" MaxLength="200" />
+          <Property Name="teamrosterext" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="BlogPostandKathgoriaTable">
           <Key>
@@ -210,6 +212,8 @@
           <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EditDate" Type="DateTime" Precision="3" />
           <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="teamleadername" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="teamrosterext" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -304,6 +308,8 @@
           <EntitySetMapping Name="BlogNewTeam">
             <EntityTypeMapping TypeName="ATLASBLOG2Model.BlogNewTeam">
               <MappingFragment StoreEntitySet="BlogNewTeam">
+                <ScalarProperty Name="teamrosterext" ColumnName="teamrosterext" />
+                <ScalarProperty Name="teamleadername" ColumnName="teamleadername" />
                 <ScalarProperty Name="EditBy" ColumnName="EditBy" />
                 <ScalarProperty Name="EditDate" ColumnName="EditDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />

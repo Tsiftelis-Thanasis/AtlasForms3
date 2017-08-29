@@ -11,13 +11,7 @@ End Code
     @Html.ValidationSummary("", New With {.class = "text-danger"})
 
     <div class="form-group">
-
-        @Html.LabelFor(Function(m) m.Fullname, New With {.class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Fullname, New With {.class = "form-control"})
-        </div>
-
-
+              
         @Html.LabelFor(Function(m) m.Username, New With {.class = "col-md-2 control-label"})
         <div class="col-md-10">
             @Html.TextBoxFor(Function(m) m.Username, New With {.class = "form-control"})

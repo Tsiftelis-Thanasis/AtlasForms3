@@ -1,4 +1,8 @@
-﻿Imports System.IO
+﻿Imports System.Net.Mail
+Imports System.Net
+Imports Microsoft.AspNet.Identity
+Imports System.Threading.Tasks
+Imports System.IO
 Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.Drawing.Drawing2D
@@ -114,6 +118,38 @@ Public Class Utils
         Return newImage
     End Function
 
+    Public Async Function sendEmailsync(ByVal usernameto As String,
+                                        ByVal subject As String,
+                                         ByVal body As String) As Task
 
+
+        Dim fromAddress = New MailAddress("atlassupport@atlasbasket.gr", "Support @ atlas basket")
+
+        Dim smtp = New SmtpClient() With {
+             .Host = "mail.atlasstatistics.gr",
+            .Port = 465,
+            .DeliveryMethod = SmtpDeliveryMethod.Network,
+            .EnableSsl = True,
+            .UseDefaultCredentials = False,
+            .Credentials = New NetworkCredential("atlassupport@atlasstatistics.gr", "rAv84*8c")
+        }
+
+        Dim message As New MailMessage()
+            message.From = fromAddress
+            message.Subject = subject
+            message.Body = body
+        message.To.Add(usernameto)
+
+        Try
+
+
+            Await smtp.SendMailAsync(message)
+
+        Catch ex As Exception
+
+        End Try
+
+
+    End Function
 
 End Class

@@ -6,19 +6,19 @@ Imports Microsoft.AspNet.Identity.Owin
 Imports Microsoft.Owin
 Imports Microsoft.Owin.Security
 
-''
-'' How to send email!
-''
-'Public Class EmailService
-'    Implements IIdentityMessageService
+'
+' How to send email!
+'
+Public Class EmailService
+    Implements IIdentityMessageService
 
-'    Public Async Function SendAsync(message As IdentityMessage) As Task Implements IIdentityMessageService.SendAsync
+    Public Async Function SendAsync(message As IdentityMessage) As Task Implements IIdentityMessageService.SendAsync
 
-'        Dim ha As New Helper
-'        Await ha.sendEmailsync(message.Destination, message.Subject, message.Body)
+        Dim ha As New Utils
+        Await ha.sendEmailsync(message.Destination, message.Subject, message.Body)
 
-'    End Function
-'End Class
+    End Function
+End Class
 
 ' Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 Public Class ApplicationUserManager

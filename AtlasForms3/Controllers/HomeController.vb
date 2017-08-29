@@ -3,6 +3,8 @@ Public Class HomeController
     Inherits System.Web.Mvc.Controller
     Function Index(Optional a As Integer = 0) As ActionResult
 
+
+
         ViewBag.AtlasOmilos = a
         Return View()
 
@@ -309,6 +311,26 @@ Public Class HomeController
         dtm.recordsFiltered = dtm.recordsTotal
 
         Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
+    End Function
+
+
+
+    Public Sub Resizeimages()
+
+        Dim a As New Utils
+        a.resizepostimages()
+
+    End Sub
+
+
+    Public Async Function sendtheemail() As Threading.Tasks.Task
+
+
+
+        Dim ha As New Utils
+        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "test")
 
 
     End Function
