@@ -53,6 +53,15 @@ End code
         var url1 = window.location.href.split('/');
         var baseUrl = url1[0] + '//' + url1[2];
 
+
+        var old = alert;
+
+        alert = function () {
+            console.log(new Error().stack);
+            old.apply(window, arguments);
+        };
+
+
     </script>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek' rel='stylesheet' type='text/css'>

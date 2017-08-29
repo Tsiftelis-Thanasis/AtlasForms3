@@ -246,7 +246,7 @@ End Code
                 }
             },
             error: function (result) {
-                alert(result.status + ' ' + result.statusText);
+                alert('1 ' + result.status + ' ' + result.statusText);
             }
         });
     }
@@ -303,14 +303,14 @@ End Code
                 }
             },
             error: function (result) {
-                alert(result.status + ' ' + result.statusText);
+                alert('2 ' + result.status + ' ' + result.statusText);
             }
         });
     }
 
     //append mainnewscarouselid               
      function AppendMainCarousel(omilosid) {
-        return $.ajaxQueue({
+        return $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
             data: "{nCount : 5, atlasomilosid: " + omilosid + "}",
@@ -346,14 +346,14 @@ End Code
                 }
             },
             error: function (result) {
-                alert(result.status + ' ' + result.statusText);
+                alert('3 ' + result.status + ' ' + result.statusText);
             }
         });
     }
 
     //apend latestnewsid
      function AppendLatestNews(omilosid) {
-        return $.ajaxQueue({
+         return $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetLastNews", "Posts")',
             data: "{nCount : 10, atlasomilosid: " + omilosid + "}",
@@ -363,9 +363,8 @@ End Code
             success: function (result) {
                 var choiceContainer = $("#latestnewsid");
                 if (result.data.length > 0) {
-                    choiceContainer.empty();
+                    choiceContainer.empty();                    
                     $.each(result.data, function () {
-
                         d = '<li> ' +
                             ' <article class="entry-item"> ' +
                             ' <div class="entry-thumb"> ' +
@@ -384,14 +383,14 @@ End Code
                 }
             },
             error: function (result) {
-                alert(result.status + ' ' + result.statusText);
+                alert('4 ' + result.status + ' ' + result.statusText);
             }
         });
     }
 
     //apend kalyteresfaseisid
      function AppendKalyteresFaseis(omilosid) {
-        return $.ajaxQueue({
+        return $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("GetKalyteresFaseisVideo", "Posts")',
             data: "{atlasomilosid: " + omilosid + "}",
@@ -420,7 +419,7 @@ End Code
                 }
             },
             error: function (result) {
-                alert(result.status + ' ' + result.statusText);
+                alert('5 ' + result.status + ' ' + result.statusText);
             }
         });
     }
@@ -431,7 +430,7 @@ End Code
 
      //append pointsul
      function AppendPoints(omilosid) {
-         return $.ajaxQueue({
+         return $.ajax({
              type: "POST",
              url: baseUrl + '@Url.Action("GetWeeklyReportStat1", "Home")',
              data: "{omid : " + omilosid + "}",
@@ -444,14 +443,14 @@ End Code
                  appendTop5Container(choiceContainer, result);
              },
              error: function (result) {
-                 alert(result.status + ' ' + result.statusText);
+                 alert('6 ' + result.status + ' ' + result.statusText);
              }
          });
      }
 
      //append assistul
      function AppendAssists(omilosid) {
-         return $.ajaxQueue({
+         return $.ajax({
              type: "POST",
              url: baseUrl + '@Url.Action("GetWeeklyReportStat2", "Home")',
              data: "{omid : " + omilosid + "}",
@@ -464,14 +463,14 @@ End Code
                  appendTop5Container(choiceContainer, result);
              },
              error: function (result) {
-                 alert(result.status + ' ' + result.statusText);
+                 alert('7 ' + result.status + ' ' + result.statusText);
              }
          });
      }
 
      //append reboundul
      function AppendRebound(omilosid) {
-         return $.ajaxQueue({
+         return $.ajax({
              type: "POST",
              url: baseUrl + '@Url.Action("GetWeeklyReportStat3", "Home")',
              data: "{omid : " + omilosid + "}",
@@ -484,14 +483,14 @@ End Code
                  appendTop5Container(choiceContainer, result);
              },
              error: function (result) {
-                 alert(result.status + ' ' + result.statusText);
+                 alert('8 ' + result.status + ' ' + result.statusText);
              }
          });
      }
 
      //append stealsul
      function AppendSteals(omilosid) {
-         return $.ajaxQueue({
+         return $.ajax({
              type: "POST",
              url: baseUrl + '@Url.Action("GetWeeklyReportStat4", "Home")',
              data: "{omid : " + omilosid + "}",
@@ -503,14 +502,14 @@ End Code
                  appendTop5Container(choiceContainer, result);
              },
              error: function (result) {
-                 alert(result.status + ' ' + result.statusText);
+                 alert('9 ' + result.status + ' ' + result.statusText);
              }
          });
      }
 
      //append blocksul
      function AppendBlocks(omilosid) {
-         return $.ajaxQueue({
+         return $.ajax({
              type: "POST",
              url: baseUrl + '@Url.Action("GetWeeklyReportStat5", "Home")',
              data: "{omid : " + omilosid + "}",
@@ -523,7 +522,7 @@ End Code
                  appendTop5Container(choiceContainer, result);
              },
              error: function (result) {
-                 alert(result.status + ' ' + result.statusText);
+                 alert('10 ' + result.status + ' ' + result.statusText);
              }
          });
      }
@@ -533,8 +532,8 @@ End Code
             $(document).ready(function () {
 
 
-
-                (function ($) {
+                /* the following call of  $.ajaxQueue is returning many random ajax errors (alert "0 error") so i remove it */
+                /* (function ($) {
 
                     // jQuery on an empty object, we are going to use this as our Queue
                     var ajaxQueue = $({});
@@ -581,37 +580,37 @@ End Code
                         return promise;
                     };
                 })(jQuery);
+                */
 
                 var omilosid = $("#atlasomilosid").val();
+                
+                //var newPromise = $.Deferred();
 
-
-                var newPromise = $.Deferred();
-
-                $.when(newPromise).done(function () {
+                //$.when(newPromise).done(function () {
                     
-                });
+                //});
 
-                newPromise.always(function () {
-                    GetLastGames(omilosid);
-                }).always(function () {                    
-                    AppendCarousel1(omilosid);
-                }).always(function () {
-                    AppendMainCarousel(omilosid);
-                }).always(function () {
-                    AppendLatestNews(omilosid);
-                }).always(function () {
-                    AppendKalyteresFaseis(omilosid);
-                }).always(function () {
-                    AppendPoints(omilosid);
-                }).always(function () {
-                    AppendAssists(omilosid);
-                }).always(function () {
-                    AppendRebound(omilosid);
-                }).always(function () {
-                    AppendSteals(omilosid);
-                }).always(function () {
-                    AppendBlocks(omilosid);
-                });
+                //newPromise.always(function () {
+                //    GetLastGames(omilosid);
+                //}).always(function () {                    
+                //    AppendCarousel1(omilosid);
+                //}).always(function () {
+                //    AppendMainCarousel(omilosid);
+                //}).always(function () {
+                //    AppendLatestNews(omilosid);
+                //}).always(function () {
+                //    AppendKalyteresFaseis(omilosid);
+                //}).always(function () {
+                //    AppendPoints(omilosid);
+                //}).always(function () {
+                //    AppendAssists(omilosid);
+                //}).always(function () {
+                //    AppendRebound(omilosid);
+                //}).always(function () {
+                //    AppendSteals(omilosid);
+                //}).always(function () {
+                //    AppendBlocks(omilosid);
+                //});
                                 
                
 
@@ -630,6 +629,18 @@ End Code
                     AppendSteals(omilosid),
                     AppendBlocks(omilosid)
                     );
+                
+
+                //GetLastGames(omilosid);
+                //  AppendCarousel1(omilosid);
+                //  AppendMainCarousel(omilosid);
+                //  AppendLatestNews(omilosid);
+                //  AppendKalyteresFaseis(omilosid);
+                //  AppendPoints(omilosid);
+                //  AppendAssists(omilosid);
+                //  AppendRebound(omilosid);
+                //  AppendSteals(omilosid);
+                //  AppendBlocks(omilosid);
                 
 
                 @*$.ajax({
