@@ -47,24 +47,28 @@ End code
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+    
+    <style>
+        .mySlides {display:none;}
+    </style>
+
     @RenderSection("styles", required:=False)
+
     <script type="text/javascript" language="javascript">
 
         var url1 = window.location.href.split('/');
         var baseUrl = url1[0] + '//' + url1[2];
-
-
+        
         var old = alert;
-
         alert = function () {
             console.log(new Error().stack);
             old.apply(window, arguments);
         };
 
-
     </script>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek' rel='stylesheet' type='text/css'>
+    @*<link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek' rel='stylesheet' type='text/css'>*@
 
 </head>
 
@@ -90,21 +94,21 @@ End code
 
     @Html.Hidden("firstDiorganwshid", firstDiorganwshid)
     @Html.Hidden("UserisAuthenticated", UserisAuthenticated)
-        
+
     <header class="kopa-header">
         <div class="kopa-header-middle">
             <div class="wrapper">
                 <nav class="kopa-main-nav">
                     <div class="kopa-logo">
                         <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>
-                    </div>                   
-                 
+                    </div>
+
                     <ul class="main-menu sf-menu">
                         <li class="current-menu-item">
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
                         <li class="current-menu-item">
-                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@StaticfirstDiorganwshid , 1)"><span>Πρωταθλημα</span></a>                         
+                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@StaticfirstDiorganwshid , 1)"><span>Πρωταθλημα</span></a>
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
@@ -112,23 +116,23 @@ End code
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
-                            <ul class="sub-menu" id="diorgarxhpostsid">                                                              
+                            <ul class="sub-menu" id="diorgarxhpostsid">
                             </ul>
-                        </li>    
-                        
+                        </li>
+
 
                         <li class="current-menu-item">
                             <a><span>εγγραφες </span></a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>                            
+                                    <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>   
+                                    <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
                             </ul>
                         </li>
-                    
+
 
                         @If User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
@@ -139,7 +143,7 @@ End code
                         @*<li class="current-menu-item"><a href="/Account/Login" id="loginLink">Log in</a></li>*@
 
                     </ul>
-                   
+
                 </nav>
 
 
@@ -149,7 +153,7 @@ End code
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
                         <li class="current-menu-item">
-                            <a class="lipointer"  onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>                         
+                            <a class="lipointer"  onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
@@ -158,8 +162,8 @@ End code
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsidmobile"></ul>
-                        </li>        
-                        
+                        </li>
+
                         <li class="current-menu-item">
                             <a><span>εγγραφες </span></a>
                             <ul class="sub-menu">
@@ -171,8 +175,8 @@ End code
                                 </li>
                             </ul>
                         </li>
-            
- 
+
+
                         @if User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
                                 @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
@@ -183,27 +187,30 @@ End code
 
 
                     </ul>
-                </nav>                
-            </div> 
+                </nav>
+            </div>
         </div>
-      
+
         <div class="kopa-header-bottom">
             <div class="wrapper">
               <nav class="th-kopa-main-nav-2">
-                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid">                        
+                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid">
                     </ul>
                 </nav>
-            </div>   
-     </div>            
-        
+            </div>
+     </div>
+
 </header>
-    
+
     <div class="kopa-sub-page kopa-single-page">
-        <div class="container body-content">           
+        <div class="container body-content">
             @RenderBody()
-        <hr />           
+        <hr />
         </div>
     </div>
+
+
+
 
     <div id="bottom-sidebar">
         <div class="bottom-area-1">
@@ -224,15 +231,15 @@ End code
             </div>
 
     </div>
-    
+
     <footer id="kopa-footer">
         <div class="wrapper clearfix">
             <p id="copyright" class="">Copyright © 2017 . All Rights Reserved. </p>
-        </div>       
-    
-       
+        </div>
+
+
 </footer>
-   
+
 
 <a href="#" class="scrollup"><span class="fa fa-chevron-up"></span></a>
 
@@ -246,7 +253,7 @@ End code
     <script type="text/javascript" src="~/Scripts/tinymce/tinymce.min.js"></script>
 
     @RenderSection("scripts", required:=False)
-    
+
     <div id="fb-root"></div>
     <script>
         (function(d, s, id) {
@@ -263,9 +270,7 @@ End code
 
 
 <script type="text/javascript" language="javascript">
-
-   
-
+    
     /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
     $.widget.bridge('uibutton', $.ui.button);
     $.widget.bridge('uitooltip', $.ui.tooltip);
@@ -273,7 +278,7 @@ End code
         var bootstrapButton = $.fn.button.noConflict();// return $.fn.button to previously assigned value
         $.fn.bootstrapBtn = bootstrapButton;           // give $().bootstrapBtn the Bootstrap functionality
     });
-
+        
     //fillomiloinavbar
     function fillomiloinavbar(i, t) {
 
@@ -455,7 +460,7 @@ End code
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-                
+
                 var choiceContainer = $("#diorgarxhpostsid");
                 var choiceContainermobile = $("#diorgarxhpostsidmobile");
                 if (result.data.length > 0) {
@@ -524,13 +529,13 @@ End code
              })
         ;
 
-        
+
         var newPromise = $.Deferred();
 
         $.when(newPromise).done(function () {
             GetDiorganwtria();
         });
-        
+
         newPromise.then(function () {
             GetDiorganwseis();
         });

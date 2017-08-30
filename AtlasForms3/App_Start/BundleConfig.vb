@@ -56,7 +56,9 @@ Public Module BundleConfig
                   "~/Content/bootstrap-slider.css",
                   "~/Content/style.css",
                   "~/Content/DataTables/css/jquery.dataTables.min.css",
-                  "~/Content/font-awesome.css"))
+                  "~/Content/font-awesome.css",
+                  "~/Content/w3.css",
+                  "~/Content/fontlatingreek"))
 
 
         'BundleTable.EnableOptimizations = True

@@ -710,97 +710,97 @@ var panel_titles = $('.kopa-accordion .panel-title a');
 
 
     //if ($('.scroll-slider').length > 0) {
+                
     //    Modernizr.load([
     //        {
     //            //load: [baseUrl + '/Scripts/mCustomScrollbar.js', baseUrl + '/Scripts/jquery.mousewheel.min.js'],
     //            load: [baseUrl + '/Scripts/mCustomScrollbar.js', baseUrl + '/Scripts/jquery.mousewheel.min.js'],
     //            complete: function () {                  
 
-    //                $(".scroll-slider").each(function() {
-    //                    var slider = $(this);
-    //                    var itemList = slider.find("ul");
-    //                    var prevSlide = slider.find("a.s-prev");
-    //                    var nextSlide = slider.find("a.s-next");
-    //                    var pos = 0;
-    //                    var itemCount = itemList.find("li").length;
-    //                    slider.find('.loading').fadeOut(function(){$('.loading').remove()});
+    //$(".scroll-slider").each(function() {
+    //    var slider = $(this);
+    //    var itemList = slider.find("ul");
+    //    var prevSlide = slider.find("a.s-prev");
+    //    var nextSlide = slider.find("a.s-next");
+    //    var pos = 0;
+    //    var itemCount = itemList.find("li").length;
+    //    slider.find('.loading').fadeOut(function(){$('.loading').remove()});
 
-    //                    var w = Math.round((slider.find("ul").width() - 105) / 4);
-    //                    slider.find(".s-item").width(w);  
-    //                    var h = slider.find(".s-item").height();          
-    //                    slider.height(h + 20);
-    //                    var W = 0;
-    //                    slider.find("li").each(function(){
-    //                        W += $(this).width() + 30;
-    //                    });
-    //                    $(".mCSB_container").width(W - 15);
+    //    var w = Math.round((slider.find("ul").width() - 105) / 4);
+    //    slider.find(".s-item").width(w);  
+    //    var h = slider.find(".s-item").height();          
+    //    slider.height(h + 20);
+    //    var W = 0;
+    //    slider.find("li").each(function(){
+    //        W += $(this).width() + 30;
+    //    });
+    //    $(".mCSB_container").width(W - 15);
 
-    //                    $(window).resize(function() {
-    //                        var w = Math.round((slider.find("ul").width() - 105) / 4);
-    //                        slider.find(".s-item").width(w);  
-    //                        var h = slider.find(".s-item").height();          
-    //                        slider.height(h + 20);
-    //                        var W = 0;
-    //                        slider.find("li").each(function(){
-    //                            W += $(this).width() + 30;
-    //                        });
-    //                        $(".mCSB_container").width(W - 15);
-    //                    });
+    //    $(window).resize(function() {
+    //        var w = Math.round((slider.find("ul").width() - 105) / 4);
+    //        slider.find(".s-item").width(w);  
+    //        var h = slider.find(".s-item").height();          
+    //        slider.height(h + 20);
+    //        var W = 0;
+    //        slider.find("li").each(function(){
+    //            W += $(this).width() + 30;
+    //        });
+    //        $(".mCSB_container").width(W - 15);
+    //    });
                         
 
-    //                    var itemW = w + 30;
+    //    var itemW = w + 30;
 
-    //                    itemList.mCustomScrollbar({
-    //                        horizontalScroll: true,
-    //                        mouseWheel: true,
-    //                        autoHideScrollbar: false,
-    //                        contentTouchScroll: true,
-    //                        scrollButtons: {
-    //                          enable: false
-    //                        },
-    //                        advanced:{
-    //                            updateOnContentResize: true,
-    //                            updateOnBrowserResize: true
-    //                        }
-    //                    });
+    //    itemList.mCustomScrollbar({
+    //        horizontalScroll: true,
+    //        mouseWheel: true,
+    //        autoHideScrollbar: false,
+    //        contentTouchScroll: true,
+    //        scrollButtons: {
+    //            enable: false
+    //        },
+    //        advanced:{
+    //            updateOnContentResize: true,
+    //            updateOnBrowserResize: true
+    //        }
+    //    });
 
-    //                    nextSlide.click(function(e){                          
-    //                        e.preventDefault();
-    //                        if(pos < itemCount) {
-    //                            var offset;
-    //                            pos++;
-    //                            offset = (itemW * pos);
-    //                            itemList.mCustomScrollbar("scrollTo", offset);
-    //                            if(pos+3 >= itemCount){
-    //                                pos=itemCount - 4;                        
-    //                            }
-    //                        }
+    //    nextSlide.click(function(e){                          
+    //        e.preventDefault();
+    //        if(pos < itemCount) {
+    //            var offset;
+    //            pos++;
+    //            offset = (itemW * pos);
+    //            itemList.mCustomScrollbar("scrollTo", offset);
+    //            if(pos+3 >= itemCount){
+    //                pos=itemCount - 4;                        
+    //            }
+    //        }
                             
-    //                    });
+    //    });
 
-    //                    prevSlide.click(function(e){                          
-    //                        e.preventDefault();
-    //                        if(pos > 0) {
-    //                            var offset;
-    //                            pos--;
-    //                            offset = itemW * pos;
-    //                            itemList.mCustomScrollbar("scrollTo", offset);
-    //                            if(pos - 3 >= itemCount){
-    //                                pos=0;
-    //                                offset = itemW * pos;
-    //                                itemList.mCustomScrollbar("scrollTo", offset);
-    //                            }
-    //                        }           
+    //    prevSlide.click(function(e){                          
+    //        e.preventDefault();
+    //        if(pos > 0) {
+    //            var offset;
+    //            pos--;
+    //            offset = itemW * pos;
+    //            itemList.mCustomScrollbar("scrollTo", offset);
+    //            if(pos - 3 >= itemCount){
+    //                pos=0;
+    //                offset = itemW * pos;
+    //                itemList.mCustomScrollbar("scrollTo", offset);
+    //            }
+    //        }           
                             
-    //                    });
+    //    });
                         
-    //                });
+    //});
 
     //            }
     //        }
     //    ]);
     //};
-
 
 
 /* =========================================================
