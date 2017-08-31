@@ -25,5 +25,8 @@ Partial Public Class BlogPostsTable
     Public Property EditBy As String
     Public Property PostPhoto30_30 As Byte()
     Public Property PostPhoto160_160 As Byte()
+    Public Property PostPhotoStr As String
+    Public Property PostPhoto30_30Str As String
+    Public Property PostPhoto160_160Str As String
 
 End Class

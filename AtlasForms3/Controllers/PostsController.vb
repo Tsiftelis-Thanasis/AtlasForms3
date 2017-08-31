@@ -19,6 +19,7 @@ Namespace Controllers
             ViewBag.AtlasKathgoria = ak
             ViewBag.AtlasOmilos = a
             ViewBag.Kathgoria = k
+
             Return View()
 
         End Function
@@ -49,7 +50,7 @@ Namespace Controllers
                 t1.Activepost = q.Activepost
                 t1.PostTitle = q.PostTitle
                 t1.PostBody = q.PostBody
-                t1.PostPhoto = q.PostPhoto
+                t1.PostPhotoStr = q.PostPhotoStr
                 t1.PostSummary = q.PostSummary
                 t1.Youtubelink = "https://www.youtube.com/embed/" & q.Youtubelink & "?rel=0"
                 t1.Statslink = q.Statslink
@@ -92,6 +93,25 @@ Namespace Controllers
                 End If
             End If
 
+            Dim thisfolder As String = "/Content/postimages/" & Now.Month & Now.Year & "/"
+            Dim postimagesfolder As String = System.Web.HttpContext.Current.Server.MapPath(thisfolder)
+
+            Dim exists As Boolean = System.IO.Directory.Exists(postimagesfolder)
+            If Not exists Then
+                Directory.CreateDirectory(postimagesfolder)
+            End If
+
+            Dim newname As Guid
+            newname = Guid.NewGuid()
+            Dim imageStr As String = thisfolder & newname.ToString & ".png"
+            Dim imageStr1 As String = thisfolder & newname.ToString & "_medium.png"
+            Dim imageStr2 As String = thisfolder & newname.ToString & "_small.png"
+
+            Dim imageStrtoSave As String = postimagesfolder & newname.ToString & ".png"
+            Dim imageStr1toSave As String = postimagesfolder & newname.ToString & "_medium.png"
+            Dim imageStr2toSave As String = postimagesfolder & newname.ToString & "_small.png"
+
+
             If ModelState.IsValid Then
 
                 Try
@@ -101,21 +121,33 @@ Namespace Controllers
                     newpost.PostTitle = p1.PostTitle
                     newpost.PostBody = p1.PostBody
                     If Not logodata Is Nothing Then
-                        newpost.PostPhoto = logodata
-                        Using original As Image = DirectCast((New ImageConverter()).ConvertFrom(logodata), Bitmap)
-                            Using newimage160160 As Image = Utils.ResizeImage(original, New Size(160, 160))
-                                Using memoryStream As New MemoryStream()
-                                    newimage160160.Save(memoryStream, ImageFormat.Png)
-                                    newpost.PostPhoto160_160 = memoryStream.ToArray()
-                                End Using
-                            End Using
-                            Using newimage3030 As Image = Utils.ResizeImage(original, New Size(30, 30))
-                                Using memoryStream As New MemoryStream()
-                                    newimage3030.Save(memoryStream, ImageFormat.Png)
-                                    newpost.PostPhoto30_30 = memoryStream.ToArray()
-                                End Using
+
+                        Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(logodata, False)
+                            Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
+                                If (System.IO.File.Exists(imageStrtoSave)) Then System.IO.File.Delete(imageStrtoSave)
+                                image1.Save(imageStrtoSave)
                             End Using
                         End Using
+
+                        Dim u As New Utils
+                        Using original As Image = Image.FromFile(imageStrtoSave)
+                            Using mediumresize As Image = u.ResizeImage(original, New Size(160, 160))
+                                If (System.IO.File.Exists(imageStr1toSave)) Then System.IO.File.Delete(imageStr1toSave)
+                                mediumresize.Save(imageStr1toSave) ', ImageFormat.Jpeg)
+                            End Using
+
+                            Using smallsize As Image = u.ResizeImage(original, New Size(30, 30))
+                                If (System.IO.File.Exists(imageStr2toSave)) Then System.IO.File.Delete(imageStr2toSave)
+                                smallsize.Save(imageStr2toSave) ', ImageFormat.Jpeg)
+                            End Using
+                        End Using
+                        u = Nothing
+
+
+                        newpost.PostPhotoStr = imageStr
+                        newpost.PostPhoto160_160Str = imageStr1
+                        newpost.PostPhoto30_30Str = imageStr2
+
                     End If
                     newpost.PostSummary = p1.PostSummary
                     newpost.Youtubelink = p1.Youtubelink
@@ -189,7 +221,7 @@ Namespace Controllers
             t1.PostTitle = q.PostTitle
             t1.PostSummary = q.PostSummary
             t1.PostBody = q.PostBody
-            t1.PostPhoto = q.PostPhoto
+            t1.PostPhotoStr = q.PostPhotoStr
             t1.Youtubelink = q.Youtubelink
             t1.Statslink = q.Statslink
             t1.createdby = q.CreatedBy
@@ -222,6 +254,28 @@ Namespace Controllers
                 End If
             End If
 
+
+
+            Dim thisfolder As String = "/Content/postimages/" & Now.Month & Now.Year & "/"
+            Dim postimagesfolder As String = System.Web.HttpContext.Current.Server.MapPath(thisfolder)
+
+            Dim exists As Boolean = System.IO.Directory.Exists(postimagesfolder)
+            If Not exists Then
+                Directory.CreateDirectory(postimagesfolder)
+            End If
+
+            Dim newname As Guid
+            newname = Guid.NewGuid()
+            Dim imageStr As String = thisfolder & newname.ToString & ".png"
+            Dim imageStr1 As String = thisfolder & newname.ToString & "_medium.png"
+            Dim imageStr2 As String = thisfolder & newname.ToString & "_small.png"
+
+            Dim imageStrtoSave As String = postimagesfolder & newname.ToString & ".png"
+            Dim imageStr1toSave As String = postimagesfolder & newname.ToString & "_medium.png"
+            Dim imageStr2toSave As String = postimagesfolder & newname.ToString & "_small.png"
+
+
+
             If ModelState.IsValid Then
 
                 Try
@@ -232,22 +286,36 @@ Namespace Controllers
                     editpost.PostBody = p1.PostBody
                     editpost.PostSummary = p1.PostSummary
                     If Not logodata Is Nothing Then
-                        editpost.PostPhoto = logodata
-                        Using original As Image = DirectCast((New ImageConverter()).ConvertFrom(logodata), Bitmap)
-                            Using newimage160160 As Image = Utils.ResizeImage(original, New Size(160, 160))
-                                Using memoryStream As New MemoryStream()
-                                    newimage160160.Save(memoryStream, ImageFormat.Png)
-                                    editpost.PostPhoto160_160 = memoryStream.ToArray()
-                                End Using
-                            End Using
-                            Using newimage3030 As Image = Utils.ResizeImage(original, New Size(30, 30))
-                                Using memoryStream As New MemoryStream()
-                                    newimage3030.Save(memoryStream, ImageFormat.Png)
-                                    editpost.PostPhoto30_30 = memoryStream.ToArray()
-                                End Using
+
+
+                        Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(logodata, False)
+                            Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
+                                If (System.IO.File.Exists(imageStrtoSave)) Then System.IO.File.Delete(imageStrtoSave)
+                                image1.Save(imageStrtoSave)
                             End Using
                         End Using
+
+                        Dim u As New Utils
+                        Using original As Image = Image.FromFile(imageStrtoSave)
+                            Using mediumresize As Image = u.ResizeImage(original, New Size(160, 160))
+                                If (System.IO.File.Exists(imageStr1toSave)) Then System.IO.File.Delete(imageStr1toSave)
+                                mediumresize.Save(imageStr1toSave) ', ImageFormat.Jpeg)
+                            End Using
+
+                            Using smallsize As Image = u.ResizeImage(original, New Size(30, 30))
+                                If (System.IO.File.Exists(imageStr2toSave)) Then System.IO.File.Delete(imageStr2toSave)
+                                smallsize.Save(imageStr2toSave) ', ImageFormat.Jpeg)
+                            End Using
+                        End Using
+                        u = Nothing
+
+
+                        editpost.PostPhotoStr = imageStr
+                        editpost.PostPhoto160_160Str = imageStr1
+                        editpost.PostPhoto30_30Str = imageStr2
+
                     End If
+
                     editpost.Youtubelink = p1.Youtubelink
                     editpost.Statslink = p1.Statslink
                     editpost.Activepost = If(p1.Activepost, 1, 0)
@@ -338,7 +406,9 @@ Namespace Controllers
             Dim q = (From p In pdb.BlogPostsTable
                      Select p).AsEnumerable().[Select](
                     Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editby = o.EditBy,
-                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList
+                    .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr)}).ToList
+
+            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto)))
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then
@@ -352,66 +422,7 @@ Namespace Controllers
         End Function
 
         <Compress>
-        Function GetLastNews(ByVal nCount As Integer, ByVal atlasomilosid As Integer?) As JsonResult
-
-            If atlasomilosid Is Nothing Then atlasomilosid = 0
-
-            Dim kl = (From o In pdb2.OmilosTable
-                      Join k In pdb2.KathgoriesTable On k.Omilosid Equals o.Id
-                      Where o.Id = atlasomilosid
-                      Select k.Id).ToList
-
-            If kl.Count > 0 Then
-
-                Dim q = (From p In pdb.BlogPostsTable
-                         Join pk In pdb.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
-                         Join klist In kl On klist Equals pk.AtlasKathgoriaId
-                         Select p
-                         Order By p.Id Descending
-                         ).Take(nCount).AsEnumerable().[Select](
-                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
-                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-                    .PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
-                    }).ToList()
-
-                Dim dtm As New DataTableModel
-                If q IsNot Nothing Then
-                    dtm.data = q.Cast(Of Object).ToList
-                End If
-                dtm.draw = 0
-                dtm.recordsTotal = dtm.data.Count
-                dtm.recordsFiltered = dtm.recordsTotal
-
-                Return Json(dtm, JsonRequestBehavior.AllowGet)
-
-
-
-            Else
-                Dim q = (From p In pdb.BlogPostsTable
-                         Select p
-                         Order By p.Id Descending
-                         ).Take(nCount).AsEnumerable().[Select](
-                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
-                    .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-                    .PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
-                }).ToList()
-
-                Dim dtm As New DataTableModel
-                If q IsNot Nothing Then
-                    dtm.data = q.Cast(Of Object).ToList
-                End If
-                dtm.draw = 0
-                dtm.recordsTotal = dtm.data.Count
-                dtm.recordsFiltered = dtm.recordsTotal
-
-                Return Json(dtm, JsonRequestBehavior.AllowGet)
-
-            End If
-
-        End Function
-
-        <Compress>
-        Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlasomilosid As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As JsonResult
+        Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlasomilosid As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As JsonResult
 
             If atlasomilosid Is Nothing Then atlasomilosid = 0
             If k Is Nothing Then k = 3 'Teleutaia nea!
@@ -426,14 +437,18 @@ Namespace Controllers
                          Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                          Where (p1.KathgoriaId = k And p1.IsKathgoria = True)
                          Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, PostPhoto2 = p.PostPhoto160_160, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                             PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                             KatName = p2.KathgoriaName).Take(nCount).
                             AsEnumerable().[Select](
                             Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-                            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+                            .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
+                            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
                             .Youtubelink = o.Youtubelink,
                             .KatName = o.KatName}).ToList
+
+                '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                '            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
                     dtm.data = q.Cast(Of Object).ToList
@@ -457,14 +472,19 @@ Namespace Controllers
                          Join klist In kl On klist Equals p1.AtlasKathgoriaId
                          Where (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
                          Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                             PostPhoto = p.PostPhoto, PostPhoto2 = p.PostPhoto160_160, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                             PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                             KatName = p2.KathgoriaName).Take(nCount).
                             AsEnumerable().[Select](
                             Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                            .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-                            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+                            .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
+                            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
                             .Youtubelink = o.Youtubelink,
                             .KatName = o.KatName}).ToList
+
+
+                '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                '            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
                     dtm.data = q.Cast(Of Object).ToList
@@ -496,13 +516,15 @@ Namespace Controllers
                            Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                            Where Not p.Youtubelink Is Nothing And p2.Id = k And p1.IsAtlasKathgoria = False
                            Order By p.Id Descending
-                           Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto30_30, Youtubelink = p.Youtubelink
+                           Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto30_30Str, Youtubelink = p.Youtubelink
                            ).Take(5).AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = If(o.PostTitle Is Nothing, "", o.PostTitle.Substring(0, Math.Min(50, o.PostTitle.Length)) & "..."),
                         .PostSummary = If(o.PostSummary Is Nothing, "", o.PostSummary.Substring(0, Math.Min(150, o.PostSummary.Length)) & "..."),
-                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                        .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
                         .Youtubelink = o.Youtubelink
                         }).ToArray
+
+                '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
 
                 Dim dtm As New DataTableModel
                 If ar2 IsNot Nothing Then
@@ -527,14 +549,15 @@ Namespace Controllers
                          Join klist In kl On klist Equals p1.AtlasKathgoriaId
                          Where Not p.Youtubelink Is Nothing And p2.Id = k And p1.IsAtlasKathgoria = True
                          Order By p.Id Descending
-                         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink
+                         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostPhoto = p.PostPhoto30_30Str, Youtubelink = p.Youtubelink
                            ).Take(5).AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = If(o.PostTitle Is Nothing, "", o.PostTitle.Substring(0, Math.Min(50, o.PostTitle.Length)) & "..."),
                         .PostSummary = If(o.PostSummary Is Nothing, "", o.PostSummary.Substring(0, Math.Min(150, o.PostSummary.Length)) & "..."),
-                        .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+                        .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
                         .Youtubelink = o.Youtubelink
                         }).ToArray
 
+                '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
                     dtm.data = q.Cast(Of Object).ToList
@@ -573,11 +596,13 @@ Namespace Controllers
                            If(KathgoriaId > 0, p1.KathgoriaId = KathgoriaId, 1 = 1) And
                            If(AtlasOmilosid > 0, p1.AtlasKathgoriaId = AtlasOmilosid, 1 = 1)
                        Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
-                        PostPhoto = p.PostPhoto, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
+                        PostPhoto = p.PostPhotoStr, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
                 AsEnumerable().[Select](
                 Function(o) New With {.Id = o.Id, .Kathgoria = o.kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
-                .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink
+                .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto), .Youtubelink = o.Youtubelink
                 }).ToArray
+
+            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))), .Youtubelink = o.Youtubelink
 
             Dim q = (From a2 In ar2
                      Join a1 In ar1 On a2.Kathgoria Equals a1.Kathgoria
@@ -587,7 +612,6 @@ Namespace Controllers
                         Function(o) New With {.Id = o.Id, .Kathgoria = o.Kathgoria, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                         .PostPhoto = o.PostPhoto, .Youtubelink = o.Youtubelink, .KatName = o.Omilosname, .Ypokatname = o.KathgoriaName
                         }).ToList
-
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then

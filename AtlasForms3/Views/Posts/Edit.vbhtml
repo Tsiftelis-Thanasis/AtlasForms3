@@ -20,15 +20,17 @@
                       Where pak.PostId = Model.Id And pak.IsAtlasKathgoria = True
                       Select pak.AtlasKathgoriaId).FirstOrDefault
 
-    Dim omid As Integer = 0
+    Dim omid As Integer? = 0
     If atlaskatid Is Nothing Then
-        omid = (From pak In pdb.BlogPostandKathgoriaTable
-                Where pak.PostId = Model.Id And pak.IsAtlasOmilos = True
-                Select pak.AtlasKathgoriaId).FirstOrDefault
+        Dim omidlist = (From pak In pdb.BlogPostandKathgoriaTable
+                        Where pak.PostId = Model.Id And pak.IsAtlasOmilos = True
+                        Select pak.AtlasKathgoriaId)
+        omid = If(omidlist Is Nothing, 0, omidlist.FirstOrDefault)
     Else
-        omid = (From pk In pdb2.KathgoriesTable
-                Where pk.Id = atlaskatid
-                Select pk.Omilosid).FirstOrDefault
+        Dim omidlist2 = (From pk In pdb2.KathgoriesTable
+                         Where pk.Id = atlaskatid
+                         Select pk.Omilosid)
+        omid = If(omidlist2 Is Nothing, 0, omidlist2.FirstOrDefault)
     End If
 
 
@@ -79,11 +81,17 @@
 
 
     Dim imageSrc As String = ""
-    If Model.PostPhoto IsNot Nothing Then
-        Dim imageBase64 As String = Convert.ToBase64String(Model.PostPhoto)
-        imageSrc = String.Format("data:image/png;base64,{0}", imageBase64)
-    End If
+    'If Model.PostPhoto IsNot Nothing Then
+    '    Dim imageBase64 As String = Convert.ToBase64String(Model.PostPhoto)
+    '    imageSrc = String.Format("data:image/png;base64,{0}", imageBase64)
+    'End If
+    If Model.PostPhotoStr IsNot Nothing Then
+        'Dim imageBase64 As String = Convert.ToBase64String(Model.PostPhoto)
+        'imageSrc = String.Format("data:image/png;base64,{0}", imageBase64)
 
+        imageSrc = Model.PostPhotoStr
+
+    End If
 
 
 End Code

@@ -39,7 +39,14 @@ Public Class Posts
     <Display(Name:="Φωτογραφία ")>
     Public Property PostPhoto160_160 As Byte()
 
+    <Display(Name:="Φωτογραφία ")>
+    Public Property PostPhotoStr As String
 
+    <Display(Name:="Φωτογραφία ")>
+    Public Property PostPhoto30_30Str As String
+
+    <Display(Name:="Φωτογραφία ")>
+    Public Property PostPhoto160_160Str As String
 
     <Display(Name:="Βίντεο")>
     Public Property Youtubelink As String

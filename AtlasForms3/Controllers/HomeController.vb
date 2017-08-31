@@ -1,4 +1,7 @@
-﻿Imports System.IO
+﻿Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
+
+Imports System.IO
 Imports System.Net
 Imports System.Drawing
 Imports System.Drawing.Imaging
@@ -10,7 +13,17 @@ Public Class HomeController
     Inherits System.Web.Mvc.Controller
     Function Index(Optional a As Integer = 0) As ActionResult
 
+        ViewBag.LastNewsList = GetLastNewsByCategory(10, a, Nothing, Nothing).Data.data
+        ViewBag.LastGamesList = Getlastgames(a).Data
+        ViewBag.LastNews = GetLastNews(10, a).Data.data
 
+        ViewBag.WeeklyStat1 = GetWeeklyReportStat1(a, Nothing).Data
+        ViewBag.WeeklyStat2 = GetWeeklyReportStat2(a, Nothing).Data
+        ViewBag.WeeklyStat3 = GetWeeklyReportStat3(a, Nothing).Data
+        ViewBag.WeeklyStat4 = GetWeeklyReportStat4(a, Nothing).Data
+        ViewBag.WeeklyStat5 = GetWeeklyReportStat5(a, Nothing).Data
+
+        ViewBag.PhotosList = GetFwtografies().Data
 
         ViewBag.AtlasOmilos = a
         Return View()
@@ -51,15 +64,13 @@ Public Class HomeController
         If kid Is Nothing Then kid = 0
 
         Dim s = (From proc In pdb.GetWeeklyReportStat1All(omid, kid)
-                 Select proc).ToList
-
-        Dim stats
-        stats = s.AsEnumerable.Select(Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
+                 Select proc).Take(5).AsEnumerable().[Select](
+                    Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
                                                             .tid = o.teamId, .tname = o.teamname,
                                                             .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
                                                             .Row = o.Row,
-                                                            .val = o.totalpoints}).OrderByDescending(Function(a) a.val).ToArray.Take(10)
-        Return Json(stats, JsonRequestBehavior.AllowGet)
+                                                            .val = o.totalpoints}).ToList()
+        Return Json(s, JsonRequestBehavior.AllowGet)
 
     End Function
 
@@ -70,15 +81,14 @@ Public Class HomeController
         If kid Is Nothing Then kid = 0
 
         Dim s = (From proc In pdb.GetWeeklyReportStat2All(omid, kid)
-                 Select proc).ToList
+                 Select proc).Take(5).AsEnumerable().[Select](
+                   Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
+                                                           .tid = o.teamId, .tname = o.teamname,
+                                                           .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
+                                                           .Row = o.Row,
+                                                           .val = o.totalassists}).ToList()
+        Return Json(s, JsonRequestBehavior.AllowGet)
 
-        Dim stats
-        stats = s.AsEnumerable.Select(Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
-                                                            .tid = o.teamId, .tname = o.teamname,
-                                                            .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
-                                                            .Row = o.Row,
-                                                            .val = o.totalassists}).OrderByDescending(Function(a) a.val).ToArray.Take(10)
-        Return Json(stats, JsonRequestBehavior.AllowGet)
 
     End Function
 
@@ -89,15 +99,13 @@ Public Class HomeController
         If kid Is Nothing Then kid = 0
 
         Dim s = (From proc In pdb.GetWeeklyReportStat3All(omid, kid)
-                 Select proc).ToList
-
-        Dim stats
-        stats = s.AsEnumerable.Select(Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
-                                                            .tid = o.teamId, .tname = o.teamname,
-                                                            .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
-                                                            .Row = o.Row,
-                                                            .val = o.totalrebounds}).OrderByDescending(Function(a) a.val).ToArray.Take(10)
-        Return Json(stats, JsonRequestBehavior.AllowGet)
+                 Select proc).Take(5).AsEnumerable().[Select](
+                   Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
+                                                           .tid = o.teamId, .tname = o.teamname,
+                                                           .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
+                                                           .Row = o.Row,
+                                                           .val = o.totalrebounds}).ToList()
+        Return Json(s, JsonRequestBehavior.AllowGet)
 
     End Function
 
@@ -108,15 +116,13 @@ Public Class HomeController
         If kid Is Nothing Then kid = 0
 
         Dim s = (From proc In pdb.GetWeeklyReportStat4All(omid, kid)
-                 Select proc).ToList
-
-        Dim stats
-        stats = s.AsEnumerable.Select(Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
-                                                            .tid = o.teamId, .tname = o.teamname,
-                                                            .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
-                                                            .Row = o.Row,
-                                                            .val = o.totalsteals}).OrderByDescending(Function(a) a.val).ToArray.Take(10)
-        Return Json(stats, JsonRequestBehavior.AllowGet)
+                 Select proc).Take(5).AsEnumerable().[Select](
+                   Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
+                                                           .tid = o.teamId, .tname = o.teamname,
+                                                           .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
+                                                           .Row = o.Row,
+                                                           .val = o.totalsteals}).ToList()
+        Return Json(s, JsonRequestBehavior.AllowGet)
 
     End Function
 
@@ -127,15 +133,13 @@ Public Class HomeController
         If kid Is Nothing Then kid = 0
 
         Dim s = (From proc In pdb.GetWeeklyReportStat5All(omid, kid)
-                 Select proc).ToList
-
-        Dim stats
-        stats = s.AsEnumerable.Select(Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
-                                                            .tid = o.teamId, .tname = o.teamname,
-                                                            .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
-                                                            .Row = o.Row,
-                                                            .val = o.totalblocks}).OrderByDescending(Function(a) a.val).ToArray.Take(10)
-        Return Json(stats, JsonRequestBehavior.AllowGet)
+                 Select proc).Take(5).AsEnumerable().[Select](
+                   Function(o) New With {.pid = o.thisid, .pname = o.thisname, .pphoto = If(o.PlayerPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PlayerPhoto))),
+                                                           .tid = o.teamId, .tname = o.teamname,
+                                                           .kathgoriaid = o.KathgoriaId, .omilosname = o.OmilosName & "-" & o.KathgoriaName,
+                                                           .Row = o.Row,
+                                                           .val = o.totalblocks}).ToList()
+        Return Json(s, JsonRequestBehavior.AllowGet)
 
     End Function
 
@@ -309,53 +313,24 @@ Public Class HomeController
 
     End Function
 
-
-
     <Compress>
     Function GetFwtografies() As JsonResult
 
-        Dim fwtos = (From p In pdb_blog.BlogPostsTable
-                     Where Not p.PostPhoto Is Nothing
-                     Order By p.Id Descending
-                     Select PostPhoto = p.PostPhoto, Id = p.Id
-                       ).Take(20).ToList
-
-        '.AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList
-
-
-        Dim tempFolder As String = System.Web.HttpContext.Current.Server.MapPath("~/Content/tempimages/")
+        Dim fwtos As New List(Of String)
 
         Try
 
+            Dim tempFolder As String = System.Web.HttpContext.Current.Server.MapPath("~/Content/tempimages/")
 
-            Dim exists As Boolean = System.IO.Directory.Exists(tempFolder)
-            If Not exists Then
-                Directory.CreateDirectory(tempFolder)
-            End If
-
-            For Each _file As String In Directory.GetFiles(tempFolder)
-                System.IO.File.Delete(_file)
+            For Each f As String In Directory.GetFiles(tempFolder)
+                Dim fi As FileInfo = New FileInfo(f)
+                fwtos.Add("/Content/tempimages/" & fi.Name)
             Next
 
-            Dim savedfwtos As New List(Of String)
-
-            For Each f In fwtos
-                Dim imageStr As String = tempFolder & f.Id & ".png"
-                If Not f.PostPhoto Is Nothing Then
-                    Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(f.PostPhoto, False)
-                        memoryStream.Seek(0, SeekOrigin.Begin)
-                        Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
-                            If (System.IO.File.Exists(imageStr)) Then System.IO.File.Delete(imageStr)
-                            savedfwtos.Add("/Content/tempimages/" & f.Id & ".png")
-                            image1.Save(imageStr)
-                        End Using
-                    End Using
-                End If
-            Next
 
             Dim j As New JsonResult
             j.MaxJsonLength = Integer.MaxValue
-            j = Json(savedfwtos, JsonRequestBehavior.AllowGet)
+            j = Json(fwtos, JsonRequestBehavior.AllowGet)
 
             Return j
 
@@ -367,21 +342,77 @@ Public Class HomeController
 
     End Function
 
-    <Compress>
-    Function GetFwtografies2() As JsonResult
+    '<Compress>
+    'Function GetFwtografies() As JsonResult
 
-        Dim fwtos = (From p In pdb_blog.BlogPostsTable
-                     Where Not p.PostPhoto Is Nothing
-                     Order By p.Id Descending
-                     Select PostPhoto = "", Id = p.Id
-                       ).Take(20).AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = ""}).ToList
-        Dim j As New JsonResult
-        j.MaxJsonLength = Integer.MaxValue
-        j = Json(fwtos, JsonRequestBehavior.AllowGet)
+    '    Dim fwtos = (From p In pdb_blog.BlogPostsTable
+    '                 Where Not p.PostPhotoStr Is Nothing
+    '                 Order By p.Id Descending
+    '                 Select PostPhoto = p.PostPhotoStr, Id = p.Id
+    '                   ).Take(20).ToList
 
-        Return j
+    '    '.AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList
 
-    End Function
+    '    'Dim tempFolder As String = System.Web.HttpContext.Current.Server.MapPath("~/Content/tempimages/")
+
+    '    Try
+
+
+    '        'Dim exists As Boolean = System.IO.Directory.Exists(tempFolder)
+    '        'If Not exists Then
+    '        '    Directory.CreateDirectory(tempFolder)
+    '        'End If
+
+    '        'For Each _file As String In Directory.GetFiles(tempFolder)
+    '        '    System.IO.File.Delete(_file)
+    '        'Next
+
+    '        'Dim savedfwtos As New List(Of String)
+
+    '        'For Each f In fwtos
+    '        '    Dim imageStr As String = tempFolder & f.Id & ".png"
+    '        '    If Not f.PostPhoto Is Nothing Then
+    '        '        Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(f.PostPhoto, False)
+    '        '            memoryStream.Seek(0, SeekOrigin.Begin)
+    '        '            Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
+    '        '                If (System.IO.File.Exists(imageStr)) Then System.IO.File.Delete(imageStr)
+    '        '                savedfwtos.Add("/Content/tempimages/" & f.Id & ".png")
+    '        '                image1.Save(imageStr)
+    '        '            End Using
+    '        '        End Using
+    '        '    End If
+    '        'Next
+
+    '        Dim j As New JsonResult
+    '        j.MaxJsonLength = Integer.MaxValue
+    '        '            j = Json(savedfwtos, JsonRequestBehavior.AllowGet)
+    '        j = Json(fwtos, JsonRequestBehavior.AllowGet)
+
+    '        Return j
+
+    '    Catch ex As Exception
+
+    '        Return Nothing
+
+    '    End Try
+
+    'End Function
+
+    '<Compress>
+    'Function GetFwtografies2() As JsonResult
+
+    '    Dim fwtos = (From p In pdb_blog.BlogPostsTable
+    '                 Where Not p.PostPhoto Is Nothing
+    '                 Order By p.Id Descending
+    '                 Select PostPhoto = "", Id = p.Id
+    '                   ).Take(20).AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = ""}).ToList
+    '    Dim j As New JsonResult
+    '    j.MaxJsonLength = Integer.MaxValue
+    '    j = Json(fwtos, JsonRequestBehavior.AllowGet)
+
+    '    Return j
+
+    'End Function
 
 
     Public Sub Resizeimages()
@@ -401,6 +432,156 @@ Public Class HomeController
 
 
     End Function
+
+
+    <Compress>
+    Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlasomilosid As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As JsonResult
+
+        If atlasomilosid Is Nothing Then atlasomilosid = 0
+        If k Is Nothing Then k = 3 'Teleutaia nea!
+        If k2 Is Nothing Then k2 = 11 'Teleutaia nea omilou!
+        'Dim k As Integer = 3 'Teleutaia nea!
+        'Dim k2 As Integer = 11 'Teleutaia nea omilou!
+
+        If atlasomilosid = 0 Then
+
+            Dim q = (From p In pdb_blog.BlogPostsTable
+                     Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                     Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                     Where (p1.KathgoriaId = k And p1.IsKathgoria = True)
+                     Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
+                         PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                        KatName = p2.KathgoriaName).Take(nCount).
+                        AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
+                        .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
+                        .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
+                        .Youtubelink = o.Youtubelink,
+                        .KatName = o.KatName}).ToList
+
+            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+            '            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+
+            Dim dtm As New DataTableModel
+            If q IsNot Nothing Then
+                dtm.data = q.Cast(Of Object).ToList
+            End If
+            dtm.draw = 0
+            dtm.recordsTotal = dtm.data.Count
+            dtm.recordsFiltered = dtm.recordsTotal
+
+            Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+        Else
+
+            Dim kl = (From o In pdb.OmilosTable
+                      Join k1 In pdb.KathgoriesTable On k1.Omilosid Equals o.Id
+                      Where o.Id = atlasomilosid
+                      Select k1.Id).ToList
+
+            Dim q = (From p In pdb_blog.BlogPostsTable
+                     Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                     Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                     Join klist In kl On klist Equals p1.AtlasKathgoriaId
+                     Where (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
+                     Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
+                         PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
+                        KatName = p2.KathgoriaName).Take(nCount).
+                        AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
+                        .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
+                        .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
+                        .Youtubelink = o.Youtubelink,
+                        .KatName = o.KatName}).ToList
+
+
+            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+            '            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
+
+            Dim dtm As New DataTableModel
+            If q IsNot Nothing Then
+                dtm.data = q.Cast(Of Object).ToList
+            End If
+            dtm.draw = 0
+            dtm.recordsTotal = dtm.data.Count
+            dtm.recordsFiltered = dtm.recordsTotal
+
+            Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
+        End If
+
+
+
+    End Function
+
+
+
+    <Compress>
+    Function GetLastNews(ByVal nCount As Integer, ByVal atlasomilosid As Integer?) As JsonResult
+
+        If atlasomilosid Is Nothing Then atlasomilosid = 0
+
+        Dim kl = (From o In pdb.OmilosTable
+                  Join k In pdb.KathgoriesTable On k.Omilosid Equals o.Id
+                  Where o.Id = atlasomilosid
+                  Select k.Id).ToList
+
+        If kl.Count > 0 Then
+
+            Dim q = (From p In pdb_blog.BlogPostsTable
+                     Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
+                     Join klist In kl On klist Equals pk.AtlasKathgoriaId
+                     Select p
+                     Order By p.Id Descending
+                         ).Take(nCount).AsEnumerable().[Select](
+                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                    .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
+                    .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
+                    }).ToList()
+
+            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+            '.PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
+
+            Dim dtm As New DataTableModel
+            If q IsNot Nothing Then
+                dtm.data = q.Cast(Of Object).ToList
+            End If
+            dtm.draw = 0
+            dtm.recordsTotal = dtm.data.Count
+            dtm.recordsFiltered = dtm.recordsTotal
+
+            Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
+
+        Else
+            Dim q = (From p In pdb_blog.BlogPostsTable
+                     Select p
+                     Order By p.Id Descending
+                         ).Take(nCount).AsEnumerable().[Select](
+                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                    .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
+                    .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
+                }).ToList()
+
+            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
+            '.PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
+
+            Dim dtm As New DataTableModel
+            If q IsNot Nothing Then
+                dtm.data = q.Cast(Of Object).ToList
+            End If
+            dtm.draw = 0
+            dtm.recordsTotal = dtm.data.Count
+            dtm.recordsFiltered = dtm.recordsTotal
+
+            Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+        End If
+
+    End Function
+
 
 
 End Class

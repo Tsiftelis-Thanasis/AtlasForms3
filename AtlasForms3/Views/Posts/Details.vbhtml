@@ -6,9 +6,12 @@
 
 
     Dim imageSrc As String = ""
-    If Model.PostPhoto IsNot Nothing Then
-        Dim imageBase64 As String = Convert.ToBase64String(Model.PostPhoto)
-        imageSrc = String.Format("data:image/png;base64,{0}", imageBase64)
+    If Model.PostPhotoStr IsNot Nothing Then
+        'Dim imageBase64 As String = Convert.ToBase64String(Model.PostPhoto)
+        'imageSrc = String.Format("data:image/png;base64,{0}", imageBase64)
+
+        imageSrc = Model.PostPhotoStr
+
     End If
 
     'to do
@@ -26,20 +29,24 @@
     Dim postkathgoria = (From pk In pdb.BlogPostandKathgoriaTable
                          Where pk.PostId = Model.Id
                          Select pk.KathgoriaId, pk.AtlasKathgoriaId, pk.IsAtlasKathgoria, pk.IsAtlasOmilos).FirstOrDefault
-    Dim katid As Integer = If(postkathgoria.KathgoriaId Is Nothing, 0, postkathgoria.KathgoriaId)
+
+    Dim katid As Integer = If(postkathgoria Is Nothing, 0, postkathgoria.KathgoriaId)
     Dim omid As Integer = 0
     Dim atlaskatid As Integer = 0
-    If Not postkathgoria.AtlasKathgoriaId Is Nothing Then
-        If postkathgoria.IsAtlasOmilos = 1 Then
-            omid = postkathgoria.AtlasKathgoriaId
-        Else
-            atlaskatid = postkathgoria.AtlasKathgoriaId
-            omid = (From o In pdb2.OmilosTable
-                    Join k In pdb2.KathgoriesTable On o.Id Equals k.Omilosid
-                    Where k.Id = atlaskatid
-                    Select o.Id).FirstOrDefault
+    If Not postkathgoria Is Nothing Then
+        If Not postkathgoria.AtlasKathgoriaId Is Nothing Then
+            If postkathgoria.IsAtlasOmilos = 1 Then
+                omid = postkathgoria.AtlasKathgoriaId
+            Else
+                atlaskatid = postkathgoria.AtlasKathgoriaId
+                omid = (From o In pdb2.OmilosTable
+                        Join k In pdb2.KathgoriesTable On o.Id Equals k.Omilosid
+                        Where k.Id = atlaskatid
+                        Select o.Id).FirstOrDefault
+            End If
         End If
     End If
+
 
 
     If katid > 0 Then
@@ -127,7 +134,7 @@ End Code
                                 @<div Class="row form-horizontal vertical-center">
                                     <div Class="form-group">
                                         <div Class="col-md-6 entry-thumb">
-                                            <img src = "@imageSrc" style="height:160px;width:160px;" />
+                                            <img src = "@imageSrc" style="width:50%;" />
                                         </div>
                                     </div>
                                 </div>

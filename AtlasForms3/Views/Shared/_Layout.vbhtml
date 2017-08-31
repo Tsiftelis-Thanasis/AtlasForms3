@@ -29,11 +29,9 @@ End code
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-
-   
-    <meta property="fb:app_id" content="238332292965135" /> @*use ATLAS ID*@
-    <meta property="og:site_name" content="Atlas" />
+       
+    <meta property="fb:app_id" content="140586622674265" /> 
+    <meta property="og:site_name" content="AtlasBasket" />
     <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
     <meta property="og:type" content="website" /> @*or article*@
     <meta property="og:image" content="" /> @*image to show for each page*@
@@ -46,9 +44,7 @@ End code
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
-    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
-    
+        
     <style>
         .mySlides {display:none;}
     </style>
@@ -56,7 +52,6 @@ End code
     @RenderSection("styles", required:=False)
 
     <script type="text/javascript" language="javascript">
-
         var url1 = window.location.href.split('/');
         var baseUrl = url1[0] + '//' + url1[2];
         
@@ -65,21 +60,14 @@ End code
             console.log(new Error().stack);
             old.apply(window, arguments);
         };
-
     </script>
-
-    @*<link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek' rel='stylesheet' type='text/css'>*@
-
 </head>
 
 
 <body>
-
-
+    
     <div id="loadingDiv" class="modalloader"></div>
-
-
-    @*change AppId to ATLAS one*@
+         
     <div id="fb-root"></div>
     <script>
         (function(d, s, id) {
@@ -90,8 +78,7 @@ End code
           fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
     </script>
-
-
+    
     @Html.Hidden("firstDiorganwshid", firstDiorganwshid)
     @Html.Hidden("UserisAuthenticated", UserisAuthenticated)
 
@@ -124,23 +111,20 @@ End code
                         <li class="current-menu-item">
                             <a><span>εγγραφες </span></a>
                             <ul class="sub-menu" >
-                                <li>
+                                @*<li>
                                     <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
-                                </li>
+                                </li>*@
                                 <li>
                                     <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
                             </ul>
                         </li>
-
-
+                        
                         @If User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
                                 @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
                             End If
                         End If
-
-                        @*<li class="current-menu-item"><a href="/Account/Login" id="loginLink">Log in</a></li>*@
 
                     </ul>
 
@@ -167,25 +151,20 @@ End code
                         <li class="current-menu-item">
                             <a><span>εγγραφες </span></a>
                             <ul class="sub-menu">
-                                <li>
+                                @*<li>
                                     <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
-                                </li>
+                                </li>*@
                                 <li>
                                     <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
                             </ul>
                         </li>
 
-
                         @if User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
                                 @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
                             End If
                         End If
-
-                        @*<li class="current-menu-item"><a href="/Account/Login" id="loginLink">Log in</a></li>*@
-
-
                     </ul>
                 </nav>
             </div>
@@ -208,8 +187,6 @@ End code
         <hr />
         </div>
     </div>
-
-
 
 
     <div id="bottom-sidebar">
@@ -236,8 +213,6 @@ End code
         <div class="wrapper clearfix">
             <p id="copyright" class="">Copyright © 2017 . All Rights Reserved. </p>
         </div>
-
-
 </footer>
 
 
@@ -247,7 +222,6 @@ End code
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/custom")
-    @*@Scripts.Render("~/bundles/tinymce")*@
     @Scripts.Render("~/bundles/custom2")
 
     <script type="text/javascript" src="~/Scripts/tinymce/tinymce.min.js"></script>
@@ -271,7 +245,6 @@ End code
 
 <script type="text/javascript" language="javascript">
     
-    /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
     $.widget.bridge('uibutton', $.ui.button);
     $.widget.bridge('uitooltip', $.ui.tooltip);
     $(function () {
@@ -420,6 +393,7 @@ End code
                         d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νεα ' + this.KathgoriaName + '        </a> </span> </li> ';
                         i++;
                     });
+                    
                     $.each(result, function () {
                         d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομαδες ' + this.KathgoriaName + '     </a> </span> </li> ';
                         i++;
@@ -482,10 +456,8 @@ End code
 
     }
 
-    function GetDiorganwseis() {
-
-
-        // get diorganwseis
+    function GetDiorganwseis() {        
+      // get diorganwseis
       return  $.ajax({
             type: "POST",
             url: baseUrl + '@Url.Action("Getdiorganwseis", "Home")',
@@ -512,15 +484,10 @@ End code
                 alert(result.status + ' ' + result.statusText);
             }
         });
-
     }
-
-
-
+    
     $(document).ready(function () {
-
-
-
+        
         $('#loadingDiv')
              .hide()  // Hide it initially
              .ajaxStart(function () {
@@ -531,20 +498,15 @@ End code
              })
         ;
 
-
         var newPromise = $.Deferred();
-
         $.when(newPromise).done(function () {
             GetDiorganwtria();
         });
-
         newPromise.then(function () {
             GetDiorganwseis();
         });
-
         newPromise.resolve();
-
-
+        
     });
 
     $(window).on('load', function () {
