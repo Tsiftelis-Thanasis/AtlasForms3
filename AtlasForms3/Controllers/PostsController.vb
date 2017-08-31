@@ -332,7 +332,6 @@ Namespace Controllers
         '    End Try
         'End Function
 
-
         <Compress>
         Function GetNews() As JsonResult
 
@@ -657,29 +656,6 @@ Namespace Controllers
 
         End Function
 
-
-
-
-        <Compress>
-        Function GetFwtografies() As JsonResult
-
-            Dim ar2 = (From p In pdb.BlogPostsTable
-                       Where Not p.PostPhoto Is Nothing
-                       Order By p.Id Descending
-                       Select PostPhoto = p.PostPhoto160_160, Id = p.Id
-                       ).Take(20).AsEnumerable().[Select](Function(o) New With {.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToArray
-
-            Dim dtm As New DataTableModel
-                If ar2 IsNot Nothing Then
-                    dtm.data = ar2.Cast(Of Object).ToList
-                End If
-                dtm.draw = 0
-                dtm.recordsTotal = dtm.data.Count
-                dtm.recordsFiltered = dtm.recordsTotal
-
-                Return Json(dtm, JsonRequestBehavior.AllowGet)
-
-        End Function
 
     End Class
 

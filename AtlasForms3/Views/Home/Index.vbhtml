@@ -211,6 +211,8 @@ End Code
     @Section Scripts
         <script type="text/javascript">
 
+            var myIndex = 0;
+            
             //carousel for the images of the gallery
             function carousel1() {
                 var i;
@@ -224,9 +226,6 @@ End Code
                 setTimeout(carousel1, 5000); // Change image every 5 seconds
             }
 
-            var myIndex = 0;
-            
-            
             //append lastgames carouselid
             function GetLastGames(omilosid) {
                 return $.ajax({
@@ -553,30 +552,35 @@ End Code
 
                     return $.ajax({
                         type: "POST",
-                        url: baseUrl + '@Url.Action("GetFwtografies", "Posts")',
+                        url: baseUrl + '@Url.Action("GetFwtografies", "Home")',
                         async: false,
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (result) {
 
                             var choiceContainer = $("#fwtografiesid");
-                            if (result.data.length > 0) {
+                            if (result.length > 0) {
+                                
                                 choiceContainer.empty();
-                                $.each(result.data, function () {
-                                    d = '<img class="mySlides w3-center" src="' + this.PostPhoto + '" style="height:30%;width:100%">';
+                                $.each(result, function () {
+                                    //d = '<img class="mySlides w3-center" src="' + this.PostPhoto + '" style="height:30%;width:100%">';
+                                    
+                                    d = '<img class="mySlides w3-center" src="' + this + '" style="height:30%;width:100%">';
+
                                     choiceContainer.append(d);
                                 });
 
                                 carousel1();
 
                             }
-
                         },
                         error: function (result) {
                             alert('15 ' + result.status + ' ' + result.statusText);
                         }
                     });
+
                 }
+
             }
 
 

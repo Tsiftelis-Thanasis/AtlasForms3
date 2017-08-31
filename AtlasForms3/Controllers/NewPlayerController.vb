@@ -1,15 +1,13 @@
 ﻿Imports System.Web.Mvc
 
+
+
 Namespace Controllers
+    <Compress>
     Public Class NewPlayerController
         Inherits Controller
 
         Private pdb As New AtlasBlogEntities
-
-
-
-
-
 
         ' GET: NewPlayer
         Function Index() As ActionResult

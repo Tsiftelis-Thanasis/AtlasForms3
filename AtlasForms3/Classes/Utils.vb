@@ -38,6 +38,8 @@ Public Class Utils
 
             If Not t.PostPhoto Is Nothing Then
                 Dim imageInBytes As Byte() = t.PostPhoto
+
+
                 Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(imageInBytes, False)
                     Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
                         If (System.IO.File.Exists(imageStr)) Then System.IO.File.Delete(imageStr)
@@ -126,12 +128,12 @@ Public Class Utils
         Dim fromAddress = New MailAddress("atlassupport@atlasbasket.gr", "Support @ atlas basket")
 
         'Dim smtp = New SmtpClient() With {
-        '    .Host = "smtp.gmail.com",
+        '    .Host = "webmail.atlasstatistics.gr",
         '    .Port = 465,
         '    .DeliveryMethod = SmtpDeliveryMethod.Network,
         '    .EnableSsl = True,
         '    .UseDefaultCredentials = False,
-        '    .Credentials = New NetworkCredential("tsiftelis.thanasis@gmail.com", "ircool!!10")
+        '     .Credentials = New NetworkCredential("atlassupport@atlasstatistics.gr", "rAv84*8c")
         '}
 
 

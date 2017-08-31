@@ -1,4 +1,11 @@
-﻿<Compress>
+﻿Imports System.IO
+Imports System.Net
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.Drawing.Drawing2D
+
+
+<Compress>
 Public Class HomeController
     Inherits System.Web.Mvc.Controller
     Function Index(Optional a As Integer = 0) As ActionResult
@@ -37,9 +44,7 @@ Public Class HomeController
 
     End Function
 
-
     <Compress>
-    <HttpPost>
     Public Function GetWeeklyReportStat1(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
         If omid Is Nothing Then omid = 0
@@ -59,7 +64,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function GetWeeklyReportStat2(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
         If omid Is Nothing Then omid = 0
@@ -79,7 +83,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function GetWeeklyReportStat3(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
         If omid Is Nothing Then omid = 0
@@ -99,7 +102,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function GetWeeklyReportStat4(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
         If omid Is Nothing Then omid = 0
@@ -119,7 +121,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function GetWeeklyReportStat5(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
 
         If omid Is Nothing Then omid = 0
@@ -139,7 +140,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function GetRankingsStats(ByVal kathgoriaid As Integer) As JsonResult
 
         Dim omilosid = (From o In pdb.OmilosTable
@@ -173,7 +173,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function Getdiorganwseis() As JsonResult
 
         Dim kat = (From d In pdb.DiorganwshTable
@@ -188,7 +187,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function GetOmiloiByDiorganwsh(ByVal dId As Integer) As JsonResult
 
         Dim om = (From o In pdb.OmilosTable
@@ -204,7 +202,6 @@ Public Class HomeController
 
 
     <Compress>
-    <HttpPost>
     Public Function GetKathgoriesbyOmilos(ByVal OId As Integer) As JsonResult
 
         Dim om = (From k In pdb.KathgoriesTable
@@ -224,7 +221,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function Getlastgames(ByVal omilosid As Integer?) As JsonResult
 
         'Link
@@ -259,7 +255,6 @@ Public Class HomeController
     End Function
 
     <Compress>
-    <HttpPost>
     Public Function GetProgrammaidbyKathgoria(ByVal atlaskathgoriaid As Integer?) As JsonResult
 
         If atlaskathgoriaid Is Nothing Then atlaskathgoriaid = 0
@@ -272,7 +267,6 @@ Public Class HomeController
 
     End Function
 
-    <HttpPost>
     <Compress>
     Public Function GetKathgories(ByVal id As Integer) As JsonResult
 
@@ -317,6 +311,79 @@ Public Class HomeController
 
 
 
+    <Compress>
+    Function GetFwtografies() As JsonResult
+
+        Dim fwtos = (From p In pdb_blog.BlogPostsTable
+                     Where Not p.PostPhoto Is Nothing
+                     Order By p.Id Descending
+                     Select PostPhoto = p.PostPhoto, Id = p.Id
+                       ).Take(20).ToList
+
+        '.AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList
+
+
+        Dim tempFolder As String = System.Web.HttpContext.Current.Server.MapPath("~/Content/tempimages/")
+
+        Try
+
+
+            Dim exists As Boolean = System.IO.Directory.Exists(tempFolder)
+            If Not exists Then
+                Directory.CreateDirectory(tempFolder)
+            End If
+
+            For Each _file As String In Directory.GetFiles(tempFolder)
+                System.IO.File.Delete(_file)
+            Next
+
+            Dim savedfwtos As New List(Of String)
+
+            For Each f In fwtos
+                Dim imageStr As String = tempFolder & f.Id & ".png"
+                If Not f.PostPhoto Is Nothing Then
+                    Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(f.PostPhoto, False)
+                        memoryStream.Seek(0, SeekOrigin.Begin)
+                        Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
+                            If (System.IO.File.Exists(imageStr)) Then System.IO.File.Delete(imageStr)
+                            savedfwtos.Add("/Content/tempimages/" & f.Id & ".png")
+                            image1.Save(imageStr)
+                        End Using
+                    End Using
+                End If
+            Next
+
+            Dim j As New JsonResult
+            j.MaxJsonLength = Integer.MaxValue
+            j = Json(savedfwtos, JsonRequestBehavior.AllowGet)
+
+            Return j
+
+        Catch ex As Exception
+
+            Return Nothing
+
+        End Try
+
+    End Function
+
+    <Compress>
+    Function GetFwtografies2() As JsonResult
+
+        Dim fwtos = (From p In pdb_blog.BlogPostsTable
+                     Where Not p.PostPhoto Is Nothing
+                     Order By p.Id Descending
+                     Select PostPhoto = "", Id = p.Id
+                       ).Take(20).AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = ""}).ToList
+        Dim j As New JsonResult
+        j.MaxJsonLength = Integer.MaxValue
+        j = Json(fwtos, JsonRequestBehavior.AllowGet)
+
+        Return j
+
+    End Function
+
+
     Public Sub Resizeimages()
 
         Dim a As New Utils
@@ -325,15 +392,15 @@ Public Class HomeController
     End Sub
 
 
-    'Public Async Function sendtheemail() As Threading.Tasks.Task
+    Public Async Function sendtheemail() As Threading.Tasks.Task
 
 
 
-    '    Dim ha As New Utils
-    '    Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "test")
+        Dim ha As New Utils
+        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "test")
 
 
-    'End Function
+    End Function
 
 
 End Class

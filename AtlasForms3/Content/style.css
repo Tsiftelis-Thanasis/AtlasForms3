@@ -3014,15 +3014,17 @@ address {
           content: "\f0da"; }
   .owl-carousel-1 .item {
       width: auto;/*200px;*/
-    padding: 0 5px; }
+    padding: 0 2px; }
   .owl-carousel-1 .entry-item {
-      width: auto;/*200px;*/
-    text-align: center;
-    font-size: 11px;
-    line-height: 20px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #333333; }
+        width: auto;/*200px;*/
+        text-align: center;
+        font-size: 10px; /*11px;*/
+        line-height: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #333333; 
+  }
+
     .owl-carousel-1 .entry-item p {
       background: #333333;
       font-size: 11px;

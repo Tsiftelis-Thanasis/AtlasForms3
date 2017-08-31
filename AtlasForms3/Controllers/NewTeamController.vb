@@ -2,6 +2,7 @@
 Imports System.IO
 
 Namespace Controllers
+    <Compress>
     Public Class NewTeamController
         Inherits Controller
 

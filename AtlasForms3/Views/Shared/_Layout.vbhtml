@@ -316,11 +316,13 @@ End code
                                 omilos = omilos + ' Όμιλος';
                             }
                             var omilosnaming = 'omilos' + this.Id + 'row';
-                            var d = '<li class="lipointer" value = "' + this.Id + '"> ' +
-                                    '<a  <a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
-                                    '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
-                                    '</li>';
 
+                            var d = '<li class="lipointer" value = "' + this.Id + '"> ' +
+                                   '<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
+                                   '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
+                                   '</li>';
+
+                            
                             choiceContainer.append(d);
                             appendnewstoOmilos(omilosnaming, this.Id);
 
