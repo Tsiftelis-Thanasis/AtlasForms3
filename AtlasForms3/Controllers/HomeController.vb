@@ -11,21 +11,21 @@ Imports System.Drawing.Drawing2D
 <Compress>
 Public Class HomeController
     Inherits System.Web.Mvc.Controller
-    Function Index(Optional a As Integer = 0) As ActionResult
+    Function Index(Optional ak As Integer = 0) As ActionResult
 
-        ViewBag.LastNewsList = GetLastNewsByCategory(10, a, Nothing, Nothing).Data.data
-        ViewBag.LastGamesList = Getlastgames(a).Data
-        ViewBag.LastNews = GetLastNews(10, a).Data.data
+        ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, Nothing, Nothing).Data.data
+        ViewBag.LastGamesList = Getlastgames(ak).Data
+        ViewBag.LastNews = GetLastNews(10, ak).Data.data
 
-        ViewBag.WeeklyStat1 = GetWeeklyReportStat1(a, Nothing).Data
-        ViewBag.WeeklyStat2 = GetWeeklyReportStat2(a, Nothing).Data
-        ViewBag.WeeklyStat3 = GetWeeklyReportStat3(a, Nothing).Data
-        ViewBag.WeeklyStat4 = GetWeeklyReportStat4(a, Nothing).Data
-        ViewBag.WeeklyStat5 = GetWeeklyReportStat5(a, Nothing).Data
+        ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
+        ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
+        ViewBag.WeeklyStat3 = GetWeeklyReportStat3(Nothing, ak).Data
+        ViewBag.WeeklyStat4 = GetWeeklyReportStat4(Nothing, ak).Data
+        ViewBag.WeeklyStat5 = GetWeeklyReportStat5(Nothing, ak).Data
 
         ViewBag.PhotosList = GetFwtografies().Data
 
-        ViewBag.AtlasOmilos = a
+        ViewBag.AtlasKathgoria = ak
         Return View()
 
     End Function
@@ -435,20 +435,20 @@ Public Class HomeController
 
 
     <Compress>
-    Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlasomilosid As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As JsonResult
+    Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As JsonResult
 
-        If atlasomilosid Is Nothing Then atlasomilosid = 0
+        If atlaskathgoria Is Nothing Then atlaskathgoria = 0
         If k Is Nothing Then k = 3 'Teleutaia nea!
         If k2 Is Nothing Then k2 = 11 'Teleutaia nea omilou!
         'Dim k As Integer = 3 'Teleutaia nea!
         'Dim k2 As Integer = 11 'Teleutaia nea omilou!
 
-        If atlasomilosid = 0 Then
+        If atlaskathgoria = 0 Then
 
             Dim q = (From p In pdb_blog.BlogPostsTable
                      Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                      Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
-                     Where (p1.KathgoriaId = k And p1.IsKathgoria = True)
+                     Where p.Activepost = True And (p1.KathgoriaId = k And p1.IsKathgoria = True)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                          PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                         KatName = p2.KathgoriaName).Take(nCount).
@@ -474,16 +474,15 @@ Public Class HomeController
 
         Else
 
-            Dim kl = (From o In pdb.OmilosTable
-                      Join k1 In pdb.KathgoriesTable On k1.Omilosid Equals o.Id
-                      Where o.Id = atlasomilosid
-                      Select k1.Id).ToList
+            Dim kl = (From o In pdb.KathgoriesTable
+                      Where o.Id = atlaskathgoria
+                      Select o.Id).ToList
 
             Dim q = (From p In pdb_blog.BlogPostsTable
                      Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                      Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                      Join klist In kl On klist Equals p1.AtlasKathgoriaId
-                     Where (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
+                     Where p.Activepost = True And (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                          PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                         KatName = p2.KathgoriaName).Take(nCount).
@@ -518,20 +517,20 @@ Public Class HomeController
 
 
     <Compress>
-    Function GetLastNews(ByVal nCount As Integer, ByVal atlasomilosid As Integer?) As JsonResult
+    Function GetLastNews(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?) As JsonResult
 
-        If atlasomilosid Is Nothing Then atlasomilosid = 0
+        If atlaskathgoria Is Nothing Then atlaskathgoria = 0
 
-        Dim kl = (From o In pdb.OmilosTable
-                  Join k In pdb.KathgoriesTable On k.Omilosid Equals o.Id
-                  Where o.Id = atlasomilosid
-                  Select k.Id).ToList
+        Dim kl = (From o In pdb.KathgoriesTable
+                  Where o.Id = atlaskathgoria
+                  Select o.Id).ToList
 
         If kl.Count > 0 Then
 
             Dim q = (From p In pdb_blog.BlogPostsTable
                      Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
                      Join klist In kl On klist Equals pk.AtlasKathgoriaId
+                     Where p.Activepost = True
                      Select p
                      Order By p.Id Descending
                          ).Take(nCount).AsEnumerable().[Select](
@@ -539,9 +538,6 @@ Public Class HomeController
                     .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
                     .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
                     }).ToList()
-
-            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-            '.PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then
@@ -553,10 +549,10 @@ Public Class HomeController
 
             Return Json(dtm, JsonRequestBehavior.AllowGet)
 
-
-
         Else
+
             Dim q = (From p In pdb_blog.BlogPostsTable
+                     Where p.Activepost = True
                      Select p
                      Order By p.Id Descending
                          ).Take(nCount).AsEnumerable().[Select](
@@ -564,9 +560,6 @@ Public Class HomeController
                     .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
                     .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
                 }).ToList()
-
-            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-            '.PostPhoto2 = If(o.PostPhoto160_160 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto160_160)))
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then

@@ -1010,6 +1010,7 @@
     <Content Include="Views\NewTeam\Delete.vbhtml" />
     <Content Include="Views\NewTeam\Details.vbhtml" />
     <Content Include="Views\NewTeam\Index.vbhtml" />
+    <Content Include="Views\Posts\Delete.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

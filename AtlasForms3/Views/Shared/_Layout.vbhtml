@@ -244,14 +244,14 @@ End code
 
 
 <script type="text/javascript" language="javascript">
-    
+
     $.widget.bridge('uibutton', $.ui.button);
     $.widget.bridge('uitooltip', $.ui.tooltip);
     $(function () {
         var bootstrapButton = $.fn.button.noConflict();// return $.fn.button to previously assigned value
         $.fn.bootstrapBtn = bootstrapButton;           // give $().bootstrapBtn the Bootstrap functionality
     });
-        
+
     //fillomiloinavbar
     function fillomiloinavbar(i, t) {
 
@@ -291,11 +291,13 @@ End code
                             var omilosnaming = 'omilos' + this.Id + 'row';
 
                             var d = '<li class="lipointer" value = "' + this.Id + '"> ' +
-                                   '<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
-                                   '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
-                                   '</li>';
+                                    '<a class="sf-with-ul"><span>' + omilos + '</span></a>' +
+                                    '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
+                                    '</li>';
 
-                            
+                            //'<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
+
+
                             choiceContainer.append(d);
                             appendnewstoOmilos(omilosnaming, this.Id);
 
@@ -348,7 +350,7 @@ End code
     /* =========================================================
     get programma id
     ============================================================ */
-    function getProgrammaId(atlaskathgoriaid) {
+    @*function getProgrammaId(atlaskathgoriaid) {
 
         var progid;
         $.ajax({
@@ -367,7 +369,7 @@ End code
         });
 
         return progid;
-    }
+    }*@
 
 
     //append news in omilos
@@ -384,33 +386,12 @@ End code
 
                 var choiceContainer = $("#" + containername);
                 choiceContainer.empty();
-
-                //setTimeout(function () {
                 var i = 1;
                 var d = '';
                 if (result.length > 0) {
+                
                     $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=11"> <span style="font-size: 12px; !important" >Νεα ' + this.KathgoriaName + '        </a> </span> </li> ';
-                        i++;
-                    });
-                    
-                    $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + 1 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=12"> <span style="font-size: 12px; !important" >Ομαδες ' + this.KathgoriaName + '     </a> </span> </li> ';
-                        i++;
-                    });
-                    $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + 2 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=15"> <span style="font-size: 12px; !important" >Βαθμολογιες ' + this.KathgoriaName + '</a> </span> </li> ';
-                        i++;
-                    });
-                    if ($("#UserisAuthenticated").val() > 0) {
-                        $.each(result, function () {
-                            d += '<li class="lipointer" id="' + i + 3 + '"> <a href="' + baseUrl + '/Posts/Details/' + getProgrammaId(this.Id) + '"> <span style="font-size: 12px; !important" >Προγραμμα ' + this.KathgoriaName + '  </a> </span> </li> ';
-                            i++;
-                        });
-                    }
-
-                    $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + 4 + '"> <a href="@Url.Action("Index", "Posts")/?ak=' + this.Id + '&k=13"> <span style="font-size: 12px; !important" >Τιμωριες ' + this.KathgoriaName + '   </a> </span> </li> ';
+                        d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px; !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
                         i++;
                     });
                     choiceContainer.append(d);
@@ -430,7 +411,7 @@ End code
 
         return $.ajax({
             type: "POST",
-            url: baseUrl + '@Url.Action("GetLastNewsByCategory", "Posts")',
+            url: baseUrl + '@Url.Action("GetSimplePosts", "Posts")',
             data: "{nCount : 10, k : 1}",
             async: false,
             contentType: "application/json; charset=utf-8",
@@ -456,7 +437,7 @@ End code
 
     }
 
-    function GetDiorganwseis() {        
+    function GetDiorganwseis() {
       // get diorganwseis
       return  $.ajax({
             type: "POST",
@@ -485,9 +466,9 @@ End code
             }
         });
     }
-    
+
     $(document).ready(function () {
-        
+
         $('#loadingDiv')
              .hide()  // Hide it initially
              .ajaxStart(function () {
@@ -506,7 +487,7 @@ End code
             GetDiorganwseis();
         });
         newPromise.resolve();
-        
+
     });
 
     $(window).on('load', function () {

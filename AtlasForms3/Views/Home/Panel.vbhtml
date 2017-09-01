@@ -41,9 +41,9 @@ End Code
             <div class="panel-heading">
                 <h4><i class="icon-cpanel homeicons"></i> Εγγραφες </h4>
             </div>
-            <div class="panel-body">
+            @*<div class="panel-body">
                 <p> @Html.ActionLink("Εγγραφές παιχτών", "Index", "Newplayer") </p>
-            </div>
+            </div>*@
             <div class="panel-body">
                 <p> @Html.ActionLink("Εγγραφές ομάδων", "Index", "Newteam") </p>
             </div>

@@ -4,51 +4,13 @@
     Dim pdb As New AtlasBlogEntities
     Dim pdb2 As New AtlasStatisticsEntities
 
-    'Dim a = (From pk In pdb.BlogKathgoriesTable
-    '         Where pk.Id = 6
-    '         Select pk.KathgoriaName).FirstOrDefault
-
-    'Dim katName As String = If(a Is Nothing, 0, a)
-
-    Dim atlasomilosid As Integer = If(ViewBag.AtlasOmilos Is Nothing, 0, ViewBag.AtlasOmilos)
+    Dim kathgoriaid As Integer = If(ViewBag.Kathgoria Is Nothing, 0, ViewBag.Kathgoria)
     Dim atlaskathgoriaid As Integer = If(ViewBag.AtlasKathgoria Is Nothing, 0, ViewBag.AtlasKathgoria)
-
-    Dim atlaskathgoria1 As Integer = 0
-    Dim atlaskathgoria2 As Integer = 0
-    Dim atlaskathgoria1name As String = ""
-    Dim atlaskathgoria2name As String = ""
-
-    If atlasomilosid > 0 And atlaskathgoriaid = 0 Then
-
-        Dim atlaskathgories = (From k In pdb2.KathgoriesTable
-                               Order By k.Id
-                               Where k.Omilosid = atlasomilosid
-                               Select k.Id, k.KathgoriaName).ToList
-
-        If Not atlaskathgories Is Nothing Then
-            If atlaskathgories.Count = 2 Then
-
-                atlaskathgoria1 = atlaskathgories.Item(0).Id
-                atlaskathgoria2 = atlaskathgories.Item(1).Id
-                atlaskathgoria1name = atlaskathgories.Item(0).KathgoriaName
-                atlaskathgoria2name = atlaskathgories.Item(1).KathgoriaName
-
-            End If
-
-        End If
-
-    Else
-        atlaskathgoria1 = atlaskathgoriaid
-        atlaskathgoria1name = (From k In pdb2.KathgoriesTable
-                               Where k.Id = atlaskathgoriaid
-                               Select k.KathgoriaName).FirstOrDefault
-
-    End If
-
+    Dim atlaskathgorianame As String = (From k In pdb2.KathgoriesTable
+                                        Where k.Id = atlaskathgoriaid
+                                        Select k.KathgoriaName).FirstOrDefault
 
     Dim innerTitle As String = ""
-
-
 
     '1   Διοργανώτρια Αρχή
     '3   Γενικά Νέα
@@ -64,7 +26,7 @@
 
     If ViewBag.kathgoria = 11 Then
         ViewData("Title") = "Τελευταία νέα " '& katName
-        innerTitle = "τελευταια νεα " & atlaskathgoria1name
+        innerTitle = "τελευταια νεα " & atlaskathgorianame
     End If
     If ViewBag.kathgoria = 12 Then
         ViewData("Title") = "Ομάδες " '& katName
@@ -83,17 +45,72 @@
         innerTitle = "βαθμολογια " '& katName
     End If
 
+    Dim programmaid As Integer = 0
+
+    If atlaskathgoriaid > 0 Then
+        programmaid = (From t In pdb.BlogPostandKathgoriaTable
+                       Join t2 In pdb.BlogPostsTable On t2.Id Equals t.PostId
+                       Where t2.Activepost = True And t.AtlasKathgoriaId = atlaskathgoriaid And t.KathgoriaId = 14
+                       Select t.PostId).FirstOrDefault
+    End If
+
+    Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
+
+
 End Code
 
 
 @Html.Hidden("atlasomilosid", ViewBag.AtlasOmilos)
 @Html.Hidden("kathgoriaid", ViewBag.Kathgoria)
-@Html.Hidden("atlaskathgoria1", atlaskathgoria1)
-@Html.Hidden("atlaskathgoria2", atlaskathgoria2)
-@Html.Hidden("atlaskathgoria1name", atlaskathgoria1name)
-@Html.Hidden("atlaskathgoria2name", atlaskathgoria2name)
+@Html.Hidden("atlaskathgoriaid", atlaskathgoriaid)
+@Html.Hidden("atlaskathgorianame", atlaskathgorianame)
 
 <div id="main-content" Class="style1">
+
+
+    @code
+
+        If atlaskathgoriaid > 0 Then
+            @<p class="entry-categories style-s"><a href="/Home/Index/?ak=@atlaskathgoriaid">Νέα</a>
+    
+            @If kathgoriaid = 12 Then
+                @<a style="background: #ef6018; !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+            Else
+                @<a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+            End If
+
+            @If kathgoriaid = 15 Then
+                @<a style="background: #ef6018; !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+            Else
+                @<a href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+            End If
+               
+            @If UserisAuthenticated > 0 Then
+                If programmaid > 0 Then
+                    @If kathgoriaid = 14 Then
+                        @<a style = "background: #ef6018; !important" href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                    Else
+                        @<a href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                    End If
+                Else
+                    @If kathgoriaid = 14 Then
+                        @<a style="background: #ef6018; !important"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                    Else
+                        @<a><span style="font-size: 12px; !important">Προγραμμα</span></a>
+                    End If
+                End If
+            End If
+
+            @If kathgoriaid = 13 Then
+               @<a style = "background: #ef6018; !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+            Else
+               @<a href="/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a> 
+            End If
+                   
+            </p>
+        End If
+
+    End Code
 
     <div Class="wrapper">
         
@@ -104,13 +121,13 @@ End Code
             <div Class="content-wrap">
                
                  @code
-                     If atlaskathgoria1 > 0 Then
+    If atlaskathgoriaid > 0 Then
 
                            @<div Class="row">
                                  
                         <div id = "divresults1" Class="widget-area-12"  style="display: none;">
                         <div Class="widget kopa-result-widget">
-                            <h3 Class="widget-title style6">αποτελεσματα @atlaskathgoria1name</h3>
+                            <h3 Class="widget-title style6">αποτελεσματα @atlaskathgorianame</h3>
                             <div Class="widget-content">
                                 <div Class="span-bg">
                                     <span Class="c-tg"></span>
@@ -150,7 +167,7 @@ End Code
                         <div id = "divstandcommon1" Class="widget-area-13"  style="display: none;">
 
                             <div Class="widget kopa-charts-widget">
-                                <h3 Class="widget-title style6"><span>βαθμολογια @atlaskathgoria1name</span></h3>
+                                <h3 Class="widget-title style6"><span>βαθμολογια @atlaskathgorianame</span></h3>
                                 <div Class="widget-content">
                                     <header>
                                         <div Class="t-col">Α/Α</div>
@@ -185,11 +202,11 @@ End Code
                                                 
 
                 @code
-                    If atlaskathgoria1 > 0 Then
+                    If atlaskathgoriaid > 0 Then
                         @<div id="divteamskat1" style="display: none;">
                             <div class="row">
                                 <div class="kopa-main">
-                                    <h3 class="widget-title style12">ομαδες κατηγορίας @atlaskathgoria1name<span class="ttg"></span></h3>
+                                    <h3 class="widget-title style12">ομαδες κατηγορίας @atlaskathgorianame<span class="ttg"></span></h3>
                                     <div class="widget kopa-entry-list">
                                         <ul class="row clearfix" id="ulteamskat1"></ul>
                                     </div>
@@ -201,7 +218,7 @@ End Code
 
 
 
-                @code
+                @*@code
                     If atlaskathgoria2 > 0 Then
                         @<div id="divteamskat2" style="display: none;">
                             <div class="row">
@@ -214,7 +231,7 @@ End Code
                             </div>
                         </div>
                     End If
-                End code
+                End code*@
 
                 <div id="divteams" class="widget kopa-entry-list" style="display: none;">
                     <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
@@ -246,62 +263,14 @@ End Code
 
         <div Class="sidebar widget-area-11">
 
-                        <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                            <a href = "http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
-                            <a href = "https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>
-                            <a href = "http://www.atlassportswear.gr/"><img src="~/Content/images/atlassportwear.png" alt=""></a>
-                        </div>
+                <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                    <a href = "http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
+                    <a href = "https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>
+                    <a href = "http://www.atlassportswear.gr/"><img src="~/Content/images/atlassportwear.png" alt=""></a>
+            </div>
+        </div>
 
-
-                    <!-- widget -->
-
-                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                        <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
-                        <ul Class="clearfix">
-                            <li>
-                            <div Class="kopa-tab style3">
-                                    <ul Class="nav nav-tabs">
-                                        <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                        <li> <a href = "#assist" data-toggle="tab">Πασ.</a></li>
-                                        <li> <a href = "#reb" data-toggle="tab">Ριμ.</a></li>
-                                        <li> <a href = "#steal" data-toggle="tab">Κλ.</a></li>
-                                        <li> <a href = "#block" data-toggle="tab">Κοψ.</a></li>
-                                    </ul>
-                                    <!-- nav-tabs -->
-                                    <div Class="tab-content">
-                                        <div Class="tab-pane active" id="points">
-                                            <ul Class="kopa-list clearfix" id="pointsul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="assist">
-                                            <ul Class="kopa-list clearfix" id="assistul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="reb">
-                                            <ul Class="kopa-list clearfix" id="reboundul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="steal">
-                                            <ul Class="kopa-list clearfix" id="stealsul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                        <div Class="tab-pane" id="block">
-                                            <ul Class="kopa-list clearfix" id="blocksul"></ul>
-                                        </div>
-                                        <!-- tab-pane -->
-                                    </div>
-                                </div>
-                                <!-- kopa-tab -->
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- widget -->
-
-
-
-                </div>
-
-                </div>
+        </div>
 
 
         </div>
@@ -368,71 +337,15 @@ End Code
          } else {
 
          }
-
-
-        @*if ($("#divteams").is(":visible")) {
-            $('#teamstable').DataTable({
-                "sAjaxSource": baseUrl + '@Url.Action("GetLastNewsByCategory")',
-                 "fnServerParams": function (aoData) {
-                    aoData.push({
-                        "name": "nCount",
-                        "value": 100
-                    })
-                    aoData.push({
-                        "name": "k",
-                        "value": $('#kathgoriaid').val()
-                    })
-                },
-                "contentType": "application/json; charset=utf-8",
-                "language": {
-                    "url": baseUrl + "/Scripts/DataTables/Greek.json"
-                },
-                "aLengthMenu": [[5, 10, 20, 50, -1], [5, 10, 20, 50, "All"]],
-                "iDisplayLength": 5,
-                "bProcessing": true,
-                "aoColumns": [{}],
-                "columnDefs": [
-                        {
-                            "targets": 0,
-                            "render": function (data, type, row) {
-
-                                if (row === undefined || row === null) return '';
-
-                                var teamDet = row.PostTitle.split('-');
-
-                                var dd = '<li class="col-md-4 col-sm-4 col-xs-4 ms-item2">' +
-                                    ' <article class="entry-item"> ' +
-                                    '   <a class="entry-categories" href="#">' + teamDet[0] + '<span class="ttg"></span></a>' +
-                                    '   <div class="entry-thumb"> ' +
-                                    '       <a href="http://atlasstatistics.gr/Teams/Details/' + teamDet[2] + '"> ' +
-                                    '           <img src="' + row.PostPhoto + '" alt="">' +
-                                    '       </a> ' +
-                                    '   </div> ' +
-                                    '   <div class="entry-content"> ' +
-                                    '       <div class="content-top"> ' +
-                                    '           <h4 class="entry-title" itemscope="" itemtype="http://schema.org/Event">' +
-                                    '               <a itemprop="name" href="http://atlasstatistics.gr/Teams/Details/' + teamDet[2] + '">' + teamDet[1] + '</a> ' +
-                                    '           </h4>' +
-                                    '       </div> ' +
-                                    '   </div>    ' +
-                                    ' </article> ' +
-                                    ' </li>';
-
-                                return dd;
-                            }
-                       }
-                ]
-            });
-        }*@
-
-
+        
+      
         if ($("#divcommon").is(":visible")) {
             $('#newstable').DataTable({
                 "sAjaxSource": baseUrl + '@Url.Action("GetLastNewsByBothCategories")',
                 "fnServerParams": function (aoData) {
                     aoData.push({
                         "name": "AtlasOmilosid",
-                        "value": $('#atlaskathgoria1').val()
+                        "value": $('#atlaskathgoriaid').val()
                     })
                     aoData.push({
                         "name": "nCount",
@@ -495,104 +408,13 @@ End Code
             });
         }
 
-        //append pointsul
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetWeeklyReportStat1", "Home")',
-            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                var choiceContainer = $("#pointsul");
-                appendTop5Container(choiceContainer, result);
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
-
-
-        //append assistul
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetWeeklyReportStat2", "Home")',
-            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                var choiceContainer = $("#assistul");
-                appendTop5Container(choiceContainer, result);
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
-
-
-        //append reboundul
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetWeeklyReportStat3", "Home")',
-            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var choiceContainer = $("#reboundul");
-                appendTop5Container(choiceContainer, result);
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
-
-
-        //append stealsul
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetWeeklyReportStat4", "Home")',
-            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var choiceContainer = $("#stealsul");
-                appendTop5Container(choiceContainer, result);
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
-
-        //append blocksul
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetWeeklyReportStat5", "Home")',
-            data: "{katid : " + $("#atlaskathgoria1").val() + " }",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var choiceContainer = $("#blocksul");
-                appendTop5Container(choiceContainer, result);
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
-
         //append bathmologia 1
           if ($("#divstandcommon1").is(":visible")) {
-            if ($("#atlaskathgoria1").val() > 0) {
+              if ($("#atlaskathgoriaid").val() > 0) {
                 $.ajax({
                     type: "POST",
                     url: baseUrl + '@Url.Action("GetRankingsStats", "Home")',
-                    data: "{kathgoriaid: " + $("#atlaskathgoria1").val() + "}",
+                    data: "{kathgoriaid: " + $("#atlaskathgoriaid").val() + "}",
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -619,39 +441,6 @@ End Code
             }
         }
 
-        //append bathmologia 2
-        @*if ($("#divstandcommon2").is(":visible")) {
-            if ($("#atlaskathgoria2").val() > 0) {
-                $.ajax({
-                    type: "POST",
-                    url: baseUrl + '@Url.Action("GetRankingsStats", "Home")',
-                    data: "{kathgoriaid: " + $("#atlaskathgoria2").val() + "}",
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        if (result.length > 0) {
-                            var r = 1;
-                            $.each(result, function () {
-                                tbrow = '<li> ' +
-                                       '    <div Class="t-col">' + r + '</div> ' +
-                                       '    <div Class="t-col width1">' + this.sname + '</div> ' +
-                                       '    <div Class="t-col">' + this.totalplayed + '</div> ' +
-                                       '    <div Class="t-col">' + this.bathmoi + '</div> ' +
-                                       '</li>';
-                                $("#team2ranking").append(tbrow);
-                                r += 1;
-                            });
-
-                        }
-                    },
-                    error: function (result) {
-                        //alert("Δεν έχετε διαλέξει όλες τις επιλογές!");
-                    }
-                });
-            }
-        }*@
 
 
         //GetTeamsbyKathgoria 1
@@ -663,7 +452,7 @@ End Code
             $.ajax({
                 type: "POST",
                 url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Home")',
-                data: "{kid: " + $("#atlaskathgoria1").val() + "}",
+                data: "{kid: " + $("#atlaskathgoriaid").val() + "}",
                 async: false,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

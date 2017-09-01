@@ -1,30 +1,24 @@
 ﻿@Code
 
-
-
-    Dim atlasomilosid As Integer = If(ViewBag.AtlasOmilos Is Nothing, 0, ViewBag.AtlasOmilos)
-    Dim atlasomilosname As String = ""
+    Dim AtlasKathgoriaid As Integer = If(ViewBag.AtlasKathgoria Is Nothing, 0, ViewBag.AtlasKathgoria)
+    Dim AtlasKathgoriaName As String = ""
 
     Using pdb2 As New AtlasStatisticsEntities
 
-        If atlasomilosid > 0 Then
+        If AtlasKathgoriaid > 0 Then
 
-            atlasomilosname = (From k In pdb2.OmilosTable
-                               Where k.Id = atlasomilosid
-                               Select k.OmilosName).FirstOrDefault
+            AtlasKathgoriaName = (From k In pdb2.KathgoriesTable
+                                  Where k.Id = AtlasKathgoriaid
+                                  Select k.KathgoriaName).FirstOrDefault
         End If
 
     End Using
 
     'Dim innerTitle As String = ""
-    If atlasomilosname = "" Then
+    If AtlasKathgoriaName = "" Then
         ViewData("Title") = "Κεντρική σελίδα"
     Else
-        If atlasomilosname.Count < 2 Then
-            atlasomilosname = atlasomilosname & " Όμιλος"
-        End If
-
-        ViewData("Title") = atlasomilosname
+        ViewData("Title") = AtlasKathgoriaName
     End If
 
 
@@ -38,15 +32,27 @@
     Dim oWeeklyStat5 = ViewBag.WeeklyStat5
     Dim oPhotosList = ViewBag.PhotosList
 
+    Dim programmaid As Integer = 0
+
+    Using pdb As New AtlasBlogEntities
+        If AtlasKathgoriaid > 0 Then
+            programmaid = (From t In pdb.BlogPostandKathgoriaTable
+                           Join t2 In pdb.BlogPostsTable On t2.Id Equals t.PostId
+                           Where t2.Activepost = True And t.AtlasKathgoriaId = AtlasKathgoriaid And t.KathgoriaId = 14
+                           Select t.PostId).FirstOrDefault
+        End If
+    End Using
+
+    Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
+
+
 End Code
 
-
-@Html.Hidden("atlasomilosid", atlasomilosid)
-
+@Html.Hidden("atlaskathgoriaid", AtlasKathgoriaid)
 
 <div id="main-content" Class="style1">
 
-    <div Class="main-top">
+    <div Class="main-top"> 
 
         <div Class="social-links style1">
             <ul Class="clearfix">
@@ -54,10 +60,31 @@ End Code
                 <li> <a href="https://twitter.com/atlasteam1" Class="fa fa-twitter"></a></li>
                 <li> <a href="http://www.google.com/profiles/117211032484470772194" Class="fa fa-google-plus"></a></li>
                 <li> <a href="https://www.youtube.com/channel/UCRTTtMCMaxoKT11U1MekmwQ" Class="fa fa-youtube"></a></li>
+                <li> <a href="https://www.instagram.com/atlasbasket.gr/" Class="fa fa-instagram"></a></li>
             </ul>
         </div>
-
+        
     </div>
+
+    @code
+
+        If AtlasKathgoriaid > 0 Then
+            @<p class="entry-categories style-s">
+                <a style="background: #ef6018; !important" href="~/Home/Index/?ak=@AtlasKathgoriaid">Νέα</a>
+                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=12"> <span style="font-size: 12px; !important">Ομαδες</span></a>
+                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=15"> <span style="font-size: 12px; !important">Βαθμολογια</span></a>                                
+                 @If UserisAuthenticated > 0 Then
+                    If programmaid > 0 Then
+                         @<a href="~/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                     Else
+                     @<a><span style="font-size: 12px; !important">Προγραμμα</span></a>
+                     End If
+                 End If
+                 <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+            </p>
+        End If
+
+    End Code
 
     <div Class="wrapper">
         <div Class="kopa-page">
@@ -453,16 +480,10 @@ End Code
             <div Class="row">
                 <div Class="widget-area-11">
                     <div Class="w3-content w3-section" style="max-width:45%" id="fwtografiesid">
-
-                        @*<img class="mySlides w3-center" src="~/Content/images/scroll-slider/2.jpg" style="height:30%;width:100%">*@
                         @code
-
                             For each _p In oPhotosList
-
                                 @<img Class="mySlides w3-center" src=@_p style="height:30%;width:100%">
-
                             Next
-
                         End Code
                     </div>
                 </div>
@@ -496,7 +517,7 @@ End Code
 
 
             $(document).ready(function () {            
-                var omilosid = $("#atlasomilosid").val();
+                var omilosid = $("#atlaskathgoriaid").val();
                 var triggerappendfwtos = 1;
                 if (omilosid != 0) {
                     $("#fwtografiesdiv").hide();

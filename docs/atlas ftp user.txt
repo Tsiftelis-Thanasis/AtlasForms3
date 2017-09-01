@@ -1,0 +1,3 @@
+ftp: 144.76.99.45
+username: ftpatlasuserid
+pasword: Xnqv29&7

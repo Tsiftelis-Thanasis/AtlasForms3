@@ -81,6 +81,18 @@
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
 
+    Dim programmaid As Integer = 0
+
+    If atlaskatid > 0 Then
+        programmaid = (From t In pdb.BlogPostandKathgoriaTable
+                       Join t2 In pdb.BlogPostsTable On t2.Id Equals t.PostId
+                       Where t2.Activepost = True And t.AtlasKathgoriaId = atlaskatid And t.KathgoriaId = 14
+                       Select t.PostId).FirstOrDefault
+    End If
+
+    Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
+
+
 End Code
 
 
@@ -109,24 +121,64 @@ End Code
                     <article class="entry-item">
 
                         <p class="entry-categories style-s">
-                            <a href="@Url.Action("Index", "Home")">Αρχικη</a>
-                            @code
-                                If omilosnamestr <> "" Then
-                                    @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
-                                End If
-                            End Code
-                            @code
-                                If atlaskatnamestr <> "" Then
-                                    @<a href="@Url.Action("Index", "Posts", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
-                                End If
-                            End Code
-                            @code
-                                If kathgorianamestr <> "" Then
-                                    @<a href="@Url.Action("Index", "Posts", New With {.k = katid})">@kathgorianamestr</a>
-                                End If
-                            End Code
 
-                            <a>@Html.DisplayFor(Function(model) cTitle)</a>
+
+                            @code
+
+                                If atlaskatid > 0 And katid = 14 Then
+                                    @<a href = "/Home/Index/?ak=@atlaskatid" > Νέα</a>
+
+                                    @If katid = 12 Then
+                                        @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskatid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+                                    Else
+                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+                                    End If
+
+                                    @If katid = 15 Then
+                                        @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskatid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+                                    Else
+                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+                                    End If
+
+                                    @If UserisAuthenticated > 0 Then
+                                        If programmaid > 0 Then
+                                            @If katid = 14 Then
+                                                @<a style="background: #ef6018; !important" href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                            Else
+                                                @<a href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                            End If
+                                        Else
+                                            @If katid = 14 Then
+                                                @<a style="background: #ef6018; !important"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                            Else
+                                                @<a><span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                            End If
+                                        End If
+                                    End If
+
+                                    @If katid = 13 Then
+                                        @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskatid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+                                    Else
+                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+                                    End If
+
+                                Else
+
+                                    @<a href = "@Url.Action("Index", "Home")">Αρχικη</a>
+
+                                    If omilosnamestr <> "" Then
+                                            @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
+                                    End If
+                                    If atlaskatnamestr <> "" Then
+                                            @<a href="@Url.Action("Index", "Home", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
+                                    End If
+
+                                    @<a>@Html.DisplayFor(Function(model) cTitle)</a>
+
+                                End If
+
+                            End Code 
+
                         </p>
 
                         @code
@@ -142,7 +194,8 @@ End Code
                         End Code
 
                         @code
-                            If Model.PostSummary.ToString <> "" Then
+                            If not Model.PostSummary Is Nothing Then
+                                If Model.PostSummary <> "" Then
                                 @<div Class="row form-horizontal">
                                     <div Class="form-group">
                                         <div Class="col-md-12"> 
@@ -152,11 +205,13 @@ End Code
                                         </div>
                                     </div>
                                 </div>
+                                End If
                             End If
                         End Code
 
                         @code
-                            If Model.PostBody <> "" Then
+                            If Not Model.PostBody Is Nothing Then
+                                If Model.PostBody <> "" Then
                                 @<div Class="row form-horizontal">
                                     <div Class="form-group">
                                         <div Class="col-md-12">
@@ -164,31 +219,37 @@ End Code
                                         </div>
                                     </div>                  
                                 </div>
+                                End If
                             End If
+
                         End code
 
                         @code
-                            If Model.Statslink <> "" Then
+                            If not Model.Statslink Is Nothing Then
+                                If Model.Statslink <> "" Then
                                 @<p Class="short-des" style="text-align:center">
                                     <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Html.DisplayFor(Function(model) model.Statslink)">
                                         <img src="~/Content/images/various/stats.jpg" border="0" />
                                     </a>
                                 </p>
+                                End If
                             End If
                         End Code
 
                         @code
-                            If Model.Youtubelink.Length > 36 Then
+                            If not Model.Youtubelink Is Nothing Then
+                                If Model.Youtubelink.Length > 36 Then
                                 @<iframe title="YouTube video player" Class="youtube-player" type="text/html"
                                             height="315" src="@Html.DisplayFor(Function(model) model.Youtubelink)"
                                             frameborder="0" allowFullScreen></iframe>
+                                End If
                             End If
                         End Code
 
 
                         <p></p>
 
-                        <div Class="row form-horizontal">
+                        @*<div Class="row form-horizontal">
                             <div Class="form-group">
                                 <div Class="col-md-12">
                                     <div Class="entry-meta">
@@ -200,7 +261,7 @@ End Code
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
                     </article>
                 </div>
@@ -222,6 +283,8 @@ End Code
                         <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
                         <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
                 </div>
+            </div>
+
             </div>
 
    
