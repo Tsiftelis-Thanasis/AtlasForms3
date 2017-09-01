@@ -48,6 +48,9 @@
           <Property Name="EditBy" Type="varchar" MaxLength="100" />
           <Property Name="teamleadername" Type="varchar" MaxLength="200" />
           <Property Name="teamrosterext" Type="varchar" MaxLength="10" />
+          <Property Name="teamrosterstr" Type="varchar" MaxLength="2000" />
+          <Property Name="teamcolor" Type="varchar" MaxLength="100" />
+          <Property Name="gipedo" Type="int" />
         </EntityType>
         <EntityType Name="BlogPostandKathgoriaTable">
           <Key>
@@ -220,6 +223,9 @@
           <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="teamleadername" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="teamrosterext" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="teamrosterstr" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="teamcolor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="gipedo" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -317,6 +323,9 @@
           <EntitySetMapping Name="BlogNewTeam">
             <EntityTypeMapping TypeName="ATLASBLOG2Model.BlogNewTeam">
               <MappingFragment StoreEntitySet="BlogNewTeam">
+                <ScalarProperty Name="gipedo" ColumnName="gipedo" />
+                <ScalarProperty Name="teamcolor" ColumnName="teamcolor" />
+                <ScalarProperty Name="teamrosterstr" ColumnName="teamrosterstr" />
                 <ScalarProperty Name="teamrosterext" ColumnName="teamrosterext" />
                 <ScalarProperty Name="teamleadername" ColumnName="teamleadername" />
                 <ScalarProperty Name="EditBy" ColumnName="EditBy" />

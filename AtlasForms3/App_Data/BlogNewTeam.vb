@@ -22,5 +22,8 @@ Partial Public Class BlogNewTeam
     Public Property EditBy As String
     Public Property teamleadername As String
     Public Property teamrosterext As String
+    Public Property teamrosterstr As String
+    Public Property teamcolor As String
+    Public Property gipedo As Nullable(Of Integer)
 
 End Class

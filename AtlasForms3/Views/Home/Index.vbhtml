@@ -24,7 +24,8 @@
 
     Dim oLastNewsList = ViewBag.LastNewsList
     Dim oLastGamesList = ViewBag.LastGamesList
-    Dim oLastNews = ViewBag.LastNews
+    Dim oLastNews1 = ViewBag.LastNews1
+    Dim oLastNews2 = ViewBag.LastNews2
     Dim oWeeklyStat1 = ViewBag.WeeklyStat1
     Dim oWeeklyStat2 = ViewBag.WeeklyStat2
     Dim oWeeklyStat3 = ViewBag.WeeklyStat3
@@ -128,8 +129,9 @@ End Code
                 <div Class="widget kopa-sync-carousel-widget">
                     <div Class="owl-carousel sync1" id="mainnewscarouselid">
                         @code
-                            For each n In oLastNews
-                            @<div Class="item">                        
+                            For each n In oLastNews1
+
+                                    @<div Class="item">                        
                                 <article class="entry-item">                            
                                  <div class="entry-thumb">
                                      <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:520px;" alt=""></a> 
@@ -142,6 +144,7 @@ End Code
                                 <span></span>                                 
                                 </article> 
                             </div>
+
                             Next
                         End Code                        
                     </div>
@@ -201,7 +204,7 @@ End Code
                                     <ul id="latestnewsid" Class="clearfix">
                                         @code
 
-                                            For Each n In oLastNews
+                                            For Each n In oLastNews2
 
                                                     @<li><article Class="entry-item">
                                                     <div Class="entry-thumb">

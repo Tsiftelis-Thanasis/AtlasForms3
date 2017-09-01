@@ -5,13 +5,21 @@
 
     ViewData("Title") = Model.teamname
 
-    Dim file1 As String = ""
-    If Model.teamroster IsNot Nothing Then
-        Dim filebase64 As String = Convert.ToBase64String(Model.teamroster)
-        file1 = String.Format("data:file/" & Model.teamrosterext & ";base64,{0}", filebase64)
-    End If
+    'Dim file1 As String = ""
+    'If Model.teamroster IsNot Nothing Then
+    '    Dim filebase64 As String = Convert.ToBase64String(Model.teamroster)
+    '    file1 = String.Format("data:file/" & Model.teamrosterext & ";base64,{0}", filebase64)
+    'End If
 
-    Dim filename1 As String = Model.teamname & "." & Model.teamrosterext
+    'Dim filename1 As String = Model.teamname & "." & Model.teamrosterext
+
+    Dim pdb2 As New AtlasStatisticsEntities
+    Dim gipedostr = ""
+    If Model.gipedo > 0 Then
+        gipedostr = (From g In pdb2.GipedaTable
+                     Where g.Id = Model.gipedo
+                     Select g.GipedoName).FirstOrDefault
+    End If
 
 End Code
 
@@ -62,14 +70,32 @@ End Code
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(Function(model) model.teamroster)
+            @Html.DisplayNameFor(Function(model) model.teamcolor)
         </dt>
 
         <dd>
-            <a href="@file1" download="@filename1"><span>Το αρχείο  </span><i class="fa fa-file-text-o"> </i></a>            
-             
+            @Html.DisplayFor(Function(model) model.teamcolor)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.gipedo)
+        </dt>
+
+        <dd>
+            gipedostr
+        </dd>
+
+         <dt>
+            @Html.DisplayNameFor(Function(model) model.teamrosterStr)
+        </dt>
+
+        <dd>            
+            @Html.TextAreaFor(Function(model) model.teamrosterStr, New With {.cols = 100, .rows = 10, .readonly = "readonly"})            
+        </dd>
+
+         
+
+        
     </dl>
 
 </div>

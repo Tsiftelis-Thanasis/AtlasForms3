@@ -32,10 +32,16 @@ Public Class NewTeam
 
     <Display(Name:="Roster")>
     Public Property teamroster As Byte()
-
-
     <Display(Name:="file extension")>
     Public Property teamrosterext As String
+
+    <DataType(DataType.MultilineText)>
+    <Display(Name:="Roster")>
+    Public Property teamrosterStr As String
+    <Display(Name:="Χρώματα ομάδας")>
+    Public Property teamcolor As String
+    <Display(Name:="Γήπεδο")>
+    Public Property gipedo As Integer
 
     <Display(Name:="Δημιουργία απο")>
     Public Property createdby As String

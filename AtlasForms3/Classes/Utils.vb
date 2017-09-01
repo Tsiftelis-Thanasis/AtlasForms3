@@ -149,6 +149,7 @@ Public Class Utils
         message.From = fromAddress
         message.Subject = subject
         message.Body = body
+        message.IsBodyHtml = True
         message.To.Add(useremailaddress)
         Try
 

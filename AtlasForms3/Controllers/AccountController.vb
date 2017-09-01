@@ -94,50 +94,13 @@ Public Class AccountController
         Select Case result
             Case SignInStatus.Success
 
-                'Dim webdb As New atlaswebportalentities
-                'Dim userisloged = (From u In webdb.UserLogins
-                '                   Where u.Userid = user.UserName).Count
-                'If userisloged > 0 Then
-                '    ModelState.AddModelError("", "Your are logged in from another place! Logout first and then try loggin again!")
-                '    Return View(model)
-                'Else
-
-                '    Dim newuser As New UserLogin
-                '    newuser.Userid = user.UserName
-                '    newuser.Sessionid = Session.SessionID
-                '    newuser.Datetimelog = Now
-                '    newuser.Loggedin = True
-                '    newuser.Usercompname = "yyy"
-                '    newuser.Userip = Request.UserHostAddress
-                '    webdb.UserLogins.Add(newuser)
-                '    webdb.SaveChanges()
                 Return RedirectToLocal(returnUrl)
-                'End If
 
             Case SignInStatus.LockedOut
                 Return View("Lockout")
             Case SignInStatus.RequiresVerification
 
-
-                'Dim webdb As New atlaswebportalentities
-                'Dim userisloged = (From u In webdb.UserLogins
-                '                   Where u.Userid = user.UserName).Count
-                'If userisloged > 0 Then
-                '    ModelState.AddModelError("", "Your are logged in from another place! Logout first and then try loggin again!")
-                '    Return View(model)
-                'Else
-
-                '    Dim newuser As New UserLogin
-                '    newuser.Userid = user.UserName
-                '    newuser.Sessionid = Session.SessionID
-                '    newuser.Datetimelog = Now
-                '    newuser.Loggedin = True
-                '    newuser.Usercompname = "yyy"
-                '    newuser.Userip = Request.UserHostAddress
-                '    webdb.UserLogins.Add(newuser)
-                '    webdb.SaveChanges()
                 Return RedirectToAction("SendCode", New With {.ReturnUrl = returnUrl, .RememberMe = model.RememberMe})
-                'End If
 
 
             Case Else
@@ -214,13 +177,6 @@ Public Class AccountController
 
                 Dim callbackUrl As String = Await SendEmailConfirmationTokenAsync(user.Id, user.Email, "Confirm your account")
 
-
-                'Dim code = Await UserManager.GenerateEmailConfirmationTokenAsync(user.Id)
-                'Await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=""" & callbackUrl & """>here</a>")
-                'Dim e As New Utils
-                'Await e.sendEmailsync(user., "Confirm your account", "Please confirm your account by clicking <a href=""" & callbackUrl & """>here</a>")
-
-
                 'check any other roles
                 Dim aspdb As New AtlasStatisticsEntities
                 Dim countroles = (From t In aspdb.AspNetRoles).Count
@@ -243,9 +199,7 @@ Public Class AccountController
 
                 UserManager.AddToRole(user.Id, "Users")
 
-
                 ViewBag.Message = "Check your email and confirm your account, you must be confirmed before you can log in."
-                'Return View("Info")
 
                 Return RedirectToAction("Index", "Home")
 
@@ -293,7 +247,7 @@ Public Class AccountController
             ' Send an email with this link
             Dim code = Await UserManager.GeneratePasswordResetTokenAsync(user.Id)
             Dim callbackUrl = Url.Action("ResetPassword", "Account", New With {.userId = user.Id, .code = code}, protocol:=Request.Url.Scheme)
-            'Await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=""" & callbackUrl & """>here</a>")
+
             Dim e As New Utils
             Await e.sendEmailsync(user.Email, "Reset Password", "Please reset your password by clicking <a href=""" & callbackUrl & """>here</a>")
 
@@ -521,8 +475,6 @@ Public Class AccountController
 
         Dim e As New Utils
         Await e.sendEmailsync(userEmail, subject, "Please confirm your account by clicking <a href=""" + callbackUrl + """>here</a>")
-
-        'Await UserManager.SendEmailAsync(userID, subject, "Please confirm your account by clicking <a href=""" + callbackUrl + """>here</a>")
 
         Return callbackUrl
 

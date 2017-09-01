@@ -13,9 +13,10 @@ Public Class HomeController
     Inherits System.Web.Mvc.Controller
     Function Index(Optional ak As Integer = 0) As ActionResult
 
-        ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, Nothing, Nothing).Data.data
+        ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, Nothing, Nothing, 1, 1).Data.data
         ViewBag.LastGamesList = Getlastgames(ak).Data
-        ViewBag.LastNews = GetLastNews(10, ak).Data.data
+        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing).Data.data
+        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing).Data.data
 
         ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
         ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
@@ -342,77 +343,6 @@ Public Class HomeController
 
     End Function
 
-    '<Compress>
-    'Function GetFwtografies() As JsonResult
-
-    '    Dim fwtos = (From p In pdb_blog.BlogPostsTable
-    '                 Where Not p.PostPhotoStr Is Nothing
-    '                 Order By p.Id Descending
-    '                 Select PostPhoto = p.PostPhotoStr, Id = p.Id
-    '                   ).Take(20).ToList
-
-    '    '.AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(o.PostPhoto)))}).ToList
-
-    '    'Dim tempFolder As String = System.Web.HttpContext.Current.Server.MapPath("~/Content/tempimages/")
-
-    '    Try
-
-
-    '        'Dim exists As Boolean = System.IO.Directory.Exists(tempFolder)
-    '        'If Not exists Then
-    '        '    Directory.CreateDirectory(tempFolder)
-    '        'End If
-
-    '        'For Each _file As String In Directory.GetFiles(tempFolder)
-    '        '    System.IO.File.Delete(_file)
-    '        'Next
-
-    '        'Dim savedfwtos As New List(Of String)
-
-    '        'For Each f In fwtos
-    '        '    Dim imageStr As String = tempFolder & f.Id & ".png"
-    '        '    If Not f.PostPhoto Is Nothing Then
-    '        '        Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(f.PostPhoto, False)
-    '        '            memoryStream.Seek(0, SeekOrigin.Begin)
-    '        '            Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
-    '        '                If (System.IO.File.Exists(imageStr)) Then System.IO.File.Delete(imageStr)
-    '        '                savedfwtos.Add("/Content/tempimages/" & f.Id & ".png")
-    '        '                image1.Save(imageStr)
-    '        '            End Using
-    '        '        End Using
-    '        '    End If
-    '        'Next
-
-    '        Dim j As New JsonResult
-    '        j.MaxJsonLength = Integer.MaxValue
-    '        '            j = Json(savedfwtos, JsonRequestBehavior.AllowGet)
-    '        j = Json(fwtos, JsonRequestBehavior.AllowGet)
-
-    '        Return j
-
-    '    Catch ex As Exception
-
-    '        Return Nothing
-
-    '    End Try
-
-    'End Function
-
-    '<Compress>
-    'Function GetFwtografies2() As JsonResult
-
-    '    Dim fwtos = (From p In pdb_blog.BlogPostsTable
-    '                 Where Not p.PostPhoto Is Nothing
-    '                 Order By p.Id Descending
-    '                 Select PostPhoto = "", Id = p.Id
-    '                   ).Take(20).AsEnumerable().[Select](Function(o) New With {.Id = o.Id, .PostPhoto = ""}).ToList
-    '    Dim j As New JsonResult
-    '    j.MaxJsonLength = Integer.MaxValue
-    '    j = Json(fwtos, JsonRequestBehavior.AllowGet)
-
-    '    Return j
-
-    'End Function
 
 
     Public Sub Resizeimages()
@@ -428,27 +358,35 @@ Public Class HomeController
 
 
         Dim ha As New Utils
-        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "test")
+
+
+
+        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "Please confirm your account by clicking <a href=""http://atlasbasket2.gr.144-76-99-45.my-website-preview.com/Posts/?ak=49&k=11"">here</a>")
 
 
     End Function
 
 
     <Compress>
-    Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As JsonResult
+    Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?, ByVal k As Integer?, ByVal k2 As Integer?,
+                                          ByVal withphoto As Integer?, ByVal withvideo As Integer?) As JsonResult
 
         If atlaskathgoria Is Nothing Then atlaskathgoria = 0
         If k Is Nothing Then k = 3 'Teleutaia nea!
         If k2 Is Nothing Then k2 = 11 'Teleutaia nea omilou!
-        'Dim k As Integer = 3 'Teleutaia nea!
-        'Dim k2 As Integer = 11 'Teleutaia nea omilou!
+
+        If withphoto Is Nothing Then withphoto = 0
+        If withvideo Is Nothing Then withvideo = 0
+
 
         If atlaskathgoria = 0 Then
 
             Dim q = (From p In pdb_blog.BlogPostsTable
                      Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                      Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
-                     Where p.Activepost = True And (p1.KathgoriaId = k And p1.IsKathgoria = True)
+                     Where p.Activepost = True And (p1.KathgoriaId = k And p1.IsKathgoria = True) And
+                          If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
+                            If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                          PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                         KatName = p2.KathgoriaName).Take(nCount).
@@ -458,9 +396,6 @@ Public Class HomeController
                         .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
                         .Youtubelink = o.Youtubelink,
                         .KatName = o.KatName}).ToList
-
-            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-            '            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then
@@ -482,7 +417,9 @@ Public Class HomeController
                      Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                      Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                      Join klist In kl On klist Equals p1.AtlasKathgoriaId
-                     Where p.Activepost = True And (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
+                     Where p.Activepost = True And (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True) And
+                          If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
+                         If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                          PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
                         KatName = p2.KathgoriaName).Take(nCount).
@@ -492,10 +429,6 @@ Public Class HomeController
                         .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
                         .Youtubelink = o.Youtubelink,
                         .KatName = o.KatName}).ToList
-
-
-            '.PostPhoto = If(o.PostPhoto Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto))),
-            '            .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.PostPhoto2))),
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then
@@ -507,19 +440,19 @@ Public Class HomeController
 
             Return Json(dtm, JsonRequestBehavior.AllowGet)
 
-
         End If
-
-
 
     End Function
 
 
 
     <Compress>
-    Function GetLastNews(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?) As JsonResult
+    Function GetLastNews(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?,
+                         ByVal withphoto As Integer?, ByVal withvideo As Integer?) As JsonResult
 
         If atlaskathgoria Is Nothing Then atlaskathgoria = 0
+        If withphoto Is Nothing Then withphoto = 0
+        If withvideo Is Nothing Then withvideo = 0
 
         Dim kl = (From o In pdb.KathgoriesTable
                   Where o.Id = atlaskathgoria
@@ -530,7 +463,9 @@ Public Class HomeController
             Dim q = (From p In pdb_blog.BlogPostsTable
                      Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
                      Join klist In kl On klist Equals pk.AtlasKathgoriaId
-                     Where p.Activepost = True
+                     Where p.Activepost = True And
+                         If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
+                         If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select p
                      Order By p.Id Descending
                          ).Take(nCount).AsEnumerable().[Select](
@@ -552,7 +487,9 @@ Public Class HomeController
         Else
 
             Dim q = (From p In pdb_blog.BlogPostsTable
-                     Where p.Activepost = True
+                     Where p.Activepost = True And
+                         If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
+                         If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select p
                      Order By p.Id Descending
                          ).Take(nCount).AsEnumerable().[Select](

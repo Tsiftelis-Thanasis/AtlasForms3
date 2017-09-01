@@ -30,8 +30,12 @@ Namespace Controllers
                 np.teamemail = p.teamemail
                 np.teamphone = p.teamphone
                 np.teamleadername = p.teamleadername
-                np.teamrosterext = p.teamrosterext
-                np.teamroster = p.teamroster
+                'np.teamrosterext = p.teamrosterext
+                'np.teamroster = p.teamroster
+                np.teamrosterStr = p.teamrosterstr
+                np.teamcolor = p.teamcolor
+                np.gipedo = p.gipedo
+
                 Return View(np)
 
             Else
@@ -77,10 +81,13 @@ Namespace Controllers
                         np.teamemail = p.teamemail
                         np.teamphone = p.teamphone
                         np.teamleadername = p.teamleadername
-                        If Not rosterdata Is Nothing Then
-                            np.teamroster = rosterdata
-                            np.teamrosterext = fileext
-                        End If
+                        'If Not rosterdata Is Nothing Then
+                        '    np.teamroster = rosterdata
+                        '    np.teamrosterext = fileext
+                        'End If
+                        np.teamrosterstr = p.teamrosterStr
+                        np.teamcolor = p.teamcolor
+                        np.gipedo = p.gipedo
                         np.CreatedBy = User.Identity.Name
                         np.CreationDate = Now()
                         np.EditBy = User.Identity.Name
@@ -122,9 +129,12 @@ Namespace Controllers
                 np.teamname = p.teamname
                 np.teamemail = p.teamemail
                 np.teamphone = p.teamphone
-                np.teamroster = p.teamroster
+                'np.teamroster = p.teamroster
                 np.teamleadername = p.teamleadername
-                np.teamrosterext = p.teamrosterext
+                'np.teamrosterext = p.teamrosterext
+                'np.teamrosterStr = p.teamrosterstr
+                'np.teamcolor = p.teamcolor
+                'np.gipedo = p.gipedo
                 np.createdby = p.CreatedBy
                 np.creationdate = p.CreationDate
                 np.editby = p.EditBy
