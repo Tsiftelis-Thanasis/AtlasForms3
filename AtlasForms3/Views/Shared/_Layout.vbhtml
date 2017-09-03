@@ -21,6 +21,11 @@
 
     Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
 
+
+    Dim u As New Utils
+    Dim oGetSimplePosts = u.GetSimplePosts(10, Nothing, 1, Nothing)
+    Dim oGetdiorganwseis = u.Getdiorganwseis()
+
 End code
 
 
@@ -87,7 +92,8 @@ End code
             <div class="wrapper">
                 <nav class="kopa-main-nav">
                     <div class="kopa-logo">
-                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>
+                        @*<a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>*@
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/atlaslogobig_ok.png" alt="logo" style="height:60px;"></a>                        
                     </div>
 
                     <ul class="main-menu sf-menu">
@@ -99,14 +105,26 @@ End code
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
-                            <ul class="sub-menu" id="diorganwseiulid"> </ul>
+                            <ul class="sub-menu" id="diorganwseiulid">
+                                @code
+                                    For Each g In oGetdiorganwseis
+                                        @<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
+                                    Next
+                                End Code                                                                       
+                            </ul>
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsid">
+                                
+                                @code
+                                    For Each g In oGetSimplePosts
+                                        @<li><a href="/Posts/Details/@g.Id">@g.PostTitle</a></li>
+                                    Next
+                                End Code
+
                             </ul>
                         </li>
-
 
                         <li class="current-menu-item">
                             <a><span>εγγραφες </span></a>
@@ -120,6 +138,10 @@ End code
                             </ul>
                         </li>
                         
+                        <li class="current-menu-item">
+                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
+                        </li>
+
                         @If User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
                                 @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
@@ -141,11 +163,24 @@ End code
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
-                            <ul class="sub-menu" id="diorganwseiulidmobile"> </ul>
+                            <ul class="sub-menu" id="diorganwseiulidmobile">
+
+                                @code
+                                    For Each g In oGetdiorganwseis
+                                        @<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
+                                    Next
+                                End Code                        
+                            </ul>
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
-                            <ul class="sub-menu" id="diorgarxhpostsidmobile"></ul>
+                            <ul class="sub-menu" id="diorgarxhpostsidmobile">
+                                @code
+                                    For Each g In oGetSimplePosts
+                                        @<li><a href="/Posts/Details/@g.Id">@g.PostTitle</a></li>
+                                    Next
+                                End Code
+                            </ul>
                         </li>
 
                         <li class="current-menu-item">
@@ -158,6 +193,10 @@ End code
                                     <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li class="current-menu-item">
+                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>                            
                         </li>
 
                         @if User.Identity.IsAuthenticated Then
@@ -406,7 +445,7 @@ End code
     }
 
 
-    // get diorganwtria arxh arthra
+    @*// get diorganwtria arxh arthra
     function GetDiorganwtria() {
 
         return $.ajax({
@@ -435,9 +474,9 @@ End code
             }
         });
 
-    }
+    }*@
 
-    function GetDiorganwseis() {
+    @*function GetDiorganwseis() {
       // get diorganwseis
       return  $.ajax({
             type: "POST",
@@ -465,7 +504,7 @@ End code
                 alert(result.status + ' ' + result.statusText);
             }
         });
-    }
+    }*@
 
     $(document).ready(function () {
 
@@ -479,14 +518,15 @@ End code
              })
         ;
 
-        var newPromise = $.Deferred();
-        $.when(newPromise).done(function () {
-            GetDiorganwtria();
-        });
-        newPromise.then(function () {
-            GetDiorganwseis();
-        });
-        newPromise.resolve();
+        //var newPromise = $.Deferred();
+        //$.when(newPromise).done(function () {
+        //    GetDiorganwseis();
+            //GetDiorganwtria();
+        //});
+        //newPromise.then(function () {
+            
+        //});
+        //newPromise.resolve();
 
     });
 

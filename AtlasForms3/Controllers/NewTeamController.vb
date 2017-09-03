@@ -10,6 +10,7 @@ Namespace Controllers
 
 
         ' GET: Newteam
+        <Authorize(Roles:="Admins")>
         Function Index() As ActionResult
             Return View()
         End Function
@@ -114,7 +115,7 @@ Namespace Controllers
             End Try
         End Function
 
-
+        <Authorize(Roles:="Admins")>
         Function Delete(ByVal id As Integer) As ActionResult
 
             If id > 0 Then
@@ -151,6 +152,7 @@ Namespace Controllers
 
         ' POST: Newteam/Delete/5
         <HttpPost()>
+        <Authorize(Roles:="Admins")>
         Function Delete(ByVal id As Integer, ByVal collection As FormCollection) As ActionResult
             Try
 

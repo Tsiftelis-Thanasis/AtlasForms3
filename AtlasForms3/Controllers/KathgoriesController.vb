@@ -161,23 +161,6 @@ Public Class KathgoriesController
 
 
 
-    '' GET: /Profile/Details/5
-    'Function Details(ByVal id As Integer) As ActionResult
-
-    '    Dim q = (From t In pdb.BlogKathgoriesTable
-    '             Where t.Id = id
-    '             Select t).First
-
-    '    Dim t1 As New Kathgories
-    '    t1.Id = q.Id
-    '    t1.kathgorianame = q.KathgoriaName
-    '    t1.ActiveKathgoria = q.ActiveKathgoria
-
-    '    Return View(t1)
-
-    'End Function
-
-
 End Class
 
 

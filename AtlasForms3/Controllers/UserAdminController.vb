@@ -46,6 +46,7 @@ Public Class UsersAdminController
 
     '
     ' GET: /Users/
+    <Authorize(Roles:="Admins")>
     Public Async Function Index() As Task(Of ActionResult)
         Return View(Await UserManager.Users.ToListAsync())
     End Function

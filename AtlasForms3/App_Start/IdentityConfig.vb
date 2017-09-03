@@ -15,7 +15,7 @@ Public Class EmailService
     Public Async Function SendAsync(message As IdentityMessage) As Task Implements IIdentityMessageService.SendAsync
 
         Dim ha As New Utils
-        Await ha.sendEmailsync(message.Destination, message.Subject, message.Body)
+        Await ha.sendEmailsync(message.Destination, message.Subject, message.Body, False)
 
     End Function
 End Class

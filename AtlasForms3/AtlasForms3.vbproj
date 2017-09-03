@@ -602,6 +602,7 @@
     <Content Include="Content\images\3.png" />
     <Content Include="Content\images\apple-touch-icon-114x114.png" />
     <Content Include="Content\images\apple-touch-icon.png" />
+    <Content Include="Content\images\atlaslogobig_ok.png" />
     <Content Include="Content\images\atlassportwear.png" />
     <Content Include="Content\images\atlastop10.PNG" />
     <Content Include="Content\images\bg-top-2.png" />

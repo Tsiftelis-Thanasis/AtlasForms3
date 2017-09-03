@@ -9,7 +9,9 @@ Namespace Controllers
 
         Private pdb As New AtlasBlogEntities
 
+
         ' GET: NewPlayer
+        <Authorize(Roles:="Admins")>
         Function Index() As ActionResult
             Return View()
         End Function
@@ -91,55 +93,9 @@ Namespace Controllers
             End Try
         End Function
 
-        '' GET: NewPlayer/Edit/5
-        'Function Edit(ByVal id As Integer) As ActionResult
-        '    Return View()
-        'End Function
-
-        '' POST: NewPlayer/Edit/5
-        '<HttpPost()>
-        'Function Edit(ByVal id As Integer, ByVal p As NewPlayer) As ActionResult
-        '    Try
-
-        '        If ModelState.IsValid Then
-
-        '            Try
-
-        '                Dim ep = pdb.BlogNewPlayer.Find(p.Id)
-        '                ep.playername = p.playername
-        '                ep.playeremail = p.playeremail
-        '                ep.playerphone = p.playerphone
-        '                ep.playerbirthdate = p.playerbirthdate
-        '                ep.playerheight = p.playerheight
-        '                ep.playerposition = p.playerposition
-        '                ep.CreatedBy = User.Identity.Name
-        '                ep.CreationDate = Now()
-        '                ep.EditBy = User.Identity.Name
-        '                ep.EditDate = Now()
-        '                pdb.SaveChanges()
-
-        '                Return RedirectToAction("Details", "NewPlayer")
-
-        '            Catch ex As Exception
-        '                ModelState.AddModelError("error_msg", ex.Message)
-        '                Return View(p)
-        '            End Try
-
-
-        '        Else
-        '            ModelState.AddModelError("error_msg", "error with model")
-        '            Return View(p)
-
-        '        End If
-
-        '        Return RedirectToAction("Details")
-
-        '    Catch
-        '        Return View()
-        '    End Try
-        'End Function
 
         ' GET: NewPlayer/Delete/5
+        <Authorize(Roles:="Admins")>
         Function Delete(ByVal id As Integer) As ActionResult
 
             If id > 0 Then
@@ -171,7 +127,9 @@ Namespace Controllers
 
         End Function
 
+
         ' POST: NewPlayer/Delete/5
+        <Authorize(Roles:="Admins")>
         <HttpPost()>
         Function Delete(ByVal id As Integer, ByVal collection As FormCollection) As ActionResult
             Try
@@ -194,8 +152,6 @@ Namespace Controllers
                 Return View()
             End Try
         End Function
-
-
 
 
         Function GetNewPlayers() As JsonResult

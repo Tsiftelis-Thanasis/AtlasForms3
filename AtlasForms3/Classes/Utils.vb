@@ -10,6 +10,11 @@ Imports System.Drawing.Drawing2D
 Public Class Utils
 
 
+    Private pdb As New AtlasBlogEntities
+    Private pdb2 As New AtlasStatisticsEntities
+
+
+
     Public Sub resizepostimages()
 
         Dim teamsfolder As String = HttpContext.Current.Server.MapPath("~/resizedimages/")
@@ -122,20 +127,11 @@ Public Class Utils
 
     Public Async Function sendEmailsync(ByVal useremailaddress As String,
                                         ByVal subject As String,
-                                         ByVal body As String) As Task
+                                         ByVal body As String,
+                                         ByVal copytome As Boolean) As Task
 
 
         Dim fromAddress = New MailAddress("atlassupport@atlasbasket.gr", "Support @ atlas basket")
-
-        'Dim smtp = New SmtpClient() With {
-        '    .Host = "webmail.atlasstatistics.gr",
-        '    .Port = 465,
-        '    .DeliveryMethod = SmtpDeliveryMethod.Network,
-        '    .EnableSsl = True,
-        '    .UseDefaultCredentials = False,
-        '     .Credentials = New NetworkCredential("atlassupport@atlasstatistics.gr", "rAv84*8c")
-        '}
-
 
         Dim smtp = New SmtpClient() With {
              .Host = "mail.yourideas.gr",
@@ -147,6 +143,9 @@ Public Class Utils
 
         Dim message As New MailMessage()
         message.From = fromAddress
+        If copytome Then
+            message.CC.Add(useremailaddress)
+        End If
         message.Subject = subject
         message.Body = body
         message.IsBodyHtml = True
@@ -161,5 +160,127 @@ Public Class Utils
 
 
     End Function
+
+
+
+    Public Async Function sendContactformEmailAsync(ByVal fromuser As String,
+                                                    ByVal fromemail As String,
+                                    ByVal subject As String,
+                                        ByVal body As String,
+                                        ByVal copytome As Boolean) As Task
+
+        Try
+            Dim fromAddress = New MailAddress(fromemail, fromuser)
+
+            Dim smtp = New SmtpClient() With {
+             .Host = "mail.yourideas.gr",
+            .Port = 25,
+            .DeliveryMethod = SmtpDeliveryMethod.Network,
+            .UseDefaultCredentials = False,
+            .Credentials = New NetworkCredential("admin@yourideas.gr", "aayi2004!")
+        }
+
+            Dim message As New MailMessage()
+
+
+
+
+            message.From = fromAddress
+            If copytome Then
+                message.CC.Add(fromemail)
+            End If
+            message.Subject = subject
+            message.Body = body
+            message.IsBodyHtml = True
+            message.To.Add("ATLASBASKETBALLTEAM@GMAIL.COM")
+
+            Await smtp.SendMailAsync(message)
+
+        Catch ex As Exception
+
+        End Try
+
+
+    End Function
+
+
+    <Compress>
+    Public Function GetSimplePosts(ByVal nCount As Integer, ByVal AtlasKathgoria As Integer?, ByVal k As Integer?, ByVal k2 As Integer?) As List(Of Object)
+
+        If AtlasKathgoria Is Nothing Then AtlasKathgoria = 0
+        If k Is Nothing Then k = 3 'Teleutaia nea!
+        If k2 Is Nothing Then k2 = 11 'Teleutaia nea omilou!
+
+
+        If AtlasKathgoria = 0 Then
+
+            Dim q = (From p In pdb.BlogPostsTable
+                     Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                     Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                     Where p.Activepost = True And (p1.KathgoriaId = k And p1.IsKathgoria = True)
+                     Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, KatName = p2.KathgoriaName).Take(nCount).
+                            AsEnumerable().[Select](
+                            Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .KatName = o.KatName}).ToList
+
+            Return q.Cast(Of Object).ToList
+
+            'Dim dtm As New DataTableModel
+            'If q IsNot Nothing Then
+            '    dtm.data = q.Cast(Of Object).ToList
+            'End If
+            'dtm.draw = 0
+            'dtm.recordsTotal = dtm.data.Count
+            'dtm.recordsFiltered = dtm.recordsTotal
+
+            'Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+        Else
+
+            Dim kl = (From o In pdb2.KathgoriesTable
+                      Where o.Id = AtlasKathgoria
+                      Select o.Id).ToList
+
+            Dim q = (From p In pdb.BlogPostsTable
+                     Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                     Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                     Join klist In kl On klist Equals p1.AtlasKathgoriaId
+                     Where p.Activepost = True And (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
+                     Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, KatName = p2.KathgoriaName).Take(nCount).
+                            AsEnumerable().[Select](
+                            Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .KatName = o.KatName}).ToList
+
+            'Dim dtm As New DataTableModel
+            'If q IsNot Nothing Then
+            '    dtm.data = q.Cast(Of Object).ToList
+            'End If
+            'dtm.draw = 0
+            'dtm.recordsTotal = dtm.data.Count
+            'dtm.recordsFiltered = dtm.recordsTotal
+
+            'Return json(dtm, JsonRequestBehavior.AllowGet)
+
+            Return q.Cast(Of Object).ToList
+
+        End If
+
+    End Function
+
+
+    <Compress>
+    Public Function Getdiorganwseis() As List(Of Object)
+
+        Dim kat = (From d In pdb2.DiorganwshTable
+                   Join s In pdb2.SeasonTable On s.Id Equals d.Seasonid
+                   Where s.ActiveSeason = True
+                   Order By d.DiorganwshName
+                   Select d.DiorganwshName, d.Id).ToList
+
+        Return kat.Cast(Of Object).ToList
+
+        'Return Json(kat, JsonRequestBehavior.AllowGet)
+
+
+    End Function
+
 
 End Class

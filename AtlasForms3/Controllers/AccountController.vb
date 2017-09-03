@@ -249,7 +249,7 @@ Public Class AccountController
             Dim callbackUrl = Url.Action("ResetPassword", "Account", New With {.userId = user.Id, .code = code}, protocol:=Request.Url.Scheme)
 
             Dim e As New Utils
-            Await e.sendEmailsync(user.Email, "Reset Password", "Please reset your password by clicking <a href=""" & callbackUrl & """>here</a>")
+            Await e.sendEmailsync(user.Email, "Reset Password", "Please reset your password by clicking <a href=""" & callbackUrl & """>here</a>", False)
 
             Return RedirectToAction("ForgotPasswordConfirmation", "Account")
 
@@ -474,7 +474,7 @@ Public Class AccountController
         }, protocol:=Request.Url.Scheme)
 
         Dim e As New Utils
-        Await e.sendEmailsync(userEmail, subject, "Please confirm your account by clicking <a href=""" + callbackUrl + """>here</a>")
+        Await e.sendEmailsync(userEmail, subject, "Please confirm your account by clicking <a href=""" + callbackUrl + """>here</a>", False)
 
         Return callbackUrl
 

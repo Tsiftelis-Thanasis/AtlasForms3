@@ -11,6 +11,14 @@ Imports System.Drawing.Drawing2D
 <Compress>
 Public Class HomeController
     Inherits System.Web.Mvc.Controller
+
+
+    Private pdb As New AtlasStatisticsEntities
+
+    Private pdb_blog As New AtlasBlogEntities
+
+
+
     Function Index(Optional ak As Integer = 0) As ActionResult
 
         ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, Nothing, Nothing, 1, 1).Data.data
@@ -31,16 +39,43 @@ Public Class HomeController
 
     End Function
 
-    Private pdb As New AtlasStatisticsEntities
-
-    Private pdb_blog As New AtlasBlogEntities
-
     <Authorize(Roles:="Admins")>
     Function Panel() As ActionResult
         ViewData("Message") = "Control panel page."
 
         Return View()
     End Function
+
+
+    Function Contact() As ActionResult
+
+        Return View()
+
+    End Function
+
+
+    ' POST: Newteam/Create
+    <HttpPost()>
+    Public Async Function Contact(ByVal name As String, ByVal email As String, ByVal subj As String, ByVal body As String, ByVal copy As Boolean) As Threading.Tasks.Task(Of ActionResult)
+
+        If name = "" Or email = "" Or subj = "" Or body = "" Then
+
+            ModelState.AddModelError("", "Πρέπει να συμπληρώσετε το oνοματεπώνυμο, το email, το θέμα και το κείμενο")
+            Return View()
+
+        End If
+
+        Dim ha As New Utils
+
+        Await ha.sendContactformEmailAsync(name, email, subj, body, copy)
+
+        'ModelState.AddModelError("", "Έγινε η αποστολή!")
+        'Return View()
+
+        Return RedirectToAction("Index", "Home")
+
+    End Function
+
 
 
 
@@ -177,19 +212,19 @@ Public Class HomeController
 
     End Function
 
-    <Compress>
-    Public Function Getdiorganwseis() As JsonResult
+    '<Compress>
+    'Public Function Getdiorganwseis() As JsonResult
 
-        Dim kat = (From d In pdb.DiorganwshTable
-                   Join s In pdb.SeasonTable On s.Id Equals d.Seasonid
-                   Where s.ActiveSeason = True
-                   Order By d.DiorganwshName
-                   Select d.DiorganwshName, d.Id).ToList
+    '    Dim kat = (From d In pdb.DiorganwshTable
+    '               Join s In pdb.SeasonTable On s.Id Equals d.Seasonid
+    '               Where s.ActiveSeason = True
+    '               Order By d.DiorganwshName
+    '               Select d.DiorganwshName, d.Id).ToList
 
-        Return Json(kat, JsonRequestBehavior.AllowGet)
+    '    Return Json(kat, JsonRequestBehavior.AllowGet)
 
 
-    End Function
+    'End Function
 
     <Compress>
     Public Function GetOmiloiByDiorganwsh(ByVal dId As Integer) As JsonResult
@@ -343,8 +378,7 @@ Public Class HomeController
 
     End Function
 
-
-
+    <Authorize(Roles:="Admins")>
     Public Sub Resizeimages()
 
         Dim a As New Utils
@@ -361,7 +395,7 @@ Public Class HomeController
 
 
 
-        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "Please confirm your account by clicking <a href=""http://atlasbasket2.gr.144-76-99-45.my-website-preview.com/Posts/?ak=49&k=11"">here</a>")
+        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "Please confirm your account by clicking <a href=""http://atlasbasket2.gr.144-76-99-45.my-website-preview.com/Posts/?ak=49&k=11"">here</a>", False)
 
 
     End Function

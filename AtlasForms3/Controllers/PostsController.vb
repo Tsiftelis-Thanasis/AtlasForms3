@@ -25,7 +25,6 @@ Namespace Controllers
         End Function
 
 
-
         ' GET: Posts
         <Authorize(Roles:="Admins")>
         Function All() As ActionResult
