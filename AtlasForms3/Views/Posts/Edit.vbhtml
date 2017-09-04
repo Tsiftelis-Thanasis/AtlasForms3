@@ -67,7 +67,7 @@
                  Join o In pdb2.OmilosTable On k.Omilosid Equals o.Id
                  Join d In pdb2.DiorganwshTable On d.Id Equals o.Diorganwshid
                  Join s In pdb2.SeasonTable On s.Id Equals d.Seasonid
-                 Where s.ActiveSeason = True And o.Id = omid
+                 Where s.ActiveSeason = True
                  Select k.Id, KathgoriaName = k.KathgoriaName).OrderBy(Function(p) p.KathgoriaName).ToList
 
     For Each it In list3
@@ -327,7 +327,7 @@ content_css: [
 
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("GetKathgories", "Posts")',
+                    url: '@Url.Action("GetKathgories", "Home")',
                     data: { id: sid },
                     success: function (data) {
                         var items = [];

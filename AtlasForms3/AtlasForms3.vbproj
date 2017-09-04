@@ -632,40 +632,6 @@
     <Content Include="Content\nn.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\owl.theme.css" />
-    <Content Include="Content\postimages\082017\1.png" />
-    <Content Include="Content\postimages\082017\10.png" />
-    <Content Include="Content\postimages\082017\11.png" />
-    <Content Include="Content\postimages\082017\12.png" />
-    <Content Include="Content\postimages\082017\17.png" />
-    <Content Include="Content\postimages\082017\18.png" />
-    <Content Include="Content\postimages\082017\19.png" />
-    <Content Include="Content\postimages\082017\2.png" />
-    <Content Include="Content\postimages\082017\20.png" />
-    <Content Include="Content\postimages\082017\21.png" />
-    <Content Include="Content\postimages\082017\22.png" />
-    <Content Include="Content\postimages\082017\3.png" />
-    <Content Include="Content\postimages\082017\4.png" />
-    <Content Include="Content\postimages\082017\5.png" />
-    <Content Include="Content\postimages\082017\6.png" />
-    <Content Include="Content\postimages\082017\9.png" />
-    <Content Include="Content\postimages\82017\00000000-0000-0000-0000-000000000000.png" />
-    <Content Include="Content\postimages\82017\00000000-0000-0000-0000-000000000000_medium.png" />
-    <Content Include="Content\postimages\82017\00000000-0000-0000-0000-000000000000_small.png" />
-    <Content Include="Content\postimages\82017\099df06c-7566-4140-b533-f687f2f1a72a.png" />
-    <Content Include="Content\postimages\82017\535372e5-509b-4842-ab9b-c0191a7e8604.png" />
-    <Content Include="Content\postimages\82017\cb15bbfa-95d2-4e16-850b-c6995f4a6631.png" />
-    <Content Include="Content\postimages\82017\cb15bbfa-95d2-4e16-850b-c6995f4a6631_medium.png" />
-    <Content Include="Content\postimages\82017\cb15bbfa-95d2-4e16-850b-c6995f4a6631_small.png" />
-    <Content Include="Content\postimages\92017\08873920-35fa-450c-b151-e00a74bdd0ca.png" />
-    <Content Include="Content\postimages\92017\3a3c34f9-49d2-451d-8ad7-f89e16f1cbe1.png" />
-    <Content Include="Content\postimages\92017\86b69a52-2003-40f6-968c-3d5fdbf316f7.png" />
-    <Content Include="Content\postimages\92017\86b69a52-2003-40f6-968c-3d5fdbf316f7_medium.png" />
-    <Content Include="Content\postimages\92017\86b69a52-2003-40f6-968c-3d5fdbf316f7_small.png" />
-    <Content Include="Content\postimages\92017\96e0d02b-1279-428a-b839-4cfa038c9c1e.png" />
-    <Content Include="Content\postimages\92017\ba1a40bf-3d2b-4d4f-9a3f-9626aa3215fe.png" />
-    <Content Include="Content\postimages\92017\f3eac9ca-5e22-42c3-a740-96a358392ce9.png" />
-    <Content Include="Content\postimages\92017\f3eac9ca-5e22-42c3-a740-96a358392ce9_medium.png" />
-    <Content Include="Content\postimages\92017\f3eac9ca-5e22-42c3-a740-96a358392ce9_small.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\superfish.css" />
@@ -1125,7 +1091,9 @@
     <Content Include="Views\Shared\_Layout.vbhtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\postimages\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

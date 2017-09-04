@@ -293,6 +293,19 @@ Namespace Controllers
                     editpost.PostSummary = p1.PostSummary
                     If Not logodata Is Nothing Then
 
+                        Dim oldimage1 As String = ""
+                        Dim oldimage2 As String = ""
+                        Dim oldimage3 As String = ""
+
+                        If editpost.PostPhotoStr.ToString <> "" Then
+                            oldimage1 = editpost.PostPhotoStr.ToString
+                        End If
+                        If editpost.PostPhoto160_160Str.ToString <> "" Then
+                            oldimage2 = editpost.PostPhoto160_160Str.ToString
+                        End If
+                        If editpost.PostPhoto30_30Str.ToString <> "" Then
+                            oldimage3 = editpost.PostPhoto30_30Str.ToString
+                        End If
 
                         Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(logodata, False)
                             Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
@@ -319,6 +332,16 @@ Namespace Controllers
                         editpost.PostPhotoStr = imageStr
                         editpost.PostPhoto160_160Str = imageStr1
                         editpost.PostPhoto30_30Str = imageStr2
+
+                        If oldimage1 <> "" Then
+                            If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(oldimage1)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(oldimage1))
+                        End If
+                        If oldimage2 <> "" Then
+                            If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(oldimage2)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(oldimage2))
+                        End If
+                        If oldimage3 <> "" Then
+                            If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(oldimage3)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(oldimage3))
+                        End If
 
                     End If
 
@@ -438,6 +461,16 @@ Namespace Controllers
                         pdb.SaveChanges()
                     Next
 
+                    If p.PostPhotoStr.ToString <> "" Then
+                        If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhotoStr.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhotoStr.ToString))
+                    End If
+                    If p.PostPhoto160_160Str.ToString <> "" Then
+                        If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto160_160Str.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto160_160Str.ToString))
+                    End If
+                    If p.PostPhoto30_30Str.ToString <> "" Then
+                        If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto30_30Str.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto30_30Str.ToString))
+                    End If
+
                     pdb.BlogPostsTable.Remove(p)
                     pdb.SaveChanges()
 
@@ -446,7 +479,7 @@ Namespace Controllers
                 Return RedirectToAction("All", "Posts")
 
             Catch ex As Exception
-                Return View()
+                Return View(collection)
             End Try
         End Function
 

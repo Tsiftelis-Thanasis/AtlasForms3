@@ -21,10 +21,18 @@ Public Class HomeController
 
     Function Index(Optional ak As Integer = 0) As ActionResult
 
-        ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, Nothing, Nothing, 1, 1).Data.data
+        '3   Γενικά Νέα
+        '11  Νέα
+        '12  Ομάδες
+        '13  Τιμωρίες
+        '14  Πρόγραμμα
+        '15  Βαθμολογίες
+        '17  ΔΗΛΩΣΕΙΣ
+
+        ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, {6, 7, 16}, Nothing, 1, 1).Data.data
         ViewBag.LastGamesList = Getlastgames(ak).Data
-        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing).Data.data
-        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing).Data.data
+        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13, 14, 17}).Data.data
+        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, Nothing).Data.data
 
         ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
         ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
@@ -402,12 +410,12 @@ Public Class HomeController
 
 
     <Compress>
-    Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?, ByVal k As Integer?, ByVal k2 As Integer?,
+    Public Function GetLastNewsByCategory(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?, ByVal k() As Integer?, ByVal k2() As Integer?,
                                           ByVal withphoto As Integer?, ByVal withvideo As Integer?) As JsonResult
 
         If atlaskathgoria Is Nothing Then atlaskathgoria = 0
-        If k Is Nothing Then k = 3 'Teleutaia nea!
-        If k2 Is Nothing Then k2 = 11 'Teleutaia nea omilou!
+        If k Is Nothing Then k = {3} 'Teleutaia nea!
+        If k2 Is Nothing Then k2 = {11} 'Teleutaia nea omilou!
 
         If withphoto Is Nothing Then withphoto = 0
         If withvideo Is Nothing Then withvideo = 0
@@ -418,7 +426,7 @@ Public Class HomeController
             Dim q = (From p In pdb_blog.BlogPostsTable
                      Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                      Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
-                     Where p.Activepost = True And (p1.KathgoriaId = k And p1.IsKathgoria = True) And
+                     Where p.Activepost = True And (k.Contains(p1.KathgoriaId) And p1.IsKathgoria = True) And
                           If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
                             If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
@@ -451,7 +459,7 @@ Public Class HomeController
                      Join p1 In pdb_blog.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                      Join p2 In pdb_blog.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                      Join klist In kl On klist Equals p1.AtlasKathgoriaId
-                     Where p.Activepost = True And (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True) And
+                     Where p.Activepost = True And (k.Contains(p1.KathgoriaId) And p1.IsAtlasKathgoria = True) And
                           If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
                          If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
@@ -482,7 +490,7 @@ Public Class HomeController
 
     <Compress>
     Function GetLastNews(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?,
-                         ByVal withphoto As Integer?, ByVal withvideo As Integer?) As JsonResult
+                         ByVal withphoto As Integer?, ByVal withvideo As Integer?, ByVal k() As Integer?) As JsonResult
 
         If atlaskathgoria Is Nothing Then atlaskathgoria = 0
         If withphoto Is Nothing Then withphoto = 0
@@ -492,57 +500,85 @@ Public Class HomeController
                   Where o.Id = atlaskathgoria
                   Select o.Id).ToList
 
-        If kl.Count > 0 Then
+        '1   Διοργανώτρια Αρχή -> oxi
+        '3   Γενικά Νέα
+        '6   MVP
+        '7   Καλύτερες φάσεις
+        '11  Νέα
+        '12  Ομάδες -> oxi
+        '13  Τιμωρίες 
+        '14  Πρόγραμμα 
+        '15  Βαθμολογίες -> oxi
+        '16  Τοπ 10
+        '17  ΔΗΛΩΣΕΙΣ
 
-            Dim q = (From p In pdb_blog.BlogPostsTable
-                     Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
-                     Join klist In kl On klist Equals pk.AtlasKathgoriaId
-                     Where p.Activepost = True And
-                         If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
-                         If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
-                     Select p
-                     Order By p.Id Descending
-                         ).Take(nCount).AsEnumerable().[Select](
-                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
-                    .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
-                    .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
+
+        If k Is Nothing Then k = {3, 6, 7, 11, 13, 14, 16, 17} 'Teleutaia nea!
+
+        Try
+
+
+            If kl.Count > 0 Then
+
+                Dim q = (From p In pdb_blog.BlogPostsTable
+                         Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
+                         Join klist In kl On klist Equals pk.AtlasKathgoriaId
+                         Where p.Activepost = True And
+                             If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
+                             If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1) And
+                            k.Contains(pk.KathgoriaId)
+                         Select p
+                         Order By p.Id Descending
+                             ).Take(nCount).AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                        .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
+                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
+                        }).ToList()
+
+
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
+
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+            Else
+
+                Dim q = (From p In pdb_blog.BlogPostsTable
+                         Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
+                         Where p.Activepost = True And
+                             If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
+                             If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1) And
+                          k.Contains(If(pk.KathgoriaId, 0))
+                         Select p
+                         Order By p.Id Descending
+                             ).Take(nCount).AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                        .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
+                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
                     }).ToList()
 
-            Dim dtm As New DataTableModel
-            If q IsNot Nothing Then
-                dtm.data = q.Cast(Of Object).ToList
+
+
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
+
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
             End If
-            dtm.draw = 0
-            dtm.recordsTotal = dtm.data.Count
-            dtm.recordsFiltered = dtm.recordsTotal
 
-            Return Json(dtm, JsonRequestBehavior.AllowGet)
+        Catch ex As Exception
 
-        Else
-
-            Dim q = (From p In pdb_blog.BlogPostsTable
-                     Where p.Activepost = True And
-                         If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
-                         If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
-                     Select p
-                     Order By p.Id Descending
-                         ).Take(nCount).AsEnumerable().[Select](
-                    Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
-                    .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
-                    .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
-                }).ToList()
-
-            Dim dtm As New DataTableModel
-            If q IsNot Nothing Then
-                dtm.data = q.Cast(Of Object).ToList
-            End If
-            dtm.draw = 0
-            dtm.recordsTotal = dtm.data.Count
-            dtm.recordsFiltered = dtm.recordsTotal
-
-            Return Json(dtm, JsonRequestBehavior.AllowGet)
-
-        End If
+        End Try
 
     End Function
 

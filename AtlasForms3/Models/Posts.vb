@@ -55,7 +55,7 @@ Public Class Posts
     Public Property Statslink As String
 
     <Display(Name:="Αγωνιστική")>
-    Public Property Agonistiki As Integer
+    Public Property Agonistiki As Integer?
 
 
     <Display(Name:="Δημιουργία απο")>

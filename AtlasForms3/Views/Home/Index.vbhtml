@@ -133,8 +133,8 @@ End Code
 
                                     @<div Class="item">                        
                                 <article class="entry-item">                            
-                                 <div class="entry-thumb">
-                                     <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:520px;" alt=""></a> 
+                                 <div class="entry-thumb w3-center">
+                                     <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:480px;width:1024px;" alt=""></a> 
                                      <div class="thumb-hover"></div> 
                                 </div> 
                                  <div class="entry-content">                                    
@@ -158,15 +158,15 @@ End Code
                         <div Class="kopa-main-col">
                             <div Class="widget-area-2">
                                 <div Class="widget kopa-tab-sync-carousel-widget">
-                                    <h3 Class="widget-title style1">τοπ 10</h3>
+                                    <h3 Class="widget-title style1">τοπ 10 και δηλωσεις</h3>
                                     <div Class="widget kopa-sync-carousel-2-widget">
                                         <div Class="owl-carousel sync3" id="watchsync3">
                                             @code
                                                 For Each o In oLastNewsList
                                                     @<div Class="item">
                                                         <article class="entry-item video-post">
-                                                            <div class="entry-thumb">
-                                                                <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:315px;"></a>
+                                                            <div class="entry-thumb w3-center">
+                                                                <a href="/Posts/Details/@o.Id" ><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
                                                                 <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
                                                             </div>
                                                             <div class="entry-content">
