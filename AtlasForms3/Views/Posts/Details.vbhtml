@@ -92,6 +92,13 @@
 
     Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
 
+    Dim agwnistikistr As String = ""
+    If Model.Agonistiki > 0 Then
+        agwnistikistr = (From p1 In pdb2.AgwnistikesTable
+                         Where p1.Id = Model.Agonistiki
+                         Select p1.Agwnistiki).FirstOrDefault.ToString
+
+    End If
 
 End Code
 
@@ -193,32 +200,53 @@ End Code
                             End If
                         End Code
 
+
                         @code
-                            If not Model.PostSummary Is Nothing Then
-                                If Model.PostSummary <> "" Then
+                            If agwnistikistr <> "" Then
                                 @<div Class="row form-horizontal">
                                     <div Class="form-group">
-                                        <div Class="col-md-12"> 
-                                            <em>
-                                                @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
-                                            </em>
+                                        <div Class="col-md-12 w3-center">
+                                            Αγωνιστική: 
+                                            <b>
+                                                <em>
+                                                    @agwnistikistr
+                                                </em>
+                                            </b>
                                         </div>
                                     </div>
                                 </div>
+
+                            End If
+                        End Code         
+
+                        @code
+                            If not Model.PostSummary Is Nothing Then
+                                If Model.PostSummary <> "" Then
+                            @<div Class="row form-horizontal">
+                                <div Class="form-group">
+                                    <div Class="col-md-12"> 
+                                        <em>
+                                            @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
+                                        </em>
+                                    </div>
+                                </div>
+                            </div>
                                 End If
                             End If
                         End Code
 
+
+
                         @code
                             If Not Model.PostBody Is Nothing Then
                                 If Model.PostBody <> "" Then
-                                @<div Class="row form-horizontal">
-                                    <div Class="form-group">
-                                        <div Class="col-md-12">
-                                            @Html.Raw(Model.PostBody.ToString)                                            
-                                        </div>
-                                    </div>                  
-                                </div>
+                        @<div Class="row form-horizontal">
+                        <div Class="form-group">
+                            <div Class="col-md-12">
+                                @Html.Raw(Model.PostBody.ToString)                                            
+                            </div>
+                        </div>                  
+                        </div>
                                 End If
                             End If
 
@@ -226,10 +254,10 @@ End Code
 
                         @code
                             If not Model.Statslink Is Nothing Then
-                                If Model.Statslink <> "" Then
+                                If Model.Statslink.ToString <> "" Then
                                 @<p Class="short-des" style="text-align:center">
-                                    <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Html.DisplayFor(Function(model) model.Statslink)">
-                                        <img src="~/Content/images/various/stats.jpg" border="0" />
+                                    <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Model.Statslink">
+                                        <img src="~/Content/images/stats.jpg" border="0" />
                                     </a>
                                 </p>
                                 End If

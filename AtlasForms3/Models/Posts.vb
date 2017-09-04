@@ -54,6 +54,10 @@ Public Class Posts
     <Display(Name:="Στατιστικά")>
     Public Property Statslink As String
 
+    <Display(Name:="Αγωνιστική")>
+    Public Property Agonistiki As Integer
+
+
     <Display(Name:="Δημιουργία απο")>
     Public Property createdby As String
 

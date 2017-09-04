@@ -10,24 +10,12 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class BlogPostsTable
+Partial Public Class AgwnistikesTable
     Public Property Id As Integer
-    Public Property Activepost As Boolean
-    Public Property PostTitle As String
-    Public Property PostSummary As String
-    Public Property PostBody As String
-    Public Property PostPhoto As Byte()
-    Public Property Youtubelink As String
-    Public Property Statslink As String
+    Public Property Agwnistiki As Integer
     Public Property CreationDate As Nullable(Of Date)
     Public Property CreatedBy As String
     Public Property EditDate As Nullable(Of Date)
     Public Property EditBy As String
-    Public Property PostPhoto30_30 As Byte()
-    Public Property PostPhoto160_160 As Byte()
-    Public Property PostPhotoStr As String
-    Public Property PostPhoto30_30Str As String
-    Public Property PostPhoto160_160Str As String
-    Public Property agonistiki As Nullable(Of Integer)
 
 End Class

@@ -20,6 +20,10 @@ Namespace Controllers
             ViewBag.AtlasOmilos = a
             ViewBag.Kathgoria = k
 
+
+            ViewBag.GetTeamsbyKathgoriaList = GetTeamsbyKathgoria(ak).Data.data
+            ViewBag.GetWeeklyGamesList = GetWeeklyGames(Nothing, ak).Data
+
             Return View()
 
         End Function
@@ -52,6 +56,7 @@ Namespace Controllers
                 t1.PostPhotoStr = q.PostPhotoStr
                 t1.PostSummary = q.PostSummary
                 t1.Youtubelink = "https://www.youtube.com/embed/" & q.Youtubelink & "?rel=0"
+                t1.Agonistiki = If(q.agonistiki Is Nothing, 0, q.agonistiki)
                 t1.Statslink = q.Statslink
                 t1.createdby = q.CreatedBy
                 t1.creationdate = q.CreationDate
@@ -151,6 +156,7 @@ Namespace Controllers
                     newpost.PostSummary = p1.PostSummary
                     newpost.Youtubelink = p1.Youtubelink
                     newpost.Statslink = p1.Statslink
+                    newpost.agonistiki = p1.Agonistiki
                     newpost.Activepost = 1
                     newpost.CreatedBy = User.Identity.Name
                     newpost.CreationDate = Now()
@@ -222,6 +228,7 @@ Namespace Controllers
             t1.PostBody = q.PostBody
             t1.PostPhotoStr = q.PostPhotoStr
             t1.Youtubelink = q.Youtubelink
+            t1.Agonistiki = If(q.agonistiki Is Nothing, 0, q.agonistiki)
             t1.Statslink = q.Statslink
             t1.createdby = q.CreatedBy
             t1.creationdate = q.CreationDate
@@ -318,6 +325,7 @@ Namespace Controllers
                     editpost.Youtubelink = p1.Youtubelink
                     editpost.Statslink = p1.Statslink
                     editpost.Activepost = If(p1.Activepost, 1, 0)
+                    editpost.agonistiki = p1.Agonistiki
                     editpost.EditBy = User.Identity.Name
                     editpost.EditDate = Now()
                     pdb.SaveChanges()
@@ -700,6 +708,51 @@ Namespace Controllers
 
         End Function
 
+
+        <Compress>
+        Function GetTeamsbyKathgoria(ByVal kid As Integer) As JsonResult
+
+
+            Dim q = (From t In pdb2.TeamsTable
+                     Join tk In pdb2.TeamsandKathgoriesTable On t.Id Equals tk.TeamId
+                     Join k In pdb2.KathgoriesTable On k.Id Equals tk.KathgoriaId
+                     Join o In pdb2.OmilosTable On o.Id Equals k.Omilosid
+                     Where k.Id = kid
+                     Select Id = t.Id, Teamname = t.TeamName, Teamlogo = t.TeamLogo, k.KathgoriaName, o.OmilosName).
+                         AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .TeamName = o.Teamname, .TeamLogo = If(o.Teamlogo Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.Teamlogo))),
+                        .KathgoriaName = o.KathgoriaName, .OmilosName = o.OmilosName}).ToList
+
+            Dim dtm As New DataTableModel
+            If q IsNot Nothing Then
+                dtm.data = q.Cast(Of Object).ToList
+            End If
+            dtm.draw = 0
+            dtm.recordsTotal = dtm.data.Count
+            dtm.recordsFiltered = dtm.recordsTotal
+
+            Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+
+        End Function
+
+
+
+        <Compress>
+        Public Function GetWeeklyGames(ByVal omid As Integer?, ByVal kid As Integer?) As JsonResult
+
+            If omid Is Nothing Then omid = 0
+            If kid Is Nothing Then kid = 0
+
+            Dim s = (From proc In pdb2.GetWeeklyGames(omid, kid)
+                     Select proc).Take(5).AsEnumerable().[Select](
+                        Function(o) New With {.gameid = o.gameid,
+                            .t1id = o.t1id, .t1logo = If(o.t1logo Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.t1logo))), .t1name = o.t1name, .t1points = o.t1points,
+                            .t2id = o.t2id, .t2logo = If(o.t2logo Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.t2logo))), .t2name = o.t2name, .t2points = o.t2points
+                            }).ToList()
+            Return Json(s, JsonRequestBehavior.AllowGet)
+
+        End Function
 
     End Class
 

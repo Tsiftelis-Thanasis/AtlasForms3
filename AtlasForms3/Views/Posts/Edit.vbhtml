@@ -80,6 +80,21 @@
     Next
 
 
+
+    Dim gList As New List(Of SelectListItem)
+
+    Dim alist = (From p1 In pdb2.AgwnistikesTable
+                 Select p1.Id, p1.Agwnistiki
+                     ).OrderBy(Function(p) p.Agwnistiki).ToList
+
+    For Each it In alist
+        If it.Id = Model.Agonistiki Then
+            gList.Add(New SelectListItem() With {.Selected = True, .Text = it.Agwnistiki, .Value = it.Id})
+        Else
+            gList.Add(New SelectListItem() With {.Selected = False, .Text = it.Agwnistiki, .Value = it.Id})
+        End If
+    Next
+
     Dim imageSrc As String = ""
     'If Model.PostPhoto IsNot Nothing Then
     '    Dim imageBase64 As String = Convert.ToBase64String(Model.PostPhoto)
@@ -161,16 +176,20 @@ End Code
 
                     <div class="row form-horizontal">
                         <div class="form-group">
-                            <label for="title" class="col-md-2 control-label">Youtube link (code) </label>
-                            <div class="col-md-3">
+                            <label for="title" class="col-md-1 control-label">Youtube (code) </label>
+                            <div class="col-md-2">
                                 @Html.TextBoxFor(Function(model) model.Youtubelink, New With {.class = "form-control input-text"})
                             </div>
 
-                            <label for="title" class="col-md-2 control-label">Statistics Link (number) </label>
-                            <div class="col-md-3">
+                            <label for="title" class="col-md-2 control-label">Statistics (number) </label>
+                            <div class="col-md-2">
                                 @Html.TextBoxFor(Function(model) model.Statslink, New With {.class = "form-control input-text"})
                             </div>
 
+                            <label for="title" class="col-md-1 control-label">Αγωνιστική </label>
+                            <div class="col-md-2">
+                                @Html.DropDownList("agonistiki", gList, "Please select...", New With {.id = "agonistiki", .class = "form-control chosen-select"})
+                            </div>
                             <label for="title" class="col-md-1 control-label">Active</label>
                             <div class="col-md-1">
                                 @Html.CheckBoxFor(Function(model) model.Activepost, New With {.class = "form-control input-text"})

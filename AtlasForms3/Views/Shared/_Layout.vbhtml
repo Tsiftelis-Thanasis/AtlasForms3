@@ -335,8 +335,7 @@ End code
                                     '</li>';
 
                             //'<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
-
-
+                            
                             choiceContainer.append(d);
                             appendnewstoOmilos(omilosnaming, this.Id);
 
@@ -518,6 +517,8 @@ End code
              })
         ;
 
+        fillomiloinavbar($("#firstDiorganwshid").val());
+
         //var newPromise = $.Deferred();
         //$.when(newPromise).done(function () {
         //    GetDiorganwseis();
@@ -530,11 +531,11 @@ End code
 
     });
 
-    $(window).on('load', function () {
-        setTimeout(function () {
-            fillomiloinavbar($("#firstDiorganwshid").val());
-        }, 100);
-    });
+    //$(window).on('load', function () {
+    //    setTimeout(function () {
+    //fillomiloinavbar($("#firstDiorganwshid").val());
+    //    }, 100);
+    //});
 
 
 </script>

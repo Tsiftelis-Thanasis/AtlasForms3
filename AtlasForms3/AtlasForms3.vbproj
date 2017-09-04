@@ -240,6 +240,9 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\AgwnistikesTable.vb">
+      <DependentUpon>AtlasStatistics.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Data\AspNetRoles.vb">
       <DependentUpon>AtlasStatistics.tt</DependentUpon>
     </Compile>
@@ -257,6 +260,9 @@
     </Compile>
     <Compile Include="App_Data\BlogNewTeam.vb">
       <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\GetWeeklyGames_Result.vb">
+      <DependentUpon>AtlasStatistics.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />

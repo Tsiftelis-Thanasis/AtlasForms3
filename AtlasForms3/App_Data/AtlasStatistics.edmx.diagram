@@ -24,6 +24,7 @@
         <AssociationConnector Association="atlasModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="atlasModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="atlasModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="atlasModel.AgwnistikesTable" Width="1.5" PointX="5.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

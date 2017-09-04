@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="atlasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'atlas.dbo.AgwnistikesTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AgwnistikesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Agwnistiki" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Agwnistiki" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="EditBy" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -336,6 +350,10 @@
           <Parameter Name="omilos" Type="int" Mode="In" />
           <Parameter Name="kathgoria" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetWeeklyGames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="omid" Type="int" Mode="In" />
+          <Parameter Name="kid" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetWeeklyReportStat1All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="omid" Type="int" Mode="In" />
           <Parameter Name="kid" Type="int" Mode="In" />
@@ -374,6 +392,16 @@
           <EntitySet Name="TeamsandPlayersTable" EntityType="Self.TeamsandPlayersTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeamsStatisticsTable" EntityType="Self.TeamsStatisticsTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeamsTable" EntityType="Self.TeamsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgwnistikesTable" EntityType="Self.AgwnistikesTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AgwnistikesTable].[Id] AS [Id], 
+    [AgwnistikesTable].[Agwnistiki] AS [Agwnistiki], 
+    [AgwnistikesTable].[CreationDate] AS [CreationDate], 
+    [AgwnistikesTable].[CreatedBy] AS [CreatedBy], 
+    [AgwnistikesTable].[EditDate] AS [EditDate], 
+    [AgwnistikesTable].[EditBy] AS [EditBy]
+    FROM [dbo].[AgwnistikesTable] AS [AgwnistikesTable]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -657,6 +685,11 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <FunctionImport Name="GetWeeklyGames" ReturnType="Collection(atlasModel.GetWeeklyGames_Result)">
+            <Parameter Name="omid" Mode="In" Type="Int32" />
+            <Parameter Name="kid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="AgwnistikesTable" EntityType="atlasModel.AgwnistikesTable" />
         </EntityContainer>
         <ComplexType Name="getallteamsrankings_Result">
           <Property Type="Int64" Name="ncount" Nullable="false" />
@@ -832,6 +865,29 @@
           <End Type="atlasModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
           <End Type="atlasModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
+        <ComplexType Name="GetWeeklyGames_Result">
+          <Property Type="Int32" Name="gameid" Nullable="false" />
+          <Property Type="Int32" Name="t1id" Nullable="false" />
+          <Property Type="String" Name="t1name" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="t1logo" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="t1points" Nullable="true" />
+          <Property Type="Int32" Name="t2id" Nullable="false" />
+          <Property Type="String" Name="t2name" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="t2logo" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="t2points" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="AgwnistikesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Agwnistiki" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Agwnistiki" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1227,6 +1283,33 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetWeeklyGames" FunctionName="atlasModel.Store.GetWeeklyGames">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="atlasModel.GetWeeklyGames_Result">
+                <ScalarProperty Name="gameid" ColumnName="gameid" />
+                <ScalarProperty Name="t1id" ColumnName="t1id" />
+                <ScalarProperty Name="t1name" ColumnName="t1name" />
+                <ScalarProperty Name="t1logo" ColumnName="t1logo" />
+                <ScalarProperty Name="t1points" ColumnName="t1points" />
+                <ScalarProperty Name="t2id" ColumnName="t2id" />
+                <ScalarProperty Name="t2name" ColumnName="t2name" />
+                <ScalarProperty Name="t2logo" ColumnName="t2logo" />
+                <ScalarProperty Name="t2points" ColumnName="t2points" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AgwnistikesTable">
+            <EntityTypeMapping TypeName="atlasModel.AgwnistikesTable">
+              <MappingFragment StoreEntitySet="AgwnistikesTable">
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Agwnistiki" ColumnName="Agwnistiki" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

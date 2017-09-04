@@ -40,6 +40,7 @@ Partial Public Class AtlasStatisticsEntities
     Public Overridable Property AspNetUserClaims() As DbSet(Of AspNetUserClaims)
     Public Overridable Property AspNetUserLogins() As DbSet(Of AspNetUserLogins)
     Public Overridable Property AspNetUsers() As DbSet(Of AspNetUsers)
+    Public Overridable Property AgwnistikesTable() As DbSet(Of AgwnistikesTable)
 
     Public Overridable Function getallteamsrankings(season As Nullable(Of Integer), diorganwsh As Nullable(Of Integer), omilos As Nullable(Of Integer), kathgoria As Nullable(Of Integer)) As ObjectResult(Of getallteamsrankings_Result)
         Dim seasonParameter As ObjectParameter = If(season.HasValue, New ObjectParameter("season", season), New ObjectParameter("season", GetType(Integer)))
@@ -91,6 +92,14 @@ Partial Public Class AtlasStatisticsEntities
         Dim kidParameter As ObjectParameter = If(kid.HasValue, New ObjectParameter("kid", kid), New ObjectParameter("kid", GetType(Integer)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyReportStat5All_Result)("GetWeeklyReportStat5All", omidParameter, kidParameter)
+    End Function
+
+    Public Overridable Function GetWeeklyGames(omid As Nullable(Of Integer), kid As Nullable(Of Integer)) As ObjectResult(Of GetWeeklyGames_Result)
+        Dim omidParameter As ObjectParameter = If(omid.HasValue, New ObjectParameter("omid", omid), New ObjectParameter("omid", GetType(Integer)))
+
+        Dim kidParameter As ObjectParameter = If(kid.HasValue, New ObjectParameter("kid", kid), New ObjectParameter("kid", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetWeeklyGames_Result)("GetWeeklyGames", omidParameter, kidParameter)
     End Function
 
 End Class

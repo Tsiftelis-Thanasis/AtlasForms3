@@ -42,6 +42,18 @@
     Next
 
 
+
+    Dim gList As New List(Of SelectListItem)
+
+    Dim alist = (From p1 In pdb2.AgwnistikesTable
+                 Select p1.Id, p1.Agwnistiki
+                     ).OrderBy(Function(p) p.Agwnistiki).ToList
+
+    For Each it In alist
+        gList.Add(New SelectListItem() With {.Text = it.Agwnistiki, .Value = it.Id})
+    Next
+
+
 End Code
 
 @Using (Html.BeginForm("Create", "Posts", FormMethod.Post, New With {Key .enctype = "multipart/form-data"}))
@@ -106,21 +118,24 @@ End Code
                     <div class="row form-horizontal">
                         <div class="form-group">
                             <label for="title" class="col-md-2 control-label">Youtube link (code) </label>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 @Html.TextBoxFor(Function(model) model.Youtubelink, New With {.class = "form-control input-text"})
                             </div>
 
                             <label for="title" class="col-md-2 control-label">Statistics Link (number) </label>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 @Html.TextBoxFor(Function(model) model.Statslink, New With {.class = "form-control input-text"})
                             </div>
-                          
+
+                            <label for="title" class="col-md-2 control-label">Αγωνιστική </label>
+                            <div class="col-md-2">
+                                @Html.DropDownList("agonistiki", gList, "Please select...", New With {.id = "agonistiki", .class = "form-control chosen-select"})
+                            </div>
+                                                     
                         </div>
                     </div>
 
-                    <div class="row form-horizontal">
-
-                    </div>
+                
 
                     <div class="row form-horizontal">
                         <div class="form-group">
