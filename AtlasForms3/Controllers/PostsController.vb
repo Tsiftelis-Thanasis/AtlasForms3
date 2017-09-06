@@ -297,15 +297,24 @@ Namespace Controllers
                         Dim oldimage2 As String = ""
                         Dim oldimage3 As String = ""
 
-                        If editpost.PostPhotoStr.ToString <> "" Then
-                            oldimage1 = editpost.PostPhotoStr.ToString
+                        If Not editpost.PostPhotoStr Is Nothing Then
+                            If editpost.PostPhotoStr.ToString <> "" Then
+                                oldimage1 = editpost.PostPhotoStr.ToString
+                            End If
                         End If
-                        If editpost.PostPhoto160_160Str.ToString <> "" Then
-                            oldimage2 = editpost.PostPhoto160_160Str.ToString
+                        If Not editpost.PostPhoto160_160Str Is Nothing Then
+                            If editpost.PostPhoto160_160Str.ToString <> "" Then
+                                oldimage2 = editpost.PostPhoto160_160Str.ToString
+                            End If
                         End If
-                        If editpost.PostPhoto30_30Str.ToString <> "" Then
-                            oldimage3 = editpost.PostPhoto30_30Str.ToString
+
+                        If Not editpost.PostPhoto30_30Str Is Nothing Then
+                            If editpost.PostPhoto30_30Str.ToString <> "" Then
+                                oldimage3 = editpost.PostPhoto30_30Str.ToString
+                            End If
                         End If
+
+
 
                         Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(logodata, False)
                             Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
@@ -461,15 +470,28 @@ Namespace Controllers
                         pdb.SaveChanges()
                     Next
 
-                    If p.PostPhotoStr.ToString <> "" Then
-                        If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhotoStr.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhotoStr.ToString))
+
+                    If Not p.PostPhotoStr Is Nothing Then
+                        If p.PostPhotoStr.ToString <> "" Then
+                            If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhotoStr.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhotoStr.ToString))
+                        End If
                     End If
-                    If p.PostPhoto160_160Str.ToString <> "" Then
-                        If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto160_160Str.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto160_160Str.ToString))
+                    If Not p.PostPhoto160_160Str Is Nothing Then
+                        If p.PostPhoto160_160Str.ToString <> "" Then
+                            If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto160_160Str.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto160_160Str.ToString))
+                        End If
                     End If
-                    If p.PostPhoto30_30Str.ToString <> "" Then
-                        If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto30_30Str.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto30_30Str.ToString))
+
+                    If Not p.PostPhoto30_30Str Is Nothing Then
+                        If p.PostPhoto30_30Str.ToString <> "" Then
+                            If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto30_30Str.ToString)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(p.PostPhoto30_30Str.ToString))
+                        End If
                     End If
+
+
+
+
+
 
                     pdb.BlogPostsTable.Remove(p)
                     pdb.SaveChanges()

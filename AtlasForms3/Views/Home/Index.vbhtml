@@ -72,6 +72,9 @@ End Code
         If AtlasKathgoriaid > 0 Then
             @<p class="entry-categories style-s">
                 <a style="background: #ef6018; !important" href="~/Home/Index/?ak=@AtlasKathgoriaid">Νέα</a>
+                 
+                @*<a href="~/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px; !important">λίστα με όλα τα νέα</span></a>*@
+                 
                 <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=12"> <span style="font-size: 12px; !important">Ομαδες</span></a>
                 <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=15"> <span style="font-size: 12px; !important">Βαθμολογια</span></a>                                
                  @If UserisAuthenticated > 0 Then
@@ -206,7 +209,7 @@ End Code
 
                                             For Each n In oLastNews2
 
-                                                    @<li><article Class="entry-item">
+                                                    @<li><article Class="entry-item disable-select ">
                                                     <div Class="entry-thumb">
                                                         <a href = "#"><img src="@n.PostPhoto2" alt=""/></a>
                                                     </div>
@@ -222,12 +225,20 @@ End Code
                                             End Code
 
                                         </ul>
-                                    </div>
-                        </div>
+                                    
 
-           </div>
+                                        @code
+                                            If AtlasKathgoriaid > 0 Then
+                                                @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                            Else
+                                                @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                            End If
+                                        End code
+                                </div>
+                                </div>
+     </div>
 
-            <div Class="sidebar widget-area-11">
+                <div Class="sidebar widget-area-11">
                 <div Class="widget kopa-tab-1-widget kopa-point-widget">
                     <a href = "http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
                     <a href = "https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>

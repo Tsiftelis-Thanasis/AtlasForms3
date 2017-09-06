@@ -224,7 +224,7 @@ End Code
                                 If Model.PostSummary <> "" Then
                             @<div Class="row form-horizontal">
                                 <div Class="form-group">
-                                    <div Class="col-md-12"> 
+                                    <div Class="col-md-12 disable-select "> 
                                         <em>
                                             @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
                                         </em>
@@ -242,7 +242,7 @@ End Code
                                 If Model.PostBody <> "" Then
                         @<div Class="row form-horizontal">
                         <div Class="form-group">
-                            <div Class="col-md-12">
+                            <div Class="col-md-12 disable-select ">
                                 @Html.Raw(Model.PostBody.ToString)                                            
                             </div>
                         </div>                  

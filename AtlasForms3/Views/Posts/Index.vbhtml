@@ -24,26 +24,31 @@
     '17  Διαφημίσεις
 
 
-    If ViewBag.kathgoria = 11 Then
+    If kathgoriaid = 11 Then
         ViewData("Title") = "Τελευταία νέα " '& katName
         innerTitle = "τελευταια νεα " & atlaskathgorianame
     End If
-    If ViewBag.kathgoria = 12 Then
+    If kathgoriaid = 12 Then
         ViewData("Title") = "Ομάδες " '& katName
         innerTitle = "ομαδες " '& katName
     End If
-    If ViewBag.kathgoria = 13 Then
+    If kathgoriaid = 13 Then
         ViewData("Title") = "Τιμωρίες " '& katName
         innerTitle = "τιμωριες " '& katName
     End If
-    If ViewBag.kathgoria = 14 Then
+    If kathgoriaid = 14 Then
         ViewData("Title") = "Πρόγραμμα " '& katName
         innerTitle = "προγραμμα " '& katName
     End If
-    If ViewBag.kathgoria = 15 Then
+    If kathgoriaid = 15 Then
         ViewData("Title") = "Βαθμολογία " '& katName
         innerTitle = "βαθμολογια " '& katName
     End If
+    If kathgoriaid = 0 Then
+        ViewData("Title") = "Λίστα με όλα τα νεα" '& katName
+        innerTitle = "Λίστα με όλα τα νεα " '& katName
+    End If
+
 
     Dim programmaid As Integer = 0
 
@@ -81,6 +86,12 @@ End Code
         If atlaskathgoriaid > 0 Then
             @<p class="entry-categories style-s"><a href="/Home/Index/?ak=@atlaskathgoriaid">Νέα</a>
     
+            @*@If kathgoriaid = 0 Then
+                @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px; !important">Αναλυτικά όλα τα νέα</span></a>
+            Else
+                @<a href="/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px; !important">Αναλυτικά όλα τα νέα</span></a>
+            End If*@
+
             @If kathgoriaid = 12 Then
                 @<a style="background: #ef6018; !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
             Else
@@ -266,23 +277,7 @@ End Code
                         </div>
                     End If
                  End Code
-
-
-                @*@code
-                    If atlaskathgoria2 > 0 Then
-                        @<div id="divteamskat2" style="display: none;">
-                            <div class="row">
-                                <div class="kopa-main">
-                                    <h3 class="widget-title style12">ομαδες κατηγοριας γοριας @atlaskathgoria2name<span class="ttg"></span></h3>
-                                    <div class="widget kopa-entry-list">
-                                        <ul class="row clearfix" id="ulteamskat2"></ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    End If
-                End code*@
-
+                
                 <div id="divteams" class="widget kopa-entry-list" style="display: none;">
                     <h3 class="widget-title style12">@innerTitle<span class="ttg"></span></h3>
                     <table id="teamstable">
@@ -312,11 +307,10 @@ End Code
             </div>
 
         <div Class="sidebar widget-area-11">
-
-                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                    <a href = "http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
-                    <a href = "https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>
-                    <a href = "http://www.atlassportswear.gr/"><img src="~/Content/images/atlassportwear.png" alt=""></a>
+            <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                <a href = "http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
+                <a href = "https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>
+                <a href = "http://www.atlassportswear.gr/"><img src="~/Content/images/atlassportwear.png" alt=""></a>
             </div>
         </div>
 
@@ -384,8 +378,8 @@ End Code
         //    $("#divteamskat1").hide();
         //    $("#divteamskat2").hide();
         //    $("#divcommon").hide();
-         } else {
-
+        } else if ($('#kathgoriaid').val() == 0) { //όλα τα νέα!
+            $("#divcommon").show();
          }
         
       
