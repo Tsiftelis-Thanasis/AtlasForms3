@@ -107,33 +107,33 @@ End Code
 @Html.ValidationSummary(True)
 @Html.HiddenFor(Function(model) model.Id)
 
-        <div class="main-top">
-            <div class="kopa-ticker">
-                <span Class="ticker-title"><i class="fa fa-angle-double-right"></i>@cTitle</span>
-                <div Class="ticker-wrap">
-                    <dl Class="ticker-1">
-                        <dt></dt>
-                        <dd>
-                            <a> <span>&nbsp; </span></a> 
-                        </dd>
-                    </dl>
-                </div>
-            </div>
+<div class="main-top">
+    <div class="kopa-ticker">
+        <span Class="ticker-title"><i class="fa fa-angle-double-right"></i>@cTitle</span>
+        <div Class="ticker-wrap">
+            <dl Class="ticker-1">
+                <dt></dt>
+                <dd>
+                    <a> <span>&nbsp; </span></a>
+                </dd>
+            </dl>
         </div>
+    </div>
+</div>
 
-        <div class="row">
+<div class="row">
 
-            <div class="kopa-main-col">
-                <div class="kopa-entry-post">
-                    <article class="entry-item">
+    <div class="kopa-main-col">
+        <div class="kopa-entry-post">
+            <article class="entry-item">
 
-                        <p class="entry-categories style-s">
+                <p class="entry-categories style-s">
 
 
-                            @code
+                    @code
 
-                                If atlaskatid > 0 And katid = 14 Then
-                                    @<a href = "/Home/Index/?ak=@atlaskatid" > Νέα</a>
+                        If atlaskatid > 0 And katid = 14 Then
+                            @<a href="/Home/Index/?ak=@atlaskatid"> Νέα</a>
 
                                     @If katid = 12 Then
                                         @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskatid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
@@ -169,155 +169,157 @@ End Code
                                         @<a href="/Posts/Index/?ak=@atlaskatid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
                                     End If
 
-                                Else
+                        Else
 
-                                    @<a href = "@Url.Action("Index", "Home")">Αρχικη</a>
+                            @<a href="@Url.Action("Index", "Home")">Αρχικη</a>
 
-                                    If omilosnamestr <> "" Then
-                                            @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
-                                    End If
-                                    If atlaskatnamestr <> "" Then
-                                            @<a href="@Url.Action("Index", "Home", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
-                                    End If
-
-                                    @<a>@Html.DisplayFor(Function(model) cTitle)</a>
-
-                                End If
-
-                            End Code 
-
-                        </p>
-
-                        @code
-                            If imageSrc <> "" Then
-                                @<div Class="row form-horizontal vertical-center">
-                                    <div Class="form-group">
-                                        <div Class="col-md-6 entry-thumb">
-                                            <img src = "@imageSrc" style="width:50%;" />
-                                        </div>
-                                    </div>
-                                </div>
+                            If omilosnamestr <> "" Then
+                                @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
                             End If
-                        End Code
-
-
-                        @code
-                            If agwnistikistr <> "" Then
-                                @<div Class="row form-horizontal">
-                                    <div Class="form-group">
-                                        <div Class="col-md-12 w3-center">
-                                            Αγωνιστική: 
-                                            <b>
-                                                <em>
-                                                    @agwnistikistr
-                                                </em>
-                                            </b>
-                                        </div>
-                                    </div>
-                                </div>
-
+                            If atlaskatnamestr <> "" Then
+                                @<a href="@Url.Action("Index", "Home", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
                             End If
-                        End Code         
 
-                        @code
-                            If not Model.PostSummary Is Nothing Then
-                                If Model.PostSummary <> "" Then
+                            @<a>@Html.DisplayFor(Function(model) cTitle)</a>
+
+                        End If
+
+                    End Code
+
+                </p>
+
+                @code
+                    If imageSrc <> "" Then
+                        @<div Class="row form-horizontal vertical-center">
+                            <div Class="form-group">
+                                <div Class="col-md-6 entry-thumb">
+                                    <img src="@imageSrc" style="width:50%;" />
+                                </div>
+                            </div>
+                        </div>
+                    End If
+                End Code
+
+
+                @code
+                    If agwnistikistr <> "" Then
+                        @<div Class="row form-horizontal">
+                            <div Class="form-group">
+                                <div Class="col-md-12 w3-center">
+                                    Αγωνιστική:
+                                    <b>
+                                        <em>
+                                            @agwnistikistr
+                                        </em>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+
+                    End If
+                End Code
+
+                @code
+                    If not Model.PostSummary Is Nothing Then
+                        If Model.PostSummary <> "" Then
                             @<div Class="row form-horizontal">
                                 <div Class="form-group">
-                                    <div Class="col-md-12"> 
+                                    <div Class="col-md-12">
                                         <em>
                                             @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
                                         </em>
                                     </div>
                                 </div>
                             </div>
-                                End If
-                            End If
-                        End Code
+                        End If
+                    End If
+                End Code
 
 
 
-                        @code
-                            If Not Model.PostBody Is Nothing Then
-                                If Model.PostBody <> "" Then
-                        @<div Class="row form-horizontal">
-                        <div Class="form-group">
-                            <div Class="col-md-12">
-                                @Html.Raw(Model.PostBody.ToString)                                            
-                            </div>
-                        </div>                  
-                        </div>
-                                End If
-                            End If
-
-                        End code
-
-                        @code
-                            If not Model.Statslink Is Nothing Then
-                                If Model.Statslink.ToString <> "" Then
-                                @<p Class="short-des" style="text-align:center">
-                                    <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Model.Statslink">
-                                        <img src="~/Content/images/stats.jpg" border="0" />
-                                    </a>
-                                </p>
-                                End If
-                            End If
-                        End Code
-
-                        @code
-                            If not Model.Youtubelink Is Nothing Then
-                                If Model.Youtubelink.Length > 36 Then
-                                @<iframe title="YouTube video player" Class="youtube-player" type="text/html"
-                                            height="315" src="@Html.DisplayFor(Function(model) model.Youtubelink)"
-                                            frameborder="0" allowFullScreen></iframe>
-                                End If
-                            End If
-                        End Code
-
-
-                        <p></p>
-
-                        @*<div Class="row form-horizontal">
-                            <div Class="form-group">
-                                <div Class="col-md-12">
-                                    <div Class="entry-meta">
-                                        <span Class="entry-author">δημιουργήθηκε από @Html.DisplayFor(Function(model) model.createdby)</span>
-                                        <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.creationdate)</span>
-                                        <br />
-                                        <span Class="entry-author">επεξεργάστηκε από @Html.DisplayFor(Function(model) model.editby)</span>
-                                        <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.editdate)</span>
+                @code
+                    If Not Model.PostBody Is Nothing Then
+                        If Model.PostBody <> "" Then
+                            @<div Class="row form-horizontal">
+                                <div Class="form-group">
+                                    <div Class="col-md-12">
+                                        @Html.Raw(Model.PostBody.ToString)
                                     </div>
                                 </div>
                             </div>
-                        </div>*@
+                        End If
+                    End If
 
-                    </article>
-                </div>
-                @*change url*@
-                <div Class="row form-horizontal">
-                    <div Class="fb-like"                                               
-                         data-href=@urlwithid
-                         data-layout="standard"
-                         data-action="like"
-                         data-show-faces="true">
-                    </div>
-                </div>
-                
+                End code
+
+                @code
+                    If not Model.Statslink Is Nothing Then
+                        If Model.Statslink.ToString <> "" Then
+                            @<p Class="short-des" style="text-align:center">
+                                <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Model.Statslink">
+                                    <img src="~/Content/images/stats.jpg" border="0" />
+                                </a>
+                            </p>
+                        End If
+                    End If
+                End Code
+
+                @code
+                    If not Model.Youtubelink Is Nothing Then
+                        If Model.Youtubelink.Length > 36 Then
+                            @<iframe title="YouTube video player" Class="youtube-player" type="text/html"
+                                     height="315" src="@Html.DisplayFor(Function(model) model.Youtubelink)"
+                                     frameborder="0" allowFullScreen></iframe>
+                        End If
+                    End If
+                End Code
+
+
+                <p></p>
+
+                @*<div Class="row form-horizontal">
+                        <div Class="form-group">
+                            <div Class="col-md-12">
+                                <div Class="entry-meta">
+                                    <span Class="entry-author">δημιουργήθηκε από @Html.DisplayFor(Function(model) model.createdby)</span>
+                                    <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.creationdate)</span>
+                                    <br />
+                                    <span Class="entry-author">επεξεργάστηκε από @Html.DisplayFor(Function(model) model.editby)</span>
+                                    <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.editdate)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+            </article>
+        </div>
+
+        <div Class="row form-horizontal">
+            <div id="fbAtlas" Class="fb-like"
+                 data-href=@urlwithid
+                 data-layout="standard"
+                 data-action="like"
+                 data-size="large"
+                 data-show-faces="true"
+                 data-share="true">
             </div>
+        </div>
 
-            <div Class="sidebar widget-area-11">
-                <div id="divads" Class="widget kopa-tab-1-widget kopa-point-widget">
-                        <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
-                        <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
-                        <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
-                </div>
-            </div>
+    </div>
 
-            </div>
+    <div Class="sidebar widget-area-11">
+        <div id="divads" Class="widget kopa-tab-1-widget kopa-point-widget">
+            <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
+            <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
+            <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
+        </div>
+    </div>
 
-   
-    @Section Scripts
-        <script type="text/javascript">
+</div>
 
-        </script>
-    End Section
+
+@Section Scripts
+    <script type="text/javascript">
+
+    </script>
+End Section
