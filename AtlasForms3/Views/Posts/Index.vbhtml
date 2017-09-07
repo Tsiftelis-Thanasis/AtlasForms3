@@ -69,6 +69,9 @@
 
     Dim oGetWeeklyGamesList = ViewBag.GetWeeklyGamesList
 
+    Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
+    Dim socialDesc As String = "" 'CHANGME
+
 
 End Code
 
@@ -306,7 +309,29 @@ End Code
 
             </div>
 
+
+
+        @*<div Class="sidebar widget-area-11">
+
+           
+        </div>*@
+
         <div Class="sidebar widget-area-11">
+
+            <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                <div Class="row form-horizontal w3-center">
+                    <a target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
+                        <img src="~/Content/images/facebook-icon.png">
+                    </a>
+                    <a target="_blank" class="twitter-share-button"
+                       href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+                       data-size="large">
+                        <img src="~/Content/images/Twitter_Logo.png" />
+                    </a>
+                </div>
+            </div>
+
             <div Class="widget kopa-tab-1-widget kopa-point-widget">
                 <a href = "http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
                 <a href = "https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>

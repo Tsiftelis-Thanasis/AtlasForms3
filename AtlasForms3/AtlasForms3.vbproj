@@ -616,6 +616,7 @@
     <Content Include="Content\images\black_twill.png" />
     <Content Include="Content\images\blueiceok.png" />
     <Content Include="Content\images\cl.png" />
+    <Content Include="Content\images\facebook-icon.png" />
     <Content Include="Content\images\favicon.html" />
     <Content Include="Content\images\icons8-Basketball-Player-40.png" />
     <Content Include="Content\images\icons8-Basketball-Player-50.png" />
@@ -628,6 +629,7 @@
     <Content Include="Content\images\stats.jpg" />
     <Content Include="Content\images\t1.png" />
     <Content Include="Content\images\t2.png" />
+    <Content Include="Content\images\Twitter_Logo.png" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\jquery.navgoco.css" />
     <Content Include="Content\megafish.css" />
@@ -986,9 +988,6 @@
     <Content Include="Views\NewTeam\Details.vbhtml" />
     <Content Include="Views\NewTeam\Index.vbhtml" />
     <Content Include="Views\Posts\Delete.vbhtml" />
-    <Content Include="Views\Home\PhotoDelete.vbhtml" />
-    <Content Include="Views\Home\PhotoIndex.vbhtml" />
-    <Content Include="Views\Home\PhotoUpload.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

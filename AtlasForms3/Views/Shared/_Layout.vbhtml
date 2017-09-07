@@ -35,6 +35,12 @@ End code
 <html>
 <head>
     <meta charset="utf-8" />
+    
+    <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
+    <meta property="og:url" content="@urlwithid" />
+    <meta property="og:image" content="~/Content/images/atlaslogobig_ok.png" />
+    
+    
     @*CHANGEME  change the values at the following tags*@
     @*<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="fb:app_id" content="140586622674265" />
@@ -89,7 +95,7 @@ End code
 
     @*CHANGEME if you want button to be in greek change the en_US to el_GR*@
     @*atlas id =140586622674265
-    rcringid =238332292965135*@
+    rcringid =140586622674265*@
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];

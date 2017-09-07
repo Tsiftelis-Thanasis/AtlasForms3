@@ -306,9 +306,9 @@ End Code
             </div>
         </div>*@
 
-        <div Class="row form-horizontal" style="float:right">
+        @*<div Class="row form-horizontal" style="float:right">
             <a target="_blank"
-               href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=238332292965135">
+               href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
                 <img src="~/Content/images/facebook-icon.png">
             </a>
             <a class="twitter-share-button"
@@ -316,6 +316,24 @@ End Code
                data-size="large">
                 <img src="~/Content/images/Twitter_Logo.png" />
             </a>
+        </div>*@
+    </div>
+
+
+    <div Class="sidebar widget-area-11">
+
+        <div Class="widget kopa-tab-1-widget kopa-point-widget">
+            <div Class="row form-horizontal w3-center">
+                <a target="_blank"
+                   href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
+                    <img src="~/Content/images/facebook-icon.png">
+                </a>
+                <a target="_blank" class="twitter-share-button"
+                   href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+                   data-size="large">
+                    <img src="~/Content/images/Twitter_Logo.png" />
+                </a>
+            </div>
         </div>
     </div>
 
