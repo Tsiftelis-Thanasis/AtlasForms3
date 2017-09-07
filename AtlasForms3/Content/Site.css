@@ -78,7 +78,7 @@ textarea {
 }
 
 
-#fbAtlas {
+/*#fbAtlas {
     opacity: 0.6;
     filter: alpha(opacity=60);
     -webkit-filter: grayscale(100%);
@@ -86,4 +86,4 @@ textarea {
     -o-filter: grayscale(100%);
     -ms-filter: grayscale(100%);
     filter: grayscale(100%);
-}
+}*/
