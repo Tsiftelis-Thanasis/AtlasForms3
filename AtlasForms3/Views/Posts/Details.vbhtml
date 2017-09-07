@@ -306,7 +306,7 @@ End Code
             </div>
         </div>*@
 
-        <div Class="row form-horizontal">
+        <div Class="row form-horizontal" style="float:right">
             <a target="_blank"
                href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=238332292965135">
                 <img src="~/Content/images/facebook-icon.png">
