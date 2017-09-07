@@ -47,9 +47,12 @@ Public Class UsersAdminController
     '
     ' GET: /Users/
     <Authorize(Roles:="Admins")>
-    Public Async Function Index() As Task(Of ActionResult)
-        Return View(Await UserManager.Users.ToListAsync())
+    Public Function Index() As ActionResult
+        Return View()
     End Function
+    'Public Async Function Index() As Task(Of ActionResult)
+    '    Return View(Await UserManager.Users.ToListAsync())
+    'End Function
 
     '
     ' GET: /Users/Details/5
@@ -289,8 +292,8 @@ Public Class UsersAdminController
 
     '
     ' POST: /Users/Delete/5
-    <HttpPost, ActionName("Delete")> _
-    <ValidateAntiForgeryToken> _
+    <HttpPost, ActionName("Delete")>
+    <ValidateAntiForgeryToken>
     Public Async Function DeleteConfirmed(id As String) As Task(Of ActionResult)
         If ModelState.IsValid Then
             If id Is Nothing Then
@@ -310,4 +313,25 @@ Public Class UsersAdminController
         End If
         Return View()
     End Function
+
+
+    Function GetUsers() As JsonResult
+
+        Dim q = (From p In aspdb.AspNetUsers
+                 Select p.Email, p.IsEnabled, p.Id, p.UserName
+                    ).AsEnumerable().[Select](
+                    Function(o) New With {.id = o.Id, .username = o.UserName, .email = o.Email, .isenabled = If(o.IsEnabled = 0, "Όχι", "Ναί")}).ToList
+
+        Dim dtm As New DataTableModel
+        If q IsNot Nothing Then
+            dtm.data = q.Cast(Of Object).ToList
+        End If
+        dtm.draw = 0
+        dtm.recordsTotal = dtm.data.Count
+        dtm.recordsFiltered = dtm.recordsTotal
+
+        Return Json(dtm, JsonRequestBehavior.AllowGet)
+    End Function
+
+
 End Class

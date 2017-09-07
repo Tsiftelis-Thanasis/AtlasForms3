@@ -269,7 +269,7 @@ Public Class HomeController
     End Function
 
     <Compress>
-    Public Function Getlastgames(ByVal omilosid As Integer?) As JsonResult
+    Public Function Getlastgames(ByVal kathgoria As Integer?) As JsonResult
 
         'Link
         'Date as Σαβ 01/06/2017 
@@ -277,7 +277,7 @@ Public Class HomeController
         'omada a, pontoi a,
         'omada b, pontoi b         
 
-        If omilosid Is Nothing Then omilosid = 0
+        If kathgoria Is Nothing Then kathgoria = 0
 
         Dim lastgames = (From g In pdb.GamesTable
                          Join ta In pdb.TeamsStatisticsTable On ta.Gameid Equals g.Id
@@ -285,7 +285,7 @@ Public Class HomeController
                          Join tb In pdb.TeamsStatisticsTable On tb.Gameid Equals g.Id
                          Join teamb In pdb.TeamsTable On tb.Teamid Equals teamb.Id
                          Where ta.gipedouxos = 1 And tb.gipedouxos = 0 And
-                             If(omilosid = 0, 1 = 1, g.Omilosid = omilosid)
+                             If(kathgoria = 0, 1 = 1, g.Kathgoriaid = kathgoria)
                          Order By g.Id Descending
                          Select g.Id, Gamedate = g.Gamedate,
                              g.Gamestadium, team1 = teama.TeamName, team1score = ta.ptstotal,
