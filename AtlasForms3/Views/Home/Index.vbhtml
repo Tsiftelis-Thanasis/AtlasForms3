@@ -45,6 +45,8 @@
     End Using
 
     Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
+    Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
+    Dim socialDesc As String = "" 'CHANGME
 
 
 End Code
@@ -236,6 +238,30 @@ End Code
                                         End code
                                 </div>
                             </div>
+
+                            @*<div Class="row form-horizontal">
+                                <div id="fbAtlas" Class="fb-like"
+                                     data-href=@urlwithid
+                                     data-layout="standard"
+                                     data-action="like"
+                                     data-size="large"
+                                     data-show-faces="true"
+                                     data-share="true">
+                                </div>
+                            </div>*@
+
+                            <div Class="row form-horizontal" style="float:right">
+                                <a target="_blank"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=238332292965135">
+                                    <img src="~/Content/images/facebook-icon.png">
+                                </a>
+                                <a class="twitter-share-button"
+                                   href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+                                   data-size="large">
+                                    <img src="~/Content/images/Twitter_Logo.png" />
+                                </a>
+                            </div>
+
                         </div>
 
                         <div Class="sidebar widget-area-11">
