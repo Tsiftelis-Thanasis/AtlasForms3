@@ -43,31 +43,42 @@ Namespace Controllers
 
             If id > 0 Then
 
+                Try
 
-                Dim q = (From t In pdb.BlogPostsTable
-                         Where t.Id = id
-                         Select t).First
 
-                Dim t1 As New Posts
-                t1.Id = q.Id
-                t1.Activepost = q.Activepost
-                t1.PostTitle = q.PostTitle
-                t1.PostBody = q.PostBody
-                t1.PostPhotoStr = q.PostPhotoStr
-                t1.PostSummary = q.PostSummary
-                t1.Youtubelink = "https://www.youtube.com/embed/" & q.Youtubelink & "?rel=0"
-                t1.Agonistiki = If(q.agonistiki Is Nothing, 0, q.agonistiki)
-                t1.Statslink = q.Statslink
-                t1.createdby = q.CreatedBy
-                t1.creationdate = q.CreationDate
-                t1.editby = q.EditBy
-                t1.editdate = q.EditDate
+                    Dim q = (From t In pdb.BlogPostsTable
+                             Where t.Id = id
+                             Select t).First
 
-                Return View(t1)
+                    Dim t1 As New Posts
+                    t1.Id = q.Id
+                    t1.Activepost = q.Activepost
+                    t1.PostTitle = q.PostTitle
+                    t1.PostBody = q.PostBody
+                    t1.PostPhotoStr = q.PostPhotoStr
+                    t1.PostSummary = q.PostSummary
+                    t1.Youtubelink = "https://www.youtube.com/embed/" & q.Youtubelink & "?rel=0"
+                    t1.Agonistiki = If(q.agonistiki Is Nothing, 0, q.agonistiki)
+                    t1.Statslink = q.Statslink
+                    t1.createdby = q.CreatedBy
+                    t1.creationdate = q.CreationDate
+                    t1.editby = q.EditBy
+                    t1.editdate = q.EditDate
+
+                    Return View(t1)
+
+                Catch ex As Exception
+
+                    ModelState.AddModelError("", ex.Message)
+
+                    Return View()
+
+                End Try
+
 
             Else
 
-                Return Nothing
+                Return View()
 
             End If
 
