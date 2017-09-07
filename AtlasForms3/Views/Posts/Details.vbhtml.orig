@@ -224,7 +224,11 @@ End Code
                         If Model.PostSummary <> "" Then
                             @<div Class="row form-horizontal">
                                 <div Class="form-group">
+<<<<<<< HEAD
                                     <div Class="col-md-12 disable-select "> 
+=======
+                                    <div Class="col-md-12">
+>>>>>>> cb9a9ef173176be14aa08f11bf331f10d7f273b1
                                         <em>
                                             @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
                                         </em>
@@ -242,7 +246,7 @@ End Code
                         If Model.PostBody <> "" Then
                             @<div Class="row form-horizontal">
                                 <div Class="form-group">
-                            <div Class="col-md-12 disable-select ">
+                                    <div Class="col-md-12">
                                         @Html.Raw(Model.PostBody.ToString)
                                     </div>
                                 </div>
@@ -279,6 +283,10 @@ End Code
 
                 @*<div Class="row form-horizontal">
                         <div Class="form-group">
+<<<<<<< HEAD
+                            <div Class="col-md-12 disable-select ">
+                                @Html.Raw(Model.PostBody.ToString)                                            
+=======
                             <div Class="col-md-12">
                                 <div Class="entry-meta">
                                     <span Class="entry-author">δημιουργήθηκε από @Html.DisplayFor(Function(model) model.createdby)</span>
@@ -287,6 +295,7 @@ End Code
                                     <span Class="entry-author">επεξεργάστηκε από @Html.DisplayFor(Function(model) model.editby)</span>
                                     <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.editdate)</span>
                                 </div>
+>>>>>>> cb9a9ef173176be14aa08f11bf331f10d7f273b1
                             </div>
                         </div>
                     </div>*@

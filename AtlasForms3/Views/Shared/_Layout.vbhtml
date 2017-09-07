@@ -26,6 +26,8 @@
     Dim oGetSimplePosts = u.GetSimplePosts(10, Nothing, 1, Nothing)
     Dim oGetdiorganwseis = u.Getdiorganwseis()
 
+    Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
+
 End code
 
 
@@ -34,14 +36,14 @@ End code
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
-    <meta property="fb:app_id" content="140586622674265" /> 
+    @*CHANGEME  change the values at the following tags*@
+    <meta property="fb:app_id" content="140586622674265" />
     <meta property="og:site_name" content="AtlasBasket" />
     <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
     <meta property="og:type" content="website" /> @*or article*@
     <meta property="og:image" content="" /> @*image to show for each page*@
     <meta property="og:description" content="" /> @*description for each page*@
-    <meta property="og:url" content="" />   @*url of the page*@
+    <meta property="og:url" content="@urlwithid" />   @*url of the page*@
 
 
     <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
@@ -49,9 +51,11 @@ End code
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-        
+
     <style>
-        .mySlides {display:none;}
+        .mySlides {
+            display: none;
+        }
     </style>
 
     @RenderSection("styles", required:=False)
@@ -59,7 +63,7 @@ End code
     <script type="text/javascript" language="javascript">
         var url1 = window.location.href.split('/');
         var baseUrl = url1[0] + '//' + url1[2];
-        
+
         var old = alert;
         alert = function () {
             console.log(new Error().stack);
@@ -70,10 +74,11 @@ End code
 
 
 <body>
-    
+
     <div id="loadingDiv" class="modalloader"></div>
-         
+
     <div id="fb-root"></div>
+    @*CHANGEME if you want button to be in greek change the en_US to el_GR*@
     <script>
         (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -83,7 +88,7 @@ End code
           fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
     </script>
-    
+
     @Html.Hidden("firstDiorganwshid", firstDiorganwshid)
     @Html.Hidden("UserisAuthenticated", UserisAuthenticated)
 
@@ -93,7 +98,7 @@ End code
                 <nav class="kopa-main-nav">
                     <div class="kopa-logo">
                         @*<a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>*@
-                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/atlaslogobig_ok.png" alt="logo" style="height:60px;"></a>                        
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/atlaslogobig_ok.png" alt="logo" style="height:60px;"></a>
                     </div>
 
                     <ul class="main-menu sf-menu">
@@ -110,13 +115,13 @@ End code
                                     For Each g In oGetdiorganwseis
                                         @<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
                                     Next
-                                End Code                                                                       
+                                End Code
                             </ul>
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsid">
-                                
+
                                 @code
                                     For Each g In oGetSimplePosts
                                         @<li><a href="/Posts/Details/@g.Id">@g.PostTitle</a></li>
@@ -128,16 +133,16 @@ End code
 
                         <li class="current-menu-item">
                             <a><span>εγγραφες </span></a>
-                            <ul class="sub-menu" >
+                            <ul class="sub-menu">
                                 @*<li>
-                                    <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
-                                </li>*@
+                                        <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
+                                    </li>*@
                                 <li>
                                     <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <li class="current-menu-item">
                             <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
                         </li>
@@ -159,7 +164,7 @@ End code
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
                         <li class="current-menu-item">
-                            <a class="lipointer"  onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>
+                            <a class="lipointer" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>
                         </li>
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
@@ -169,7 +174,7 @@ End code
                                     For Each g In oGetdiorganwseis
                                         @<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
                                     Next
-                                End Code                        
+                                End Code
                             </ul>
                         </li>
                         <li class="current-menu-item">
@@ -187,8 +192,8 @@ End code
                             <a><span>εγγραφες </span></a>
                             <ul class="sub-menu">
                                 @*<li>
-                                    <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
-                                </li>*@
+                                        <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
+                                    </li>*@
                                 <li>
                                     <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
@@ -196,7 +201,7 @@ End code
                         </li>
 
                         <li class="current-menu-item">
-                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>                            
+                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
                         </li>
 
                         @if User.Identity.IsAuthenticated Then
@@ -211,19 +216,18 @@ End code
 
         <div class="kopa-header-bottom">
             <div class="wrapper">
-              <nav class="th-kopa-main-nav-2">
-                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid">
-                    </ul>
+                <nav class="th-kopa-main-nav-2">
+                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid"></ul>
                 </nav>
             </div>
-     </div>
+        </div>
 
-</header>
+    </header>
 
     <div class="kopa-sub-page kopa-single-page">
         <div class="container body-content">
             @RenderBody()
-        <hr />
+            <hr />
         </div>
     </div>
 
@@ -243,8 +247,8 @@ End code
                 <nav class="bottom-nav-mobile">
                     @Html.Partial("_LoginPartial")
                 </nav>
-                </div>
             </div>
+        </div>
 
     </div>
 
@@ -252,10 +256,10 @@ End code
         <div class="wrapper clearfix">
             <p id="copyright" class="">Copyright © 2017 . All Rights Reserved. </p>
         </div>
-</footer>
+    </footer>
 
 
-<a href="#" class="scrollup"><span class="fa fa-chevron-up"></span></a>
+    <a href="#" class="scrollup"><span class="fa fa-chevron-up"></span></a>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
@@ -276,7 +280,7 @@ End code
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-   </script>
+    </script>
 
 </body>
 </html>
@@ -335,7 +339,7 @@ End code
                                     '</li>';
 
                             //'<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
-                            
+
                             choiceContainer.append(d);
                             appendnewstoOmilos(omilosnaming, this.Id);
 
@@ -427,7 +431,7 @@ End code
                 var i = 1;
                 var d = '';
                 if (result.length > 0) {
-                
+
                     $.each(result, function () {
                         d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px; !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
                         i++;
@@ -525,7 +529,7 @@ End code
             //GetDiorganwtria();
         //});
         //newPromise.then(function () {
-            
+
         //});
         //newPromise.resolve();
 
