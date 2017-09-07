@@ -80,6 +80,7 @@
     ViewData("Title") = cTitle
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
+    Dim socialDesc As String = "" 'CHANGME
 
     Dim programmaid As Integer = 0
 
@@ -294,7 +295,7 @@ End Code
             </article>
         </div>
 
-        <div Class="row form-horizontal">
+        @*<div Class="row form-horizontal">
             <div id="fbAtlas" Class="fb-like"
                  data-href=@urlwithid
                  data-layout="standard"
@@ -303,8 +304,19 @@ End Code
                  data-show-faces="true"
                  data-share="true">
             </div>
-        </div>
+        </div>*@
 
+        <div Class="row form-horizontal">
+            <a target="_blank"
+               href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=238332292965135">
+                <img src="~/Content/images/facebook-icon.png">
+            </a>
+            <a class="twitter-share-button"
+               href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+               data-size="large">
+                <img src="~/Content/images/Twitter_Logo.png" />
+            </a>
+        </div>
     </div>
 
     <div Class="sidebar widget-area-11">

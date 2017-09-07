@@ -35,15 +35,15 @@ End code
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @*CHANGEME  change the values at the following tags*@
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="fb:app_id" content="140586622674265" />
     <meta property="og:site_name" content="AtlasBasket" />
-    <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
-    <meta property="og:type" content="website" /> @*or article*@
-    <meta property="og:image" content="" /> @*image to show for each page*@
-    <meta property="og:description" content="" /> @*description for each page*@
-    <meta property="og:url" content="@urlwithid" />   @*url of the page*@
+    <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />*@
+    @*<meta property="og:type" content="website" />*@ @*or article*@
+    @*<meta property="og:image" content="" />*@ @*image to show for each page*@
+    @*<meta property="og:description" content="" />*@ @*description for each page*@
+    @*<meta property="og:url" content="@urlwithid" />*@   @*url of the page*@
 
 
     <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
@@ -87,17 +87,19 @@ End code
 
     <div id="loadingDiv" class="modalloader"></div>
 
-    <div id="fb-root"></div>
     @*CHANGEME if you want button to be in greek change the en_US to el_GR*@
-    <script>
-        (function(d, s, id) {
+    @*atlas id =140586622674265
+    rcringid =238332292965135*@
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=140586622674265";
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=140586622674265";
           fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));
     </script>
+
 
     @Html.Hidden("firstDiorganwshid", firstDiorganwshid)
     @Html.Hidden("UserisAuthenticated", UserisAuthenticated)
@@ -281,7 +283,7 @@ End code
 
     @RenderSection("scripts", required:=False)
 
-    <div id="fb-root"></div>
+    @*<div id="fb-root"></div>
     <script>
         (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -290,7 +292,7 @@ End code
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-    </script>
+    </script>*@
 
 </body>
 </html>
