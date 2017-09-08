@@ -242,11 +242,16 @@ End Code
                     If Not Model.PostBody Is Nothing Then
                         If Model.PostBody <> "" Then
                             @<div Class="row form-horizontal">
-                                <div Class="form-group">
-                            <div Class="col-md-12 disable-select ">
+                               
+                                <div Class="form-group">                                    
+                                    <div Class="col-md-12 disable-select ">
+                                        <div class="apostrophe-divider"><hr><span></span></div>
                                         @Html.Raw(Model.PostBody.ToString)
+                                        <div class="apostrophe-divider"><hr><span></span></div>
                                     </div>
                                 </div>
+                                                
+
                             </div>
                         End If
                     End If

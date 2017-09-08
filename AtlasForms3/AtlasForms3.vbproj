@@ -606,6 +606,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\3.png" />
+    <Content Include="Content\images\apostrophe-divider.png" />
     <Content Include="Content\images\apple-touch-icon-114x114.png" />
     <Content Include="Content\images\apple-touch-icon.png" />
     <Content Include="Content\images\atlaslogobig_ok.png" />

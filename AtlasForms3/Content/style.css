@@ -8253,3 +8253,29 @@ address {
 
 }
 
+
+.apostrophe-divider {
+    text-align: center;
+    padding: 0 80px;
+    margin: 1.5em 0;
+    height: 10px;
+}
+
+.apostrophe-divider hr {
+    background: #ddd;
+    margin: 0;
+}
+
+.apostrophe-divider span {
+    display: inline-block;
+    background: url(../Content/images/apostrophe-divider.png) no-repeat;
+    background-size: contain;
+    width: 45px;
+    height: 25px;
+    position: relative;
+    top: -26px;
+    margin-bottom: -24px;
+    border-left: 10px solid #fff;
+    border-right: 10px solid #fff;
+    /*vertical-align: middle;*/
+}
