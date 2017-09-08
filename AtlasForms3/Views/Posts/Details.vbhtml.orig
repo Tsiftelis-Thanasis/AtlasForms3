@@ -80,6 +80,7 @@
     ViewData("Title") = cTitle
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
+    Dim socialDesc As String = ViewData("Title")
 
     Dim programmaid As Integer = 0
 
@@ -224,11 +225,7 @@ End Code
                         If Model.PostSummary <> "" Then
                             @<div Class="row form-horizontal">
                                 <div Class="form-group">
-<<<<<<< HEAD
                                     <div Class="col-md-12 disable-select "> 
-=======
-                                    <div Class="col-md-12">
->>>>>>> cb9a9ef173176be14aa08f11bf331f10d7f273b1
                                         <em>
                                             @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
                                         </em>
@@ -245,11 +242,23 @@ End Code
                     If Not Model.PostBody Is Nothing Then
                         If Model.PostBody <> "" Then
                             @<div Class="row form-horizontal">
-                                <div Class="form-group">
-                                    <div Class="col-md-12">
+<<<<<<< HEAD
+                               
+                                <div Class="form-group">                                    
+                                    <div Class="col-md-12 disable-select ">
+                                        <div class="apostrophe-divider"><hr><span></span></div>
                                         @Html.Raw(Model.PostBody.ToString)
+=======
+                                <div Class="form-group">
+                                    <div Class="col-md-12 disable-select ">
+                                        <div class="apostrophe-divider"><hr><span></span></div>
+                                            @Html.Raw(Model.PostBody.ToString)
+>>>>>>> 1fc8f933eb907ed0ac26ab3944830a32b08f535e
+                                        <div class="apostrophe-divider"><hr><span></span></div>
                                     </div>
                                 </div>
+                                                
+
                             </div>
                         End If
                     End If
@@ -283,10 +292,6 @@ End Code
 
                 @*<div Class="row form-horizontal">
                         <div Class="form-group">
-<<<<<<< HEAD
-                            <div Class="col-md-12 disable-select ">
-                                @Html.Raw(Model.PostBody.ToString)                                            
-=======
                             <div Class="col-md-12">
                                 <div Class="entry-meta">
                                     <span Class="entry-author">δημιουργήθηκε από @Html.DisplayFor(Function(model) model.createdby)</span>
@@ -295,7 +300,6 @@ End Code
                                     <span Class="entry-author">επεξεργάστηκε από @Html.DisplayFor(Function(model) model.editby)</span>
                                     <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.editdate)</span>
                                 </div>
->>>>>>> cb9a9ef173176be14aa08f11bf331f10d7f273b1
                             </div>
                         </div>
                     </div>*@
@@ -303,7 +307,7 @@ End Code
             </article>
         </div>
 
-        <div Class="row form-horizontal">
+        @*<div Class="row form-horizontal">
             <div id="fbAtlas" Class="fb-like"
                  data-href=@urlwithid
                  data-layout="standard"
@@ -312,8 +316,40 @@ End Code
                  data-show-faces="true"
                  data-share="true">
             </div>
-        </div>
+        </div>*@
 
+        @*<div Class="row form-horizontal" style="float:right">
+            <a target="_blank"
+               href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
+                <img src="~/Content/images/facebook-icon.png">
+            </a>
+            <a class="twitter-share-button"
+               href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+               data-size="large">
+                <img src="~/Content/images/Twitter_Logo.png" />
+            </a>
+        </div>*@
+    </div>
+
+
+    <div Class="sidebar widget-area-11">
+
+        <div Class="widget kopa-tab-1-widget kopa-point-widget">
+            <div Class="row form-horizontal w3-center">
+
+                <div Class="row form-horizontal">
+                    <a target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265&img=~/Content/images/facebook-icon.png">
+                        <img src="~/Content/images/facebook-icon.png">
+                    </a>
+                    <a target="_blank" class="twitter-share-button"
+                       href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+                       data-size="large">
+                        <img src="~/Content/images/Twitter_Logo.png" />
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div Class="sidebar widget-area-11">

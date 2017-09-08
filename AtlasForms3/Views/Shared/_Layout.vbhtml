@@ -27,6 +27,8 @@
     Dim oGetdiorganwseis = u.Getdiorganwseis()
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
+    Dim socialDesc As String = "title/description goes here" 'CHANGEME
+    Dim imageSrc As String = "" 'CHANGE ME
 
     'αν το χρειαστείς!! socialdesc = If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ"
 
@@ -38,21 +40,14 @@ End code
 <head>
     <meta charset="utf-8" />
     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="fb:app_id" content="140586622674265" />s
+    <meta property="og:site_name" content="AtlasBasket" />
     <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
     <meta property="og:url" content="@urlwithid" />
-    <meta property="og:image" content="~/Content/images/atlaslogobig_ok.png" />
-    
-    
-    @*CHANGEME  change the values at the following tags*@
-    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="fb:app_id" content="140586622674265" />
-    <meta property="og:site_name" content="AtlasBasket" />
-    <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />*@
-    @*<meta property="og:type" content="website" />*@ @*or article*@
-    @*<meta property="og:image" content="" />*@ @*image to show for each page*@
-    @*<meta property="og:description" content="" />*@ @*description for each page*@
-    @*<meta property="og:url" content="@urlwithid" />*@   @*url of the page*@
-
+    <meta property="og:image" content="@imageSrc" /> @*image for each page*@
+    <meta property="og:type" content="article" /> @*or website article*@
+    <meta property="og:description" content="@socialDesc" /> @*description for each page*@
 
     <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
     <link rel="shortcut icon" type="image/ico" href="~/favicon.ico">
