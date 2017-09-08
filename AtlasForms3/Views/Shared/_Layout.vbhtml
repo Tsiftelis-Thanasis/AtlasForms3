@@ -20,14 +20,14 @@
 
 
     Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
-    
+
     Dim u As New Utils
     Dim oGetSimplePosts = u.GetSimplePosts(10, Nothing, 1, Nothing)
     Dim oGetdiorganwseis = u.Getdiorganwseis()
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
     Dim socialDesc As String = If(ViewBag.Title = "", "", ViewBag.Title & " - ") & "Ατλας μπάσκετ"
-    Dim imageSrc As String = "~/Content/images/atlaslogobig_ok.png"
+    Dim imageSrc As String = Request.Url.GetLeftPart(UriPartial.Authority).ToString & "/Content/images/atlas_fb_logo.jpg"
 
 End code
 
