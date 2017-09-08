@@ -20,17 +20,14 @@
 
 
     Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
-
-
+    
     Dim u As New Utils
     Dim oGetSimplePosts = u.GetSimplePosts(10, Nothing, 1, Nothing)
     Dim oGetdiorganwseis = u.Getdiorganwseis()
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
-    Dim socialDesc As String = "title/description goes here" 'CHANGEME
-    Dim imageSrc As String = "" 'CHANGE ME
-
-    'αν το χρειαστείς!! socialdesc = If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ"
+    Dim socialDesc As String = If(ViewBag.Title = "", "", ViewBag.Title & " - ") & "Ατλας μπάσκετ"
+    Dim imageSrc As String = "~/Content/images/atlaslogobig_ok.png"
 
 End code
 
@@ -41,7 +38,7 @@ End code
     <meta charset="utf-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="fb:app_id" content="140586622674265" />s
+    <meta property="fb:app_id" content="140586622674265" />
     <meta property="og:site_name" content="AtlasBasket" />
     <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
     <meta property="og:url" content="@urlwithid" />
