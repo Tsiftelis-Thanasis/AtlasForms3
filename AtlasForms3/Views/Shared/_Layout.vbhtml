@@ -28,6 +28,8 @@
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
 
+    'αν το χρειαστείς!! socialdesc = If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ"
+
 End code
 
 

@@ -46,7 +46,7 @@
 
     Dim UserisAuthenticated As Integer = If(User.Identity Is Nothing, 0, If(User.Identity.IsAuthenticated, 1, 0))
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
-    Dim socialDesc As String = "" 'CHANGME
+    Dim socialDesc As String = ViewData("Title")
 
 
 End Code
