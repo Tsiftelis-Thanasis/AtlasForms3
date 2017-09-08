@@ -243,8 +243,10 @@ End Code
                         If Model.PostBody <> "" Then
                             @<div Class="row form-horizontal">
                                 <div Class="form-group">
-                            <div Class="col-md-12 disable-select ">
-                                        @Html.Raw(Model.PostBody.ToString)
+                                    <div Class="col-md-12 disable-select ">
+                                        <div class="apostrophe-divider"><hr><span></span></div>
+                                            @Html.Raw(Model.PostBody.ToString)
+                                        <div class="apostrophe-divider"><hr><span></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -324,15 +326,18 @@ End Code
 
         <div Class="widget kopa-tab-1-widget kopa-point-widget">
             <div Class="row form-horizontal w3-center">
-                <a target="_blank"
-                   href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
-                    <img src="~/Content/images/facebook-icon.png">
-                </a>
-                <a target="_blank" class="twitter-share-button"
-                   href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
-                   data-size="large">
-                    <img src="~/Content/images/Twitter_Logo.png" />
-                </a>
+
+                <div Class="row form-horizontal">
+                    <a target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265&img=~/Content/images/facebook-icon.png">
+                        <img src="~/Content/images/facebook-icon.png">
+                    </a>
+                    <a target="_blank" class="twitter-share-button"
+                       href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+                       data-size="large">
+                        <img src="~/Content/images/Twitter_Logo.png" />
+                    </a>
+                </div>
             </div>
         </div>
     </div>
