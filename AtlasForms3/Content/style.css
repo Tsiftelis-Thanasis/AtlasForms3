@@ -6772,6 +6772,9 @@ address {
 
 .entry-categories.style-s {
   margin: 0 -0.5px 10px; }
+.entry-categories.style-s2 {
+  margin: 0 -0.5px 10px; }
+
   .entry-categories.style-s a {
     display: inline-block;
     font-family: "Oswald", sans-serif;
@@ -6782,6 +6785,18 @@ address {
     margin: 0 0.5px;
     background: #333333;
     text-transform: capitalize; }
+
+  .entry-categories.style-s2 a {
+    display: inline-block;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px !important;
+    line-height: 24px;
+    color: white;
+    padding: 3px 7px;
+    margin: 0 0.5px;
+    background: #333333;
+    text-transform: capitalize; }
+
   /*.entry-categories.style-s.a2 a {
     display: inline-block;
     font-family: "Oswald", sans-serif;
@@ -6793,6 +6808,9 @@ address {
     background: #ef6018;
     text-transform: capitalize; }*/
     .entry-categories.style-s a:hover {
+      background: #cccccc !important;
+      color: #333333; }
+    .entry-categories.style-s2 a:hover {
       background: #cccccc !important;
       color: #333333; }
 

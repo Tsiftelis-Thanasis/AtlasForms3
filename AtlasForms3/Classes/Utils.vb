@@ -131,16 +131,14 @@ Public Class Utils
                                          ByVal copytome As Boolean) As Task
 
 
-        Dim fromAddress = New MailAddress("atlassupport@atlasbasket.gr", "Support @ atlas basket")
-
         Dim smtp = New SmtpClient() With {
-             .Host = "mail.yourideas.gr",
-            .Port = 25,
-            .DeliveryMethod = SmtpDeliveryMethod.Network,
-            .UseDefaultCredentials = False,
-            .Credentials = New NetworkCredential("admin@yourideas.gr", "aayi2004!")
-        }
+                    .Host = "webmail.atlasstatistics.gr", '"mail.yourideas.gr",
+                    .Port = 25,
+                    .DeliveryMethod = SmtpDeliveryMethod.Network,
+                    .Credentials = New NetworkCredential("support@atlasstatistics.gr", "oJqa68!3")
+            }
 
+        Dim fromAddress = New MailAddress("support@atlasstatistics.gr", "Atlas Support")
         Dim message As New MailMessage()
         message.From = fromAddress
         If copytome Then
@@ -170,21 +168,15 @@ Public Class Utils
                                         ByVal copytome As Boolean) As Task
 
         Try
-            Dim fromAddress = New MailAddress(fromemail, fromuser)
-
             Dim smtp = New SmtpClient() With {
-             .Host = "mail.yourideas.gr",
-            .Port = 25,
-            .DeliveryMethod = SmtpDeliveryMethod.Network,
-            .UseDefaultCredentials = False,
-            .Credentials = New NetworkCredential("admin@yourideas.gr", "aayi2004!")
-        }
+                    .Host = "webmail.atlasstatistics.gr", '"mail.yourideas.gr",
+                    .Port = 25,
+                    .DeliveryMethod = SmtpDeliveryMethod.Network,
+                    .Credentials = New NetworkCredential("support@atlasstatistics.gr", "oJqa68!3")
+            }
 
+            Dim fromAddress = New MailAddress("support@atlasstatistics.gr", "Atlas Support")
             Dim message As New MailMessage()
-
-
-
-
             message.From = fromAddress
             If copytome Then
                 message.CC.Add(fromemail)
@@ -192,6 +184,7 @@ Public Class Utils
             message.Subject = subject
             message.Body = body
             message.IsBodyHtml = True
+            'message.To.Add("tsiftelis.thanasis@gmail.com")
             message.To.Add("ATLASBASKETBALLTEAM@GMAIL.COM")
 
             Await smtp.SendMailAsync(message)

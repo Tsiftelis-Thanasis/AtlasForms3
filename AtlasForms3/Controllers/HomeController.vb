@@ -75,6 +75,10 @@ Public Class HomeController
 
         Dim ha As New Utils
 
+
+        subj = "Επικοινωνία μέσω site με θέμα: " & subj
+        body = "<h3>Τα σχόλια της επικοινωνίας</h3><hr>" & body & "<hr>"
+
         Await ha.sendContactformEmailAsync(name, email, subj, body, copy)
 
         'ModelState.AddModelError("", "Έγινε η αποστολή!")

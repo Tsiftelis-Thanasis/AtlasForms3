@@ -445,7 +445,7 @@ End code
                 if (result.length > 0) {
 
                     $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px; !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
+                        d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
                         i++;
                     });
                     choiceContainer.append(d);

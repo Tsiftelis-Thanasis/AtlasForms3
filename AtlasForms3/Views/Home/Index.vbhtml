@@ -72,21 +72,21 @@ End Code
     @code
 
         If AtlasKathgoriaid > 0 Then
-            @<p class="entry-categories style-s">
-                <a style="background: #ef6018; !important" href="~/Home/Index/?ak=@AtlasKathgoriaid">Νέα</a>
+            @<p class="entry-categories style-s2">
+                <a style="background: #ef6018 !important" href="~/Home/Index/?ak=@AtlasKathgoriaid">Νέα</a>
                  
-                @*<a href="~/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px; !important">λίστα με όλα τα νέα</span></a>*@
+                @*<a href="~/Posts/Index/?ak=@atlaskathgoriaid"><span >λίστα με όλα τα νέα</span></a>*@
                  
-                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=12"> <span style="font-size: 12px; !important">Ομαδες</span></a>
-                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=15"> <span style="font-size: 12px; !important">Βαθμολογια</span></a>                                
+                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=12"> <span >Ομαδες</span></a>
+                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=15"> <span >Βαθμολογια</span></a>                                
                  @If UserisAuthenticated > 0 Then
                     If programmaid > 0 Then
-                         @<a href="~/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                         @<a href="~/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
                      Else
-                     @<a><span style="font-size: 12px; !important">Προγραμμα</span></a>
+                     @<a><span >Προγραμμα</span></a>
                      End If
                  End If
-                 <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+                 <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=13"><span >Τιμωριες</span></a>
             </p>
         End If
 

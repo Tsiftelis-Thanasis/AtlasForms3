@@ -87,46 +87,46 @@ End Code
     @code
 
         If atlaskathgoriaid > 0 Then
-            @<p class="entry-categories style-s"><a href="/Home/Index/?ak=@atlaskathgoriaid">Νέα</a>
+            @<p class="entry-categories style-s2"><a href="/Home/Index/?ak=@atlaskathgoriaid">Νέα</a>
     
             @*@If kathgoriaid = 0 Then
-                @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px; !important">Αναλυτικά όλα τα νέα</span></a>
+                @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px !important">Αναλυτικά όλα τα νέα</span></a>
             Else
-                @<a href="/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px; !important">Αναλυτικά όλα τα νέα</span></a>
+                @<a href="/Posts/Index/?ak=@atlaskathgoriaid"><span style="font-size: 12px !important">Αναλυτικά όλα τα νέα</span></a>
             End If*@
 
             @If kathgoriaid = 12 Then
-                @<a style="background: #ef6018; !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+                @<a style="background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=12"><span >Ομαδες</span></a>
             Else
-                @<a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+                @<a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=12"><span >Ομαδες</span></a>
             End If
 
             @If kathgoriaid = 15 Then
-                @<a style="background: #ef6018; !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+                @<a style="background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span >Βαθμολογια</span></a>
             Else
-                @<a href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+                @<a href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span >Βαθμολογια</span></a>
             End If
                
             @If UserisAuthenticated > 0 Then
                 If programmaid > 0 Then
                     @If kathgoriaid = 14 Then
-                        @<a style = "background: #ef6018; !important" href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                        @<a style = "background: #ef6018 !important" href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
                     Else
-                        @<a href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                        @<a href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
                     End If
                 Else
                     @If kathgoriaid = 14 Then
-                        @<a style="background: #ef6018; !important"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                        @<a style="background: #ef6018 !important"> <span >Προγραμμα</span></a>
                     Else
-                        @<a><span style="font-size: 12px; !important">Προγραμμα</span></a>
+                        @<a><span >Προγραμμα</span></a>
                     End If
                 End If
             End If
 
             @If kathgoriaid = 13 Then
-               @<a style = "background: #ef6018; !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+               @<a style = "background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span >Τιμωριες</span></a>
             Else
-               @<a href="/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a> 
+               @<a href="/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span >Τιμωριες</span></a> 
             End If
                    
             </p>

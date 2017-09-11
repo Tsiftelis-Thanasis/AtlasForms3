@@ -54,7 +54,7 @@ Namespace Controllers
 
         ' POST: Newteam/Create
         <HttpPost()>
-        Function Create(ByVal p As NewTeam, ByVal uploadedroster As HttpPostedFileBase) As ActionResult
+        Async Function Create(ByVal p As NewTeam, ByVal uploadedroster As HttpPostedFileBase) As Threading.Tasks.Task(Of ActionResult)
 
             Dim np As New BlogNewTeam
 
@@ -95,6 +95,22 @@ Namespace Controllers
                         np.EditDate = Now()
                         pdb.BlogNewTeam.Add(np)
                         pdb.SaveChanges()
+
+
+
+                        Dim ha As New Utils
+                        Dim body As String = ""
+                        body = "<h3>Εγγραφή νέας ομάδας με τα παρακάτω στοιχεία: </h3>" &
+                            "<br>Όνομα ομάδας  : " & p.teamname &
+                            "</br><br>Αρχηγός ομάδας: " & p.teamleadername &
+                            "</br><br>Email         : " & p.teamemail &
+                            "</br><br>Τηλέφωνο      : " & p.teamphone &
+                            "</br><br>Χρώματα ομάδας: " & p.teamcolor &
+                            "</br><br>Γήπεδο        : " & p.gipedo &
+                            "</br><br>Roster        : " &
+                            p.teamrosterStr.Replace(vbCrLf, "<br>") & "</br><hr> "
+
+                        Await ha.sendContactformEmailAsync(p.teamname, p.teamemail, "Εγγραφή νέα ομάδας - " & p.teamname, body, False)
 
                         Return RedirectToAction("Details", "Newteam", New With {.id = np.Id})
 

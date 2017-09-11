@@ -128,7 +128,7 @@ End Code
         <div class="kopa-entry-post">
             <article class="entry-item">
 
-                <p class="entry-categories style-s">
+                <p class="entry-categories style-s2">
 
 
                     @code
@@ -137,37 +137,37 @@ End Code
                             @<a href="/Home/Index/?ak=@atlaskatid"> Νέα</a>
 
                                     @If katid = 12 Then
-                                        @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskatid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+                                        @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskatid&k=12"><span >Ομαδες</span></a>
                                     Else
-                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=12"><span style="font-size: 12px; !important">Ομαδες</span></a>
+                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=12"><span >Ομαδες</span></a>
                                     End If
 
                                     @If katid = 15 Then
-                                        @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskatid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+                                        @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskatid&k=15"><span >Βαθμολογια</span></a>
                                     Else
-                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=15"><span style="font-size: 12px; !important">Βαθμολογια</span></a>
+                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=15"><span >Βαθμολογια</span></a>
                                     End If
 
                                     @If UserisAuthenticated > 0 Then
                                         If programmaid > 0 Then
                                             @If katid = 14 Then
-                                                @<a style="background: #ef6018; !important" href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                                @<a style="background: #ef6018 !important" href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
                                             Else
-                                                @<a href="/Posts/Details/@programmaid"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                                @<a href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
                                             End If
                                         Else
                                             @If katid = 14 Then
-                                                @<a style="background: #ef6018; !important"> <span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                                @<a style="background: #ef6018 !important"> <span >Προγραμμα</span></a>
                                             Else
-                                                @<a><span style="font-size: 12px; !important">Προγραμμα</span></a>
+                                                @<a><span >Προγραμμα</span></a>
                                             End If
                                         End If
                                     End If
 
                                     @If katid = 13 Then
-                                        @<a style="background: #ef6018; !important" href="/Posts/Index/?ak=@atlaskatid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+                                        @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskatid&k=13"><span >Τιμωριες</span></a>
                                     Else
-                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=13"><span style="font-size: 12px; !important">Τιμωριες</span></a>
+                                        @<a href="/Posts/Index/?ak=@atlaskatid&k=13"><span >Τιμωριες</span></a>
                                     End If
 
                         Else
