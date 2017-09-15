@@ -148,7 +148,7 @@ Public Class Utils
         message.Body = body
         message.IsBodyHtml = True
         message.To.Add(useremailaddress)
-        message.Bcc.Add("ATLASBASKETBALLTEAM@GMAIL.COM")
+        'message.Bcc.Add("ATLASBASKETBALLTEAM@GMAIL.COM")
 
         Try
 

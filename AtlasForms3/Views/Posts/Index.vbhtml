@@ -447,6 +447,11 @@ End Code
                             "render": function (data, type, row) {
                                 if (row === undefined || row === null) return '';
 
+                                var postdd = '';
+                                if (row.PostSummary != 'null') {
+                                    postdd = row.PostSummary;
+                                }
+
                                 var dd = '<li>'+
                                     ' <article class="entry-item"> ' +
                                     '   <div class="entry-thumb"> ' +
@@ -460,10 +465,7 @@ End Code
                                     '           <h4 class="entry-title"> <b>' + row.PostTitle + ' </b> </h4> ' +
                                     '       </a> ' +
                                     '   </div> ' +
-                                    '   <p>' + row.PostSummary + ' .... </p> ' +
-                                    '   <footer> ' +
-                                    '       <p class="entry-author"> από ' + row.editBy + '</p> ' +
-                                    '   </footer> ' +
+                                    '   <p>' + postdd  + ' ... </p> ' +
                                     ' </div>    ' +
                                     ' </a> ' +
                                     ' </article> '+
