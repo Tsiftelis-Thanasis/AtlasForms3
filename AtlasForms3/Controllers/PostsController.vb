@@ -739,15 +739,16 @@ Namespace Controllers
                 Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
                         .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"),
                         .createdBy = o.CreatedBy, .creationDate = CDate(o.CreationDate).ToString("dd/MM/yyyy"),
-                        .KathgoriaName = o.KathgoriaName, .atlaskathgoria = o.atlaskathgoria, .ActivePost = o.Active}).ToArray
+                        .KathgoriaName = o.KathgoriaName, .atlaskathgoria = o.atlaskathgoria, .ActivePost = o.Active}).ToArray.OrderByDescending(Function(a) a.Id)
 
             Dim q1 = (From a2 In ar2
                       Where (a2.atlaskathgoria Is Nothing)
                       Select a2.Id, a2.PostTitle, a2.PostSummary,
-                        a2.editBy, a2.editDate, a2.KathgoriaName, AtlasKathgoria = "", AtlasOmilos = "", a2.ActivePost).
+                        a2.editBy, a2.editDate, a2.createdBy, a2.creationDate, a2.KathgoriaName, AtlasKathgoria = "", AtlasOmilos = "", a2.ActivePost).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
                          .editBy = o.editBy, .editDate = o.editDate,
+                          .createdBy = o.createdBy, .creationDate = o.creationDate,
                         .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos, .ActivePost = o.ActivePost}).ToArray
 
             Dim q2 = (From a2 In ar2
@@ -758,10 +759,11 @@ Namespace Controllers
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
                          .editBy = o.editBy, .editDate = o.editDate, .createdBy = o.createdBy, .creationDate = o.creationDate,
-                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos, .ActivePost = o.ActivePost}).OrderByDescending(Function(a) a.Id).ToArray
+                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos, .ActivePost = o.ActivePost}).ToArray
 
             Dim q = q1.Concat(q2)
 
+            q = q.OrderByDescending(Function(a) Convert.ToInt32(a.Id)).ToArray
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then

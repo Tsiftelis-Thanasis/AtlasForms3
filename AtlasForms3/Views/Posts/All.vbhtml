@@ -7,13 +7,20 @@ End Code
 <div id="main-content" Class="style1">
 
     <div Class="wrapper">
-        <div Class="content-wrap">
+       <div Class="content-wrap">
+
+                   
+           
+          
             <div Class="row">
                 @*<div Class="kopa-main-col">*@
                                        
                     <div id="divcommon" Class="widget-area-2">
                         <div Class="widget kopa-article-list-widget article-list-1">
                             <h3 Class="widget-title style2">ολα τα αρθρα</h3>
+
+                            <p  class="entry-categories style-s2">  @Html.ActionLink("Δημιουργία Άρθρου", "Create", "Posts") </p>
+
                             <table id="newstable">
                                 <thead>
                                     <tr>
@@ -22,8 +29,8 @@ End Code
                                         <th>Όμιλος (στατιστικά)</th>
                                         <th>Κατηγορία (στατιστικά)</th>
                                         <th>Active</th>
-                                        <th>Αλλαγή απο</th>
-                                        <th>Ημερομηνία</th>
+                                        <th>Ημερομηνία δημιουργίας</th>
+                                        <th>Ημερομηνία αλλαγής</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -76,14 +83,15 @@ End Code
             },
             "aLengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "All"]],
             "iDisplayLength": 20,
-            "bProcessing": true,           
+            "bProcessing": true,
+            "aaSorting": [],
             "aoColumns": [
                           {},
                           { "mData": "KathgoriaName" },     
                           { "mData": "AtlasOmilos" },  
                           { "mData": "AtlasKathgoria" },
                           { "mData": "ActivePost" },
-                          { "mData": "editBy"},
+                          { "mData": "creationDate", "sType": "date-uk" },
                           { "mData": "editDate", "sType": "date-uk" },
             ],
             "columnDefs": [
