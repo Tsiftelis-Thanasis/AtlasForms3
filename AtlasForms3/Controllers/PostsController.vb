@@ -733,10 +733,12 @@ Namespace Controllers
                        Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
                        Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
                        Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary,
-                         editBy = p.EditBy, editDate = p.EditDate, KathgoriaName = p2.KathgoriaName, atlaskathgoria = p1.AtlasKathgoriaId, Active = If(p.Activepost = True, "Ναι", "Οχι")).
+                         editBy = p.EditBy, editDate = p.EditDate, CreatedBy = p.CreatedBy, CreationDate = p.CreationDate,
+                          KathgoriaName = p2.KathgoriaName, atlaskathgoria = p1.AtlasKathgoriaId, Active = If(p.Activepost = True, "Ναι", "Οχι")).
                 AsEnumerable().[Select](
                 Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
                         .editBy = o.editBy, .editDate = CDate(o.editDate).ToString("dd/MM/yyyy"),
+                        .createdBy = o.CreatedBy, .creationDate = CDate(o.CreationDate).ToString("dd/MM/yyyy"),
                         .KathgoriaName = o.KathgoriaName, .atlaskathgoria = o.atlaskathgoria, .ActivePost = o.Active}).ToArray
 
             Dim q1 = (From a2 In ar2
@@ -752,11 +754,11 @@ Namespace Controllers
                       Join a1 In ar1 On a1.Kathgoria Equals a2.atlaskathgoria
                       Where Not (a2.atlaskathgoria Is Nothing)
                       Select a2.Id, a2.PostTitle, a2.PostSummary,
-                        a2.editBy, a2.editDate, a2.KathgoriaName, AtlasKathgoria = a1.KathgoriaName, AtlasOmilos = a1.Omilosname, ActivePost = a2.ActivePost).
+                        a2.editBy, a2.editDate, a2.createdBy, a2.creationDate, a2.KathgoriaName, AtlasKathgoria = a1.KathgoriaName, AtlasOmilos = a1.Omilosname, ActivePost = a2.ActivePost).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary,
-                         .editBy = o.editBy, .editDate = o.editDate,
-                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos, .ActivePost = o.ActivePost}).ToArray
+                         .editBy = o.editBy, .editDate = o.editDate, .createdBy = o.createdBy, .creationDate = o.creationDate,
+                        .KathgoriaName = o.KathgoriaName, .AtlasKathgoria = o.AtlasKathgoria, .AtlasOmilos = o.AtlasOmilos, .ActivePost = o.ActivePost}).OrderByDescending(Function(a) a.Id).ToArray
 
             Dim q = q1.Concat(q2)
 

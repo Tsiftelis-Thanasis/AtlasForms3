@@ -142,9 +142,9 @@ End Code
                                      <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:480px;width:1024px;" alt=""></a> 
                                      <div class="thumb-hover"></div> 
                                 </div> 
-                                 <div class="entry-content">                                    
-                                     <h4 class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>  
-                                     <h5><span><b>@n.PostSummary</b></span></h5> 
+                                 <div class="entry-content  entry-content2">                                    
+                                     <h3 class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>  
+                                     @*<h5><span><b>@n.PostSummary</b></span></h5>*@ 
                                  </div> 
                                 <span></span>                                 
                                 </article> 
@@ -210,6 +210,7 @@ End Code
                                         @code
 
                                             For Each n In oLastNews2
+                                                Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
 
                                                     @<li><article Class="entry-item disable-select ">
                                                     <div Class="entry-thumb">
@@ -219,12 +220,12 @@ End Code
                                                     <div Class="content-top">
                                                     <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
                                                     </div>
-                                                    <p>@n.PostSummary.... </p>
+                                                    <p> @postsummarystr ... </p>
                                                     </div>
                                                     </article>
                                                     </li>
                                             Next
-                                            End Code
+                                         End Code
 
                                         </ul>
                                     

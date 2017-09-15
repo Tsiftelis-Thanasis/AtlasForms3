@@ -194,7 +194,8 @@ End Code
                         @<div Class="row form-horizontal vertical-center">
                             <div Class="form-group">
                                 <div Class="col-md-6 entry-thumb">
-                                    <img src="@imageSrc" style="width:50%;" />
+                                    <img src="@imageSrc" style="width:95%;height:95%;" />
+
                                 </div>
                             </div>
                         </div>

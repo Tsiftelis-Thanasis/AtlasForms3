@@ -32,7 +32,7 @@ End Code
                     </div>
                 </div>
                 
-                <div Class="sidebar widget-area-11">
+                @*<div Class="sidebar widget-area-11">
 
                     <div Class="widget kopa-ads-widget">
                         <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
@@ -46,7 +46,7 @@ End Code
                         <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
                     </div>
                 
-                </div>
+                </div>*@
                 
             </div>
             <!-- row -->

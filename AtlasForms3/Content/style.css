@@ -5871,14 +5871,14 @@ ul.style1 > li {
   padding: 0 30px; }
 
 .kopa-main-col {
-  width: 70.17544%;
+  width: 74.17544%;
   padding: 0 15px;
   float: left;
   min-height: 1px;
   position: relative; }
 
 .sidebar {
-  width: 29.82456%;
+  width: 25.82456%;
   padding: 0 15px;
   float: left;
   min-height: 1px;
@@ -8297,3 +8297,14 @@ address {
     border-right: 10px solid #fff;
     /*vertical-align: middle;*/
 }
+
+
+ .entry-content2 {   
+    bottom: 60px !important;
+    }
+.entry-content2
+    {
+      font-size: 36px !important;
+      line-height: 42px !important;      
+    }
+
