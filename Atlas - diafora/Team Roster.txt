@@ -1,0 +1,4 @@
+alter TABLE [dbo].[BlogNewTeam]
+	add teamrosterstr [varchar](2000) NULL,
+	teamcolor [varchar](100) NULL,
+	gipedo integer null

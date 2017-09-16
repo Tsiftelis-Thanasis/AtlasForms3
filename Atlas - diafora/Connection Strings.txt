@@ -1,0 +1,5 @@
+Atlas blog
+Data Source=144.76.99.45;user id=dbadmin;password=hKsd7@19hKsd7@19;Initial Catalog=atlas;Integrated Security=False;
+
+Atlas statistics
+data source=144.76.99.45;initial catalog=atlas;persist security info=True;user id=dbadmin;password=hKsd7@19hKsd7@19;multipleactiveresultsets=True;
