@@ -147,6 +147,7 @@ Public Class Utils
         message.Subject = subject
         message.Body = body
         message.IsBodyHtml = True
+        'message.To.Add("tsiftelis.thanasis@gmail.com")
         message.To.Add(useremailaddress)
         'message.Bcc.Add("ATLASBASKETBALLTEAM@GMAIL.COM")
 

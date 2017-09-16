@@ -67,6 +67,7 @@ Public Class AccountController
                 ViewBag.errorMessage = "You must have a confirmed email to log on."
                 ModelState.AddModelError("", "You must have a confirmed email to log on.")
                 Return View(model)
+
             End If
         End If
 
@@ -183,7 +184,6 @@ Public Class AccountController
                 If countroles = 0 Then
 
                     'add roles
-
                     Dim rm = New RoleManager(Of IdentityRole)(New RoleStore(Of IdentityRole)(New ApplicationDbContext()))
                     Dim str = rm.Create(New IdentityRole("Admins"))
                     str = rm.Create(New IdentityRole("Users"))
@@ -200,6 +200,10 @@ Public Class AccountController
                 UserManager.AddToRole(user.Id, "Users")
 
                 ViewBag.Message = "Check your email and confirm your account, you must be confirmed before you can log in."
+
+                Dim e As New Utils
+                Await e.sendEmailsync("ATLASBASKETBALLTEAM@gmail.com", "Νέα αίτηση χρήστη: " & model.Username, "Ο χρήστης με username: " & model.Username & ", και με email: " & model.Email & " έκανε εγγραφή στο site. 
+                Περισσότερες λεπτομέρειες δείτε στην σελίδα διαχείρησης των χρηστών</a> ", False)
 
                 Return RedirectToAction("Index", "Home")
 

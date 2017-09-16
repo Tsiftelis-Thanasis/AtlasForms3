@@ -399,18 +399,18 @@ Public Class HomeController
     End Sub
 
 
-    Public Async Function sendtheemail() As Threading.Tasks.Task
+    'Public Async Function sendtheemail() As Threading.Tasks.Task
 
 
 
-        Dim ha As New Utils
+    '    Dim ha As New Utils
 
 
 
-        Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "Please confirm your account by clicking <a href=""http://atlasbasket2.gr.144-76-99-45.my-website-preview.com/Posts/?ak=49&k=11"">here</a>", False)
+    '    Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "Please confirm your account by clicking <a href=""http://atlasbasket2.gr.144-76-99-45.my-website-preview.com/Posts/?ak=49&k=11"">here</a>", False)
 
 
-    End Function
+    'End Function
 
 
     <Compress>
