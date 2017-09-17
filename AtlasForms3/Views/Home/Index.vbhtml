@@ -163,80 +163,98 @@ End Code
                         <div Class="kopa-main-col">
                             <div Class="widget-area-2">
                                 <div Class="widget kopa-tab-sync-carousel-widget">
-                                    <h3 Class="widget-title style1">τοπ 10 και δηλωσεις</h3>
-                                    <div Class="widget kopa-sync-carousel-2-widget">
-                                        <div Class="owl-carousel sync3" id="watchsync3">
-                                            @code
-                                                For Each o In oLastNewsList
-                                                    @<div Class="item">
-                                                        <article class="entry-item video-post">
-                                                            <div class="entry-thumb w3-center">
-                                                                <a href="/Posts/Details/@o.Id" ><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
-                                                                <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
-                                                            </div>
-                                                            <div class="entry-content">
-                                                                <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
-                                                            </div>
-                                                        </article>
-                                                    </div>
-                                                Next
-                                            End Code
-                                        </div>
 
-                                        <div Class="owl-carousel sync4" id="watchsync4">
-                                            @code
-                                                For Each o1 In oLastNewsList
-                                                    @<div Class="item">
-                                                        <article Class="entry-item video-post">
-                                                            <div Class="entry-thumb">
-                                                                <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
-                                                                <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
+                            @code
+
+                            @If oLastNewsList.count > 0 Then
+
+
+                            @<h3 Class="widget-title style1">τοπ 10 και δηλωσεις</h3>
+                            @<div Class="widget kopa-sync-carousel-2-widget">
+
+                                                    <div Class="owl-carousel sync3" id="watchsync3">
+
+                                                        @For Each o In oLastNewsList
+                                                            @<div Class="item">
+                                                                <article class="entry-item video-post">
+                                                                    <div class="entry-thumb w3-center">
+                                                                        <a href="/Posts/Details/@o.Id" ><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
+                                                                        <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
+                                                                    </div>
+                                                                    <div class="entry-content">
+                                                                        <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
+                                                                    </div>
+                                                                </article>
                                                             </div>
-                                                            <div Class="entry-content">
-                                                                <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
+                                                        Next
+                                          
+                                                </div>
+
+                                                <div Class="owl-carousel sync4" id="watchsync4">
+                                          
+                                                        @For Each o1 In oLastNewsList
+                                                            @<div Class="item">
+                                                                <article Class="entry-item video-post">
+                                                                    <div Class="entry-thumb">
+                                                                        <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
+                                                                        <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
+                                                                    </div>
+                                                                    <div Class="entry-content">
+                                                                        <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
+                                                                    </div>
+                                                                </article>
                                                             </div>
-                                                        </article>
-                                                    </div>
-                                                Next
-                                            End Code
-                                        </div>
-                                    </div>
+                                                        Next
+                                           
+                                                </div>
+
+                                      
+
+                                            </div>
+
+                            End If
+                                    End Code
                                 </div>                               
 
-                                
+
                                 <div Class="widget kopa-article-list-widget article-list-1">
-                                    <h3 Class="widget-title style2">τελευταια νεα</h3>
-                                    <ul id="latestnewsid" Class="clearfix">
-                                        @code
-
-                                            For Each n In oLastNews2
-                                                Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
-
-                                                    @<li><article Class="entry-item disable-select ">
-                                                    <div Class="entry-thumb">
-                                                        <a href = "#"><img src="@n.PostPhoto2" alt=""/></a>
-                                                    </div>
-                                                    <div Class="entry-content">
-                                                    <div Class="content-top">
-                                                    <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
-                                                    </div>
-                                                    <p> @postsummarystr ... </p>
-                                                    </div>
-                                                    </article>
-                                                    </li>
-                                            Next
-                                         End Code
-
-                                        </ul>
                                     
+                                    @code 
 
-                                        @code
+
+                                        If AtlasKathgoriaid > 0 Then
+                                                @<h3 Class="widget-title style2">τελευταια νεα ομίλου </h3>
+                                        Else
+                                                @<h3 Class="widget-title style2">τελευταια νεα διοργάνωσης </h3>
+                                        End If
+
+                                            @<ul id = "latestnewsid" Class="clearfix">
+                                    
+                                                @For Each n In oLastNews2
+                                                    Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
+
+                                                        @<li><article Class="entry-item disable-select ">
+                                                        <div Class="entry-thumb">
+                                                            <a href = "#"><img src="@n.PostPhoto2" alt=""/></a>
+                                                        </div>
+                                                        <div Class="entry-content">
+                                                        <div Class="content-top">
+                                                        <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
+                                                        </div>
+                                                        <p> @postsummarystr ... </p>
+                                                        </div>
+                                                        </article>
+                                                        </li>
+                                                Next
+                                            </ul>
+
                                             If AtlasKathgoriaid > 0 Then
-                                                @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                                    @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
                                             Else
-                                                @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
-                                            End If
-                                        End code
+                                                    @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                        End If
+
+                                    End code
                                 </div>
                             </div>
 

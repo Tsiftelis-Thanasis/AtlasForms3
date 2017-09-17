@@ -225,7 +225,7 @@ End Code
                     If not Model.PostSummary Is Nothing Then
                         If Model.PostSummary <> "" Then
                             @<div Class="row form-horizontal">
-                                <div Class="form-group">
+                                <div Class="form-group">                             
                                     <div Class="col-md-12 disable-select "> 
                                         <em>
                                             @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
@@ -247,12 +247,15 @@ End Code
                                 <div Class="form-group">                                    
                                     <div Class="col-md-12 disable-select ">
                                         <div class="apostrophe-divider"><hr><span></span></div>
+                                       
+                                        <div class="tinymce">
                                             @Html.Raw(Model.PostBody.ToString)
-                                        <div class="apostrophe-divider"><hr><span></span></div>
-                                    </div>
-                                </div>
-                                                
+                                        </div>
 
+                                        <div class="apostrophe-divider"><hr><span></span></div>
+                                        </div>                          
+                                </div>
+                                
                             </div>
                         End If
                     End If
@@ -260,8 +263,8 @@ End Code
                 End code
 
                 @code
-                    If not Model.Statslink Is Nothing Then
-                        If Model.Statslink.ToString <> "" Then
+    If not Model.Statslink Is Nothing Then
+        If Model.Statslink.ToString <> "" Then
                             @<p Class="short-des" style="text-align:center">
                                 <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Model.Statslink">
                                     <img src="~/Content/images/stats.jpg" border="0" />
@@ -359,6 +362,21 @@ End Code
 
 @Section Scripts
     <script type="text/javascript">
+
+
+        tinymce.init({
+            selector: 'div.tinymce',
+            theme: 'inlite',
+            plugins: 'image media table link paste contextmenu textpattern autolink codesample',
+            insert_toolbar: 'quickimage quicktable media codesample',
+            selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+            inline: true,
+            readonly: 1,
+            paste_data_images: true,
+            content_css: [
+              '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+              '//www.tinymce.com/css/codepen.min.css']
+        });
 
     </script>
 End Section

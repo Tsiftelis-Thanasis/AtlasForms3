@@ -31,8 +31,8 @@ Public Class HomeController
 
         ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, {6, 7, 16}, Nothing, 1, 1).Data.data
         ViewBag.LastGamesList = Getlastgames(ak).Data
-        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13, 14, 17}).Data.data
-        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, Nothing).Data.data
+        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13, 17}, 1).Data.data
+        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13, 17}, Nothing).Data.data
 
         ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
         ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
@@ -494,11 +494,13 @@ Public Class HomeController
 
     <Compress>
     Function GetLastNews(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?,
-                         ByVal withphoto As Integer?, ByVal withvideo As Integer?, ByVal k() As Integer?) As JsonResult
+                         ByVal withphoto As Integer?, ByVal withvideo As Integer?, ByVal k() As Integer?,
+                         ByVal isSlider As Integer?) As JsonResult
 
         If atlaskathgoria Is Nothing Then atlaskathgoria = 0
         If withphoto Is Nothing Then withphoto = 0
         If withvideo Is Nothing Then withvideo = 0
+        If isSlider Is Nothing Then isSlider = 0
 
         Dim kl = (From o In pdb.KathgoriesTable
                   Where o.Id = atlaskathgoria
@@ -511,13 +513,12 @@ Public Class HomeController
         '11  Νέα
         '12  Ομάδες -> oxi
         '13  Τιμωρίες 
-        '14  Πρόγραμμα 
+        '14  Πρόγραμμα -> oxi
         '15  Βαθμολογίες -> oxi
         '16  Τοπ 10
         '17  ΔΗΛΩΣΕΙΣ
 
-
-        If k Is Nothing Then k = {3, 6, 7, 11, 13, 14, 16, 17} 'Teleutaia nea!
+        If k Is Nothing Then k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
 
         Try
 
@@ -557,7 +558,8 @@ Public Class HomeController
                          Where p.Activepost = True And
                              If(withphoto = 1, Not p.PostPhotoStr Is Nothing, 1 = 1) And
                              If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1) And
-                          k.Contains(If(pk.KathgoriaId, 0))
+                             If(isSlider = 1, 1 = 1, pk.AtlasKathgoriaId Is Nothing) And
+                             k.Contains(If(pk.KathgoriaId, 0))
                          Select p
                          Order By p.Id Descending
                              ).Take(nCount).AsEnumerable().[Select](

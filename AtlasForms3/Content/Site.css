@@ -124,3 +124,19 @@ textarea {
 #pagin li {
   display: inline-block;
 }*/
+
+
+.wraptext {
+    width: 5em;     
+    word-wrap: break-word;
+}
+
+
+/*blockquote {
+  padding-left: 4px;
+  border-left: 2px solid gray;
+}
+
+a[href] {
+  text-decoration: underline;
+}*/

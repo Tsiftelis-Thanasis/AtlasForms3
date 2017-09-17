@@ -144,15 +144,15 @@ End code
                         </li>
 
                         <li class="current-menu-item">
-                            <a><span>εγγραφες </span></a>
-                            <ul class="sub-menu">
+                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
+                            @*<ul class="sub-menu">*@
                                 @*<li>
                                         <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
                                     </li>*@
-                                <li>
+                                @*<li>
                                     <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
-                            </ul>
+                            </ul>*@
                         </li>
 
                         <li class="current-menu-item">
@@ -201,15 +201,17 @@ End code
                         </li>
 
                         <li class="current-menu-item">
-                            <a><span>εγγραφες </span></a>
-                            <ul class="sub-menu">
+                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
+
+                            @*<a><span>εγγραφες </span></a>
+                            <ul class="sub-menu">*@
                                 @*<li>
                                         <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
                                     </li>*@
-                                <li>
+                                @*<li>
                                     <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
                                 </li>
-                            </ul>
+                            </ul>*@
                         </li>
 
                         <li class="current-menu-item">
