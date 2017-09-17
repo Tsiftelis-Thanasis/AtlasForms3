@@ -688,7 +688,8 @@ Namespace Controllers
                        Where
                            p.Activepost = True And
                            If(KathgoriaId > 0, p1.KathgoriaId = KathgoriaId, 1 = 1) And
-                           If(AtlasOmilosid > 0, p1.AtlasKathgoriaId = AtlasOmilosid, 1 = 1)
+                           If(AtlasOmilosid > 0, p1.AtlasKathgoriaId = AtlasOmilosid, 1 = 1) And
+                           If(IsKathgoria = 0 And IsAtlasKathgoria = 0, 1 = 2, 1 = 1)
                        Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                         PostPhoto = p.PostPhotoStr, Youtubelink = p.Youtubelink, editBy = p.EditBy, kathgoria = p1.AtlasKathgoriaId).Take(nCount).
                 AsEnumerable().[Select](

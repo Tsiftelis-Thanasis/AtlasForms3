@@ -46,7 +46,7 @@
     End If
     If kathgoriaid = 0 Then
         ViewData("Title") = "Λίστα με όλα τα νεα" '& katName
-        innerTitle = "Λίστα με όλα τα νεα " '& katName
+        innerTitle = "λιστα με ολα τα νεα " '& katName
     End If
 
 
@@ -407,7 +407,23 @@ End Code
             $("#divcommon").show();
          }
         
-      
+        var isKathgoria = 1;
+        var isAtlasKathgoria = 1;
+
+        if ($('#atlaskathgoriaid').val() == 0) {
+           
+            isAtlasKathgoria = 0;
+
+        }
+
+        if ($('#kathgoriaid').val() == 0) {
+
+            isKathgoria = 0;
+            isAtlasKathgoria = 0;
+
+        }
+
+
         if ($("#divcommon").is(":visible")) {
             $('#newstable').DataTable({
                 "sAjaxSource": baseUrl + '@Url.Action("GetLastNewsByBothCategories")',
@@ -426,11 +442,11 @@ End Code
                     })
                     aoData.push({
                         "name": "IsKathgoria",
-                        "value": 1
+                        "value": isKathgoria
                     })
                     aoData.push({
                         "name": "IsAtlasKathgoria",
-                        "value": 1
+                        "value": isAtlasKathgoria
                     })
                 },
                 "contentType": "application/json; charset=utf-8",
@@ -512,90 +528,6 @@ End Code
             }
         }
 
-
-
-        @*//GetTeamsbyKathgoria 1
-        if ($("#divteamskat1").is(":visible")) {
-
-            var choiceContainer = $("#ulteamskat1");
-            choiceContainer.empty();
-
-            $.ajax({
-                type: "POST",
-                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Home")',
-                data: "{kid: " + $("#atlaskathgoriaid").val() + "}",
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
-
-                    if (result.data.length > 0) {
-
-                        $.each(result.data, function () {
-                            var d = '<li class="col-md-4 col-sm-4 col-xs-4 ms-item2 pull-left">' +
-                                   '<article class="entry-item"> ' +
-                                   '<a class="entry-categories" href="#">' + this.KathgoriaName + '<span class="ttg"></span></a> ' +
-                                   '<div class="entry-thumb"> ' +
-                                   '<a href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank"><img src="' + this.TeamLogo + '" alt=""  style="height:120px;width:120px;"></a> ' +
-                                   '</div> ' +
-                                   '<div class="entry-content">  ' +
-                                   '<div class="content-top">  ' +
-                                   '<h4 class="entry-title" itemscope="" itemtype="http://schema.org/Event"><a itemprop="name" ' +
-                                   ' href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank">' + this.TeamName + '</a></h4> ' +
-                                   '</div> ' +
-                                   '</div> ' +
-                                   '</article> ' +
-                                   '</li>';
-                            choiceContainer.append(d);
-                        });
-                    }
-                },
-                error: function (result) {
-                    //alert("Δεν έχετε διαλέξει όλες τις επιλογές!");
-                }
-            });
-        }*@
-
-        //GetTeamsbyKathgoria 2
-        @*if ($("#divteamskat2").is(":visible")) {
-
-            var choiceContainer = $("#ulteamskat2");
-            choiceContainer.empty();
-
-            $.ajax({
-                type: "POST",
-                url: baseUrl + '@Url.Action("GetTeamsbyKathgoria", "Home")',
-                data: "{kid: " + $("#atlaskathgoria2").val() + "}",
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (result) {
-
-                    if (result.data.length > 0) {
-                        $.each(result.data, function () {
-                            var d = '<li class="col-md-3 col-sm-3 col-xs-3 ms-item2">' +
-                                   '<article class="entry-item"> ' +
-                                   '<a class="entry-categories" href="#">' + this.KathgoriaName + '<span class="ttg"></span></a> ' +
-                                   '<div class="entry-thumb"> ' +
-                                   '<a href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank"><img src="' + this.TeamLogo + '" alt=""  style="height:120px;width:120px;" ></a> ' +
-                                   '</div> ' +
-                                   '<div class="entry-content">  ' +
-                                   '<div class="content-top">  ' +
-                                   '<h4 class="entry-title" itemscope="" itemtype="http://schema.org/Event"><a itemprop="name" ' +
-                                   ' href="http://atlasstatistics.gr/Teams/Details/' + this.Id + '" target="_blank">' + this.TeamName + '</a></h4> ' +
-                                   '</div> ' +
-                                   '</div> ' +
-                                   '</article> ' +
-                                   '</li>';
-                            choiceContainer.append(d);
-                        });
-                    }
-                },
-                error: function (result) {
-                    //alert("Δεν έχετε διαλέξει όλες τις επιλογές!");
-                }
-            });
-        }*@
     });
     </Script>
 End Section
