@@ -352,6 +352,7 @@ End Code
 
 @Section Scripts
     <Script type="text/javascript" language="javascript">
+
     $(document).ready(function () {
 
         //'1   Διοργανώτρια Αρχή
@@ -407,46 +408,21 @@ End Code
             $("#divcommon").show();
          }
         
-        var isKathgoria = 1;
-        var isAtlasKathgoria = 1;
-
-        if ($('#atlaskathgoriaid').val() == 0) {
-           
-            isAtlasKathgoria = 0;
-
-        }
-
-        if ($('#kathgoriaid').val() == 0) {
-
-            isKathgoria = 0;
-            isAtlasKathgoria = 0;
-
-        }
-
-
         if ($("#divcommon").is(":visible")) {
             $('#newstable').DataTable({
-                "sAjaxSource": baseUrl + '@Url.Action("GetLastNewsByBothCategories")',
+                "sAjaxSource": baseUrl + '@Url.Action("GetLastNews", "Home")',
                 "fnServerParams": function (aoData) {
-                    aoData.push({
-                        "name": "AtlasOmilosid",
-                        "value": $('#atlaskathgoriaid').val()
-                    })
                     aoData.push({
                         "name": "nCount",
                         "value": 100
                     })
                     aoData.push({
-                        "name": "KathgoriaId",
+                        "name": "atlaskathgoria",
+                        "value": $('#atlaskathgoriaid').val()
+                    })
+                    aoData.push({
+                        "name": "k",
                         "value": $('#kathgoriaid').val()
-                    })
-                    aoData.push({
-                        "name": "IsKathgoria",
-                        "value": isKathgoria
-                    })
-                    aoData.push({
-                        "name": "IsAtlasKathgoria",
-                        "value": isAtlasKathgoria
                     })
                 },
                 "contentType": "application/json; charset=utf-8",
@@ -457,6 +433,7 @@ End Code
                 "iDisplayLength": 5,
                 "bProcessing": true,
                 "aoColumns": [{}],
+                "aaSorting": [],
                 "columnDefs": [
                         {
                             "targets": 0,

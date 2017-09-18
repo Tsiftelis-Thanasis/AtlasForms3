@@ -8300,11 +8300,19 @@ address {
 
 
  .entry-content2 {   
-    bottom: 60px !important;
+    bottom: 30px !important;
+    width: 72% !important;
+     /*background: rgba(232, 90, 18, 0.71) !important;*/ 
     }
 .entry-content2
     {
-      font-size: 36px !important;
-      line-height: 42px !important;      
+      font-size: 32px !important;
+      line-height: 46px !important;  
+       /*background: rgba(232, 90, 18, 0.71) !important;*/     
     }
 
+.entry-title2   {
+      font-size: 32px !important;
+      line-height: 46px !important;     
+     background: rgba(239, 96, 24, 0.6) !important;
+    }

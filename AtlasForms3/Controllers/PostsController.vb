@@ -43,15 +43,29 @@ Namespace Controllers
 
             If id > 0 Then
 
-                Try
 
+                Try
 
                     Dim q = (From t In pdb.BlogPostsTable
                              Where t.Id = id
                              Select t).First
 
+                    Dim pq As Integer? = 0
+                    pq = (From pk In pdb.BlogPostandKathgoriaTable
+                          Where pk.PostId = q.Id
+                          Select pk.KathgoriaId).FirstOrDefault
+
                     Dim t1 As New Posts
-                    t1.Id = q.Id
+
+
+                    If pq = 14 And User.Identity.IsAuthenticated = False Then
+
+                        ModelState.AddModelError("", "Το περιεχόμενο δεν είναι διαθέσιμο. Πρέπει να συνδεθείτε")
+                        t1.Id = q.Id
+                        Return View(t1)
+
+                    End If
+
                     t1.Activepost = q.Activepost
                     t1.PostTitle = q.PostTitle
                     t1.PostBody = q.PostBody
@@ -64,6 +78,12 @@ Namespace Controllers
                     t1.creationdate = q.CreationDate
                     t1.editby = q.EditBy
                     t1.editdate = q.EditDate
+
+
+
+                    ViewBag.postimage = q.PostPhotoStr
+
+
 
                     Return View(t1)
 

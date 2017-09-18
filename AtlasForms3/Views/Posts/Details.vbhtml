@@ -134,6 +134,7 @@ End Code
                     @code
 
                         If atlaskatid > 0 And katid = 14 Then
+
                             @<a href="/Home/Index/?ak=@atlaskatid"> Νέα</a>
 
                                     @If katid = 12 Then
@@ -263,8 +264,8 @@ End Code
                 End code
 
                 @code
-    If not Model.Statslink Is Nothing Then
-        If Model.Statslink.ToString <> "" Then
+                    If not Model.Statslink Is Nothing Then
+                        If Model.Statslink.ToString <> "" Then
                             @<p Class="short-des" style="text-align:center">
                                 <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Model.Statslink">
                                     <img src="~/Content/images/stats.jpg" border="0" />
@@ -284,56 +285,15 @@ End Code
                     End If
                 End Code
 
-
                 <p></p>
-
-                @*<div Class="row form-horizontal">
-                        <div Class="form-group">
-                            <div Class="col-md-12">
-                                <div Class="entry-meta">
-                                    <span Class="entry-author">δημιουργήθηκε από @Html.DisplayFor(Function(model) model.createdby)</span>
-                                    <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.creationdate)</span>
-                                    <br />
-                                    <span Class="entry-author">επεξεργάστηκε από @Html.DisplayFor(Function(model) model.editby)</span>
-                                    <span Class="entry-date">στης  @Html.DisplayFor(Function(model) model.editdate)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
 
             </article>
         </div>
-
-        @*<div Class="row form-horizontal">
-            <div id="fbAtlas" Class="fb-like"
-                 data-href=@urlwithid
-                 data-layout="standard"
-                 data-action="like"
-                 data-size="large"
-                 data-show-faces="true"
-                 data-share="true">
-            </div>
-        </div>*@
-
-        @*<div Class="row form-horizontal" style="float:right">
-            <a target="_blank"
-               href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
-                <img src="~/Content/images/facebook-icon.png">
-            </a>
-            <a class="twitter-share-button"
-               href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
-               data-size="large">
-                <img src="~/Content/images/Twitter_Logo.png" />
-            </a>
-        </div>*@
     </div>
-
-
+    
     <div Class="sidebar widget-area-11">
-
         <div Class="widget kopa-tab-1-widget kopa-point-widget">
             <div Class="row form-horizontal w3-center">
-
                 <div Class="row form-horizontal">
                     <a target="_blank"
                        href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265&img=~/Content/images/facebook-icon.png">
@@ -356,27 +316,30 @@ End Code
             <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
         </div>
     </div>
-
 </div>
-
 
 @Section Scripts
     <script type="text/javascript">
-
-
+        
         tinymce.init({
             selector: 'div.tinymce',
             theme: 'inlite',
             plugins: 'image media table link paste contextmenu textpattern autolink codesample',
-            insert_toolbar: 'quickimage quicktable media codesample',
-            selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
             inline: true,
             readonly: 1,
-            paste_data_images: true,
             content_css: [
               '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
               '//www.tinymce.com/css/codepen.min.css']
         });
+
+        /*
+        insert_toolbar: 'quickimage quicktable media codesample',
+            selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+            ,
+            paste_data_images: true,
+            
+
+        */
 
     </script>
 End Section

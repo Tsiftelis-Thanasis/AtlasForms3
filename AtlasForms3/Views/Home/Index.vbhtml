@@ -143,7 +143,7 @@ End Code
                                      <div class="thumb-hover"></div> 
                                 </div> 
                                  <div class="entry-content  entry-content2">                                    
-                                     <h3 class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>  
+                                     <h3 class="entry-title entry-title2"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>  
                                      @*<h5><span><b>@n.PostSummary</b></span></h5>*@ 
                                  </div> 
                                 <span></span>                                 
@@ -223,9 +223,9 @@ End Code
 
 
                                         If AtlasKathgoriaid > 0 Then
-                                                @<h3 Class="widget-title style2">τελευταια νεα ομίλου </h3>
+                                                @<h3 Class="widget-title style2">νεα ομιλου </h3>
                                         Else
-                                                @<h3 Class="widget-title style2">τελευταια νεα διοργάνωσης </h3>
+                                                @<h3 Class="widget-title style2">νεα διοργανωσης </h3>
                                         End If
 
                                             @<ul id = "latestnewsid" Class="clearfix">
@@ -257,17 +257,6 @@ End Code
                                     End code
                                 </div>
                             </div>
-
-                            @*<div Class="row form-horizontal">
-                                <div id="fbAtlas" Class="fb-like"
-                                     data-href=@urlwithid
-                                     data-layout="standard"
-                                     data-action="like"
-                                     data-size="large"
-                                     data-show-faces="true"
-                                     data-share="true">
-                                </div>
-                            </div>*@
 
                         </div>
 
@@ -543,6 +532,17 @@ End Code
             </div>
         </div>
     </div>
+
+
+
+ <div Class="w3-center  widget kopa-tab-1-widget kopa-point-widget">
+
+         <a href="http://praxis-ygeias.gr/"><img src="~/Content/images/praksis.png" alt=""></a>
+     <p></p>
+     
+    </div>
+   
+
 
     <div Class="widget-area-24 kopa-area kopa-area-2 w3-center" id="fwtografiesdiv">
 

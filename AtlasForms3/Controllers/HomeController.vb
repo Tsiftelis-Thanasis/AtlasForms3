@@ -518,7 +518,10 @@ Public Class HomeController
         '16  Τοπ 10
         '17  ΔΗΛΩΣΕΙΣ
 
-        If k Is Nothing Then k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
+        If k Is Nothing Or k.Count = 0 Or k.FirstOrDefault = 0 Then
+            k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
+        End If
+
 
         Try
 
@@ -539,7 +542,6 @@ Public Class HomeController
                         .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
                         .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
                         }).ToList()
-
 
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
@@ -567,8 +569,6 @@ Public Class HomeController
                         .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
                         .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
                     }).ToList()
-
-
 
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then

@@ -622,11 +622,10 @@
     <Content Include="Content\images\favicon.html" />
     <Content Include="Content\images\icons8-Basketball-Player-40.png" />
     <Content Include="Content\images\icons8-Basketball-Player-50.png" />
-    <Content Include="Content\images\logo-2.png" />
-    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logoAtlas-mobile.png" />
     <Content Include="Content\images\logoAtlas.png" />
     <Content Include="Content\images\plus.jpg" />
+    <Content Include="Content\images\praksis.png" />
     <Content Include="Content\images\risko.jpg" />
     <Content Include="Content\images\stats.jpg" />
     <Content Include="Content\images\t1.png" />

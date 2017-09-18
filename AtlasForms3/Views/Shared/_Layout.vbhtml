@@ -29,6 +29,10 @@
     Dim socialDesc As String = If(ViewBag.Title = "", "", ViewBag.Title & " - ") & "Ατλας μπάσκετ"
     Dim imageSrc As String = Request.Url.GetLeftPart(UriPartial.Authority).ToString & "/Content/images/atlas_fb_logo.jpg"
 
+    If Not ViewBag.postimage Is Nothing Then
+        imageSrc = Request.Url.GetLeftPart(UriPartial.Authority).ToString & ViewBag.postimage.ToString
+    End If
+
 End code
 
 
