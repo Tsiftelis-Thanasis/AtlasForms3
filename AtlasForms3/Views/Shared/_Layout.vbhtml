@@ -47,6 +47,8 @@ End code
     <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
     <meta property="og:url" content="@urlwithid" />
     <meta property="og:image" content="@imageSrc" /> @*image for each page*@
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="315" />
     <meta property="og:type" content="article" /> @*or website article*@
     <meta property="og:description" content="@socialDesc" /> @*description for each page*@
 

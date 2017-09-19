@@ -332,6 +332,8 @@ End Code
               '//www.tinymce.com/css/codepen.min.css']
         });
 
+
+
         /*
         insert_toolbar: 'quickimage quicktable media codesample',
             selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',

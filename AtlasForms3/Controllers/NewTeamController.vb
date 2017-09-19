@@ -7,7 +7,7 @@ Namespace Controllers
         Inherits Controller
 
         Private pdb As New AtlasBlogEntities
-
+        Private pdb2 As New AtlasStatisticsEntities
 
         ' GET: Newteam
         <Authorize(Roles:="Admins")>
@@ -97,7 +97,8 @@ Namespace Controllers
                         pdb.SaveChanges()
 
 
-
+                        Dim gipedostr As String = (From g In pdb2.GipedaTable Where g.Id = p.gipedo
+                                                   Select g.GipedoName).FirstOrDefault
                         Dim ha As New Utils
                         Dim body As String = ""
                         body = "<h3>Εγγραφή νέας ομάδας με τα παρακάτω στοιχεία: </h3>" &
@@ -106,7 +107,7 @@ Namespace Controllers
                             "</br><br>Email         : " & p.teamemail &
                             "</br><br>Τηλέφωνο      : " & p.teamphone &
                             "</br><br>Χρώματα ομάδας: " & p.teamcolor &
-                            "</br><br>Γήπεδο        : " & p.gipedo &
+                            "</br><br>Γήπεδο        : " & gipedostr &
                             "</br><br>Roster        : " &
                             p.teamrosterStr.Replace(vbCrLf, "<br>") & "</br><hr> "
 
