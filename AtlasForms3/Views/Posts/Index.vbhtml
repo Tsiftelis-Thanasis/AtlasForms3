@@ -110,9 +110,11 @@ End Code
             @If UserisAuthenticated > 0 Then
                 If programmaid > 0 Then
                     @If kathgoriaid = 14 Then
-                        @<a style = "background: #ef6018 !important" href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
+                        @*<a style = "background: #ef6018 !important" href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>*@
+                        @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskathgoriaid&k=14"> <span>Προγραμμα</span></a>
                     Else
-                        @<a href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
+                        '<a href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
+                        @<a href="~/Posts/Index/?ak=@atlaskathgoriaid&k=14"><span> Πρόγραμμα </span></a>
                     End If
                 Else
                     @If kathgoriaid = 14 Then

@@ -81,11 +81,13 @@ End Code
                 <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=15"> <span >Βαθμολογια</span></a>                                
                  @If UserisAuthenticated > 0 Then
                     If programmaid > 0 Then
-                         @<a href="~/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
+                         @*<a href="~/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>*@
+                         @<a href = "/Posts/Index/?ak=@AtlasKathgoriaid&k=14"><span > Πρόγραμμα </span></a>
                      Else
                      @<a><span >Προγραμμα</span></a>
                      End If
                  End If
+                 
                  <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=13"><span >Τιμωριες</span></a>
             </p>
         End If
