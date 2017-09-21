@@ -62,11 +62,13 @@ End code
         .mySlides {
             display: none;
         }
+            
     </style>
 
     @RenderSection("styles", required:=False)
 
     <script type="text/javascript" language="javascript">
+
         var url1 = window.location.href.split('/');
         var baseUrl = url1[0] + '//' + url1[2];
 
@@ -115,7 +117,6 @@ End code
             <div class="wrapper">
                 <nav class="kopa-main-nav">
                     <div class="kopa-logo">
-                        @*<a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:60px;"></a>*@
                         <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/atlaslogobig_ok.png" alt="logo" style="height:60px;"></a>
                     </div>
 
@@ -131,7 +132,7 @@ End code
                             <ul class="sub-menu" id="diorganwseiulid">
                                 @code
                                     For Each g In oGetdiorganwseis
-                                        @<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
+                                        @<li class="lipointer" ><a onclick="fillomiloinavbar(@g.Id);">@g.DiorganwshName</a></li>
                                     Next
                                 End Code
                             </ul>
@@ -150,15 +151,7 @@ End code
                         </li>
 
                         <li class="current-menu-item">
-                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
-                            @*<ul class="sub-menu">*@
-                                @*<li>
-                                        <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
-                                    </li>*@
-                                @*<li>
-                                    <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
-                                </li>
-                            </ul>*@
+                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>                      
                         </li>
 
                         <li class="current-menu-item">
@@ -175,19 +168,69 @@ End code
 
                 </nav>
 
+                <nav class="main-nav-mobile clearfix">
+                    <a class="pull fa fa-bars"></a>
+                    <ul class="main-menu-mobile" style="display: none;" id="mobilemainmenu">
 
-                <nav class="main-nav-mobile">
+                        <li class="">
+                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
+                        </li>
+
+                        <li class="">
+                            <a class="lipointer" onclick="fillomiloinavbar(@firstDiorganwshid, 1);"><span>Πρωταθλημα</span></a>                            
+                        </li>
+
+                        <li class="">
+                            <a><span>διοργανώσεις</span><span class=""></span></a>
+                            <ul class="sub-menu" id="diorganwseiulidmobile" data-index="0" style="display: none;">
+                                @code
+                                    For Each g In oGetdiorganwseis
+                                        @<li class="lipointer" ><a onclick="fillomiloinavbar(@g.Id);">@g.DiorganwshName</a></li>
+                                    Next
+                                End Code
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a><span>διοργανωτρια αρχη</span><span class=""></span></a>
+                            <ul class="sub-menu" id="diorgarxhpostsidmobile" data-index="1" style="display: none;">
+                                @code
+                                    For Each g In oGetSimplePosts
+                                        @<li><a href="/Posts/Details/@g.Id">@g.PostTitle</a></li>
+                                    Next
+                                End Code
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
+                        </li>
+
+                        <li class="">
+                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
+                        </li>
+
+                        @if User.Identity.IsAuthenticated Then
+                            If User.IsInRole("Admins") Then
+                                @<li Class=""><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
+                            End If
+                        End If
+
+                    </ul>
+                </nav>
+               
+
+                @*<nav class="main-nav-mobile clearfix">                    
                     <ul class="main-menu sf-menu">
                         <li class="current-menu-item">
                             <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
-                        <li class="current-menu-item">
-                            <a class="lipointer" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>
+                        <li class="current-menu-item mm">
+                            <a class="lipointer mm" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>
                         </li>
-                        <li class="current-menu-item">
+                        <li  class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
                             <ul class="sub-menu" id="diorganwseiulidmobile">
-
                                 @code
                                     For Each g In oGetdiorganwseis
                                         @<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
@@ -208,16 +251,7 @@ End code
 
                         <li class="current-menu-item">
                             <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
-
-                            @*<a><span>εγγραφες </span></a>
-                            <ul class="sub-menu">*@
-                                @*<li>
-                                        <a href="@Url.Action("Create", "Newplayer")"><span> παιχτη</span></a>
-                                    </li>*@
-                                @*<li>
-                                    <a href="@Url.Action("Create", "Newteam")"><span> ομαδας</span></a>
-                                </li>
-                            </ul>*@
+                                              
                         </li>
 
                         <li class="current-menu-item">
@@ -230,7 +264,8 @@ End code
                             End If
                         End If
                     </ul>
-                </nav>
+                </nav>*@
+
             </div>
         </div>
 
@@ -310,6 +345,7 @@ End code
 
     $.widget.bridge('uibutton', $.ui.button);
     $.widget.bridge('uitooltip', $.ui.tooltip);
+
     $(function () {
         var bootstrapButton = $.fn.button.noConflict();// return $.fn.button to previously assigned value
         $.fn.bootstrapBtn = bootstrapButton;           // give $().bootstrapBtn the Bootstrap functionality
@@ -326,9 +362,15 @@ End code
 
             var choiceContainer = $("#diorganwseiulid");
             var choiceContainermobile = $("#diorganwseiulidmobile");
+            var mobilemainmenu = $("#mobilemainmenu");
+         
             if (t = 0) {
                 choiceContainer.toggle();
-                choiceContainermobile.toggle();
+                choiceContainermobile.toggle();              
+            }
+
+            if (mobilemainmenu.is(':visible')) {
+                mobilemainmenu.hide();
             }
 
             $.ajax({
@@ -357,6 +399,18 @@ End code
                                     '<a class="sf-with-ul"><span>' + omilos + '</span></a>' +
                                     '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
                                     '</li>';
+
+
+                            @*<li class="">
+                          <a><span>διοργανώσεις</span><span class=""></span></a>
+                          <ul class="sub-menu" id="diorganwseiulidmobile" data-index="0" style="display: none;">
+                              @code
+                                  For Each g In oGetdiorganwseis
+                                      @<li class="lipointer" ><a onclick="fillomiloinavbar(@g.Id);">@g.DiorganwshName</a></li>
+                                  Next
+                              End Code
+                          </ul>
+                      </li>*@
 
                             //'<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
 
@@ -407,33 +461,6 @@ End code
         });
     }
 
-
-
-    /* =========================================================
-    get programma id
-    ============================================================ */
-    @*function getProgrammaId(atlaskathgoriaid) {
-
-        var progid;
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetProgrammaidbyKathgoria", "Home")',
-            data: "{atlaskathgoriaid: " + atlaskathgoriaid + "}",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                progid = result;
-            },
-            error: function (result) {
-                progid = 0;
-            }
-        });
-
-        return progid;
-    }*@
-
-
     //append news in omilos
     function appendnewstoOmilos(containername, containerid) {
 
@@ -467,69 +494,23 @@ End code
         });
     }
 
-
-    @*// get diorganwtria arxh arthra
-    function GetDiorganwtria() {
-
-        return $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("GetSimplePosts", "Posts")',
-            data: "{nCount : 10, k : 1}",
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var choiceContainer = $("#diorgarxhpostsid");
-                var choiceContainermobile = $("#diorgarxhpostsidmobile");
-                if (result.data.length > 0) {
-                    choiceContainer.empty();
-                    choiceContainermobile.empty();
-                    $.each(result.data, function () {
-                        var d = '<li><a href="' + baseUrl + '/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></li>';
-                        choiceContainer.append(d);
-                        choiceContainermobile.append(d);
-                    });
-                }
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
-
-    }*@
-
-    @*function GetDiorganwseis() {
-      // get diorganwseis
-      return  $.ajax({
-            type: "POST",
-            url: baseUrl + '@Url.Action("Getdiorganwseis", "Home")',
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                var choiceContainer = $("#diorganwseiulid");
-                var choiceContainermobile = $("#diorganwseiulidmobile");
-                if (result.length > 0) {
-
-                    choiceContainer.empty();
-                    choiceContainermobile.empty();
-
-                    $.each(result, function () {
-                        var d = '<li class="lipointer" onclick="fillomiloinavbar(' + this.Id + ');"><a>' + this.DiorganwshName + '</a></li>';
-                        choiceContainer.append(d);
-                        choiceContainermobile.append(d);
-                    });
-                }
-            },
-            error: function (result) {
-                alert(result.status + ' ' + result.statusText);
-            }
-        });
-    }*@
-
     $(document).ready(function () {
+
+        $('li').each(function () {
+            this.onclick = function () { }
+            this.touchstart = function () { }
+        });
+
+        //$('ul').each(function () {
+        //    this.toggle;
+        //});
+
+
+
+       @*fillomiloinavbar(@firstDiorganwshid, 1)" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"oinavbar(@firstDiorganwshid, 1)"*@
+        //$("#prwtathlimaid2").on("click touchstart", function(){
+        //    fillomiloinavbar($("#firstDiorganwshid").val());
+        //});
 
         $('#loadingDiv')
              .hide()  // Hide it initially
@@ -541,25 +522,12 @@ End code
              })
         ;
 
+
+        //alert($("#firstDiorganwshid").val());
+
         fillomiloinavbar($("#firstDiorganwshid").val());
 
-        //var newPromise = $.Deferred();
-        //$.when(newPromise).done(function () {
-        //    GetDiorganwseis();
-            //GetDiorganwtria();
-        //});
-        //newPromise.then(function () {
-
-        //});
-        //newPromise.resolve();
 
     });
-
-    //$(window).on('load', function () {
-    //    setTimeout(function () {
-    //fillomiloinavbar($("#firstDiorganwshid").val());
-    //    }, 100);
-    //});
-
 
 </script>
