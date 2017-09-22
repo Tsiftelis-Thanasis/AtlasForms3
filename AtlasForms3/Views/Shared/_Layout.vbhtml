@@ -115,7 +115,8 @@ End code
     <header class="kopa-header">
         <div class="kopa-header-middle">
             <div class="wrapper">
-                <nav class="kopa-main-nav">
+                <nav class="kopa-main-nav" id="mainnav">
+                   
                     <div class="kopa-logo">
                         <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/atlaslogobig_ok.png" alt="logo" style="height:60px;"></a>
                     </div>
@@ -168,7 +169,8 @@ End code
 
                 </nav>
 
-                <nav class="main-nav-mobile clearfix">
+                <nav class="main-nav-mobile clearfix" id="mainnavmobile">
+                   
                     <a class="pull fa fa-bars"></a>
                     <ul class="main-menu-mobile" style="display: none;" id="mobilemainmenu">
 
@@ -220,60 +222,24 @@ End code
                 </nav>
                
 
-                @*<nav class="main-nav-mobile clearfix">                    
-                    <ul class="main-menu sf-menu">
-                        <li class="current-menu-item">
-                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
-                        </li>
-                        <li class="current-menu-item mm">
-                            <a class="lipointer mm" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>
-                        </li>
-                        <li  class="current-menu-item">
-                            <a><span>διοργανώσεις</span></a>
-                            <ul class="sub-menu" id="diorganwseiulidmobile">
-                                @code
-                                    For Each g In oGetdiorganwseis
-                                        @<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
-                                    Next
-                                End Code
-                            </ul>
-                        </li>
-                        <li class="current-menu-item">
-                            <a><span>διοργανωτρια αρχη</span></a>
-                            <ul class="sub-menu" id="diorgarxhpostsidmobile">
-                                @code
-                                    For Each g In oGetSimplePosts
-                                        @<li><a href="/Posts/Details/@g.Id">@g.PostTitle</a></li>
-                                    Next
-                                End Code
-                            </ul>
-                        </li>
-
-                        <li class="current-menu-item">
-                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
-                                              
-                        </li>
-
-                        <li class="current-menu-item">
-                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
-                        </li>
-
-                        @if User.Identity.IsAuthenticated Then
-                            If User.IsInRole("Admins") Then
-                                @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
-                            End If
-                        End If
-                    </ul>
-                </nav>*@
-
             </div>
         </div>
 
         <div class="kopa-header-bottom">
             <div class="wrapper">
-                <nav class="th-kopa-main-nav-2">
+                <nav class="th-kopa-main-nav-2" id="mainnav2">                    
                     <ul class="main-menu-2 sf-menu" id="omiloinavbarid"></ul>
                 </nav>
+
+                <nav class="main-nav-mobile clearfix" id="mainnavmobile2">
+                    
+                    <a><span></span><span class=""></span></a>
+                    <a class="pull fa fa-bars"><span>   Όμιλοι και κατηγορίες</span></a>
+                    <ul class="main-menu-mobile" style="display: none;" id="omiloinavbaridmobile">
+                        
+                    </ul>
+                </nav>
+
             </div>
         </div>
 
@@ -363,14 +329,19 @@ End code
             var choiceContainer = $("#diorganwseiulid");
             var choiceContainermobile = $("#diorganwseiulidmobile");
             var mobilemainmenu = $("#mobilemainmenu");
-         
+            var mainnavmobile2 = $("#omiloinavbaridmobile");
+
             if (t = 0) {
                 choiceContainer.toggle();
-                choiceContainermobile.toggle();              
+                choiceContainermobile.toggle();
             }
 
             if (mobilemainmenu.is(':visible')) {
                 mobilemainmenu.hide();
+            }
+                        
+            if (mainnavmobile2.is(':visible')) {
+                mainnavmobile2.hide();
             }
 
             $.ajax({
@@ -383,9 +354,14 @@ End code
                 success: function (result) {
 
                     var choiceContainer = $("#omiloinavbarid");
+                    var choiceContainer2 = $("#omiloinavbaridmobile");
 
                     if (result.length > 0) {
+
                         choiceContainer.empty();
+                        choiceContainer2.empty();
+
+                        var dti = 5;
 
                         $.each(result, function () {
 
@@ -394,28 +370,39 @@ End code
                                 omilos = omilos + ' Όμιλος';
                             }
                             var omilosnaming = 'omilos' + this.Id + 'row';
+                            var omilosnaming2 = 'omilos' + this.Id + 'mobilerow';
 
                             var d = '<li class="lipointer" value = "' + this.Id + '"> ' +
                                     '<a class="sf-with-ul"><span>' + omilos + '</span></a>' +
                                     '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
                                     '</li>';
 
+                            var d2 = '<li class="lipointer" value = "' + this.Id + '"> ' +
+                               '<a class="sf-with-ul"><span>' + omilos + '</span></a>' +
+                               '<ul class="sub-menu" id="' + omilosnaming2 + '"> </ul> ' +
+                               '</li>';
 
-                            @*<li class="">
-                          <a><span>διοργανώσεις</span><span class=""></span></a>
-                          <ul class="sub-menu" id="diorganwseiulidmobile" data-index="0" style="display: none;">
-                              @code
-                                  For Each g In oGetdiorganwseis
-                                      @<li class="lipointer" ><a onclick="fillomiloinavbar(@g.Id);">@g.DiorganwshName</a></li>
-                                  Next
-                              End Code
-                          </ul>
-                      </li>*@
+                            //var d = '<li class=""> ' +
+                            //        '<a><span>' + omilos + '</span><span class=""></span></a>' +
+                            //        '<ul class="sub-menu" id="' + omilosnaming + '" data-index="0"  > </ul> ' +
+                            //        '</li>';
+
+                            //var d = '     <li class="">        ' +                                                
+                            //'<a><span>διοργανωτρια αρχη 222</span><span class=""></span></a> ' +
+                            //'<ul class="sub-menu" id="' + omilosnaming + '" data-index="' + dti  + '"> ' +
+                            //'    <li><a href="/Posts/Details/1">a1</a></li> ' +
+                            //'    <li><a href="/Posts/Details/3">a3</a></li> ' +
+                            //'</ul> </li>';
+
+
+
 
                             //'<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
-
+                            dti++;
                             choiceContainer.append(d);
+                            choiceContainer2.append(d2);
                             appendnewstoOmilos(omilosnaming, this.Id);
+                            appendnewstoOmilos(omilosnaming2, this.Id);
 
                         });
 
@@ -480,7 +467,10 @@ End code
                 if (result.length > 0) {
 
                     $.each(result, function () {
-                        d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
+                        //d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
+                        //d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
+                        d += '<li> <a href="/Home/Index/?ak=' + this.Id + '">' + this.KathgoriaName + '        </a> </li> ';
+
                         i++;
                     });
                     choiceContainer.append(d);
@@ -501,13 +491,38 @@ End code
             this.touchstart = function () { }
         });
 
-        //$('ul').each(function () {
-        //    this.toggle;
-        //});
+        $('ul').each(function () {
+            this.toggle;
+        });
+
+        
+        if ($('#mainnav').is(':visible')) {
+            $('#mainnav2').show();
+            $('#mainnavmovile').hide();
+            $('#mainnavmovile2').hide();
+        }
+        else {
+            $('#mainnav2').hide();
+            $('#mainnavmovile').show();
+            $('#mainnavmovile2').show();
+        };
 
 
+        $(window).resize(function () {
+            if ($('#mainnav').is(':visible')) {
+                $('#mainnav2').show();
+                $('#mainnavmovile').hide();
+                $('#mainnavmovile2').hide();
+            }
+            else {
+                $('#mainnav2').hide();
+                $('#mainnavmovile').show();
+                $('#mainnavmovile2').show();
+            };
 
-       @*fillomiloinavbar(@firstDiorganwshid, 1)" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"oinavbar(@firstDiorganwshid, 1)"*@
+        });
+
+        @*fillomiloinavbar(@firstDiorganwshid, 1)" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"oinavbar(@firstDiorganwshid, 1)"*@
         //$("#prwtathlimaid2").on("click touchstart", function(){
         //    fillomiloinavbar($("#firstDiorganwshid").val());
         //});

@@ -268,6 +268,7 @@ Public Class UsersAdminController
             'e.Afm = editUser.Afm
             e.Phone = editUser.Phone
             e.IsEnabled = If(editUser.IsEnabled = True, 1, 0)
+            e.EmailConfirmed = editUser.IsEnabled
             e.IsLocked = editUser.IsLocked
             aspdb.SaveChanges()
 
@@ -320,7 +321,8 @@ Public Class UsersAdminController
         Dim q = (From p In aspdb.AspNetUsers
                  Select p.Email, p.IsEnabled, p.Id, p.UserName
                     ).AsEnumerable().[Select](
-                    Function(o) New With {.id = o.Id, .username = o.UserName, .email = o.Email, .isenabled = If(o.IsEnabled = 0, "Όχι", "Ναί")}).ToList
+                    Function(o) New With {.id = o.Id, .username = o.UserName, .email = o.Email,
+                    .isenabled = If(o.IsEnabled Is Nothing, "Όχι", If(o.IsEnabled = 0, "Όχι", "Ναί"))}).ToList
 
         Dim dtm As New DataTableModel
         If q IsNot Nothing Then

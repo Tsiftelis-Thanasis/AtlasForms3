@@ -176,7 +176,8 @@ Public Class AccountController
                 ' Await SignInManager.SignInAsync(user, isPersistent:=False, rememberBrowser:=False)
 
 
-                Dim callbackUrl As String = Await SendEmailConfirmationTokenAsync(user.Id, user.Email, "Confirm your account")
+                ''''8a to kanei o xristis apo to site!
+                ''''Dim callbackUrl As String = Await SendEmailConfirmationTokenAsync(user.Id, user.Email, "Confirm your account")
 
                 'check any other roles
                 Dim aspdb As New AtlasStatisticsEntities
@@ -199,7 +200,7 @@ Public Class AccountController
 
                 UserManager.AddToRole(user.Id, "Users")
 
-                ViewBag.Message = "Check your email and confirm your account, you must be confirmed before you can log in."
+                ''''ViewBag.Message = "Check your email and confirm your account, you must be confirmed before you can log in."
 
                 Dim e As New Utils
                 Await e.sendEmailsync("ATLASBASKETBALLTEAM@gmail.com", "Νέα αίτηση χρήστη: " & model.Username, "Ο χρήστης με username: " & model.Username & ", και με email: " & model.Email & " έκανε εγγραφή στο site. 
