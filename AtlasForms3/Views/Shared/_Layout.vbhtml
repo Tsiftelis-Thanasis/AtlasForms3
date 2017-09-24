@@ -62,7 +62,7 @@ End code
         .mySlides {
             display: none;
         }
-            
+        
     </style>
 
     @RenderSection("styles", required:=False)
@@ -121,13 +121,7 @@ End code
                         <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/atlaslogobig_ok.png" alt="logo" style="height:60px;"></a>
                     </div>
 
-                    <ul class="main-menu sf-menu">
-                        <li class="current-menu-item">
-                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
-                        </li>
-                        <li class="current-menu-item">
-                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@StaticfirstDiorganwshid , 1)"><span>Πρωταθλημα</span></a>
-                        </li>
+                    <ul class="main-menu sf-menu">                                          
                         <li class="current-menu-item">
                             <a><span>διοργανώσεις</span></a>
                             <ul class="sub-menu" id="diorganwseiulid">
@@ -141,14 +135,16 @@ End code
                         <li class="current-menu-item">
                             <a><span>διοργανωτρια αρχη</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsid">
-
                                 @code
                                     For Each g In oGetSimplePosts
                                         @<li><a href="/Posts/Details/@g.Id">@g.PostTitle</a></li>
                                     Next
                                 End Code
-
                             </ul>
+                        </li>
+
+                        <li class="current-menu-item">
+                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@StaticfirstDiorganwshid ,1)"><span>Πρωταθλημα</span></a>
                         </li>
 
                         <li class="current-menu-item">
@@ -157,6 +153,11 @@ End code
 
                         <li class="current-menu-item">
                             <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
+                        </li>
+
+
+                        <li class="current-menu-item">
+                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
 
                         @If User.Identity.IsAuthenticated Then
@@ -171,17 +172,9 @@ End code
 
                 <nav class="main-nav-mobile clearfix" id="mainnavmobile">
                    
-                    <a class="pull fa fa-bars"></a>
+                    <a class="pull fa fa-bars" id="fbar1"></a>
                     <ul class="main-menu-mobile" style="display: none;" id="mobilemainmenu">
-
-                        <li class="">
-                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
-                        </li>
-
-                        <li class="">
-                            <a class="lipointer" onclick="fillomiloinavbar(@firstDiorganwshid, 1);"><span>Πρωταθλημα</span></a>                            
-                        </li>
-
+                                       
                         <li class="">
                             <a><span>διοργανώσεις</span><span class=""></span></a>
                             <ul class="sub-menu" id="diorganwseiulidmobile" data-index="0" style="display: none;">
@@ -205,11 +198,19 @@ End code
                         </li>
 
                         <li class="">
-                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
+                            <a class="lipointer" onclick="fillomiloinavbar(@StaticfirstDiorganwshid, 1);"><span>Πρωταθλημα</span></a>
+                        </li>
+
+                        <li class="">
+                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη νεας ομαδας</span></a>
                         </li>
 
                         <li class="">
                             <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
+                        </li>
+
+                        <li class="">
+                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
                         </li>
 
                         @if User.Identity.IsAuthenticated Then
@@ -226,17 +227,28 @@ End code
         </div>
 
         <div class="kopa-header-bottom">
-            <div class="wrapper">
-                <nav class="th-kopa-main-nav-2" id="mainnav2">                    
-                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid"></ul>
+            <div class="wrapper">               
+
+                @*<nav class="th-kopa-main-nav-2" id="mainnav2">       
+                    <div class="row">
+                        <div class="col-md-6">  <h1 class="navbarheading">first last</h1> </div>
+                        <div class="col-md-6">  <ul class="main-menu-2 sf-menu" id="omiloinavbarid"> </ul> </div>
+                        
+                    </div>
+                    
+                </nav>*@
+
+                <nav class="th-kopa-main-nav-2" id="mainnav2">
+            
+                    <ul class="main-menu-2 sf-menu" id="omiloinavbarid"> </ul> 
+
                 </nav>
 
-                <nav class="main-nav-mobile clearfix" id="mainnavmobile2">
-                    
-                    <a><span></span><span class=""></span></a>
-                    <a class="pull fa fa-bars"><span>   Όμιλοι και κατηγορίες</span></a>
-                    <ul class="main-menu-mobile" style="display: none;" id="omiloinavbaridmobile">
-                        
+                <nav class="main-nav-mobile clearfix" id="mainnavmobile2">                    
+                    @*<a><span></span><span class=""></span></a>*@
+                    <a class="pull fa fa-bars" id="fbar2"><span>   Όμιλοι και κατηγορίες</span></a>
+                    <ul class="main-menu-mobile" style="display: none;" id="omiloinavbaridmobile">                      
+
                     </ul>
                 </nav>
 
@@ -257,7 +269,7 @@ End code
         <div class="bottom-area-1">
             <div class="wrapper">
                 <div class="kopa-logo">
-                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/logoAtlas.png" alt="logo" style="height:auto;"></a>
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/atlaslogobig_ok.png" alt="logo" style="height:auto;"></a>
                 </div>
             </div>
 
@@ -317,6 +329,11 @@ End code
         $.fn.bootstrapBtn = bootstrapButton;           // give $().bootstrapBtn the Bootstrap functionality
     });
 
+
+    function toggletheul(ulid) {
+        $(ulid).slideToggle("normal");
+    }
+
     //fillomiloinavbar
     function fillomiloinavbar(i, t) {
 
@@ -331,9 +348,12 @@ End code
             var mobilemainmenu = $("#mobilemainmenu");
             var mainnavmobile2 = $("#omiloinavbaridmobile");
 
-            if (t = 0) {
-                choiceContainer.toggle();
-                choiceContainermobile.toggle();
+            if (choiceContainer.is(':visible')) {
+                choiceContainer.hide();
+            }
+
+            if (choiceContainermobile.is(':visible')) {
+                choiceContainermobile.hide();
             }
 
             if (mobilemainmenu.is(':visible')) {
@@ -377,27 +397,12 @@ End code
                                     '<ul class="sub-menu" id="' + omilosnaming + '"> </ul> ' +
                                     '</li>';
 
-                            var d2 = '<li class="lipointer" value = "' + this.Id + '"> ' +
-                               '<a class="sf-with-ul"><span>' + omilos + '</span></a>' +
-                               '<ul class="sub-menu" id="' + omilosnaming2 + '"> </ul> ' +
-                               '</li>';
+                            var d2 = '<li class="">' +
+                                '<a onclick="toggletheul(' + omilosnaming2 + ');" ><span>' + omilos + '</span><span class=""></span></a>' +
+                                '<ul class="sub-menu" id="' + omilosnaming2 + '" data-index="0" style="display: none;">' +                                    
+                                '</ul>' +
+                                '</li>';
 
-                            //var d = '<li class=""> ' +
-                            //        '<a><span>' + omilos + '</span><span class=""></span></a>' +
-                            //        '<ul class="sub-menu" id="' + omilosnaming + '" data-index="0"  > </ul> ' +
-                            //        '</li>';
-
-                            //var d = '     <li class="">        ' +                                                
-                            //'<a><span>διοργανωτρια αρχη 222</span><span class=""></span></a> ' +
-                            //'<ul class="sub-menu" id="' + omilosnaming + '" data-index="' + dti  + '"> ' +
-                            //'    <li><a href="/Posts/Details/1">a1</a></li> ' +
-                            //'    <li><a href="/Posts/Details/3">a3</a></li> ' +
-                            //'</ul> </li>';
-
-
-
-
-                            //'<a href="' + baseUrl + '/Home/Index/?a=' + this.Id + '"><span>' + omilos + '</span></a>' +
                             dti++;
                             choiceContainer.append(d);
                             choiceContainer2.append(d2);
@@ -406,7 +411,6 @@ End code
 
                         });
 
-                        //setTimeout(function () {
                         var li = choiceContainer.children("li");
                         li.detach();
                         li.sort(function (a, b) {
@@ -415,8 +419,7 @@ End code
                             var elem = $(this);
                             elem.remove();
                             $(elem).prependTo(choiceContainer);
-                        })
-                        //}, 100);
+                        })                        
 
                     }
                 },
@@ -467,16 +470,11 @@ End code
                 if (result.length > 0) {
 
                     $.each(result, function () {
-                        //d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
-                        //d += '<li class="lipointer" id="' + i + '"> <a href="/Home/Index/?ak=' + this.Id + '"> <span style="font-size: 12px !important" >' + this.KathgoriaName + '        </a> </span> </li> ';
                         d += '<li> <a href="/Home/Index/?ak=' + this.Id + '">' + this.KathgoriaName + '        </a> </li> ';
-
                         i++;
                     });
                     choiceContainer.append(d);
-
-                }
-                //}, 100);
+                }              
             },
             error: function (result) {
                 alert(result.status + ' ' + result.statusText);
@@ -506,8 +504,25 @@ End code
             $('#mainnavmovile').show();
             $('#mainnavmovile2').show();
         };
+           
+        //$(".dropdown-toggle").click(function () {
+        //    alert(this);
 
-
+        //    $(this).find("ul").slideToggle("normal");
+        //});
+     
+        $('#fbar1').on("click", function () {
+            if ($('#omiloinavbaridmobile').is(':visible')) {
+                $('#omiloinavbaridmobile').hide();
+            }    
+        });
+        
+        $('#fbar2').on("click", function () {
+            if ($('#mobilemainmenu').is(':visible')) {
+                $('#mobilemainmenu').hide();
+            }
+        });
+    
         $(window).resize(function () {
             if ($('#mainnav').is(':visible')) {
                 $('#mainnav2').show();
@@ -519,13 +534,7 @@ End code
                 $('#mainnavmovile').show();
                 $('#mainnavmovile2').show();
             };
-
         });
-
-        @*fillomiloinavbar(@firstDiorganwshid, 1)" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"oinavbar(@firstDiorganwshid, 1)"*@
-        //$("#prwtathlimaid2").on("click touchstart", function(){
-        //    fillomiloinavbar($("#firstDiorganwshid").val());
-        //});
 
         $('#loadingDiv')
              .hide()  // Hide it initially
@@ -534,15 +543,9 @@ End code
              })
              .ajaxStop(function () {
                  $(this).hide();
-             })
-        ;
-
-
-        //alert($("#firstDiorganwshid").val());
+             });
 
         fillomiloinavbar($("#firstDiorganwshid").val());
-
-
     });
 
 </script>

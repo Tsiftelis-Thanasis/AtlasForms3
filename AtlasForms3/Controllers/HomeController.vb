@@ -31,8 +31,8 @@ Public Class HomeController
 
         ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, {6, 7, 16}, Nothing, 1, 1).Data.data
         ViewBag.LastGamesList = Getlastgames(ak).Data
-        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13, 17}, 1).Data.data
-        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13, 17}, Nothing).Data.data
+        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13, 17}, 1, Nothing).Data.data
+        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13, 17}, Nothing, Nothing).Data.data
 
         ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
         ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
@@ -390,13 +390,13 @@ Public Class HomeController
 
     End Function
 
-    <Authorize(Roles:="Admins")>
-    Public Sub Resizeimages()
+    '<Authorize(Roles:="Admins")>
+    'Public Sub Resizeimages()
 
-        Dim a As New Utils
-        a.resizepostimages()
+    '    Dim a As New Utils
+    '    a.resizepostimages()
 
-    End Sub
+    'End Sub
 
 
     'Public Async Function sendtheemail() As Threading.Tasks.Task
@@ -495,12 +495,13 @@ Public Class HomeController
     <Compress>
     Function GetLastNews(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?,
                          ByVal withphoto As Integer?, ByVal withvideo As Integer?, ByVal k() As Integer?,
-                         ByVal isSlider As Integer?) As JsonResult
+                         ByVal isSlider As Integer?, ByVal orderByName As Integer?) As JsonResult
 
         If atlaskathgoria Is Nothing Then atlaskathgoria = 0
         If withphoto Is Nothing Then withphoto = 0
         If withvideo Is Nothing Then withvideo = 0
         If isSlider Is Nothing Then isSlider = 0
+        If orderByName Is Nothing Then orderByName = 0
 
         Dim kl = (From o In pdb.KathgoriesTable
                   Where o.Id = atlaskathgoria
@@ -543,6 +544,12 @@ Public Class HomeController
                         .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
                         }).ToList()
 
+                If orderByName > 0 Then
+                    q = q.OrderBy(Function(a) a.PostTitle).ToList
+                Else
+                    q = q.OrderByDescending(Function(a) a.Id).ToList
+                End If
+
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
                     dtm.data = q.Cast(Of Object).ToList
@@ -569,6 +576,12 @@ Public Class HomeController
                         .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
                         .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
                     }).ToList()
+
+                If orderByName > 0 Then
+                    q = q.OrderBy(Function(a) a.PostTitle).ToList
+                Else
+                    q = q.OrderByDescending(Function(a) a.Id).ToList
+                End If
 
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then

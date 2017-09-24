@@ -6,7 +6,8 @@ End code
 
 <h2>Delete.</h2>
 
-<h3>Are you sure you want to delete this User?</h3>
+<h3>Ειστε σίγουροι για την διαγραφή; Μετά την διαγραφή δεν μπορεί να γίνει επαναφορά!</h3>
+
 <div>
     <h4>User.</h4>
     <hr />
@@ -25,8 +26,8 @@ End code
 
         @<div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Επιστροφή", "Index")
         </div>
-        
+
     End Using
 </div>

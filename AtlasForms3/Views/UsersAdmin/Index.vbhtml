@@ -63,15 +63,18 @@ End Using
                         "render": function (data, type, row) {
                             if (row === undefined || row === null) return '';
 
-                                var btnEdit = '<a href="@Url.Action("Edit")/' + row.id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Edit της εγγραφής</a>'
-                                var btnDetails = '<a href="@Url.Action("Details")/' + row.id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Προβολή της εγγραφής</a>'
+                            
+                            var btnDetails = '<a href="@Url.Action("Details")/' + row.id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Προβολή της εγγραφής</a>'
+                            var btnEdit = '<a href="@Url.Action("Edit")/' + row.id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Edit της εγγραφής</a>'
+                            var btnDelete = '<a href="@Url.Action("Delete")/' + row.id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Διαγραφή της εγγραφής</a>'
                                 var DropDownAction = '<div class="btn-group">' +
                                                 '<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
                                                 '<i class="fa fa-gear"></i><span class="caret"></span>' +
                                                 '</button>' +
-                                                '<ul class="dropdown-menu">'
-                                if ($("#userisadmin").val() == "True") { DropDownAction += '<li>' + btnEdit + '</li>'; }
+                                                '<ul class="dropdown-menu">'                                
                                 DropDownAction += '<li>' + btnDetails + '</li>';
+                                if ($("#userisadmin").val() == "True") { DropDownAction += '<li>' + btnEdit + '</li>'; }
+                                if ($("#userisadmin").val() == "True") { DropDownAction += '<li>' + btnDelete + '</li>'; }
                                 DropDownAction += '</ul></div>';
 
                                 return DropDownAction;

@@ -138,14 +138,15 @@ Namespace Controllers
 
             Dim newname As Guid
             newname = Guid.NewGuid()
-            Dim imageStr As String = thisfolder & newname.ToString & ".png"
-            Dim imageStr1 As String = thisfolder & newname.ToString & "_medium.png"
-            Dim imageStr2 As String = thisfolder & newname.ToString & "_small.png"
 
-            Dim imageStrtoSave As String = postimagesfolder & newname.ToString & ".png"
-            Dim imageStr1toSave As String = postimagesfolder & newname.ToString & "_medium.png"
-            Dim imageStr2toSave As String = postimagesfolder & newname.ToString & "_small.png"
+            Dim imageStr As String = thisfolder & newname.ToString & ".png" 'db save
+            Dim imageStr1 As String = thisfolder & newname.ToString & "_medium.png" 'db save
+            Dim imageStr2 As String = thisfolder & newname.ToString & "_small.png" 'db save
 
+            Dim tempimage As String = postimagesfolder & newname.ToString & "original.png" 'local save and delete
+            Dim imageStrtoSave As String = postimagesfolder & newname.ToString & ".png" 'local save
+            Dim imageStr1toSave As String = postimagesfolder & newname.ToString & "_medium.png" 'local save
+            Dim imageStr2toSave As String = postimagesfolder & newname.ToString & "_small.png" 'local save
 
             If ModelState.IsValid Then
 
@@ -160,28 +161,33 @@ Namespace Controllers
                         Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(logodata, False)
                             Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
                                 If (System.IO.File.Exists(imageStrtoSave)) Then System.IO.File.Delete(imageStrtoSave)
-                                image1.Save(imageStrtoSave)
+                                image1.Save(tempimage)
                             End Using
                         End Using
 
                         Dim u As New Utils
-                        Using original As Image = Image.FromFile(imageStrtoSave)
-                            Using mediumresize As Image = u.ResizeImage(original, New Size(160, 160))
-                                If (System.IO.File.Exists(imageStr1toSave)) Then System.IO.File.Delete(imageStr1toSave)
-                                mediumresize.Save(imageStr1toSave) ', ImageFormat.Jpeg)
-                            End Using
+                        Using original As Image = Image.FromFile(tempimage)
 
-                            Using smallsize As Image = u.ResizeImage(original, New Size(30, 30))
-                                If (System.IO.File.Exists(imageStr2toSave)) Then System.IO.File.Delete(imageStr2toSave)
-                                smallsize.Save(imageStr2toSave) ', ImageFormat.Jpeg)
-                            End Using
+                            u.resizeimages_upd(tempimage, imageStrtoSave, 0, 0)
+
+                            If System.IO.File.ReadAllBytes(imageStrtoSave).Length > System.IO.File.ReadAllBytes(tempimage).Length Then
+                                original.Save(imageStrtoSave)
+                            End If
+
+                            u.resizeimages_upd(imageStrtoSave, imageStr1toSave, 160, 160)
+                            u.resizeimages_upd(imageStrtoSave, imageStr2toSave, 30, 30)
+
                         End Using
                         u = Nothing
-
 
                         newpost.PostPhotoStr = imageStr
                         newpost.PostPhoto160_160Str = imageStr1
                         newpost.PostPhoto30_30Str = imageStr2
+
+                        If tempimage <> "" Then
+                            If System.IO.File.Exists(tempimage) Then System.IO.File.Delete(tempimage)
+                        End If
+
 
                     End If
                     newpost.PostSummary = p1.PostSummary
@@ -303,14 +309,15 @@ Namespace Controllers
 
             Dim newname As Guid
             newname = Guid.NewGuid()
-            Dim imageStr As String = thisfolder & newname.ToString & ".png"
-            Dim imageStr1 As String = thisfolder & newname.ToString & "_medium.png"
-            Dim imageStr2 As String = thisfolder & newname.ToString & "_small.png"
 
-            Dim imageStrtoSave As String = postimagesfolder & newname.ToString & ".png"
-            Dim imageStr1toSave As String = postimagesfolder & newname.ToString & "_medium.png"
-            Dim imageStr2toSave As String = postimagesfolder & newname.ToString & "_small.png"
+            Dim imageStr As String = thisfolder & newname.ToString & ".png" 'db save
+            Dim imageStr1 As String = thisfolder & newname.ToString & "_medium.png" 'db save
+            Dim imageStr2 As String = thisfolder & newname.ToString & "_small.png" 'db save
 
+            Dim tempimage As String = postimagesfolder & newname.ToString & "original.png" 'local save and delete
+            Dim imageStrtoSave As String = postimagesfolder & newname.ToString & ".png" 'local save
+            Dim imageStr1toSave As String = postimagesfolder & newname.ToString & "_medium.png" 'local save
+            Dim imageStr2toSave As String = postimagesfolder & newname.ToString & "_small.png" 'local save
 
 
             If ModelState.IsValid Then
@@ -345,33 +352,36 @@ Namespace Controllers
                             End If
                         End If
 
-
-
                         Using memoryStream As System.IO.MemoryStream = New System.IO.MemoryStream(logodata, False)
                             Using image1 As System.Drawing.Image = System.Drawing.Image.FromStream(memoryStream)
                                 If (System.IO.File.Exists(imageStrtoSave)) Then System.IO.File.Delete(imageStrtoSave)
-                                image1.Save(imageStrtoSave)
+                                image1.Save(tempimage)
                             End Using
                         End Using
 
                         Dim u As New Utils
-                        Using original As Image = Image.FromFile(imageStrtoSave)
-                            Using mediumresize As Image = u.ResizeImage(original, New Size(160, 160))
-                                If (System.IO.File.Exists(imageStr1toSave)) Then System.IO.File.Delete(imageStr1toSave)
-                                mediumresize.Save(imageStr1toSave) ', ImageFormat.Jpeg)
-                            End Using
+                        Using original As Image = Image.FromFile(tempimage)
 
-                            Using smallsize As Image = u.ResizeImage(original, New Size(30, 30))
-                                If (System.IO.File.Exists(imageStr2toSave)) Then System.IO.File.Delete(imageStr2toSave)
-                                smallsize.Save(imageStr2toSave) ', ImageFormat.Jpeg)
-                            End Using
+                            u.resizeimages_upd(tempimage, imageStrtoSave, 0, 0)
+
+                            If System.IO.File.ReadAllBytes(imageStrtoSave).Length > System.IO.File.ReadAllBytes(tempimage).Length Then
+                                original.Save(imageStrtoSave)
+                            End If
+
+                            u.resizeimages_upd(tempimage, imageStr1toSave, 160, 160)
+                            u.resizeimages_upd(tempimage, imageStr2toSave, 30, 30)
+
                         End Using
                         u = Nothing
-
 
                         editpost.PostPhotoStr = imageStr
                         editpost.PostPhoto160_160Str = imageStr1
                         editpost.PostPhoto30_30Str = imageStr2
+
+                        If tempimage <> "" Then
+                            If System.IO.File.Exists(tempimage) Then System.IO.File.Delete(tempimage)
+                        End If
+
 
                         If oldimage1 <> "" Then
                             If System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(oldimage1)) Then System.IO.File.Delete(System.Web.HttpContext.Current.Server.MapPath(oldimage1))

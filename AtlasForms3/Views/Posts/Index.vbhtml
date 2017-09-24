@@ -375,41 +375,28 @@ End Code
 
         //$("#divfixture").hide();
         //$("#divteams").hide();
+        var orderByName = 1;
 
         if ($('#kathgoriaid').val() == 11) { //Νέα
             $("#divcommon").show();
-            //$("#divteams").hide();
-        //    $("#divteamskat1").hide();
-        //    $("#divteamskat2").hide();
         } else if ($('#kathgoriaid').val() == 12) { //Ομάδες
             $("#divteamskat1").show();
-        //    $("#divcommon").hide();
-        //    $("#divstandings1").hide();
-        //    $("#divstandings2").hide();
         } else if ($('#kathgoriaid').val() == 13) {//Τιμωρίες
             $("#divcommon").show();
-            //$("#divteams").hide();
-        //    $("#divteamskat1").hide();
-        //    $("#divteamskat2").hide();
         } else if ($('#kathgoriaid').val() == 14) { //Πρόγραμμα
             $("#divcommon").show();
-            //$("#divteams").hide();
-       //     $("#divteamskat1").hide();
-       //     $("#divteamskat2").hide();
+            orderByName = 1;
         } else if ($('#kathgoriaid').val() == 15) { //βαθμολογια
             $("#divresultsandstandings").show();
             $("#divresults1").show();
             $("#divstandcommon1").show();
-        //    $("#divstandings1").hide();
-        //    $("#divstandings2").hide();
-            //$("#divteams").hide();
-        //    $("#divteamskat1").hide();
-        //    $("#divteamskat2").hide();
-        //    $("#divcommon").hide();
         } else if ($('#kathgoriaid').val() == 0) { //όλα τα νέα!
             $("#divcommon").show();
          }
-        
+
+
+
+
         if ($("#divcommon").is(":visible")) {
             $('#newstable').DataTable({
                 "sAjaxSource": baseUrl + '@Url.Action("GetLastNews", "Home")',
@@ -425,6 +412,10 @@ End Code
                     aoData.push({
                         "name": "k",
                         "value": $('#kathgoriaid').val()
+                    })
+                    aoData.push({
+                        "name": "orderByName",
+                        "value": orderByName
                     })
                 },
                 "contentType": "application/json; charset=utf-8",
@@ -448,13 +439,17 @@ End Code
                                 }
 
                                 var dd = '<li>'+
-                                    ' <article class="entry-item"> ' +
-                                    '   <div class="entry-thumb"> ' +
-                                    '       <a href="@Url.Action("Details", "Posts")/' + row.Id + '"> ' +
-                                    '           <img src="' + row.PostPhoto + '" alt="">' +
-                                    '       </a> ' +
-                                    ' </div> ' +
-                                    ' <div class="entry-content"> ' +
+                                    ' <article class="entry-item">';
+
+                                    if (row.PostPhoto != '') {
+                                        dd += '   <div class="entry-thumb"> ' +
+                                        '       <a href="@Url.Action("Details", "Posts")/' + row.Id + '"> ' +
+                                        '           <img src="' + row.PostPhoto + '" alt="">' +
+                                        '       </a> ' +
+                                        ' </div> ';
+                                    }
+
+                                    dd += ' <div class="entry-content"> ' +
                                     '   <div class="content-top"> ' +
                                     '       <a href="@Url.Action("Details", "Posts")/' + row.Id + '"> ' +
                                     '           <h4 class="entry-title"> <b>' + row.PostTitle + ' </b> </h4> ' +
