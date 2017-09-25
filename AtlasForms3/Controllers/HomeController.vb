@@ -539,13 +539,15 @@ Public Class HomeController
                          Select p
                          Order By p.Id Descending
                              ).Take(nCount).AsEnumerable().[Select](
-                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle,
+                        .PostSummary = o.PostSummary, .PostBody = o.PostBody,
                         .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
-                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
+                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str),
+                        .agonistiki = o.agonistiki
                         }).ToList()
 
                 If orderByName > 0 Then
-                    q = q.OrderBy(Function(a) a.PostTitle).ToList
+                    q = q.OrderBy(Function(a) a.agonistiki).ToList
                 Else
                     q = q.OrderByDescending(Function(a) a.Id).ToList
                 End If
@@ -574,11 +576,12 @@ Public Class HomeController
                              ).Take(nCount).AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
                         .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
-                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str)
+                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str),
+                        .agonistiki = o.agonistiki
                     }).ToList()
 
                 If orderByName > 0 Then
-                    q = q.OrderBy(Function(a) a.PostTitle).ToList
+                    q = q.OrderBy(Function(a) a.agonistiki).ToList
                 Else
                     q = q.OrderByDescending(Function(a) a.Id).ToList
                 End If

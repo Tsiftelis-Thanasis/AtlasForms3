@@ -24,7 +24,7 @@ Public Module BundleConfig
 
         bundles.Add(New ScriptBundle("~/bundles/custom").Include(
                   "~/Scripts/DataTables/jquery.dataTables.min.js",
-                   "~/Scripts/chosen.jquery.js",
+                  "~/Scripts/chosen.jquery.js",
                   "~/Scripts/custom.js",
                   "~/Scripts/superfish.js",
                   "~/Scripts/modernizr.custom.js"))
@@ -43,7 +43,7 @@ Public Module BundleConfig
 
 
         bundles.Add(New StyleBundle("~/Content/css").Include(
-                  "~/Content/bootstrap.css",
+                  "~/Content/bootstrap.min.css",
                   "~/Content/bootstrap-chosen.css",
                   "~/Content/site.css",
                   "~/Content/font-awesome.css",

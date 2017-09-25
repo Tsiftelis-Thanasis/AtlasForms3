@@ -394,9 +394,6 @@ End Code
             $("#divcommon").show();
          }
 
-
-
-
         if ($("#divcommon").is(":visible")) {
             $('#newstable').DataTable({
                 "sAjaxSource": baseUrl + '@Url.Action("GetLastNews", "Home")',
