@@ -294,7 +294,7 @@ End Code
                                             <div Class="kopa-tab style3">
                                                 <ul Class="nav nav-tabs">
                                                     <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                                    <li> <a href="#assist" data-toggle="tab">Πασ.</a></li>
+                                                    <li> <a href="#assist" data-toggle="tab">ΑΣ.</a></li>
                                                     <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
                                                     <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
                                                     <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
