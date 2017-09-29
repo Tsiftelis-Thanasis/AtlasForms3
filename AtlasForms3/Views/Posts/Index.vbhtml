@@ -136,7 +136,7 @@ End Code
 
     End Code
 
-    <div Class="wrapper">
+    <div Class="wrapperSmall">
         
             
         <section Class="kopa-area kopa-area-1 mb-30" id="divresultsandstandings" style="display: none;">

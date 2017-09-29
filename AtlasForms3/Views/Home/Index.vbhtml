@@ -94,448 +94,461 @@ End Code
 
     End Code
 
-    <div Class="wrapper">
-        <div Class="kopa-page">
-            <div Class="widget kopa-tab-score-widget">
-                <div Class="kopa-tab style1">
-                    <div Class="tab-content">
-                        <div Class="tab-pane active" id="agroup">
-                            <div id="lastgamescarouselid" Class="owl-carousel owl-carousel-1">
-                                @code
+    <div class="row">
+        <div class="col-md-1">
+            aaaa1111
+        </div>
+
+        <div class="col-md-10">
+
+            <div Class="wrapperSmall">
+                <div Class="kopa-page">
+                    <div Class="widget kopa-tab-score-widget">
+                        <div Class="kopa-tab style1">
+                            <div Class="tab-content">
+                                <div Class="tab-pane active" id="agroup">
+                                    <div id="lastgamescarouselid" Class="owl-carousel owl-carousel-1">
+                                        @code
                                     For Each g In oLastGamesList
+                                                @<div Class="item">
+                                                    <div Class="entry-item">
+                                                        <a target="_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
+                                                            <p>@g.Gamedate</p>
+                                                            <ul Class="clearfix">
+                                                                <li>
+                                                                    <span title=@g.team1>@g.team1</span>
+                                                                    <span>@g.team1score</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span title=@g.team2>@g.team2</span>
+                                                                    <span>@g.team2score</span>
+                                                                </li>
+                                                            </ul>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            Next
+                                        End Code
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div Class="wrapperSmall mb-30">
+                <div Class="widget-area-1">
+                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                        <div Class="widget kopa-sync-carousel-widget">
+                            <div Class="owl-carousel sync1" id="mainnewscarouselid">
+                                @code
+    For each n In oLastNews1
+
                                         @<div Class="item">
-                                            <div Class="entry-item">
-                                                <a  target = "_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
-                                                <p>@g.Gamedate</p>
-                                                <ul Class="clearfix"> 
-                                                    <li> 
-                                                        <span title = @g.team1 >@g.team1</span> 
-                                                        <span>@g.team1score</span>
-                                                    </li> 
-                                                    <li>
-                                                        <span title =@g.team2>@g.team2</span>
-                                                        <span>@g.team2score</span>
-                                                    </li>
-                                                </ul>
-                                                </a>
-                                            </div>
+                                            <article class="entry-item">
+                                                <div class="entry-thumb w3-center">
+                                                    <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:480px;width:1024px;" alt=""></a>
+                                                    <div class="thumb-hover"></div>
+                                                </div>
+                                                <div class="entry-content  entry-content2">
+                                                    <h3 class="entry-title entry-title2"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>
+                                                    @*<h5><span><b>@n.PostSummary</b></span></h5>*@
+                                                </div>
+                                                <span></span>
+                                            </article>
                                         </div>
+
                                     Next
                                 End Code
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>            
-        </div>
-    </div>
+                    <p></p>
 
-    <div Class="wrapper mb-30">
-        <div Class="widget-area-1">
-            <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                <div Class="widget kopa-sync-carousel-widget">
-                    <div Class="owl-carousel sync1" id="mainnewscarouselid">
-                        @code
-                            For each n In oLastNews1
+                    <div Class="wrapperSmall">
+                        <div Class="content-wrap">
+                            <div Class="row">
+                                <div Class="kopa-main-col">
+                                    <div Class="widget-area-2">
+                                        <div Class="widget kopa-tab-sync-carousel-widget">
 
-                                    @<div Class="item">                        
-                                <article class="entry-item">                            
-                                 <div class="entry-thumb w3-center">
-                                     <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:480px;width:1024px;" alt=""></a> 
-                                     <div class="thumb-hover"></div> 
-                                </div> 
-                                 <div class="entry-content  entry-content2">                                    
-                                     <h3 class="entry-title entry-title2"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>  
-                                     @*<h5><span><b>@n.PostSummary</b></span></h5>*@ 
-                                 </div> 
-                                <span></span>                                 
-                                </article> 
-                            </div>
+                                            @code
 
-                            Next
-                        End Code                        
-                    </div>
-                </div>
-            </div>
-            <p></p>
-
-            <div Class="wrapper">
-                <div Class="content-wrap">
-                    <div Class="row">
-                        <div Class="kopa-main-col">
-                            <div Class="widget-area-2">
-                                <div Class="widget kopa-tab-sync-carousel-widget">
-
-                            @code
-
-                            @If oLastNewsList.count > 0 Then
+                                                @If oLastNewsList.count > 0 Then
 
 
-                            @<h3 Class="widget-title style1">top 10</h3>
-                            @<div Class="widget kopa-sync-carousel-2-widget">
+                                                    @<h3 Class="widget-title style1">top 10</h3>
+                                                    @<div Class="widget kopa-sync-carousel-2-widget">
 
-                                                    <div Class="owl-carousel sync3" id="watchsync3">
+                                                        <div Class="owl-carousel sync3" id="watchsync3">
 
-                                                        @For Each o In oLastNewsList
-                                                            @<div Class="item">
-                                                                <article class="entry-item video-post">
-                                                                    <div class="entry-thumb w3-center">
-                                                                        <a href="/Posts/Details/@o.Id" ><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
-                                                                        <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
-                                                                    </div>
-                                                                    <div class="entry-content">
-                                                                        <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
-                                                                    </div>
-                                                                </article>
-                                                            </div>
-                                                        Next
-                                          
-                                                </div>
+                                                            @For Each o In oLastNewsList
+                                                                @<div Class="item">
+                                                                    <article class="entry-item video-post">
+                                                                        <div class="entry-thumb w3-center">
+                                                                            <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
+                                                                            <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
+                                                                        </div>
+                                                                        <div class="entry-content">
+                                                                            <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
+                                                            Next
 
-                                                <div Class="owl-carousel sync4" id="watchsync4">
-                                          
-                                                        @For Each o1 In oLastNewsList
-                                                            @<div Class="item">
-                                                                <article Class="entry-item video-post">
-                                                                    <div Class="entry-thumb">
-                                                                        <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
-                                                                        <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
-                                                                    </div>
-                                                                    <div Class="entry-content">
-                                                                        <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
-                                                                    </div>
-                                                                </article>
-                                                            </div>
-                                                        Next
-                                           
-                                                </div>
-
-                                      
-
-                                            </div>
-
-                            End If
-                                    End Code
-                                </div>                               
-
-
-                                <div Class="widget kopa-article-list-widget article-list-1">
-                                    
-                                    @code 
-
-
-                                        If AtlasKathgoriaid > 0 Then
-                                                @<h3 Class="widget-title style2">νεα ομιλου </h3>
-                                        Else
-                                                @<h3 Class="widget-title style2">νεα διοργανωσης </h3>
-                                        End If
-
-                                            @<ul id = "latestnewsid" Class="clearfix">
-                                    
-                                                @For Each n In oLastNews2
-                                                    Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
-
-                                                        @<li><article Class="entry-item disable-select ">
-                                                        <div Class="entry-thumb">
-                                                            <a href = "/Posts/Details/@n.Id"><img src="@n.PostPhoto2" alt=""/></a>
                                                         </div>
-                                                        <div Class="entry-content">
-                                                        <div Class="content-top">
-                                                        <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
+
+                                                        <div Class="owl-carousel sync4" id="watchsync4">
+
+                                                            @For Each o1 In oLastNewsList
+                                                                @<div Class="item">
+                                                                    <article Class="entry-item video-post">
+                                                                        <div Class="entry-thumb">
+                                                                            <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
+                                                                            <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
+                                                                        </div>
+                                                                        <div Class="entry-content">
+                                                                            <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
+                                                            Next
+
                                                         </div>
-                                                        <p> @postsummarystr ... </p>
-                                                        </div>
-                                                        </article>
+
+
+
+                                                    </div>
+
+                                                End If
+                                            End Code
+                                        </div>
+
+
+                                        <div Class="widget kopa-article-list-widget article-list-1">
+
+                                            @code
+
+
+                                                If AtlasKathgoriaid > 0 Then
+                                                    @<h3 Class="widget-title style2">νεα ομιλου </h3>
+                                                Else
+                                                    @<h3 Class="widget-title style2">νεα διοργανωσης </h3>
+                                                End If
+
+                                                @<ul id="latestnewsid" Class="clearfix">
+
+                                                    @For Each n In oLastNews2
+                                                        Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
+
+                                                        @<li>
+                                                            <article Class="entry-item disable-select ">
+                                                                <div Class="entry-thumb">
+                                                                    <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto2" alt="" /></a>
+                                                                </div>
+                                                                <div Class="entry-content">
+                                                                    <div Class="content-top">
+                                                                        <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
+                                                                    </div>
+                                                                    <p> @postsummarystr ... </p>
+                                                                </div>
+                                                            </article>
                                                         </li>
-                                                Next
-                                            </ul>
-
-                                            If AtlasKathgoriaid > 0 Then
-                                                    @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
-                                            Else
-                                                    @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
-                                        End If
-
-                                    End code
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div Class="sidebar widget-area-11">
-
-                            <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                                <div Class="row form-horizontal w3-center">
-                                    <a target="_blank"
-                                       href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
-                                        <img src="~/Content/images/facebook-icon.png">
-                                    </a>
-                                    @*<a target="_blank" class="twitter-share-button"
-                                       href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
-                                       data-size="large">
-                                        <img src="~/Content/images/Twitter_Logo.png" />
-                                    </a>*@
-                                </div>
-                            </div>
-                        </div>
-
-                            <div Class="sidebar widget-area-11">
-
-                                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                                    <a href="http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
-                                    <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>
-                                    <a href="http://www.atlassportswear.gr/"><img src="~/Content/images/atlassportwear.png" alt=""></a>
-                                </div>
-
-                                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                                    <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
-                                    <ul Class="clearfix">
-                                        <li>
-                                            <div Class="kopa-tab style3">
-                                                <ul Class="nav nav-tabs">
-                                                    <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
-                                                    <li> <a href="#assist" data-toggle="tab">ΑΣ.</a></li>
-                                                    <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
-                                                    <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
-                                                    <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
+                                                    Next
                                                 </ul>
 
-                                                <div Class="tab-content">
-                                                    <div Class="tab-pane active" id="points">
-                                                        <ul Class="kopa-list clearfix" id="pointsul">
+                                                If AtlasKathgoriaid > 0 Then
+                                                    @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                                Else
+                                                    @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                                End If
 
-                                                            @code
-                                                                Dim p As Integer = 1
-                                                                For Each stat In oWeeklyStat1
+                                            End code
+                                        </div>
+                                    </div>
 
-                                                                    Dim _photo As String = stat.pphoto.ToString
-                                                                    If _photo = "" Then
-                                                                        _photo = "/Content/images/icons8-Basketball-Player-50.png"
-                                                                    End If
-
-
-                                                        @<li>
-                                                            <div class="point-item">
-                                                                <div class="point-left">
-                                                                    <div class="point-thumb">
-                                                                        <img src=@_photo alt="" />
-                                                                        <span>@p</span>
-                                                                    </div>
-                                                                    <div class="point-content">
-                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                        <span>@stat.omilosname</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="point-right">
-                                                                    <p>@stat.val</p>
-                                                                    <span> </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                                    p += 1
-
-                                                                Next
-
-                                                            End Code
-
-
-                                                        </ul>
-                                                    </div>
-
-                                                    <div Class="tab-pane" id="assist">
-                                                        <ul Class="kopa-list clearfix" id="assistul">
-
-
-                                                            @code
-                                                                p = 1
-                                                                For Each stat In oWeeklyStat2
-
-                                                                    Dim _photo As String = stat.pphoto.ToString
-                                                                    If _photo = "" Then
-                                                                        _photo = "/Content/images/icons8-Basketball-Player-50.png"
-                                                                    End If
-
-
-                                                        @<li>
-                                                            <div class="point-item">
-                                                                <div class="point-left">
-                                                                    <div class="point-thumb">
-                                                                        <img src=@_photo alt="" />
-                                                                        <span>@p</span>
-                                                                    </div>
-                                                                    <div class="point-content">
-                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                        <span>@stat.omilosname</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="point-right">
-                                                                    <p>@stat.val</p>
-                                                                    <span> </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                                    p += 1
-
-                                                                Next
-
-                                                            End Code
-
-
-                                                        </ul>
-                                                    </div>
-
-                                                    <div Class="tab-pane" id="reb">
-                                                        <ul Class="kopa-list clearfix" id="reboundul">
-
-                                                            @code
-                                                                p = 1
-                                                                For Each stat In oWeeklyStat3
-
-                                                                    Dim _photo As String = stat.pphoto.ToString
-                                                                    If _photo = "" Then
-                                                                        _photo = "/Content/images/icons8-Basketball-Player-50.png"
-                                                                    End If
-
-
-                                                        @<li>
-                                                            <div class="point-item">
-                                                                <div class="point-left">
-                                                                    <div class="point-thumb">
-                                                                        <img src=@_photo alt="" />
-                                                                        <span>@p</span>
-                                                                    </div>
-                                                                    <div class="point-content">
-                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                        <span>@stat.omilosname</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="point-right">
-                                                                    <p>@stat.val</p>
-                                                                    <span> </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                                    p += 1
-
-                                                                Next
-
-                                                            End Code
-
-                                                        </ul>
-                                                    </div>
-
-                                                    <div Class="tab-pane" id="steal">
-                                                        <ul Class="kopa-list clearfix" id="stealsul">
-
-                                                            @code
-                                                                p = 1
-                                                                For Each stat In oWeeklyStat4
-
-                                                                    Dim _photo As String = stat.pphoto.ToString
-                                                                    If _photo = "" Then
-                                                                        _photo = "/Content/images/icons8-Basketball-Player-50.png"
-                                                                    End If
-
-
-                                                        @<li>
-                                                            <div class="point-item">
-                                                                <div class="point-left">
-                                                                    <div class="point-thumb">
-                                                                        <img src=@_photo alt="" />
-                                                                        <span>@p</span>
-                                                                    </div>
-                                                                    <div class="point-content">
-                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                        <span>@stat.omilosname</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="point-right">
-                                                                    <p>@stat.val</p>
-                                                                    <span> </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                                    p += 1
-
-                                                                Next
-
-                                                            End Code
-
-
-                                                        </ul>
-                                                    </div>
-
-                                                    <div Class="tab-pane" id="block">
-                                                        <ul Class="kopa-list clearfix" id="blocksul">
-
-                                                            @code
-                                                                p = 1
-                                                                For Each stat In oWeeklyStat5
-
-                                                                    Dim _photo As String = stat.pphoto.ToString
-                                                                    If _photo = "" Then
-                                                                        _photo = "/Content/images/icons8-Basketball-Player-50.png"
-                                                                    End If
-
-
-                                                        @<li>
-                                                            <div class="point-item">
-                                                                <div class="point-left">
-                                                                    <div class="point-thumb">
-                                                                        <img src=@_photo alt="" />
-                                                                        <span>@p</span>
-                                                                    </div>
-                                                                    <div class="point-content">
-                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                        <span>@stat.omilosname</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="point-right">
-                                                                    <p>@stat.val</p>
-                                                                    <span> </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-
-                                                                    p += 1
-
-                                                                Next
-
-                                                            End Code
-
-
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
                                 </div>
 
-                                <div Class="widget kopa-tab-1-widget kopa-point-widget" id="facebookshareid">
-                                    <div class="fb-page" data-href="https://www.facebook.com/atlasbasket.gr/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                                        <blockquote cite="https://www.facebook.com/atlasbasket.gr/" class="fb-xfbml-parse-ignore">
-                                            <a href="https://www.facebook.com/atlasbasket.gr/">Atlasbasket.gr</a>
-                                        </blockquote>
+                                <div Class="sidebar widget-area-11">
+
+                                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                                        <div Class="row form-horizontal w3-center">
+                                            <a target="_blank"
+                                               href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
+                                                <img src="~/Content/images/facebook-icon.png">
+                                            </a>
+                                            @*<a target="_blank" class="twitter-share-button"
+                                           href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+                                           data-size="large">
+                                            <img src="~/Content/images/Twitter_Logo.png" />
+                                        </a>*@
+                                        </div>
                                     </div>
                                 </div>
-                            </div>                  
+
+                                <div Class="sidebar widget-area-11">
+
+                                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                                        <a href="http://www.blue-ice.gr/"><img src="~/Content/images/blueiceok.png" alt=""></a>
+                                        <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"><img src="~/Content/images/risko.jpg" alt=""></a>
+                                        <a href="http://www.atlassportswear.gr/"><img src="~/Content/images/atlassportwear.png" alt=""></a>
+                                    </div>
+
+                                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                                        <h3 Class="widget-title style5"><span class="fa fa-trophy"></span>Κορυφαίοι της εβδομάδας</h3>
+                                        <ul Class="clearfix">
+                                            <li>
+                                                <div Class="kopa-tab style3">
+                                                    <ul Class="nav nav-tabs">
+                                                        <li Class="active"><a href="#points" data-toggle="tab">Πον.</a></li>
+                                                        <li> <a href="#assist" data-toggle="tab">ΑΣ.</a></li>
+                                                        <li> <a href="#reb" data-toggle="tab">Ριμ.</a></li>
+                                                        <li> <a href="#steal" data-toggle="tab">Κλ.</a></li>
+                                                        <li> <a href="#block" data-toggle="tab">Κοψ.</a></li>
+                                                    </ul>
+
+                                                    <div Class="tab-content">
+                                                        <div Class="tab-pane active" id="points">
+                                                            <ul Class="kopa-list clearfix" id="pointsul">
+
+                                                                @code
+                                                                    Dim p As Integer = 1
+                                                                    For Each stat In oWeeklyStat1
+
+                                                                        Dim _photo As String = stat.pphoto.ToString
+                                                                        If _photo = "" Then
+                                                                            _photo = "/Content/images/icons8-Basketball-Player-50.png"
+                                                                        End If
+
+
+                                                                        @<li>
+                                                                            <div class="point-item">
+                                                                                <div class="point-left">
+                                                                                    <div class="point-thumb">
+                                                                                        <img src=@_photo alt="" />
+                                                                                        <span>@p</span>
+                                                                                    </div>
+                                                                                    <div class="point-content">
+                                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                        <span>@stat.omilosname</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="point-right">
+                                                                                    <p>@stat.val</p>
+                                                                                    <span> </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+
+                                                                        p += 1
+
+                                                                    Next
+
+                                                                End Code
+
+
+                                                            </ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="assist">
+                                                            <ul Class="kopa-list clearfix" id="assistul">
+
+
+                                                                @code
+                                                                    p = 1
+                                                                    For Each stat In oWeeklyStat2
+
+                                                                        Dim _photo As String = stat.pphoto.ToString
+                                                                        If _photo = "" Then
+                                                                            _photo = "/Content/images/icons8-Basketball-Player-50.png"
+                                                                        End If
+
+
+                                                                        @<li>
+                                                                            <div class="point-item">
+                                                                                <div class="point-left">
+                                                                                    <div class="point-thumb">
+                                                                                        <img src=@_photo alt="" />
+                                                                                        <span>@p</span>
+                                                                                    </div>
+                                                                                    <div class="point-content">
+                                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                        <span>@stat.omilosname</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="point-right">
+                                                                                    <p>@stat.val</p>
+                                                                                    <span> </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+
+                                                                        p += 1
+
+                                                                    Next
+
+                                                                End Code
+
+
+                                                            </ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="reb">
+                                                            <ul Class="kopa-list clearfix" id="reboundul">
+
+                                                                @code
+                                                                    p = 1
+                                                                    For Each stat In oWeeklyStat3
+
+                                                                        Dim _photo As String = stat.pphoto.ToString
+                                                                        If _photo = "" Then
+                                                                            _photo = "/Content/images/icons8-Basketball-Player-50.png"
+                                                                        End If
+
+
+                                                                        @<li>
+                                                                            <div class="point-item">
+                                                                                <div class="point-left">
+                                                                                    <div class="point-thumb">
+                                                                                        <img src=@_photo alt="" />
+                                                                                        <span>@p</span>
+                                                                                    </div>
+                                                                                    <div class="point-content">
+                                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                        <span>@stat.omilosname</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="point-right">
+                                                                                    <p>@stat.val</p>
+                                                                                    <span> </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+
+                                                                        p += 1
+
+                                                                    Next
+
+                                                                End Code
+
+                                                            </ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="steal">
+                                                            <ul Class="kopa-list clearfix" id="stealsul">
+
+                                                                @code
+                                                                    p = 1
+                                                                    For Each stat In oWeeklyStat4
+
+                                                                        Dim _photo As String = stat.pphoto.ToString
+                                                                        If _photo = "" Then
+                                                                            _photo = "/Content/images/icons8-Basketball-Player-50.png"
+                                                                        End If
+
+
+                                                                        @<li>
+                                                                            <div class="point-item">
+                                                                                <div class="point-left">
+                                                                                    <div class="point-thumb">
+                                                                                        <img src=@_photo alt="" />
+                                                                                        <span>@p</span>
+                                                                                    </div>
+                                                                                    <div class="point-content">
+                                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                        <span>@stat.omilosname</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="point-right">
+                                                                                    <p>@stat.val</p>
+                                                                                    <span> </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+
+                                                                        p += 1
+
+                                                                    Next
+
+                                                                End Code
+
+
+                                                            </ul>
+                                                        </div>
+
+                                                        <div Class="tab-pane" id="block">
+                                                            <ul Class="kopa-list clearfix" id="blocksul">
+
+                                                                @code
+                                                                    p = 1
+                                                                    For Each stat In oWeeklyStat5
+
+                                                                        Dim _photo As String = stat.pphoto.ToString
+                                                                        If _photo = "" Then
+                                                                            _photo = "/Content/images/icons8-Basketball-Player-50.png"
+                                                                        End If
+
+
+                                                                        @<li>
+                                                                            <div class="point-item">
+                                                                                <div class="point-left">
+                                                                                    <div class="point-thumb">
+                                                                                        <img src=@_photo alt="" />
+                                                                                        <span>@p</span>
+                                                                                    </div>
+                                                                                    <div class="point-content">
+                                                                                        <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                        <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                        <span>@stat.omilosname</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="point-right">
+                                                                                    <p>@stat.val</p>
+                                                                                    <span> </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+
+                                                                        p += 1
+
+                                                                    Next
+
+                                                                End Code
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div Class="widget kopa-tab-1-widget kopa-point-widget" id="facebookshareid">
+                                        <div class="fb-page" data-href="https://www.facebook.com/atlasbasket.gr/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                            <blockquote cite="https://www.facebook.com/atlasbasket.gr/" class="fb-xfbml-parse-ignore">
+                                                <a href="https://www.facebook.com/atlasbasket.gr/">Atlasbasket.gr</a>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+  </div>
+               
+        <div class="col-md-1">
+            aaa2222
         </div>
+
     </div>
-
-
 
  <div Class="w3-center  widget kopa-tab-1-widget kopa-point-widget">
 
@@ -556,7 +569,7 @@ End Code
                 <div Class="widget-area-11">
                     <div Class="w3-content w3-section" style="max-width:45%" id="fwtografiesid">
                         @code
-                            For each _p In oPhotosList
+    For each _p In oPhotosList
                                 @<img Class="mySlides w3-center" src=@_p style="height:30%;width:100%">
                             Next
                         End Code
