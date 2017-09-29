@@ -171,7 +171,7 @@ End Code
                             @If oLastNewsList.count > 0 Then
 
 
-                            @<h3 Class="widget-title style1">τοπ 10 και δηλωσεις</h3>
+                            @<h3 Class="widget-title style1">top 10ς</h3>
                             @<div Class="widget kopa-sync-carousel-2-widget">
 
                                                     <div Class="owl-carousel sync3" id="watchsync3">
