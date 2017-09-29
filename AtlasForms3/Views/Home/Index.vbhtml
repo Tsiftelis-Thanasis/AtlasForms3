@@ -171,7 +171,7 @@ End Code
                             @If oLastNewsList.count > 0 Then
 
 
-                            @<h3 Class="widget-title style1">top 10ς</h3>
+                            @<h3 Class="widget-title style1">top 10</h3>
                             @<div Class="widget kopa-sync-carousel-2-widget">
 
                                                     <div Class="owl-carousel sync3" id="watchsync3">
@@ -237,7 +237,7 @@ End Code
 
                                                         @<li><article Class="entry-item disable-select ">
                                                         <div Class="entry-thumb">
-                                                            <a href = "#"><img src="@n.PostPhoto2" alt=""/></a>
+                                                            <a href = "/Posts/Details/@n.Id"><img src="@n.PostPhoto2" alt=""/></a>
                                                         </div>
                                                         <div Class="entry-content">
                                                         <div Class="content-top">
@@ -270,11 +270,11 @@ End Code
                                        href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
                                         <img src="~/Content/images/facebook-icon.png">
                                     </a>
-                                    <a target="_blank" class="twitter-share-button"
+                                    @*<a target="_blank" class="twitter-share-button"
                                        href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
                                        data-size="large">
                                         <img src="~/Content/images/Twitter_Logo.png" />
-                                    </a>
+                                    </a>*@
                                 </div>
                             </div>
                         </div>
