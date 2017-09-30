@@ -123,7 +123,7 @@ End code
 
                     <ul class="main-menu sf-menu">                                          
                         <li class="current-menu-item">
-                            <a><span>διοργανώσεις</span></a>
+                            <a><span>Διοργανώσεις</span></a>
                             <ul class="sub-menu" id="diorganwseiulid">
                                 @code
                                     For Each g In oGetdiorganwseis
@@ -133,7 +133,7 @@ End code
                             </ul>
                         </li>
                         <li class="current-menu-item">
-                            <a><span>διοργανωτρια αρχη</span></a>
+                            <a><span>Διοργανώτρια αρχή</span></a>
                             <ul class="sub-menu" id="diorgarxhpostsid">
                                 @code
                                     For Each g In oGetSimplePosts
@@ -144,25 +144,25 @@ End code
                         </li>
 
                         <li class="current-menu-item">
-                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@StaticfirstDiorganwshid ,1)"><span>Πρωταθλημα</span></a>
+                            <a class="lipointer" id="prwta8limaid" onclick="fillomiloinavbar(@StaticfirstDiorganwshid ,1)"><span>Πρωτάθλημα</span></a>
                         </li>
 
                         <li class="current-menu-item">
-                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>                      
+                            <a href="@Url.Action("Create", "Newteam")"><span>Εγγραφή ομάδας</span></a>                      
                         </li>
 
                         <li class="current-menu-item">
-                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
+                            <a href="@Url.Action("Contact", "Home")"><span>Επικοινωνία </span></a>
                         </li>
 
 
                         <li class="current-menu-item">
-                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
+                            <a href="@Url.Action("Index", "Home")"><span>Αρχική</span></a>
                         </li>
 
                         @If User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
-                                @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
+                                @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>Διαχείριση</span></a></li>
                             End If
                         End If
 
@@ -176,7 +176,7 @@ End code
                     <ul class="main-menu-mobile" style="display: none;" id="mobilemainmenu">
                                        
                         <li class="">
-                            <a><span>διοργανώσεις</span><span class=""></span></a>
+                            <a><span>Διοργανώσεις</span><span class=""></span></a>
                             <ul class="sub-menu" id="diorganwseiulidmobile" data-index="0" style="display: none;">
                                 @code
                                     For Each g In oGetdiorganwseis
@@ -187,7 +187,7 @@ End code
                         </li>
 
                         <li class="">
-                            <a><span>διοργανωτρια αρχη</span><span class=""></span></a>
+                            <a><span>Διοργανώτρια αρχή</span><span class=""></span></a>
                             <ul class="sub-menu" id="diorgarxhpostsidmobile" data-index="1" style="display: none;">
                                 @code
                                     For Each g In oGetSimplePosts
@@ -198,24 +198,24 @@ End code
                         </li>
 
                         <li class="">
-                            <a class="lipointer" onclick="fillomiloinavbar(@StaticfirstDiorganwshid, 1);"><span>Πρωταθλημα</span></a>
+                            <a class="lipointer" onclick="fillomiloinavbar(@StaticfirstDiorganwshid, 1);"><span>Πρωτάθλημα</span></a>
                         </li>
 
                         <li class="">
-                            <a href="@Url.Action("Create", "Newteam")"><span>εγγραφη νεας ομαδας</span></a>
+                            <a href="@Url.Action("Create", "Newteam")"><span>Εγγραφή ομάδας</span></a>
                         </li>
 
                         <li class="">
-                            <a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
+                            <a href="@Url.Action("Contact", "Home")"><span>Επικοινωνία </span></a>
                         </li>
 
                         <li class="">
-                            <a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
+                            <a href="@Url.Action("Index", "Home")"><span>Αρχική</span></a>
                         </li>
 
                         @if User.Identity.IsAuthenticated Then
                             If User.IsInRole("Admins") Then
-                                @<li Class=""><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
+                                @<li Class=""><a href="@Url.Action("Panel", "Home")"><span>Διαχείριση</span></a></li>
                             End If
                         End If
 

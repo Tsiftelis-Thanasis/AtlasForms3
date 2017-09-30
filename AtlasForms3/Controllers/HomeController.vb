@@ -22,14 +22,21 @@ Public Class HomeController
     Function Index(Optional ak As Integer = 0) As ActionResult
 
         '3   Γενικά Νέα
+        '6   MVP
+        '7   Καλύτερες φάσεις
         '11  Νέα
         '12  Ομάδες
         '13  Τιμωρίες
         '14  Πρόγραμμα
         '15  Βαθμολογίες
+        '16  Τοp 10
         '17  ΔΗΛΩΣΕΙΣ
 
-        ViewBag.LastNewsList = GetLastNewsByCategory(10, ak, {6, 7, 16}, Nothing, 1, 1).Data.data
+
+
+        ViewBag.LastTop10 = GetLastNewsByCategory(5, ak, {7, 16}, Nothing, 1, 1).Data.data
+        ViewBag.LastDilwseis = GetLastNewsByCategory(5, ak, {17}, Nothing, 1, 1).Data.data
+
         ViewBag.LastGamesList = Getlastgames(ak).Data
         ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13, 17}, 1, Nothing).Data.data
         ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13, 17}, Nothing, Nothing).Data.data

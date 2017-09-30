@@ -17,7 +17,7 @@ End Code
                                        
                     <div id="divcommon" Class="widget-area-2">
                         <div Class="widget kopa-article-list-widget article-list-1">
-                            <h3 Class="widget-title style2">ολα τα αρθρα</h3>
+                            <h3 Class="widget-title style2">Όλα τα άρθρα</h3>
 
                             <p  class="entry-categories style-s2">  @Html.ActionLink("Δημιουργία Άρθρου", "Create", "Posts") </p>
 

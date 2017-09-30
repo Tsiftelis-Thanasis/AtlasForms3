@@ -170,7 +170,9 @@ h1, h2, h3, h4, h5, h6, .h1, .kopa-dropcap, .h2, .h3, .h4, .h5, .h6, .filters-op
   color: #333333;
   display: block;
   margin: 0 0 15px;
-  text-transform: uppercase; }
+  /*text-transform: uppercase;*/ 
+
+}
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .h1 a, .kopa-dropcap a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a, .filters-options li a {
     color: #333333; }
     h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, .h1 a:hover, .kopa-dropcap a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .h5 a:hover, .h6 a:hover, .filters-options li a:hover {
@@ -341,7 +343,7 @@ blockquote {
 
 .panel-group.style1 .panel .panel-heading > .panel-title a {
   font-size: 14px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding: 9px 20px 9px 60px; }
   .panel-group.style1 .panel .panel-heading > .panel-title a .btn-title {
     text-align: center;
@@ -417,7 +419,9 @@ blockquote {
       padding: 16px 15px;
       border-bottom: 0;
       background: #fff;
-      text-transform: uppercase; }
+      /*text-transform: uppercase;*/
+
+    }
     .column ul li.pricing-row {
       border: none;
       padding: 15px 20px;
@@ -453,7 +457,7 @@ blockquote {
         font-size: 15px;
         line-height: 23px;
         color: white;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         background: #333333; }
         .column ul li.footer-row .pt-btn > span {
           position: absolute;
@@ -484,7 +488,7 @@ blockquote {
     line-height: 24px;
     color: white !important;
     text-align: center;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     padding: 9px 40px;
     margin-bottom: 0px;
     border-radius: 0;
@@ -557,7 +561,7 @@ blockquote {
   font-size: 16px;
   line-height: 24px;
   color: #333333 !important;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding: 8px 15px; }
   .kopa-tab.style7 .nav-tabs > li > a:before {
     content: "";
@@ -585,7 +589,7 @@ blockquote {
     line-height: 22px;
     color: #333333 !important;
     font-weight: 300;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     padding: 4px 25px; }
     .kopa-tab.style8 .nav-tabs > li > a:hover {
       background: #fff; }
@@ -620,7 +624,7 @@ blockquote {
     line-height: 22px;
     color: white !important;
     font-weight: 300;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     padding: 4px 25px;
     border-left: 5px solid #fff !important;
     -webkit-transform: skew(-15deg);
@@ -785,7 +789,9 @@ blockquote {
   width: auto;
   height: auto;
   clip: auto;
-  text-transform: uppercase; }
+  /*text-transform: uppercase;*/
+
+}
 
 .sr-num {
   position: absolute;
@@ -1466,7 +1472,7 @@ img {
       outline: none;
       background: #ef6018;
       font-size: 15px;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       font-weight: 700;
       padding: 0;
       color: #fff; }
@@ -1507,7 +1513,7 @@ img {
       font-size: 15px;
       line-height: 22px;
       color: white;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       margin: 0;
       border: none;
       position: relative;
@@ -1542,7 +1548,7 @@ img {
           font-size: 14px;
           line-height: 20px;
           color: #333333;
-          text-transform: uppercase;
+          /*text-transform: uppercase;*/
           padding: 7px 10px; }
           .main-menu > li ul li a:hover, .main-menu > li ul.sub-menu li a:hover, .main-menu-2 > li ul li a:hover, .main-menu-2 > li ul.sub-menu li a:hover {
             background: #333333;
@@ -1748,7 +1754,7 @@ img {
         .main-nav-mobile .main-menu-mobile > li .sub-menu li.current-menu-item > a,  .bottom-nav-mobile .main-menu-mobile > li .sub-menu li.current-menu-item > a {
           color: #ef6018; }
       .main-nav-mobile .main-menu-mobile > li > div h5, .bottom-nav-mobile .main-menu-mobile > li > div h5 {
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         margin: 5px 0 15px; }
       .main-nav-mobile .main-menu-mobile > li .entry-thumb, .bottom-nav-mobile .main-menu-mobile > li .entry-thumb {
         margin-bottom: 15px; }
@@ -1830,7 +1836,7 @@ img {
   font-size: 12px;
   line-height: 20px;
   color: #333333;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin: 11px 0; }
   .main-nav-mobile.style2 .pull i {
     margin-left: 5px; }
@@ -1859,7 +1865,7 @@ img {
     .entry-item .post-share-link > span {
       color: #ef6018;
       font-weight: 600;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       cursor: pointer; }
       .entry-item .post-share-link > span > i {
         float: right;
@@ -2191,7 +2197,7 @@ img {
   font-size: 14px;
   line-height: 22px;
   color: #333333;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 300;
   margin-bottom: 20px; }
   .kopa-breadcrumb span {
@@ -2318,7 +2324,7 @@ address {
 .contact-box, .comment-box {
   margin: 0 0 0; }
   .contact-box > h3, .comment-box > h3 {
-    text-transform: uppercase; }
+    /*text-transform: uppercase;*/ }
   .contact-box .input-block, .contact-box .textarea-block, .comment-box .input-block, .comment-box .textarea-block {
     position: relative;
     margin: 5px 0 0; }
@@ -2422,7 +2428,7 @@ address {
     display: inline-block;
     cursor: pointer;
     font-weight: 400;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     color: #333333;
     position: relative; }
     .filters-options li:before {
@@ -2530,7 +2536,7 @@ address {
     font-size: 16px;
     background: none;
     font-family: "Oswald", sans-serif;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-weight: 300;
     color: #fff;
     position: relative;
@@ -2579,7 +2585,7 @@ address {
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 15px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 700;
   color: #333333; }
 
@@ -2736,7 +2742,7 @@ address {
   margin-left: 3px;
   color: #ef6018;
   font-size: 11px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: normal;
   line-height: 11px; }
 
@@ -2832,7 +2838,7 @@ address {
       outline: none;
       background: #ef6018;
       font-size: 15px;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       font-weight: 700;
       padding: 0;
       color: #fff; }
@@ -2957,7 +2963,7 @@ address {
     outline: none;
     color: #fff;
     font-size: 14px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     position: absolute;
     top: 0;
     right: 0;
@@ -3028,7 +3034,7 @@ address {
         font-size: 10px; /*11px;*/
         line-height: 20px;
         font-weight: 600;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         color: #333333; 
   }
 
@@ -3148,7 +3154,7 @@ address {
         font-weight: 300;
         padding: 2px 35px;
         background: #fff;
-        text-transform: uppercase; }
+        /*text-transform: uppercase;*/ }
         .sync1 .entry-item .entry-content > p > span > b, .sync5 .entry-item .entry-content > p > span > b, .owl-carousel-12 .entry-item .entry-content > p > span > b {
           -webkit-transform: skew(15deg);
           -moz-transform: skew(15deg);
@@ -3159,7 +3165,7 @@ address {
     .sync1 .entry-item .entry-content .entry-title, .sync5 .entry-item .entry-content .entry-title, .owl-carousel-12 .entry-item .entry-content .entry-title {
       font-size: 46px;
       line-height: 52px;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       background: #ef6018;
       padding: 10px;
       margin-bottom: 3px;
@@ -3182,7 +3188,7 @@ address {
       padding: 2px 0;
       font-size: 16px;
       line-height: 24px;
-      text-transform: uppercase; }
+      /*text-transform: uppercase;*/ }
       .sync1 .entry-item .entry-content > h5 span, .sync5 .entry-item .entry-content > h5 span, .owl-carousel-12 .entry-item .entry-content > h5 span {
         display: block;
         background: #fff;
@@ -3220,7 +3226,7 @@ address {
       min-height: 60px;
       position: relative; }
       .sync2 .item .slider-item > h5 {
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         color: #fff;
         margin-bottom: 5px; }
       .sync2 .item .slider-item img {
@@ -3589,7 +3595,7 @@ address {
     .scroll-slider .entry-item .entry-title {
       font-size: 18px;
       line-height: 26px;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       color: #fff;
       position: relative; }
       .scroll-slider .entry-item .entry-title > span {
@@ -3644,7 +3650,7 @@ address {
     line-height: 25px;
     font-size: 12px;
     font-weight: 700;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     background: -webkit-gradient(linear, left top, right top, from(#ca4848), to(#920606));
     background: -webkit-linear-gradient(top, #ca4848, #920606);
     background: -moz-linear-gradient(top, #ca4848, #920606);
@@ -3778,7 +3784,7 @@ address {
           line-height: 22px;
           color: white;
           line-height: 40px;
-          text-transform: uppercase; }
+          /*text-transform: uppercase;*/ }
           .kopa-ticker .ticker-wrap dl dd a:hover {
             color: #333333; }
         .kopa-ticker .ticker-wrap dl dd:last-child {
@@ -3818,7 +3824,7 @@ address {
     line-height: 24px;
     color: #333333 !important;
     text-align: center;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     padding: 2px 15px;
     background: #fff; }
     .kopa-tab.style2 > ul > li > a:hover, .kopa-tab.style5 > ul > li > a:hover {
@@ -3996,7 +4002,7 @@ address {
         margin-bottom: 8px;
         font-weight: 700; }
       .sync3 .entry-item .entry-content .content-top .entry-title, .owl-carousel-6 .entry-item .entry-content .content-top .entry-title {
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         font-size: 16px;
         line-height: 24px;
         font-weight: 700;
@@ -4075,7 +4081,7 @@ address {
   line-height: 24px;
   color: white;
   display: inline-block;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding: 3px 15px;
   background: #ef6018;
   border: 4px solid #fff;
@@ -4450,7 +4456,7 @@ address {
         text-transform: capitalize;
         margin-bottom: 0; }
       .kopa-point-widget .point-item .point-left .point-content > span {
-        text-transform: uppercase; }
+        /*text-transform: uppercase;*/ }
     .kopa-point-widget .point-item .point-right {
       text-align: center;
       width: 70px;
@@ -4778,7 +4784,8 @@ ul.style1 > li {
   margin-bottom: 0; }
 .kopa-charts-widget .widget-content {
   font-size: 14px;
-  text-transform: uppercase; }
+  /*text-transform: uppercase;*/
+}
   .kopa-charts-widget .widget-content > header {
     font-family: "Oswald", sans-serif;
     font-size: 14px;
@@ -4931,7 +4938,8 @@ ul.style1 > li {
     font-size: 40px;
     line-height: 48px;
     color: white;
-    text-transform: uppercase; }
+    /*text-transform: uppercase;*/ 
+  }
   .kopa-tag-line-widget p {
     font-size: 18px;
     line-height: 26px;
@@ -4944,8 +4952,10 @@ ul.style1 > li {
     color: white;
     border: 3px solid #fff;
     padding: 8px 20px;
-    text-transform: uppercase;
-    margin-top: 10px; }
+    /*text-transform: uppercase;*/
+    margin-top: 10px; 
+
+  }
     .kopa-tag-line-widget a:hover {
       color: #ef6018;
       border-color: #ef6018; }
@@ -5130,7 +5140,7 @@ ul.style1 > li {
     .kopa-team-widget .entry-item .entry-content .entry-title {
       font-size: 16px;
       line-height: 24px;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       margin-bottom: 10px; }
       .kopa-team-widget .entry-item .entry-content .entry-title a {
         color: #ef6018; }
@@ -5238,7 +5248,7 @@ ul.style1 > li {
       font-size: 32px;
       line-height: 40px;
       font-weight: 700;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       background: #ef6018;
       padding: 15px 25px;
       position: relative; }
@@ -5280,7 +5290,7 @@ ul.style1 > li {
     font-size: 18px;
     line-height: 26px;
     font-weight: 300;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     margin-bottom: 0; }
   .kopa-gallery-1-widget .entry-item .entry-content .item-count {
     left: auto;
@@ -5347,7 +5357,7 @@ ul.style1 > li {
       font-size: 18px;
       line-height: 26px;
       font-weight: 300;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       margin-bottom: 0; }
 
 /*--- kopa-gallery-3-widget ---*/
@@ -5399,7 +5409,7 @@ ul.style1 > li {
       font-size: 18px;
       line-height: 26px;
       font-weight: 300;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       margin-bottom: 0; }
   .kopa-gallery-3-widget .entry-item:hover .entry-thumb .item-count {
     top: 50%;
@@ -5441,7 +5451,7 @@ ul.style1 > li {
       font-size: 14px;
       line-height: 20px;
       font-weight: 300;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       margin-bottom: 0; }
     .kopa-gallery-4-widget .entry-item .entry-content .item-count {
       left: auto;
@@ -5597,7 +5607,7 @@ ul.style1 > li {
   border-bottom: 2px solid #fff;
   background: #666666;
   color: #fff;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   text-align: center;
   padding: 5px 0;
   margin-top: 15px; }
@@ -5633,7 +5643,7 @@ ul.style1 > li {
       margin-bottom: 0;
       color: #ef6018; }
     .kopa-countdown > li > span {
-      text-transform: uppercase; }
+      /*text-transform: uppercase;*/ }
 
 .match-item {
   position: relative; }
@@ -5684,7 +5694,7 @@ ul.style1 > li {
           text-align: left;
           margin-top: 5px; }
           .match-item.list-item .r-item .r-side .r-content > h5 {
-            text-transform: uppercase;
+            /*text-transform: uppercase;*/
             margin-bottom: 0; }
         .match-item.list-item .r-item .r-side.right .r-thumb {
           margin-left: 15px; }
@@ -5734,7 +5744,7 @@ ul.style1 > li {
     overflow: hidden;
     padding-top: 60px; }
     .kopa-team-club-widget .widget-content .entry-item .entry-content > h5 {
-      text-transform: uppercase; }
+      /*text-transform: uppercase;*/ }
 
 /*--- kopa-product-list-2-widget ---*/
 .kopa-product-list-2-widget > ul {
@@ -5759,7 +5769,7 @@ ul.style1 > li {
       background: #000;
       font-size: 14px;
       line-height: 22px;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       text-align: right;
       color: #fff; }
       .kopa-product-list-2-widget .entry-item .entry-title a > span {
@@ -5786,7 +5796,7 @@ ul.style1 > li {
   width: 95px;
   float: left;
   text-align: center;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding: 15px 10px;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e0e0e0), to(#ececec));
   background: -webkit-linear-gradient(left, #e0e0e0, #ececec);
@@ -6269,7 +6279,7 @@ ul.style1 > li {
     margin-bottom: 15px; }
   .kopa-shop-list .entry-item .entry-title {
     font-weight: 400;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-size: 20px;
     line-height: 26px;
     margin-bottom: 10px; }
@@ -6282,7 +6292,7 @@ ul.style1 > li {
 
 .sale-icon, .new-icon {
   display: inline-block;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 700;
   line-height: 18px;
   background: #ef6018;
@@ -6334,7 +6344,7 @@ ul.style1 > li {
       font-size: 14px;
       line-height: 22px;
       color: #999999;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       padding: 0 8px;
       float: left; }
       .pr-navigation > ul > li > span {
@@ -6357,7 +6367,9 @@ ul.style1 > li {
   font-size: 14px;
   line-height: 22px;
   color: #999999;
-  text-transform: uppercase; }
+  /*text-transform: uppercase;*/
+
+}
   .pr-support > i {
     margin-right: 10px;
     font-size: 25px;
@@ -6368,7 +6380,7 @@ ul.style1 > li {
   font-size: 14px;
   line-height: 22px;
   color: #999999;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   float: right; }
   .pr-social > span {
     float: left;
@@ -6400,7 +6412,7 @@ ul.style1 > li {
     font-size: 14px;
     line-height: 22px;
     color: #ef6018;
-    text-transform: uppercase; }
+    /*text-transform: uppercase;*/ }
     .pr-view-all > a:hover {
       border-color: #ef6018;
       background: #ef6018;
@@ -6628,7 +6640,7 @@ ul.style1 > li {
     padding-top: 0;
     background: #ef6018; }
 .woocommerce .checkout h1, .woocommerce .checkout h2, .woocommerce .checkout h3, .woocommerce .checkout h4, .woocommerce .checkout h5, .woocommerce .checkout h6, .woocommerce .checkout .h1, .woocommerce .checkout .kopa-dropcap, .woocommerce .checkout .h2, .woocommerce .checkout .h3, .woocommerce .checkout .h4, .woocommerce .checkout .h5, .woocommerce .checkout .h6, .woocommerce .checkout .filters-options li, .filters-options .woocommerce .checkout li, .woocommerce-page .checkout h1, .woocommerce-page .checkout h2, .woocommerce-page .checkout h3, .woocommerce-page .checkout h4, .woocommerce-page .checkout h5, .woocommerce-page .checkout h6, .woocommerce-page .checkout .h1, .woocommerce-page .checkout .kopa-dropcap, .woocommerce-page .checkout .h2, .woocommerce-page .checkout .h3, .woocommerce-page .checkout .h4, .woocommerce-page .checkout .h5, .woocommerce-page .checkout .h6, .woocommerce-page .checkout .filters-options li, .filters-options .woocommerce-page .checkout li {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-top: 20px; }
 .woocommerce #ship-to-different-address, .woocommerce-page #ship-to-different-address {
   margin-top: 20px;
@@ -6752,7 +6764,7 @@ ul.style1 > li {
   margin-bottom: 50px; }
 
 .contact-title {
-  text-transform: uppercase; }
+  /*text-transform: uppercase;*/ }
 
 .kopa-map-wrapper #kopa-map {
   height: 460px;
@@ -6898,7 +6910,7 @@ address {
     background: none;
     border-radius: none;
     padding: 0;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     color: #333333;
     position: relative; }
     .slider .tooltip.top .tooltip-inner:before {
@@ -6935,11 +6947,11 @@ address {
       display: block;
       width: 100%;
       background: #333333;
-      text-transform: uppercase; }
+      /*text-transform: uppercase;*/ }
   .kopa-post-review .rv-content {
     overflow: hidden; }
     .kopa-post-review .rv-content h3 {
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       margin-bottom: 10px; }
     .kopa-post-review .rv-content p {
       margin-bottom: 0; }
@@ -6975,12 +6987,12 @@ address {
     .single-other-post > .entry-item .entry-content {
       overflow: hidden; }
       .single-other-post > .entry-item .entry-content > a {
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         color: #ef6018; }
         .single-other-post > .entry-item .entry-content > a:hover {
           color: #333333; }
       .single-other-post > .entry-item .entry-content .entry-title {
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         font-size: 14px;
         line-height: 22px;
         margin-bottom: 0; }
@@ -7067,7 +7079,7 @@ address {
       font-size: 14px;
       line-height: 22px;
       color: #ef6018;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       font-weight: 700;
       margin-bottom: 10px; }
     .kopa-author .author-content p {
@@ -7421,7 +7433,7 @@ address {
       font-size: 15px;
       line-height: 22px;
       color: white;
-      text-transform: uppercase;
+      /*text-transform: uppercase;*/
       transition: all 0.5s;
       -ms-transition: all 0.5s;
       -webkit-transition: all 0.5s;
@@ -7475,7 +7487,7 @@ address {
     font-size: 12px;
     line-height: 18px;
     color: #666666;
-    text-transform: uppercase; }
+    /*text-transform: uppercase;*/ }
     .kopa-footer-nav .footer-menu li a:hover {
       color: #ef6018; }
   .kopa-footer-nav .footer-menu li ul {

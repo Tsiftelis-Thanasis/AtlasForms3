@@ -26,27 +26,27 @@
 
     If kathgoriaid = 11 Then
         ViewData("Title") = "Τελευταία νέα " '& katName
-        innerTitle = "τελευταια νεα " & atlaskathgorianame
+        innerTitle = "Τελευταία νέα " & atlaskathgorianame
     End If
     If kathgoriaid = 12 Then
         ViewData("Title") = "Ομάδες " '& katName
-        innerTitle = "ομαδες " '& katName
+        innerTitle = "Ομάδες " '& katName
     End If
     If kathgoriaid = 13 Then
         ViewData("Title") = "Τιμωρίες " '& katName
-        innerTitle = "τιμωριες " '& katName
+        innerTitle = "Τιμωρίες " '& katName
     End If
     If kathgoriaid = 14 Then
         ViewData("Title") = "Πρόγραμμα " '& katName
-        innerTitle = "προγραμμα " '& katName
+        innerTitle = "Πρόγραμμα " '& katName
     End If
     If kathgoriaid = 15 Then
         ViewData("Title") = "Βαθμολογία " '& katName
-        innerTitle = "βαθμολογια " '& katName
+        innerTitle = "Βαθμολογία " '& katName
     End If
     If kathgoriaid = 0 Then
-        ViewData("Title") = "Λίστα με όλα τα νεα" '& katName
-        innerTitle = "λιστα με ολα τα νεα " '& katName
+        ViewData("Title") = "Λίστα με όλα τα νέα" '& katName
+        innerTitle = "Λίστα με όλα τα νέα " '& katName
     End If
 
 
@@ -96,39 +96,39 @@ End Code
             End If*@
 
             @If kathgoriaid = 12 Then
-                @<a style="background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=12"><span >Ομαδες</span></a>
+                @<a style="background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=12"><span >Ομάδες</span></a>
             Else
-                @<a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=12"><span >Ομαδες</span></a>
+                @<a href="/Posts/Index/?ak=@atlaskathgoriaid&k=12"><span >Ομάδες</span></a>
             End If
 
             @If kathgoriaid = 15 Then
-                @<a style="background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span >Βαθμολογια</span></a>
+                @<a style="background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span >Βαθμολογία</span></a>
             Else
-                @<a href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span >Βαθμολογια</span></a>
+                @<a href = "/Posts/Index/?ak=@atlaskathgoriaid&k=15"><span >Βαθμολογία</span></a>
             End If
                
             @If UserisAuthenticated > 0 Then
                 If programmaid > 0 Then
                     @If kathgoriaid = 14 Then
-                        @*<a style = "background: #ef6018 !important" href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>*@
-                        @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskathgoriaid&k=14"> <span>Προγραμμα</span></a>
+                        @*<a style = "background: #ef6018 !important" href="/Posts/Details/@programmaid"> <span >Πρόγραμμα</span></a>*@
+                        @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskathgoriaid&k=14"> <span>Πρόγραμμα</span></a>
                     Else
-                        '<a href="/Posts/Details/@programmaid"> <span >Προγραμμα</span></a>
+                        '<a href="/Posts/Details/@programmaid"> <span >Πρόγραμμα</span></a>
                         @<a href="~/Posts/Index/?ak=@atlaskathgoriaid&k=14"><span> Πρόγραμμα </span></a>
                     End If
                 Else
                     @If kathgoriaid = 14 Then
-                        @<a style="background: #ef6018 !important"> <span >Προγραμμα</span></a>
+                        @<a style="background: #ef6018 !important"> <span >Πρόγραμμα</span></a>
                     Else
-                        @<a><span >Προγραμμα</span></a>
+                        @<a><span >Πρόγραμμα</span></a>
                     End If
                 End If
             End If
 
             @If kathgoriaid = 13 Then
-               @<a style = "background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span >Τιμωριες</span></a>
+               @<a style = "background: #ef6018 !important" href = "/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span >Τιμωρίες</span></a>
             Else
-               @<a href="/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span >Τιμωριες</span></a> 
+               @<a href="/Posts/Index/?ak=@atlaskathgoriaid&k=13"><span >Τιμωρίες</span></a> 
             End If
                    
             </p>
@@ -136,7 +136,7 @@ End Code
 
     End Code
 
-    <div Class="wrapperSmall">
+    <div Class="wrapper">
         
             
         <section Class="kopa-area kopa-area-1 mb-30" id="divresultsandstandings" style="display: none;">
@@ -151,7 +151,7 @@ End Code
                                  
                         <div id = "divresults1" Class="widget-area-12"  style="display: none;">
                         <div Class="widget kopa-result-widget">
-                            <h3 Class="widget-title style6">@atlaskathgorianame - εβδομαδιαια αποτελεσματα</h3>
+                            <h3 Class="widget-title style6">@atlaskathgorianame - Εβδομαδιαία αποτελέσματα</h3>
                             <div Class="widget-content">
                                 <div Class="span-bg">
                                     <span Class="c-tg"></span>
@@ -206,7 +206,7 @@ End Code
                         <div id = "divstandcommon1" Class="widget-area-13"  style="display: none;">
 
                             <div Class="widget kopa-charts-widget">
-                                <h3 Class="widget-title style6"><span>βαθμολογια @atlaskathgorianame</span></h3>
+                                <h3 Class="widget-title style6"><span>Βαθμολογία @atlaskathgorianame</span></h3>
                                 <div Class="widget-content">
                                     <header>
                                         <div Class="t-col">Α/Α</div>
@@ -245,7 +245,7 @@ End Code
                         @<div id="divteamskat1" style="display: none;">
                             <div class="row">
                                 <div class="kopa-main">
-                                    <h3 class="widget-title style12">ομαδες κατηγορίας @atlaskathgorianame<span class="ttg"></span></h3>
+                                    <h3 class="widget-title style12">Ομάδες κατηγορίας @atlaskathgorianame<span class="ttg"></span></h3>
                                     <div class="widget kopa-entry-list">
                                         <ul class="row clearfix" id="ulteamskat1">
 
@@ -386,7 +386,7 @@ End Code
         } else if ($('#kathgoriaid').val() == 14) { //Πρόγραμμα
             $("#divcommon").show();
             orderByName = 1;
-        } else if ($('#kathgoriaid').val() == 15) { //βαθμολογια
+        } else if ($('#kathgoriaid').val() == 15) { //Βαθμολογία
             $("#divresultsandstandings").show();
             $("#divresults1").show();
             $("#divstandcommon1").show();
