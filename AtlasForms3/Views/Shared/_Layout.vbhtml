@@ -26,7 +26,7 @@
     Dim oGetdiorganwseis = u.Getdiorganwseis()
 
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
-    Dim socialDesc As String = If(ViewBag.Title = "", "", ViewBag.Title & " - ") & "Ατλας μπάσκετ"
+    Dim socialDesc As String = If(ViewBag.Title = "", "", ViewBag.Title & " - ") & "atlasbasket.gr"
     Dim imageSrc As String = Request.Url.GetLeftPart(UriPartial.Authority).ToString & "/Content/images/atlas_fb_logo.jpg"
 
     If Not ViewBag.postimage Is Nothing Then
@@ -44,7 +44,7 @@ End code
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="fb:app_id" content="140586622674265" />
     <meta property="og:site_name" content="AtlasBasket" />
-    <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ" />
+    <meta property="og:title" content="@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) atlasbasket.gr" />
     <meta property="og:url" content="@urlwithid" />
     <meta property="og:image" content="@imageSrc" /> @*image for each page*@
     <meta property="og:image:width" content="600" />
@@ -52,7 +52,7 @@ End code
     <meta property="og:type" content="article" /> @*or website article*@
     <meta property="og:description" content="@socialDesc" /> @*description for each page*@
 
-    <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) Ατλας μπάσκετ</title>
+    <title>@(If(ViewBag.Title = "", "", ViewBag.Title & " - ")) atlasbasket.gr</title>
     <link rel="shortcut icon" type="image/ico" href="~/favicon.ico">
 
     @Styles.Render("~/Content/css")

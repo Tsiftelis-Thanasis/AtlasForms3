@@ -136,7 +136,7 @@ End Code
 
     End Code
 
-    <div Class="wrapper">
+    <div Class="wrapperSmall">
         
             
         <section Class="kopa-area kopa-area-1 mb-30" id="divresultsandstandings" style="display: none;">
@@ -326,11 +326,11 @@ End Code
                        href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
                         <img src="~/Content/images/facebook-icon.png">
                     </a>
-                    <a target="_blank" class="twitter-share-button"
+                    @*<a target="_blank" class="twitter-share-button"
                        href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
                        data-size="large">
                         <img src="~/Content/images/Twitter_Logo.png" />
-                    </a>
+                    </a>*@
                 </div>
             </div>
 

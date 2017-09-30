@@ -122,7 +122,7 @@ End Code
     </div>
 </div>
 
-<div class="row">
+<div class="wrapperSmall row">
 
     <div class="kopa-main-col">
         <div class="kopa-entry-post">
@@ -330,8 +330,9 @@ End Code
             inline: true,
             readonly: 1,
             content_css: [
-              '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-              '//www.tinymce.com/css/codepen.min.css']
+                "http://www.atlasbasket.gr/Content/content.css"
+              //fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+              ///www.tinymce.com/css/codepen.min.css']
         });
 
 

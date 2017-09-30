@@ -1090,6 +1090,13 @@ body {
   .wrapper.mb-30 {
     margin-bottom: 30px; }
 
+.wrapperSmall {
+  width: 970px;
+  margin: 0 auto;
+  position: relative; }
+  .wrapper.mb-30 {
+    margin-bottom: 30px; }
+
 .loading {
   background: url("Content/images/background/bg/white/9.png");
   background: rgba(255, 255, 255, 0.9);
@@ -3721,7 +3728,7 @@ address {
     display: block;
     float: left;
     margin: 0 25px 0 0;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     padding: 0 15px;
     font-family: "Oswald", sans-serif;
     font-size: 14px;
