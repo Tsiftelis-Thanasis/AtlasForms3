@@ -61,7 +61,7 @@ Public Module BundleConfig
                   "~/Content/fontlatingreek"))
 
 
-        'BundleTable.EnableOptimizations = True
+        BundleTable.EnableOptimizations = True
 
     End Sub
 End Module

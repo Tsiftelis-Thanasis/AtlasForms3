@@ -369,6 +369,7 @@ End code
                 url: baseUrl + '@Url.Action("GetOmiloiByDiorganwsh", "Home")',
                 data: "{dId: " + i + "}",
                 async: false,
+                cache: false,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
@@ -459,6 +460,7 @@ End code
             url: baseUrl + '@Url.Action("GetKathgoriesbyOmilos", "Home")',
             data: "{OId: " + containerid + "}",
             async: false,
+            cache:  false,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {

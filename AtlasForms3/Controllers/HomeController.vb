@@ -33,13 +33,23 @@ Public Class HomeController
         '17  ΔΗΛΩΣΕΙΣ
 
 
+        If ak > 0 Then
+            ViewBag.LastMvp = GetLastNewsByCategory(5, ak, {6, 7, 16}, Nothing, 1, 1).Data.data
+            ViewBag.LastDilwseis = GetLastNewsByCategory(5, ak, {17}, Nothing, 1, 1).Data.data
+        Else
+            ViewBag.LastMvp = New List(Of Object)
+            ViewBag.LastDilwseis = New List(Of Object)
+        End If
 
-        ViewBag.LastTop10 = GetLastNewsByCategory(5, ak, {7, 16}, Nothing, 1, 1).Data.data
-        ViewBag.LastDilwseis = GetLastNewsByCategory(5, ak, {17}, Nothing, 1, 1).Data.data
+        If ak = 0 Then
+            ViewBag.LastTop10List = GetLastNewsByCategory(10, ak, {7, 16}, Nothing, 1, 1).Data.data
+        Else
+            ViewBag.LastTop10List = New List(Of Object)
+        End If
 
         ViewBag.LastGamesList = Getlastgames(ak).Data
-        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13, 17}, 1, Nothing).Data.data
-        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13, 17}, Nothing, Nothing).Data.data
+        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13}, 1, Nothing).Data.data
+        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13}, Nothing, Nothing).Data.data
 
         ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
         ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
