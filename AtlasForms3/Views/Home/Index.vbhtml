@@ -173,7 +173,7 @@ End Code
                                                 <div Class="widget kopa-tab-1-widget kopa-point-widget">
                                                     <h3 Class="widget-title style1">TOP 10</h3>
 
-                                                    <div Class="owl-carousel owl-carousel-1 sync2" id="watchsync3">
+                                                    <div Class="owl-carousel owl-carousel-1 sync22" id="watchsync3">
 
                                                         @For Each o In oLastTop10
                                                             @<div Class="item">
@@ -217,7 +217,7 @@ End Code
                                                             <div Class="widget kopa-tab-1-widget kopa-point-widget">
                                                                 
                                                                     <h3 Class="widget-title style1">Δηλώσεις</h3>
-                                                                    <div Class="owl-carousel owl-carousel-1 sync2" id="watchsync4">
+                                                                    <div Class="owl-carousel owl-carousel-1 sync22" id="watchsync4">
 
                                                                         @For Each o1 In oLastDilwseis
 

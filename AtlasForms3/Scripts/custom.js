@@ -344,6 +344,18 @@ var panel_titles = $('.kopa-accordion .panel-title a');
             pagination: false
         });
 
+        var sync22 = $(".sync22");
+        sync22.owlCarousel({
+            items: 5,
+            itemsDesktop: [1199, 5],
+            itemsDesktopSmall: [979, 4],
+            itemsTablet: [799, 3],
+            itemsMobile: [479, 2],
+            pagination: false,
+            navigation: true,
+            navigationText: false,
+            responsiveRefreshRate: 100
+        });
 
 
         if ($('.kopa-sync-carousel-widget').length > 0) {
@@ -383,6 +395,7 @@ var panel_titles = $('.kopa-accordion .panel-title a');
                 }
             });
 
+
             function syncPosition(el) {
                 var current = this.currentItem;
                 $(".sync2").find(".owl-item").removeClass("synced").eq(current).addClass("synced")
@@ -399,7 +412,11 @@ var panel_titles = $('.kopa-accordion .panel-title a');
 
             function center(number) {
 
-                var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
+
+                var sync2visible = 0;
+                if (sync2.data("owlCarousel") != null) {
+                    sync2visible = sync2.data("owlCarousel").owl.visibleItems;
+                }
                 var num = number;
                 var found = false;
                 for (var i in sync2visible) {
