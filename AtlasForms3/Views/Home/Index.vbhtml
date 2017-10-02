@@ -61,11 +61,15 @@ End Code
 
 
 <div class="row">
-    <div class="col-xs-1 col-md-1 col-lg-1 affix-top" id="sidebar1">
-        <img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" alt="logo">
-    </div>
 
-    <div  class="col-xs-10 col-md-10 col-lg-10">
+    <nav class="col-md-1" id="myScrollspy">
+        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205" style="padding:10px;">
+            <li><img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" style="height:650px;width:90px;"> </li>            
+        </ul>
+    </nav>
+        
+
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
         <div id="main-content" Class="style1">
 
             <div Class="main-top">
@@ -84,7 +88,7 @@ End Code
 
             @code
 
-            If AtlasKathgoriaid > 0 Then
+                If AtlasKathgoriaid > 0 Then
                     @<p class="entry-categories style-s2">
                         <a style="background: #ef6018 !important" href="~/Home/Index/?ak=@AtlasKathgoriaid">Νέα</a>
 
@@ -107,7 +111,7 @@ End Code
 
             End Code
 
-            <div Class="wrapper">
+            <div Class="wrapperSmall">
                 <div Class="kopa-page">
                     <div Class="widget kopa-tab-score-widget">
                         <div Class="kopa-tab style1">
@@ -143,7 +147,7 @@ End Code
                 </div>
             </div>
 
-            <div Class="wrapper mb-30">
+            <div Class="wrapperSmall mb-30">
                 <div Class="widget-area-1">
                     <div Class="widget kopa-tab-1-widget kopa-point-widget">
                         <div Class="widget kopa-sync-carousel-widget">
@@ -175,7 +179,7 @@ End Code
 
 
 
-                <div Class="wrapper">
+                <div Class="wrapperSmall">
                     <div Class="content-wrap">
                         <div Class="row">
                             <div Class="kopa-main-col">
@@ -650,9 +654,12 @@ End Code
         </div>
     </div>
 
-    <div class="col-xs-1 col-md-1 col-lg-1 affix-top" id="sidebar2">
-        <img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" alt="logo">
-    </div>
+    <nav class="col-md-1"  id="myScrollspy2">
+        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205" style="padding:10px;">
+            <li><img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" style="height:650px;width:90px;"> </li>
+        </ul>
+    </nav>
+
 </div>
 
                     @Section Scripts
@@ -678,8 +685,8 @@ End Code
                             $(document).ready(function () {
 
 
-                                $('#sidebar1').affix();
-                                $('#sidebar2').affix();
+                                //$('#sidebar1').affix();
+                                //$('#sidebar2').affix();
 
 
                                 var omilosid = $("#atlaskathgoriaid").val();

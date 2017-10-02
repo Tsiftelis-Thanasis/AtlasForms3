@@ -1090,26 +1090,19 @@ body {
   margin-bottom: 60px; }
 
 .wrapper {
-  width: 970px;
+  width: 95%; /*1170px;*/
   margin: 0 auto;
   position: relative; }
   .wrapper.mb-30 {
     margin-bottom: 30px; }
 
-/*.wrapper {
-  width: 1170px;
-  margin: 0 auto;
-  position: relative; }
-  .wrapper.mb-30 {
-    margin-bottom: 30px; }*/
 
-
-/*.wrapperSmall {
-  width: 970px;
+.wrapperSmall {
+  width: auto;
   margin: 0 auto;
   position: relative; }
   .wrapperSmall.mb-30 {
-    margin-bottom: 30px; }*/
+    margin-bottom: 30px; }
 
 .loading {
   background: url("Content/images/background/bg/white/9.png");
@@ -7600,7 +7593,10 @@ address {
 */
 @media screen and (max-width: 1160px) {
   .wrapper, .owl-carousel-10 .entry-item .entry-content, .owl-carousel-11 .entry-item .entry-content {
-    width: 980px; }
+    /*width: 980px;*/ 
+    width: 95%;
+
+  }
 
   .owl-carousel-1 {
       width: 80%; 
@@ -7664,7 +7660,10 @@ address {
     margin-left: -490px; } }
 @media screen and (max-width: 1023px) {
   .wrapper, .owl-carousel-10 .entry-item .entry-content, .owl-carousel-11 .entry-item .entry-content {
-    width: 940px; }
+    /*width: 940px;*/
+    width:95%;
+
+  }
 
   .kopa-sync-carousel-widget.style1 .sync1 .owl-controls, .kopa-sync-carousel-widget.style1 .sync5 .owl-controls, .kopa-sync-carousel-widget.style1 .owl-carousel-12 .owl-controls, .sync5 .owl-controls {
     width: 940px;
@@ -7696,7 +7695,9 @@ address {
     margin-top: -10px; } }
 @media screen and (max-width: 979px) {
   .wrapper, .owl-carousel-10 .entry-item .entry-content, .owl-carousel-11 .entry-item .entry-content {
-    width: 760px; }
+    /*width: 760px;*/
+    width: 95%;
+  }
 
   .kopa-sync-carousel-widget.style1 .sync1 .owl-controls, .kopa-sync-carousel-widget.style1 .sync5 .owl-controls, .kopa-sync-carousel-widget.style1 .owl-carousel-12 .owl-controls, .sync5 .owl-controls {
     width: 760px;
@@ -7776,7 +7777,9 @@ address {
     line-height: 42px; } }
 @media screen and (max-width: 799px) {
   .wrapper, .owl-carousel-10 .entry-item .entry-content, .owl-carousel-11 .entry-item .entry-content {
-    width: 728px; }
+    /*width: 728px;*/ 
+    width: 95%; 
+  }
 
   .kopa-sync-carousel-widget.style1 .sync1 .owl-controls, .kopa-sync-carousel-widget.style1 .sync5 .owl-controls, .kopa-sync-carousel-widget.style1 .owl-carousel-12 .owl-controls, .sync5 .owl-controls {
     width: 728px;
@@ -7837,7 +7840,9 @@ address {
     width: 570px; } }
 @media screen and (max-width: 767px) {
   .wrapper, .owl-carousel-10 .entry-item .entry-content, .owl-carousel-11 .entry-item .entry-content {
-    width: 680px; }
+    /*width: 680px;*/ 
+    width: 95%; 
+  }
 
   .kopa-sync-carousel-widget.style1 .sync1 .owl-controls, .kopa-sync-carousel-widget.style1 .sync5 .owl-controls, .kopa-sync-carousel-widget.style1 .owl-carousel-12 .owl-controls, .sync5 .owl-controls {
     width: 680px;
@@ -7865,7 +7870,10 @@ address {
     display: none; } }
 @media screen and (max-width: 719px) {
   .wrapper, .owl-carousel-10 .entry-item .entry-content, .owl-carousel-11 .entry-item .entry-content {
-    width: 600px; }
+    /*width: 600px;*/ 
+    width: 95%; 
+
+  }
 
   .kopa-sync-carousel-widget.style1 .sync1 .owl-controls, .kopa-sync-carousel-widget.style1 .sync5 .owl-controls, .kopa-sync-carousel-widget.style1 .owl-carousel-12 .owl-controls, .sync5 .owl-controls {
     width: 600px;
@@ -8422,5 +8430,9 @@ address {
 }
 
 #sidebar1 {
+	background-color:#eee;
+}
+
+#sidebar2 {
 	background-color:#eee;
 }
