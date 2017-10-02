@@ -1090,18 +1090,26 @@ body {
   margin-bottom: 60px; }
 
 .wrapper {
-  width: 1170px;
-  margin: 0 auto;
-  position: relative; }
-  .wrapper.mb-30 {
-    margin-bottom: 30px; }
-
-.wrapperSmall {
   width: 970px;
   margin: 0 auto;
   position: relative; }
   .wrapper.mb-30 {
     margin-bottom: 30px; }
+
+/*.wrapper {
+  width: 1170px;
+  margin: 0 auto;
+  position: relative; }
+  .wrapper.mb-30 {
+    margin-bottom: 30px; }*/
+
+
+/*.wrapperSmall {
+  width: 970px;
+  margin: 0 auto;
+  position: relative; }
+  .wrapperSmall.mb-30 {
+    margin-bottom: 30px; }*/
 
 .loading {
   background: url("Content/images/background/bg/white/9.png");
@@ -8407,3 +8415,12 @@ address {
     display: inline-block;
 }
 
+
+
+.affix-top,.affix{
+	position: static;
+}
+
+#sidebar1 {
+	background-color:#eee;
+}

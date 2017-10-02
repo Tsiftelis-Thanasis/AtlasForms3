@@ -59,114 +59,121 @@ End Code
 
 @Html.Hidden("atlaskathgoriaid", AtlasKathgoriaid)
 
-<div id="main-content" Class="style1">
 
-    <div Class="main-top"> 
-
-        <div Class="social-links style1">
-            <ul Class="clearfix">
-                <li> <a href="https://www.facebook.com/atlasbasket.gr/" Class="fa fa-facebook"></a></li>
-                @*<li> <a href="https://twitter.com/atlasteam1" Class="fa fa-twitter"></a></li>*@
-                <li> <a href="http://www.google.com/profiles/117211032484470772194" Class="fa fa-google-plus"></a></li>
-                <li> <a href="https://www.youtube.com/channel/UCRTTtMCMaxoKT11U1MekmwQ" Class="fa fa-youtube"></a></li>
-                <li> <a href="https://www.instagram.com/atlasbasket.gr/" Class="fa fa-instagram"></a></li>
-            </ul>
-        </div>
-        
+<div class="row">
+    <div class="col-xs-1 col-md-1 col-lg-1 affix-top" id="sidebar1">
+        <img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" alt="logo">
     </div>
 
-    @code
+    <div  class="col-xs-10 col-md-10 col-lg-10">
+        <div id="main-content" Class="style1">
 
-        If AtlasKathgoriaid > 0 Then
-            @<p class="entry-categories style-s2">
-                <a style="background: #ef6018 !important" href="~/Home/Index/?ak=@AtlasKathgoriaid">Νέα</a>
-                 
-                @*<a href="~/Posts/Index/?ak=@atlaskathgoriaid"><span >λίστα με όλα τα νέα</span></a>*@
-                 
-                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=12"> <span >Ομάδες</span></a>
-                <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=15"> <span >Βαθμολογία</span></a>                                
-                 @If UserisAuthenticated > 0 Then
+            <div Class="main-top">
+
+                <div Class="social-links style1">
+                    <ul Class="clearfix">
+                        <li> <a href="https://www.facebook.com/atlasbasket.gr/" Class="fa fa-facebook"></a></li>
+                        @*<li> <a href="https://twitter.com/atlasteam1" Class="fa fa-twitter"></a></li>*@
+                        <li> <a href="http://www.google.com/profiles/117211032484470772194" Class="fa fa-google-plus"></a></li>
+                        <li> <a href="https://www.youtube.com/channel/UCRTTtMCMaxoKT11U1MekmwQ" Class="fa fa-youtube"></a></li>
+                        <li> <a href="https://www.instagram.com/atlasbasket.gr/" Class="fa fa-instagram"></a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            @code
+
+            If AtlasKathgoriaid > 0 Then
+                    @<p class="entry-categories style-s2">
+                        <a style="background: #ef6018 !important" href="~/Home/Index/?ak=@AtlasKathgoriaid">Νέα</a>
+
+                        @*<a href="~/Posts/Index/?ak=@atlaskathgoriaid"><span >λίστα με όλα τα νέα</span></a>*@
+
+                        <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=12"> <span>Ομάδες</span></a>
+                        <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=15"> <span>Βαθμολογία</span></a>
+                        @If UserisAuthenticated > 0 Then
                     If programmaid > 0 Then
-                         @*<a href="~/Posts/Details/@programmaid"> <span >Πρόγραμμα</span></a>*@
-                         @<a href = "/Posts/Index/?ak=@AtlasKathgoriaid&k=14"><span > Πρόγραμμα </span></a>
-                     Else
-                     @<a><span >Πρόγραμμα</span></a>
+                                @*<a href="~/Posts/Details/@programmaid"> <span >Πρόγραμμα</span></a>*@
+                                @<a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=14"><span> Πρόγραμμα </span></a>
+                            Else
+                                @<a><span>Πρόγραμμα</span></a>
                      End If
                  End If
-                 
-                 <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=13"><span >Τιμωρίες</span></a>
-            </p>
-        End If
 
-    End Code
+                        <a href="~/Posts/Index/?ak=@AtlasKathgoriaid&k=13"><span>Τιμωρίες</span></a>
+                    </p>
+            End If
 
-    <div Class="wrapper">
-        <div Class="kopa-page">
-            <div Class="widget kopa-tab-score-widget">
-                <div Class="kopa-tab style1">
-                    <div Class="tab-content">
-                        <div Class="tab-pane active" id="agroup">
-                            <div id="lastgamescarouselid" Class="owl-carousel owl-carousel-1">
+            End Code
+
+            <div Class="wrapper">
+                <div Class="kopa-page">
+                    <div Class="widget kopa-tab-score-widget">
+                        <div Class="kopa-tab style1">
+                            <div Class="tab-content">
+                                <div Class="tab-pane active" id="agroup">
+                                    <div id="lastgamescarouselid" Class="owl-carousel owl-carousel-1">
+                                        @code
+                                        For Each g In oLastGamesList
+                                                @<div Class="item">
+                                                    <div Class="entry-item">
+                                                        <a target="_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
+                                                            <p>@g.Gamedate</p>
+                                                            <ul Class="clearfix">
+                                                                <li>
+                                                                    <span title=@g.team1>@g.team1</span>
+                                                                    <span>@g.team1score</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span title=@g.team2>@g.team2</span>
+                                                                    <span>@g.team2score</span>
+                                                                </li>
+                                                            </ul>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            Next
+                                        End Code
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div Class="wrapper mb-30">
+                <div Class="widget-area-1">
+                    <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                        <div Class="widget kopa-sync-carousel-widget">
+                            <div Class="owl-carousel sync1" id="mainnewscarouselid">
                                 @code
-                                    For Each g In oLastGamesList
+    For each n In oLastNews1
+
                                         @<div Class="item">
-                                            <div Class="entry-item">
-                                                <a  target = "_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
-                                                <p>@g.Gamedate</p>
-                                                <ul Class="clearfix"> 
-                                                    <li> 
-                                                        <span title = @g.team1 >@g.team1</span> 
-                                                        <span>@g.team1score</span>
-                                                    </li> 
-                                                    <li>
-                                                        <span title =@g.team2>@g.team2</span>
-                                                        <span>@g.team2score</span>
-                                                    </li>
-                                                </ul>
-                                                </a>
-                                            </div>
+                                            <article class="entry-item">
+                                                <div class="entry-thumb w3-center">
+                                                    <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:480px;width:1024px;" alt=""></a>
+                                                    <div class="thumb-hover"></div>
+                                                </div>
+                                                <div class="entry-content  entry-content2">
+                                                    <h3 class="entry-title entry-title2"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>
+                                                    @*<h5><span><b>@n.PostSummary</b></span></h5>*@
+                                                </div>
+                                                <span></span>
+                                            </article>
                                         </div>
+
                                     Next
                                 End Code
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>            
-        </div>
-    </div>
+                <p></p>
 
-    <div Class="wrapper mb-30">
-        <div Class="widget-area-1">
-            <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                <div Class="widget kopa-sync-carousel-widget">
-                    <div Class="owl-carousel sync1" id="mainnewscarouselid">
-                        @code
-                            For each n In oLastNews1
 
-                                @<div Class="item">
-                                    <article class="entry-item">
-                                        <div class="entry-thumb w3-center">
-                                            <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:480px;width:1024px;" alt=""></a>
-                                            <div class="thumb-hover"></div>
-                                        </div>
-                                        <div class="entry-content  entry-content2">
-                                            <h3 class="entry-title entry-title2"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>
-                                            @*<h5><span><b>@n.PostSummary</b></span></h5>*@
-                                        </div>
-                                        <span></span>
-                                    </article>
-                                </div>
-
-                            Next
-                        End Code
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p></p>
-           
-    
 
                 <div Class="wrapper">
                     <div Class="content-wrap">
@@ -239,33 +246,33 @@ End Code
 
                                     @If oLastMvp.count > 0 And AtlasKathgoriaid > 0 Then
                                         @<div Class="widget-area-1">
-                                                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                                                    <h3 Class="widget-title style1">MVP</h3>
+                                            <div Class="widget kopa-tab-1-widget kopa-point-widget">
+                                                <h3 Class="widget-title style1">MVP</h3>
 
-                                                    <div Class="owl-carousel owl-carousel-1 sync22" id="watchsync3">
+                                                <div Class="owl-carousel owl-carousel-1 sync22" id="watchsync3">
 
-                                                        @For Each o In oLastMvp
-                                                            @<div Class="item">
-                                                                <article class="entry-item video-post">
-                                                                    <div class="entry-thumb w3-center">
-                                                                        <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:160px;width:auto;"></a>
-                                                                        <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
-                                                                    </div>
-                                                                    <div class="entry-content">
-                                                                        <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
-                                                                    </div>
-                                                                </article>
-                                                            </div>
-                                                        Next
-
-                                                    </div>
+                                                    @For Each o In oLastMvp
+                                                        @<div Class="item">
+                                                            <article class="entry-item video-post">
+                                                                <div class="entry-thumb w3-center">
+                                                                    <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:160px;width:auto;"></a>
+                                                                    <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
+                                                                </div>
+                                                                <div class="entry-content">
+                                                                    <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
+                                                                </div>
+                                                            </article>
+                                                        </div>
+                                                    Next
 
                                                 </div>
+
                                             </div>
+                                        </div>
                                     End If
 
                                 End Code
-                            
+
                                 @code
 
                                     @If oLastDilwseis.count > 0 And AtlasKathgoriaid > 0 Then
@@ -277,17 +284,17 @@ End Code
 
                                                     @For Each o1 In oLastDilwseis
 
-                                                                @<div Class="item">
-                                                                    <article Class="entry-item video-post">
-                                                                        <div Class="entry-thumb">
-                                                                            <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
-                                                                            <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
-                                                                        </div>
-                                                                        <div Class="entry-content">
-                                                                            <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
-                                                                        </div>
-                                                                    </article>
+                                                        @<div Class="item">
+                                                            <article Class="entry-item video-post">
+                                                                <div Class="entry-thumb">
+                                                                    <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
+                                                                    <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
                                                                 </div>
+                                                                <div Class="entry-content">
+                                                                    <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
+                                                                </div>
+                                                            </article>
+                                                        </div>
                                                     Next
                                                 </div>
                                             </div>
@@ -295,7 +302,7 @@ End Code
                                     End If
                                 End code
 
-                            
+
 
 
                                 <div Class="widget kopa-article-list-widget article-list-1">
@@ -304,47 +311,41 @@ End Code
 
 
                                         If AtlasKathgoriaid > 0 Then
-                                                        @<h3 Class="widget-title style2">Νέα Ομίλου </h3>
+                                            @<h3 Class="widget-title style2">Νέα Ομίλου </h3>
                                         Else
-                                                        @<h3 Class="widget-title style2">Νέα Διοργάνωσης </h3>
+                                            @<h3 Class="widget-title style2">Νέα Διοργάνωσης </h3>
                                         End If
 
-                                                        @<ul id="latestnewsid" Class="clearfix">
+                                        @<ul id="latestnewsid" Class="clearfix">
 
-                                                            @For Each n In oLastNews2
-                                                                Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
+                                            @For Each n In oLastNews2
+                                                Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
 
-                                                        @<li>
-                                                            <article Class="entry-item disable-select ">
-                                                                <div Class="entry-thumb">
-                                                                    <a href="#"><img src="@n.PostPhoto2" alt="" /></a>
-                                                                </div>
-                                                                <div Class="entry-content">
-                                                                    <div Class="content-top">
-                                                                        <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
-                                                                    </div>
-                                                                    <p> @postsummarystr ... </p>
-                                                                </div>
-                                                            </article>
-                                                        </li>
-                                                            Next
-                                                        </ul>
+                                                @<li>
+                                                    <article Class="entry-item disable-select ">
+                                                        <div Class="entry-thumb">
+                                                            <a href="#"><img src="@n.PostPhoto2" alt="" /></a>
+                                                        </div>
+                                                        <div Class="entry-content">
+                                                            <div Class="content-top">
+                                                                <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
+                                                            </div>
+                                                            <p> @postsummarystr ... </p>
+                                                        </div>
+                                                    </article>
+                                                </li>
+                                            Next
+                                        </ul>
 
                                         If AtlasKathgoriaid > 0 Then
-                                                        @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                            @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
                                         Else
-                                                        @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
+                                            @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
                                         End If
 
                                     End code
                                 </div>
                             </div>
-
-
-
-
-
-
 
                             <div Class="sidebar widget-area-11">
                                 <div Class="widget kopa-tab-1-widget kopa-point-widget">
@@ -354,10 +355,10 @@ End Code
                                             <img src="~/Content/images/facebook-icon.png">
                                         </a>
                                         @*<a target="_blank" class="twitter-share-button"
-                                       href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
-                                       data-size="large">
-                                        <img src="~/Content/images/Twitter_Logo.png" />
-                                    </a>*@
+                                               href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
+                                               data-size="large">
+                                                <img src="~/Content/images/Twitter_Logo.png" />
+                                            </a>*@
                                     </div>
                                 </div>
                             </div>
@@ -397,25 +398,25 @@ End Code
                                                                     End If
 
 
-                                                                            @<li>
-                                                                                <div class="point-item">
-                                                                                    <div class="point-left">
-                                                                                        <div class="point-thumb">
-                                                                                            <img src=@_photo alt="" />
-                                                                                            <span>@p</span>
-                                                                                        </div>
-                                                                                        <div class="point-content">
-                                                                                            <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                                            <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                                            <span>@stat.omilosname</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="point-right">
-                                                                                        <p>@stat.val</p>
-                                                                                        <span> </span>
-                                                                                    </div>
+                                                                    @<li>
+                                                                        <div class="point-item">
+                                                                            <div class="point-left">
+                                                                                <div class="point-thumb">
+                                                                                    <img src=@_photo alt="" />
+                                                                                    <span>@p</span>
                                                                                 </div>
-                                                                            </li>
+                                                                                <div class="point-content">
+                                                                                    <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                    <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                    <span>@stat.omilosname</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="point-right">
+                                                                                <p>@stat.val</p>
+                                                                                <span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
 
                                                                     p += 1
 
@@ -441,25 +442,25 @@ End Code
                                                                     End If
 
 
-                                                                            @<li>
-                                                                                <div class="point-item">
-                                                                                    <div class="point-left">
-                                                                                        <div class="point-thumb">
-                                                                                            <img src=@_photo alt="" />
-                                                                                            <span>@p</span>
-                                                                                        </div>
-                                                                                        <div class="point-content">
-                                                                                            <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                                            <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                                            <span>@stat.omilosname</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="point-right">
-                                                                                        <p>@stat.val</p>
-                                                                                        <span> </span>
-                                                                                    </div>
+                                                                    @<li>
+                                                                        <div class="point-item">
+                                                                            <div class="point-left">
+                                                                                <div class="point-thumb">
+                                                                                    <img src=@_photo alt="" />
+                                                                                    <span>@p</span>
                                                                                 </div>
-                                                                            </li>
+                                                                                <div class="point-content">
+                                                                                    <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                    <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                    <span>@stat.omilosname</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="point-right">
+                                                                                <p>@stat.val</p>
+                                                                                <span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
 
                                                                     p += 1
 
@@ -484,25 +485,25 @@ End Code
                                                                     End If
 
 
-                                                                            @<li>
-                                                                                <div class="point-item">
-                                                                                    <div class="point-left">
-                                                                                        <div class="point-thumb">
-                                                                                            <img src=@_photo alt="" />
-                                                                                            <span>@p</span>
-                                                                                        </div>
-                                                                                        <div class="point-content">
-                                                                                            <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                                            <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                                            <span>@stat.omilosname</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="point-right">
-                                                                                        <p>@stat.val</p>
-                                                                                        <span> </span>
-                                                                                    </div>
+                                                                    @<li>
+                                                                        <div class="point-item">
+                                                                            <div class="point-left">
+                                                                                <div class="point-thumb">
+                                                                                    <img src=@_photo alt="" />
+                                                                                    <span>@p</span>
                                                                                 </div>
-                                                                            </li>
+                                                                                <div class="point-content">
+                                                                                    <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                    <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                    <span>@stat.omilosname</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="point-right">
+                                                                                <p>@stat.val</p>
+                                                                                <span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
 
                                                                     p += 1
 
@@ -526,25 +527,25 @@ End Code
                                                                     End If
 
 
-                                                                            @<li>
-                                                                                <div class="point-item">
-                                                                                    <div class="point-left">
-                                                                                        <div class="point-thumb">
-                                                                                            <img src=@_photo alt="" />
-                                                                                            <span>@p</span>
-                                                                                        </div>
-                                                                                        <div class="point-content">
-                                                                                            <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                                            <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                                            <span>@stat.omilosname</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="point-right">
-                                                                                        <p>@stat.val</p>
-                                                                                        <span> </span>
-                                                                                    </div>
+                                                                    @<li>
+                                                                        <div class="point-item">
+                                                                            <div class="point-left">
+                                                                                <div class="point-thumb">
+                                                                                    <img src=@_photo alt="" />
+                                                                                    <span>@p</span>
                                                                                 </div>
-                                                                            </li>
+                                                                                <div class="point-content">
+                                                                                    <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                    <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                    <span>@stat.omilosname</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="point-right">
+                                                                                <p>@stat.val</p>
+                                                                                <span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
 
                                                                     p += 1
 
@@ -569,25 +570,25 @@ End Code
                                                                     End If
 
 
-                                                                            @<li>
-                                                                                <div class="point-item">
-                                                                                    <div class="point-left">
-                                                                                        <div class="point-thumb">
-                                                                                            <img src=@_photo alt="" />
-                                                                                            <span>@p</span>
-                                                                                        </div>
-                                                                                        <div class="point-content">
-                                                                                            <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
-                                                                                            <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
-                                                                                            <span>@stat.omilosname</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="point-right">
-                                                                                        <p>@stat.val</p>
-                                                                                        <span> </span>
-                                                                                    </div>
+                                                                    @<li>
+                                                                        <div class="point-item">
+                                                                            <div class="point-left">
+                                                                                <div class="point-thumb">
+                                                                                    <img src=@_photo alt="" />
+                                                                                    <span>@p</span>
                                                                                 </div>
-                                                                            </li>
+                                                                                <div class="point-content">
+                                                                                    <p><a href="http://atlasstatistics.gr/Players/Details/@stat.pid">@stat.pname</a></p>
+                                                                                    <p><span><a href="http://atlasstatistics.gr/Teams/Details/@stat.tid">@stat.tname</a></span></p>
+                                                                                    <span>@stat.omilosname</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="point-right">
+                                                                                <p>@stat.val</p>
+                                                                                <span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
 
                                                                     p += 1
 
@@ -618,41 +619,41 @@ End Code
                 </div>
             </div>
 
-                
+            <div Class="w3-center  widget kopa-tab-1-widget kopa-point-widget">
 
+                <a href="http://praxis-ygeias.gr/"><img src="~/Content/images/praksis.png" alt=""></a>
+                <p></p>
 
+            </div>
 
-                        <div Class="w3-center  widget kopa-tab-1-widget kopa-point-widget">
+            <div Class="widget-area-24 kopa-area kopa-area-2 w3-center" id="fwtografiesdiv">
 
-                            <a href="http://praxis-ygeias.gr/"><img src="~/Content/images/praksis.png" alt=""></a>
-                            <p></p>
+                <h2 Class="widget-title style9"><span><b>Φωτογραφιες</b></span></h2>
 
-                        </div>
+                <div Class="widget kopa-tab-1-widget kopa-point-widget">
 
-
-
-                        <div Class="widget-area-24 kopa-area kopa-area-2 w3-center" id="fwtografiesdiv">
-
-                            <h2 Class="widget-title style9"><span><b>Φωτογραφιες</b></span></h2>
-
-                            <div Class="widget kopa-tab-1-widget kopa-point-widget">
-
-                                <div Class="row">
-                                    <div Class="widget-area-11">
-                                        <div Class="w3-content w3-section" style="max-width:45%" id="fwtografiesid">
-                                            @code
-                                                For each _p In oPhotosList
-                                                    @<img Class="mySlides w3-center" src=@_p style="height:30%;width:100%">
-                                                Next
-                                            End Code
-                                        </div>
-                                    </div>
-                                </div>
-
+                    <div Class="row">
+                        <div Class="widget-area-11">
+                            <div Class="w3-content w3-section" style="max-width:45%" id="fwtografiesid">
+                                @code
+                            For each _p In oPhotosList
+                                        @<img Class="mySlides w3-center" src=@_p style="height:30%;width:100%">
+                                    Next
+                                End Code
                             </div>
                         </div>
-
                     </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-1 col-md-1 col-lg-1 affix-top" id="sidebar2">
+        <img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" alt="logo">
+    </div>
+</div>
 
                     @Section Scripts
                         <script type="text/javascript">
@@ -673,10 +674,14 @@ End Code
                             }
 
                             carousel1();
-
-
-
+                            
                             $(document).ready(function () {
+
+
+                                $('#sidebar1').affix();
+                                $('#sidebar2').affix();
+
+
                                 var omilosid = $("#atlaskathgoriaid").val();
                                 var triggerappendfwtos = 1;
                                 if (omilosid != 0) {
