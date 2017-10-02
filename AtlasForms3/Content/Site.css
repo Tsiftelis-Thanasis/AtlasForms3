@@ -140,3 +140,51 @@ textarea {
 a[href] {
   text-decoration: underline;
 }*/
+
+
+.fill { 
+        min-height: 100%;
+        height: 100%;
+        padding-top:40px;
+        box-sizing:border-box;
+        background: red;
+        display: block;
+    }
+
+.row .no-float {
+  display: table-cell;
+  float: none;
+}
+
+
+/*.LeftNavigation
+{
+    float: left !important;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+
+   display: flex;
+  flex-direction: column;
+}
+.LeftNavigation, .Content
+{
+    overflow: auto !important;
+}*/
+
+.LeftNavigation
+{
+    /*background-color: #00AAE7;*/
+    background-color: red;
+}
+
+
+.rowflex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.colflex {
+	display: flex;
+	flex-direction: column;
+}

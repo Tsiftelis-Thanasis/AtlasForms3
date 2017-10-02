@@ -37,9 +37,8 @@ Public Module BundleConfig
         bundles.Add(New ScriptBundle("~/bundles/custom2").Include(
                   "~/Scripts/jquery.navgoco.js",
                    "~/Scripts/jquery.carouFredSel-6.2.1.js",
-                    "~/Scripts/owl.carousel.js"))
-
-
+                    "~/Scripts/owl.carousel.js",
+                  "~/Scripts/jquery.sticky.js"))
 
 
         bundles.Add(New StyleBundle("~/Content/css").Include(
@@ -58,7 +57,7 @@ Public Module BundleConfig
                   "~/Content/DataTables/css/jquery.dataTables.min.css",
                   "~/Content/font-awesome.css",
                   "~/Content/w3.css",
-                  "~/Content/fontlatingreek"))
+                  "~/Content/fontlatingreek.css"))
 
 
         BundleTable.EnableOptimizations = True

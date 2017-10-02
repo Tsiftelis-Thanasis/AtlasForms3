@@ -628,6 +628,7 @@
     <Content Include="Content\images\plus.jpg" />
     <Content Include="Content\images\praksis.png" />
     <Content Include="Content\images\risko.jpg" />
+    <Content Include="Content\images\spbet.png" />
     <Content Include="Content\images\stats.jpg" />
     <Content Include="Content\images\t1.png" />
     <Content Include="Content\images\t2.png" />
@@ -810,6 +811,7 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.sticky.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />

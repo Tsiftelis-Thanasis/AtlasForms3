@@ -60,16 +60,18 @@ End Code
 @Html.Hidden("atlaskathgoriaid", AtlasKathgoriaid)
 
 
-<div class="row">
+<div class="row rowflex w3-center" >
 
-    <nav class="col-md-1" id="myScrollspy">
-        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205" style="padding:10px;">
-            <li><img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" style="height:650px;width:90px;"> </li>            
-        </ul>
-    </nav>
-        
+    <div class="col-md-1 colflex LeftNavigation" id="myScrollspy">
+        <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />
+    </div>        
 
-    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 colflex">
+
+        <div class="LeftNavigation" style="height:70px;padding-left:0px;padding-right:0px;">
+            <img  src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:60px;" />
+        </div>  
+
         <div id="main-content" Class="style1">
 
             <div Class="main-top">
@@ -654,13 +656,14 @@ End Code
         </div>
     </div>
 
-    <nav class="col-md-1"  id="myScrollspy2">
-        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205" style="padding:10px;">
-            <li><img src="~/Content/images/fa202d6f210c409159638a0724792048--banners-web-web-banner-design.jpg" style="height:650px;width:90px;"> </li>
-        </ul>
-    </nav>
+    <div class="col-md-1 colflex LeftNavigation" id="myScrollspy2">
+        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />
+    </div>
 
 </div>
+
+
+@*<script src="~/Scripts/jquery.sticky-kit.min.js"></script>*@
 
                     @Section Scripts
                         <script type="text/javascript">
@@ -684,10 +687,16 @@ End Code
                             
                             $(document).ready(function () {
 
-
-                                //$('#sidebar1').affix();
-                                //$('#sidebar2').affix();
-
+                                $(document).ready(function () {
+                                    $("#sticker1").sticky({
+                                        topSpacing: 0, center:true
+                                    });
+                                    //$("#sticker1").stick_in_parent();
+                                    $("#sticker2").sticky({
+                                        topSpacing: 0, center: true
+                                    });
+                                    //$("#sticker2").stick_in_parent();
+                                });
 
                                 var omilosid = $("#atlaskathgoriaid").val();
                                 var triggerappendfwtos = 1;
