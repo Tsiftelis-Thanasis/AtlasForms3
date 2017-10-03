@@ -63,7 +63,7 @@ End Code
 <div class="row rowflex w3-center" >
 
     <div class="col-md-1 colflex LeftNavigation" id="myScrollspy">
-        <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />
+        <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;position:fixed;" />
     </div>        
 
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 colflex">
@@ -657,11 +657,34 @@ End Code
     </div>
 
     <div class="col-md-1 colflex LeftNavigation" id="myScrollspy2">
-        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />
+        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;position:fixed;" />
     </div>
 
 </div>
 
+<script type="text/javascript" language="javascript">
+        var lastScrollTop = 0;
+        $("myScrollspy2").scroll(function (event) {
+        var st = $(this).scrollTop();
+        if (st > lastScrollTop) {
+            $('sticker2').animate({ top: '-=10' }, 10);
+        } else {
+            $('sticker2').animate({ top: '+=10' }, 10);
+        }
+        lastScrollTop = st;
+        });
+
+        var lastScrollTop = 0;
+        $("myScrollspy1").scroll(function (event) {
+            var st = $(this).scrollTop();
+            if (st > lastScrollTop) {
+                $('sticker1').animate({ top: '-=10' }, 10);
+            } else {
+                $('sticker1').animate({ top: '+=10' }, 10);
+            }
+            lastScrollTop = st;
+        });
+</script>
 
 @*<script src="~/Scripts/jquery.sticky-kit.min.js"></script>*@
 
@@ -684,7 +707,7 @@ End Code
                             }
 
                             carousel1();
-                            
+
                             $(document).ready(function () {
 
                                 $(document).ready(function () {
@@ -713,6 +736,6 @@ End Code
                             });
 
 
-                        </script>
+</script>
 
                     End Section
