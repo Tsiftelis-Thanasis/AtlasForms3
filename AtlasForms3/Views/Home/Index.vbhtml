@@ -63,7 +63,10 @@ End Code
 <div class="row rowflex w3-center" >
 
     <div class="col-md-1 colflex LeftNavigation" id="myScrollspy">
-        <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />
+       
+            <img id="sticker12" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;" 
+                 alt="logo"  />
+
     </div>        
 
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 colflex">
@@ -657,7 +660,10 @@ End Code
     </div>
 
     <div class="col-md-1 colflex LeftNavigation" id="myScrollspy2">
-        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />
+        @*<img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />*@
+
+        <img id="sticker12" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;"
+             alt="logo" />
     </div>
 
 </div>
