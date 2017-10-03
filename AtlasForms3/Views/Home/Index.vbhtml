@@ -64,7 +64,7 @@ End Code
 
     <div class="col-md-1 colflex LeftNavigation" id="myScrollspy">
        
-            <img id="sticker12" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;" 
+            <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;" 
                  alt="logo"  />
 
     </div>        
@@ -662,7 +662,7 @@ End Code
     <div class="col-md-1 colflex LeftNavigation" id="myScrollspy2">
         @*<img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;" />*@
 
-        <img id="sticker12" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;"
+        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;"
              alt="logo" />
     </div>
 
@@ -673,6 +673,28 @@ End Code
 
                     @Section Scripts
                         <script type="text/javascript">
+
+                            var lastScrollTop = 0;
+                            $("myScrollspy2").scroll(function (event) {
+                                var st = $(this).scrollTop();
+                                if (st > lastScrollTop) {
+                                    $('sticker2').animate({ top: '-=10' }, 10);
+                                } else {
+                                    $('sticker2').animate({ top: '+=10' }, 10);
+                                }
+                                lastScrollTop = st;
+                            });
+
+                            var lastScrollTop = 0;
+                            $("myScrollspy1").scroll(function (event) {
+                                var st = $(this).scrollTop();
+                                if (st > lastScrollTop) {
+                                    $('sticker1').animate({ top: '-=10' }, 10);
+                                } else {
+                                    $('sticker1').animate({ top: '+=10' }, 10);
+                                }
+                                lastScrollTop = st;
+                            });
 
                             var myIndex = 0;
 
