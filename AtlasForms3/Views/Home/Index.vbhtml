@@ -62,16 +62,13 @@ End Code
 
 <div class="row rowflex w3-center" >
 
-    <div class="col-md-1 colflex LeftNavigation" id="myScrollspy">
-        <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;position:fixed;" />
-            <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;" 
-                 alt="logo"  />
-
+    <div class="col-md-1 colflex panelBackground"> @*id="myScrollspy">*@
+        <img id="sticker1" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;position:fixed;" />       
     </div>        
 
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 colflex">
 
-        <div class="LeftNavigation" style="height:70px;padding-left:0px;padding-right:0px;">
+        <div class="panelBackground" style="height:70px;padding-left:0px;padding-right:0px;">
             <img  src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:60px;" />
         </div>  
 
@@ -659,109 +656,80 @@ End Code
         </div>
     </div>
 
-    <div class="col-md-1 colflex LeftNavigation" id="myScrollspy2">
-        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;position:fixed;" />
-
-        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" style="position:fixed;height:30px;width:90px;"
-             alt="logo" />
+    <div class="col-md-1 colflex panelBackground"> @*id="myScrollspy2">*@
+        <img id="sticker2" src="~/Content/images/spbet.png" class="w3-center" alt="logo" style="height:30px;width:90px;position:fixed;" />   
     </div>
 
 </div>
 
-<script type="text/javascript" language="javascript">
-        var lastScrollTop = 0;
-        $("myScrollspy2").scroll(function (event) {
-        var st = $(this).scrollTop();
-        if (st > lastScrollTop) {
-            $('sticker2').animate({ top: '-=10' }, 10);
-        } else {
-            $('sticker2').animate({ top: '+=10' }, 10);
-        }
-        lastScrollTop = st;
-        });
+    @Section Scripts
+        <script type="text/javascript">
 
-        var lastScrollTop = 0;
-        $("myScrollspy1").scroll(function (event) {
-            var st = $(this).scrollTop();
-            if (st > lastScrollTop) {
-                $('sticker1').animate({ top: '-=10' }, 10);
-            } else {
-                $('sticker1').animate({ top: '+=10' }, 10);
+            //var lastScrollTop = 0;
+            //$("myScrollspy2").scroll(function (event) {
+            //    var st = $(this).scrollTop();
+            //    if (st > lastScrollTop) {
+            //        $('sticker2').animate({ top: '-=10' }, 10);
+            //    } else {
+            //        $('sticker2').animate({ top: '+=10' }, 10);
+            //    }
+            //    lastScrollTop = st;
+            //});
+
+            //var lastScrollTop = 0;
+            //$("myScrollspy1").scroll(function (event) {
+            //    var st = $(this).scrollTop();
+            //    if (st > lastScrollTop) {
+            //        $('sticker1').animate({ top: '-=10' }, 10);
+            //    } else {
+            //        $('sticker1').animate({ top: '+=10' }, 10);
+            //    }
+            //    lastScrollTop = st;
+            //});
+
+
+            var myIndex = 0;
+
+            //carousel for the images of the gallery
+            function carousel1() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) { myIndex = 1 }
+                x[myIndex - 1].style.display = "block";
+                setTimeout(carousel1, 5000); // Change image every 5 seconds
             }
-            lastScrollTop = st;
-        });
-</script>
 
-@*<script src="~/Scripts/jquery.sticky-kit.min.js"></script>*@
+            carousel1();
 
-                    @Section Scripts
-                        <script type="text/javascript">
+            $(document).ready(function () {
 
-                            var lastScrollTop = 0;
-                            $("myScrollspy2").scroll(function (event) {
-                                var st = $(this).scrollTop();
-                                if (st > lastScrollTop) {
-                                    $('sticker2').animate({ top: '-=10' }, 10);
-                                } else {
-                                    $('sticker2').animate({ top: '+=10' }, 10);
-                                }
-                                lastScrollTop = st;
-                            });
-
-                            var lastScrollTop = 0;
-                            $("myScrollspy1").scroll(function (event) {
-                                var st = $(this).scrollTop();
-                                if (st > lastScrollTop) {
-                                    $('sticker1').animate({ top: '-=10' }, 10);
-                                } else {
-                                    $('sticker1').animate({ top: '+=10' }, 10);
-                                }
-                                lastScrollTop = st;
-                            });
-
-                            var myIndex = 0;
-
-                            //carousel for the images of the gallery
-                            function carousel1() {
-                                var i;
-                                var x = document.getElementsByClassName("mySlides");
-                                for (i = 0; i < x.length; i++) {
-                                    x[i].style.display = "none";
-                                }
-                                myIndex++;
-                                if (myIndex > x.length) { myIndex = 1 }
-                                x[myIndex - 1].style.display = "block";
-                                setTimeout(carousel1, 5000); // Change image every 5 seconds
-                            }
-
-                            carousel1();
-
-                            $(document).ready(function () {
-
-                                $(document).ready(function () {
-                                    $("#sticker1").sticky({
-                                        topSpacing: 0, center:true
-                                    });
-                                    //$("#sticker1").stick_in_parent();
-                                    $("#sticker2").sticky({
-                                        topSpacing: 0, center: true
-                                    });
-                                    //$("#sticker2").stick_in_parent();
-                                });
-
-                                var omilosid = $("#atlaskathgoriaid").val();
-                                var triggerappendfwtos = 1;
-                                if (omilosid != 0) {
-                                    $("#fwtografiesdiv").hide();
-                                    $("#facebookshareid").hide();
-                                    triggerappendfwtos = 0;
-                                }
-                                else {
-                                    $("#fwtografiesdiv").show();
-                                    $("#facebookshareid").show();
-                                    triggerappendfwtos = 1;
-                                }
-                            });
+              
+                //$("#sticker1").sticky({
+                //    topSpacing: 0, center: true
+                //});
+                //$("#sticker1").stick_in_parent();
+                //$("#sticker2").sticky({
+                //    topSpacing: 0, center: true
+                //});
+                //$("#sticker2").stick_in_parent();
+              
+                var omilosid = $("#atlaskathgoriaid").val();
+                var triggerappendfwtos = 1;
+                if (omilosid != 0) {
+                    $("#fwtografiesdiv").hide();
+                    $("#facebookshareid").hide();
+                    triggerappendfwtos = 0;
+                }
+                else {
+                    $("#fwtografiesdiv").show();
+                    $("#facebookshareid").show();
+                    triggerappendfwtos = 1;
+                }
+            });
 
 
 </script>
