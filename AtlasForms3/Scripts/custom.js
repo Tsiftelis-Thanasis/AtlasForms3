@@ -344,6 +344,7 @@ var panel_titles = $('.kopa-accordion .panel-title a');
             pagination: false
         });
 
+
         var sync22 = $(".sync22");
         sync22.owlCarousel({
             items: 5,

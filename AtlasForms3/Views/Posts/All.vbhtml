@@ -8,9 +8,6 @@ End Code
 
     <div Class="wrapper">
        <div Class="content-wrap">
-
-                   
-           
           
             <div Class="row">
                 @*<div Class="kopa-main-col">*@

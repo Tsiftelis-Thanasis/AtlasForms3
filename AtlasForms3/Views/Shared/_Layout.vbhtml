@@ -291,8 +291,7 @@ End code
             <p id="copyright" class="">Copyright © 2017 . All Rights Reserved. </p>
         </div>
     </footer>
-
-
+    
     <a href="#" class="scrollup"><span class="fa fa-chevron-up"></span></a>
 
     @Scripts.Render("~/bundles/jquery")
@@ -304,17 +303,6 @@ End code
     <script type="text/javascript" src="~/Scripts/tinymce/tinymce.min.js"></script>
 
     @RenderSection("scripts", required:=False)
-
-    @*<div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>*@
 
 </body>
 </html>
@@ -501,18 +489,17 @@ End code
             $('#mainnav2').show();
             $('#mainnavmovile').hide();
             $('#mainnavmovile2').hide();
+            $('#sticker1').show();
+            $('#sticker2').show();
         }
         else {
             $('#mainnav2').hide();
             $('#mainnavmovile').show();
             $('#mainnavmovile2').show();
+            $('#sticker1').hide();
+            $('#sticker2').hide();
         };
-           
-        //$(".dropdown-toggle").click(function () {
-        //    alert(this);
-
-        //    $(this).find("ul").slideToggle("normal");
-        //});
+   
      
         $('#fbar1').on("click", function () {
             if ($('#omiloinavbaridmobile').is(':visible')) {
@@ -531,11 +518,15 @@ End code
                 $('#mainnav2').show();
                 $('#mainnavmovile').hide();
                 $('#mainnavmovile2').hide();
+                $('#sticker1').show();
+                $('#sticker2').show();
             }
             else {
                 $('#mainnav2').hide();
                 $('#mainnavmovile').show();
                 $('#mainnavmovile2').show();
+                $('#sticker1').hide();
+                $('#sticker2').hide();
             };
         });
 
@@ -552,3 +543,4 @@ End code
     });
 
 </script>
+

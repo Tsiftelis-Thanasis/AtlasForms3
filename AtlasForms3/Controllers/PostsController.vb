@@ -600,16 +600,16 @@ Namespace Controllers
                           Where o.Id = AtlasKathgoria
                           Select o.Id).ToList
 
-                    Dim q = (From p In pdb.BlogPostsTable
-                             Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
-                             Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
-                             Join klist In kl On klist Equals p1.AtlasKathgoriaId
-                             Where p.Activepost = True And (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
-                             Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, KatName = p2.KathgoriaName).Take(nCount).
-                            AsEnumerable().[Select](
-                            Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .KatName = o.KatName}).ToList
+                Dim q = (From p In pdb.BlogPostsTable
+                         Join p1 In pdb.BlogPostandKathgoriaTable On p1.PostId Equals p.Id
+                         Join p2 In pdb.BlogKathgoriesTable On p2.Id Equals p1.KathgoriaId
+                         Join klist In kl On klist Equals p1.AtlasKathgoriaId
+                         Where p.Activepost = True And (p1.KathgoriaId = k2 And p1.IsAtlasKathgoria = True)
+                         Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, KatName = p2.KathgoriaName).Take(nCount).
+                        AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .KatName = o.KatName}).ToList
 
-                    Dim dtm As New DataTableModel
+                Dim dtm As New DataTableModel
                 If q IsNot Nothing Then
                     dtm.data = q.Cast(Of Object).ToList
                 End If
@@ -846,7 +846,7 @@ Namespace Controllers
             If kid Is Nothing Then kid = 0
 
             Dim s = (From proc In pdb2.GetWeeklyGames(omid, kid)
-                     Select proc).Take(5).AsEnumerable().[Select](
+                     Select proc).Take(7).AsEnumerable().[Select](
                         Function(o) New With {.gameid = o.gameid,
                             .t1id = o.t1id, .t1logo = If(o.t1logo Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.t1logo))), .t1name = o.t1name, .t1points = o.t1points,
                             .t2id = o.t2id, .t2logo = If(o.t2logo Is Nothing, "", String.Format("data:image/png;base64,{0}", Convert.ToBase64String(o.t2logo))), .t2name = o.t2name, .t2points = o.t2points

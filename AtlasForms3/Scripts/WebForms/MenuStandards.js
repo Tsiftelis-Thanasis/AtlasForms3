@@ -149,6 +149,7 @@ Sys.WebForms.Menu.prototype = {
 if (Sys.WebForms.Menu.registerClass) {
     Sys.WebForms.Menu.registerClass('Sys.WebForms.Menu');
 }
+
 Sys.WebForms.MenuItem = function(parentMenu, listElement, topLevelMenuItem) {
     this.keyMap = parentMenu.keyMap;
     this.parentMenu = parentMenu;

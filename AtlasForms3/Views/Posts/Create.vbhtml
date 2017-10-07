@@ -177,7 +177,6 @@ End Using
     @Html.ActionLink("Επιστροφή", "All", "Posts")
 </div>
 
-
 @Section Scripts
     <script type="text/javascript">
 

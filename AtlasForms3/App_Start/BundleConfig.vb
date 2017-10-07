@@ -42,7 +42,6 @@ Public Module BundleConfig
 
         ' "~/Scripts/jquery.sticky.js"
 
-
         bundles.Add(New StyleBundle("~/Content/css").Include(
                   "~/Content/bootstrap.min.css",
                   "~/Content/bootstrap-chosen.css",

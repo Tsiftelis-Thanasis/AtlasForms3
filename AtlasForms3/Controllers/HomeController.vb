@@ -34,8 +34,8 @@ Public Class HomeController
 
 
         If ak > 0 Then
-            ViewBag.LastMvp = GetLastNewsByCategory(5, ak, {6, 7, 16}, Nothing, 1, 1).Data.data
-            ViewBag.LastDilwseis = GetLastNewsByCategory(5, ak, {17}, Nothing, 1, 1).Data.data
+            ViewBag.LastMvp = GetLastNewsByCategory(1, ak, {6, 7, 16}, Nothing, 1, Nothing).Data.data 'MVP eiani panta 1 kai den exei video!
+            ViewBag.LastDilwseis = GetLastNewsByCategory(7, ak, {17}, Nothing, 1, 1).Data.data 'dilwseis max 7, osoi kai oi agwnes tis agwnistikis!
         Else
             ViewBag.LastMvp = New List(Of Object)
             ViewBag.LastDilwseis = New List(Of Object)
@@ -310,7 +310,7 @@ Public Class HomeController
                          Order By g.Id Descending
                          Select g.Id, Gamedate = g.Gamedate,
                              g.Gamestadium, team1 = teama.TeamName, team1score = ta.ptstotal,
-                            team2 = teamb.TeamName, team2score = tb.ptstotal).Take(10).
+                            team2 = teamb.TeamName, team2score = tb.ptstotal).Take(7).
                             AsEnumerable.Select(Function(o) New With {
                             .Id = o.Id, .Gamedate = o.Gamedate.GetValueOrDefault().ToString("ddd") & " " & o.Gamedate.GetValueOrDefault().ToString("dd/MM/yyyy"),
                              .Gamestadium = o.Gamestadium, .team1 = o.team1, .team1score = o.team1score,
@@ -620,8 +620,5 @@ Public Class HomeController
         End Try
 
     End Function
-
-
-
 
 End Class

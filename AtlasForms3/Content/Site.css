@@ -177,6 +177,12 @@ a[href] {
     /*background-color: red;*/
 }
 
+.panelBackground0
+{
+    background-color: #1DA3DD;
+    /*background-color: red;*/
+}
+
 
 .rowflex {
   display: -webkit-box;
@@ -187,4 +193,30 @@ a[href] {
 .colflex {
 	display: flex;
 	flex-direction: column;
+}
+
+
+.carousel-control {
+  color: #ef6018;
+}
+
+
+.carousel-indicators li {
+  background-color: #999;
+  background-color: rgba(70,70,70,.25);
+}
+
+.carousel-indicators .active {
+  background-color: #ef6018;
+}
+
+
+#fb-root {
+    display: none;
+}
+
+/* To fill the container and nothing else */
+
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
 }

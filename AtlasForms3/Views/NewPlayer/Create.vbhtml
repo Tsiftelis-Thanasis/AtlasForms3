@@ -3,8 +3,6 @@
     ViewData("Title") = "Εγγραφή"
 End Code
 
-@*<h2>Create</h2>*@
-
 @Using (Html.BeginForm()) 
     @Html.AntiForgeryToken()
     

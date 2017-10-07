@@ -123,8 +123,6 @@ Public Class Utils
 
     End Sub
 
-
-
     Public Function ResizeImage2(ByVal image As Image, ByVal size As Size, Optional ByVal preserveAspectRatio As Boolean = True) As Image
         Dim newWidth As Integer
         Dim newHeight As Integer
