@@ -628,6 +628,9 @@
     <Content Include="Content\images\plus.jpg" />
     <Content Include="Content\images\praksis.png" />
     <Content Include="Content\images\risko.jpg" />
+    <Content Include="Content\images\sb0-site.png" />
+    <Content Include="Content\images\sb1-site.jpg" />
+    <Content Include="Content\images\sb2-site.jpg" />
     <Content Include="Content\images\spbet.png" />
     <Content Include="Content\images\stats.jpg" />
     <Content Include="Content\images\t1.png" />

@@ -310,7 +310,7 @@ Public Class HomeController
                          Order By g.Id Descending
                          Select g.Id, Gamedate = g.Gamedate,
                              g.Gamestadium, team1 = teama.TeamName, team1score = ta.ptstotal,
-                            team2 = teamb.TeamName, team2score = tb.ptstotal).Take(7).
+                            team2 = teamb.TeamName, team2score = tb.ptstotal).Take(10).
                             AsEnumerable.Select(Function(o) New With {
                             .Id = o.Id, .Gamedate = o.Gamedate.GetValueOrDefault().ToString("ddd") & " " & o.Gamedate.GetValueOrDefault().ToString("dd/MM/yyyy"),
                              .Gamestadium = o.Gamestadium, .team1 = o.team1, .team1score = o.team1score,
