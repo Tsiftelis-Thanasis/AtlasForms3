@@ -14,12 +14,13 @@ Namespace Controllers
 
         ' GET: Posts
         Function Index(Optional a As Integer = 0, Optional ak As Integer = 0,
-                      Optional ByVal k As Integer = 0) As ActionResult
+                      Optional ByVal k As Integer = 0,
+                       Optional ByVal sl As Integer = 0) As ActionResult
 
             ViewBag.AtlasKathgoria = ak
             ViewBag.AtlasOmilos = a
             ViewBag.Kathgoria = k
-
+            ViewBag.simplelist = sl
 
             ViewBag.GetTeamsbyKathgoriaList = GetTeamsbyKathgoria(ak).Data.data
             ViewBag.GetWeeklyGamesList = GetWeeklyGames(Nothing, ak).Data

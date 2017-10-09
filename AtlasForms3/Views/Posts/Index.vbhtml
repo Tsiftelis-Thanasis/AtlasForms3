@@ -6,6 +6,8 @@
 
     Dim kathgoriaid As Integer = If(ViewBag.Kathgoria Is Nothing, 0, ViewBag.Kathgoria)
     Dim atlaskathgoriaid As Integer = If(ViewBag.AtlasKathgoria Is Nothing, 0, ViewBag.AtlasKathgoria)
+    Dim simplelist As Integer = If(ViewBag.simplelist Is Nothing, 0, ViewBag.simplelist)
+
     Dim atlaskathgorianame As String = (From k In pdb2.KathgoriesTable
                                         Where k.Id = atlaskathgoriaid
                                         Select k.KathgoriaName).FirstOrDefault
@@ -21,8 +23,16 @@
     '13  Τιμωρίες
     '14  Πρόγραμμα
     '15  Βαθμολογίες
-    '17  Διαφημίσεις
+    '17  Δηλώσεις
 
+    If kathgoriaid = 3 Then
+        ViewData("Title") = "Τελευταία νέα " '& katName
+        innerTitle = "Τελευταία νέα " & atlaskathgorianame
+    End If
+    If kathgoriaid = 6 Then
+        ViewData("Title") = "MVP " '& katName
+        innerTitle = "MVP " & atlaskathgorianame
+    End If
 
     If kathgoriaid = 11 Then
         ViewData("Title") = "Τελευταία νέα " '& katName
@@ -44,6 +54,17 @@
         ViewData("Title") = "Βαθμολογία " '& katName
         innerTitle = "Βαθμολογία " '& katName
     End If
+
+    If kathgoriaid = 16 Then
+        ViewData("Title") = "TOP 10 " '& katName
+        innerTitle = "TOP 10 " & atlaskathgorianame
+    End If
+    If kathgoriaid = 17 Then
+        ViewData("Title") = "Δηλώσεις " '& katName
+        innerTitle = "Δηλώσεις " & atlaskathgorianame
+    End If
+
+
     If kathgoriaid = 0 Then
         ViewData("Title") = "Λίστα με όλα τα νέα" '& katName
         innerTitle = "Λίστα με όλα τα νέα " '& katName
@@ -80,6 +101,7 @@ End Code
 @Html.Hidden("kathgoriaid", ViewBag.Kathgoria)
 @Html.Hidden("atlaskathgoriaid", atlaskathgoriaid)
 @Html.Hidden("atlaskathgorianame", atlaskathgorianame)
+@Html.Hidden("simplelist", simplelist)
 
 
 
@@ -171,40 +193,29 @@ End Code
                                 <div Class="span-bg">
                                     <span Class="c-tg"></span>
                                 </div>
-                                @*<div Class="owl-carousel owl-carousel-2">*@
-
+                           
                                 @for Each wg In oGetWeeklyGamesList
                                 @<div Class="item">
                                     <div Class="r-item">
 
                                         <a Class="r-side left" href="http://atlasstatistics.gr/Teams/Details/@wg.t1id">
-                                            <div Class="r-thumb">
-                                                <img src="@wg.t1logo" alt="">
+                                           
+                                          
+                                            <h5 class="widget-title style14 w3-left-align"><span>@wg.t1name </span></h5>                                            
+                                            <div Class="r-thumb">                                                
+                                               <img src="@wg.t1logo" alt="">
                                             </div>
-                                            <div Class="r-content">
-                                                <h5> @wg.t1name </h5>
-                                            </div>
+                                              
                                         </a>
                                         <a Class="r-side right" href="http://atlasstatistics.gr/Teams/Details/@wg.t2id">
-                                            <div Class="r-thumb">
-                                                <img src="@wg.t2logo" alt="">
-                                            </div>
-                                            <div Class="r-content">
-                                                <h5> @wg.t2name </h5>
-                                            </div>
-                                        </a>
+                                            
+                                            <h5 class="widget-title style14 w3-right-align"><span>@wg.t2name </span></h5>       
+                                                <div Class="r-thumb">
+                                                    <img src="@wg.t2logo" alt="">
+                                                </div>                                               
+                                    </a>
 
                                         <a Class="r-num" href="http://atlasstatistics.gr/Games/Details/@wg.gameid">
-                                            @*@if wg.t1points > wg.t2points Then
-                                                    @<span Class="r-color">
-                                                    Else
-                                                    @<span>
-                                                    End If
-                                                @wg.t1points</span>
-                                                @<span>-</span>
-                                                    <span> wg.t2points</span>*@
-
-                                            @*<span Class="r-color">*@
                                             <span>@wg.t1points</span>
                                             <span>-</span>
                                             <span>@wg.t2points</span>
@@ -212,9 +223,9 @@ End Code
                                     </div>
                                 </div>
                                 Next
-                                @*</div>*@
 
-                            </div>
+
+</div>
                         </div>
                     </div>
 
@@ -224,10 +235,15 @@ End Code
                             <h3 Class="widget-title style6"><span>Βαθμολογία @atlaskathgorianame</span></h3>
                             <div Class="widget-content">
                                 <header>
-                                    <div Class="t-col">Α/Α</div>
-                                    <div Class="t-col width1">ομαδα</div>
-                                    <div Class="t-col">Αγ.</div>
-                                    <div Class="t-col">βαθμ.</div>
+                                    <div Class="t-col width4">Α/Α</div>
+                                    <div Class="t-col width5">Ομάδα</div>
+                                    <div Class="t-col width4">Αγ</div>
+                                    <div Class="t-col width4">Βαθ</div>
+                                    <div Class="t-col width4">Ν</div>
+                                    <div Class="t-col width4">Η</div>
+                                    <div Class="t-col width4">Μηδ</div>
+                                    <div Class="t-col width4">Πον</div>
+                                    <div Class="t-col width4">Δ/Π</div>
                                 </header>
                                 <ul Class="clearfix" id="team1ranking"></ul>
                             </div>
@@ -399,21 +415,26 @@ End Code
             //$("#divteams").hide();
             var orderByName = 1;
 
-            if ($('#kathgoriaid').val() == 11) { //Νέα
+            if ($('#simplelist').val() == 1) { //list from link!
                 $("#divcommon").show();
-            } else if ($('#kathgoriaid').val() == 12) { //Ομάδες
-                $("#divteamskat1").show();
-            } else if ($('#kathgoriaid').val() == 13) {//Τιμωρίες
-                $("#divcommon").show();
-            } else if ($('#kathgoriaid').val() == 14) { //Πρόγραμμα
-                $("#divcommon").show();
-                orderByName = 1;
-            } else if ($('#kathgoriaid').val() == 15) { //Βαθμολογία
-                $("#divresultsandstandings").show();
-                $("#divresults1").show();
-                $("#divstandcommon1").show();
-            } else if ($('#kathgoriaid').val() == 0) { //όλα τα νέα!
-                $("#divcommon").show();
+            }
+            else {
+                if ($('#kathgoriaid').val() == 11) { //Νέα
+                    $("#divcommon").show();
+                } else if ($('#kathgoriaid').val() == 12) { //Ομάδες
+                    $("#divteamskat1").show();
+                } else if ($('#kathgoriaid').val() == 13) {//Τιμωρίες
+                    $("#divcommon").show();
+                } else if ($('#kathgoriaid').val() == 14) { //Πρόγραμμα
+                    $("#divcommon").show();
+                    orderByName = 1;
+                } else if ($('#kathgoriaid').val() == 15) { //Βαθμολογία
+                    $("#divresultsandstandings").show();
+                    $("#divresults1").show();
+                    $("#divstandcommon1").show();
+                } else if ($('#kathgoriaid').val() == 0) { //όλα τα νέα!
+                    $("#divcommon").show();
+                }
             }
 
             if ($("#divcommon").is(":visible")) {
@@ -441,8 +462,8 @@ End Code
                     "language": {
                         "url": baseUrl + "/Scripts/DataTables/Greek.json"
                     },
-                    "aLengthMenu": [[5, 10, 20, 50, -1], [5, 10, 20, 50, "All"]],
-                    "iDisplayLength": 5,
+                    "aLengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "All"]],
+                    "iDisplayLength": 10,
                     "bProcessing": true,
                     "aoColumns": [{}],
                     "aaSorting": [],
@@ -488,6 +509,12 @@ End Code
                 });
             }
 
+
+
+            //                                                        .nikes , .httes , .mhdenismoi .totalpoints 
+            //                                                        .diaforapontwn , .bathmoi = o.bathmoi
+        
+
             //append bathmologia 1
             if ($("#divstandcommon1").is(":visible")) {
                 if ($("#atlaskathgoriaid").val() > 0) {
@@ -503,10 +530,15 @@ End Code
                                 var r = 1;
                                 $.each(result, function () {
                                     tbrow = '<li> ' +
-                                           '    <div Class="t-col">' + r + '</div> ' +
-                                           '    <div Class="t-col width1">' + this.sname + '</div> ' +
-                                           '    <div Class="t-col">' + this.totalplayed + '</div> ' +
-                                           '    <div Class="t-col">' + this.bathmoi + '</div> ' +
+                                           '    <div Class="t-col width4">' + r + '</div> ' +
+                                           '    <div Class="t-col width5">' + this.sname + '</div> ' +
+                                           '    <div Class="t-col width4">' + this.totalplayed + '</div> ' +
+                                           '    <div Class="t-col width4">' + this.bathmoi + '</div> ' +
+                                           '    <div Class="t-col width4">' + this.nikes + '</div> ' +
+                                           '    <div Class="t-col width4">' + this.httes + '</div> ' +
+                                           '    <div Class="t-col width4">' + this.mhdenismoi + '</div> ' +
+                                           '    <div Class="t-col width4">' + this.totalpoints + '</div> ' +
+                                           '    <div Class="t-col width4">' + this.diaforapontwn + '</div> ' +
                                            '</li>';
                                     r += 1;
                                     $("#team1ranking").append(tbrow);
@@ -524,3 +556,4 @@ End Code
         });
     </Script>
 End Section
+

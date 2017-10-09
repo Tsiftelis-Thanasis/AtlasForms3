@@ -34,7 +34,7 @@ Public Class HomeController
 
 
         If ak > 0 Then
-            ViewBag.LastMvp = GetLastNewsByCategory(1, ak, {6, 7, 16}, Nothing, 1, Nothing).Data.data 'MVP eiani panta 1 kai den exei video!
+            ViewBag.LastMvp = GetLastNewsByCategory(1, ak, {6}, Nothing, 1, Nothing).Data.data 'MVP eiani panta 1 kai den exei video!
             ViewBag.LastDilwseis = GetLastNewsByCategory(7, ak, {17}, Nothing, 1, 1).Data.data 'dilwseis max 7, osoi kai oi agwnes tis agwnistikis!
         Else
             ViewBag.LastMvp = New List(Of Object)
@@ -48,8 +48,8 @@ Public Class HomeController
         End If
 
         ViewBag.LastGamesList = Getlastgames(ak).Data
-        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13}, 1, Nothing).Data.data
-        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13}, Nothing, Nothing).Data.data
+        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13}, 1, Nothing).Data.data '(*) teleutaia nea!
+        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13}, Nothing, Nothing).Data.data '(*) teleutaia nea!
 
         ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
         ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
@@ -452,13 +452,15 @@ Public Class HomeController
                             If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                          PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
-                        KatName = p2.KathgoriaName).Take(nCount).
+                        KatName = p2.KathgoriaName).OrderByDescending(Function(a) a.Id).Take(nCount).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                         .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
                         .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
                         .Youtubelink = o.Youtubelink,
                         .KatName = o.KatName}).ToList
+
+            q = q.OrderByDescending(Function(a) a.Id).ToList
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then
@@ -485,13 +487,15 @@ Public Class HomeController
                          If(withvideo = 1, Not p.Youtubelink Is Nothing, 1 = 1)
                      Select Id = p.Id, PostTitle = p.PostTitle, PostSummary = p.PostSummary, PostBody = p.PostBody,
                          PostPhoto = p.PostPhotoStr, PostPhoto2 = p.PostPhoto160_160Str, Youtubelink = p.Youtubelink, editBy = p.EditBy,
-                        KatName = p2.KathgoriaName).Take(nCount).
+                        KatName = p2.KathgoriaName).OrderByDescending(Function(a) a.Id).Take(nCount).
                         AsEnumerable().[Select](
                         Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody, .editBy = o.editBy,
                         .PostPhoto = If(o.PostPhoto Is Nothing, "", o.PostPhoto),
                         .PostPhoto2 = If(o.PostPhoto2 Is Nothing, "", o.PostPhoto2),
                         .Youtubelink = o.Youtubelink,
                         .KatName = o.KatName}).ToList
+
+            q = q.OrderByDescending(Function(a) a.Id).ToList
 
             Dim dtm As New DataTableModel
             If q IsNot Nothing Then
@@ -535,6 +539,12 @@ Public Class HomeController
         '15  Βαθμολογίες -> oxi
         '16  Τοπ 10
         '17  ΔΗΛΩΣΕΙΣ
+
+        If k.Count = 1 Then
+            If k(0) = 3 Or k(0) = 13 Or k(0) = 11 Then
+                k = {3, 11, 13} 'Teleutaia nea opws kai me tin panw panw lista! (*)
+            End If
+        End If
 
         If k Is Nothing Or k.Count = 0 Or k.FirstOrDefault = 0 Then
             k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!

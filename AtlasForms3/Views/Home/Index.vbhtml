@@ -63,7 +63,8 @@ End Code
 <div class="row rowflex" >
 
     <div class="col-md-1 colflex panelBackground">
-        <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid=" ><img id="sticker1" src="~/Content/images/sb1-site.jpg" class="w3-center" alt="logo" style="position:fixed;" /></a>
+        <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid=" >
+        <img id="sticker1" src="~/Content/images/sb1-site.jpg" class="w3-center" alt="logo" style="position:fixed;" /></a>
     </div>    
 
 
@@ -119,72 +120,6 @@ End Code
                         <div Class="kopa-tab style1">
                             <div Class="tab-content">
                                 <div Class="tab-pane active" id="agroup">
-
-                                    @*<div class="row">                                      
-                                            
-                                                <div id="lastgamescarouselid" class="carousel fdi-Carousel slide owl-carousel-1">
-                                                    <!-- Carousel items -->
-                                                    <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
-                                                        <div class="carousel-inner onebyone-carousel">
-                                                            @code
-                                                                Dim j1 As Integer = 0
-                                                                For Each g In oLastGamesList
-                                                                    If j1 = 0 Then
-                                                                        @<div Class="item active">
-                                                                            <div class="col-md-2">
-                                                                                <a target="_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
-                                                                                    <p>@g.Gamedate</p>
-                                                                                    <ul Class="clearfix">
-                                                                                        <li>
-                                                                                            <span title=@g.team1>@g.team1</span>
-                                                                                            <span>@g.team1score</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span title=@g.team2>@g.team2</span>
-                                                                                            <span>@g.team2score</span>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    Else
-                                                                        @<div Class="item ">
-                                                                            <div class="col-md-2">
-                                                                                <a target="_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
-                                                                                    <p>@g.Gamedate</p>
-                                                                                    <ul Class="clearfix">
-                                                                                        <li>
-                                                                                            <span title=@g.team1>@g.team1</span>
-                                                                                            <span>@g.team1score</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span title=@g.team2>@g.team2</span>
-                                                                                            <span>@g.team2score</span>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    End If
-
-                                                                    j1 += 1
-                                                                Next
-                                                            End Code
-
-
-
-                                                        </div>
-                                                        <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
-                                                        <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
-                                                    </div>
-                                                    <!--/carousel-inner-->
-                                                </div><!--/myCarousel-->
-                                          
-                                        
-                                    </div>*@                   
-        
-
-
                                     <div id="lastgamescarouselid" Class="owl-carousel owl-carousel-1">
                                         @code
                                             For Each g In oLastGamesList
@@ -208,62 +143,6 @@ End Code
                                             Next
                                         End Code
                                     </div>
-
-
-                                    @*<div id="lastgamescarouselid" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner" role="listbox">
-                                            @code
-                                                Dim j11 As Integer = 0
-                                                For Each g In oLastGamesList
-                If j11 = 0 Then
-                                                        @<div Class="item active">
-                                                            <a target="_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
-                                                                <p>@g.Gamedate</p>
-                                                                <ul Class="clearfix">
-                                                                    <li>
-                                                                        <span title=@g.team1>@g.team1</span>
-                                                                        <span>@g.team1score</span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span title=@g.team2>@g.team2</span>
-                                                                        <span>@g.team2score</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </a>
-                                                        </div>
-                Else
-                                                        @<div class="item">
-                                                            <a target="_blank" href="http://www.atlasstatistics.gr/Games/Details/@g.Id">
-                                                                <p>@g.Gamedate</p>
-                                                                <ul Class="clearfix">
-                                                                    <li>
-                                                                        <span title=@g.team1>@g.team1</span>
-                                                                        <span>@g.team1score</span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span title=@g.team2>@g.team2</span>
-                                                                        <span>@g.team2score</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </a>
-                                                        </div>
-                                                    End If
-
-                                                    j1 += 1
-                                                Next
-                                            End Code
-                                        </div>
-
-                                        <a class="left carousel-control" href="#lastgamescarouselid" role="button" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                        </a>
-                                        <a class="right carousel-control" href="#lastgamescarouselid" role="button" data-slide="next">
-                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                        </a>
-                                    </div>*@
-                  
-                   
-
                                 </div>
                             </div>
                         </div>
@@ -271,39 +150,49 @@ End Code
                 </div>
             </div>
 
-
-
-            <div Class="wrapperSmall mb-30">
-                @*<div Class="widget-area-1">
-                <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                    <div Class="widget kopa-sync-carousel-widget">
-                        <div Class="owl-carousel sync1" id="mainnewscarouselid">
-                            @code
-                                For each n In oLastNews1
-
-                                    @<div Class="item">
-                                        <article class="entry-item">
-                                            <div class="entry-thumb w3-center">
-                                                <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto" style="height:480px;width:1024px;" alt=""></a>
-                                                <div class="thumb-hover"></div>
-                                            </div>
-                                            <div class="entry-content  entry-content2">
-                                                <h3 class="entry-title entry-title2"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h3>
-
-                                            </div>
-                                            <span></span>
-                                        </article>
-                                    </div>
-
-                                Next
-                            End Code
+            @*<div class="container">
+                    
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="carousel carousel-showsixmoveone slide" id="carousellastgames">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/0054A6/fff/&amp;text=1" class="img-responsive"></a></div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/002d5a/fff/&amp;text=2" class="img-responsive"></a></div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/d6d6d6/333&amp;text=3" class="img-responsive"></a></div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/002040/eeeeee&amp;text=4" class="img-responsive"></a></div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/0054A6/fff/&amp;text=5" class="img-responsive"></a></div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/002d5a/fff/&amp;text=6" class="img-responsive"></a></div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/eeeeee&amp;text=7" class="img-responsive"></a></div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-4 col-md-2"><a href="#"><img src="http://placehold.it/500/40a1ff/002040&amp;text=8" class="img-responsive"></a></div>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousellastgames" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                            <a class="right carousel-control" href="#carousellastgames" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
-                </div>*@
+            </div>*@
 
+
+            <div Class="wrapperSmall mb-30">
+              
                 <div class="kopa-tab-1-widget">
-                    <div id="carousel1" class="carousel slide" data-ride="carousel">
+                    <div id="carousel1" class="carousel slide" >
 
                         <ol class="carousel-indicators">
 
@@ -357,9 +246,6 @@ End Code
                                     j += 1
                                 Next
                             End Code
-
-
-
 
                         </div>
 
@@ -455,7 +341,7 @@ End Code
                                             @<div Class="widget-area-1">
 
                                                 <div Class="widget kopa-tab-sync-carousel-widget">
-                                                    <h3 Class="widget-title style1">TOP 10</h3>
+                                                    <h3 Class="widget-title style1"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=16&sl=1"><span>TOP 10</span></a></h3>
                                                     <div Class="widget kopa-sync-carousel-2-widget">
 
                                                         <div Class="owl-carousel sync3" id="watchsync3">
@@ -513,16 +399,15 @@ End Code
                                             @If oLastMvp.count > 0 And AtlasKathgoriaid > 0 Then
                                             @<div Class="widget-area-1">
                                                 <div Class="widget kopa-tab-1-widget kopa-point-widget">
-                                                    <h3 Class="widget-title style1">MVP</h3>
+                                                    <h3 Class="widget-title style1"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=6&sl=1"><span>MVP</span></a></h3>
 
                                                     <div Class="owl-carousel owl-carousel-1 sync22" id="watchsync3">
 
                                                         @For Each o In oLastMvp
                                                 @<div Class="item">
-                                                    <article class="entry-item video-post">
+                                                    <article class="entry-item ">
                                                         <div class="entry-thumb w3-center">
-                                                            <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:160px;width:auto;"></a>
-                                                            <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
+                                                            <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:160px;width:auto;"></a>                                                            
                                                         </div>
                                                         <div class="entry-content">
                                                             <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
@@ -545,7 +430,7 @@ End Code
                                             @<div Class="widget-area-1">
                                                 <div Class="widget kopa-tab-1-widget kopa-point-widget">
 
-                                                    <h3 Class="widget-title style1">Δηλώσεις</h3>
+                                                    <h3 Class="widget-title style1"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=17&sl=1"><span>Δηλώσεις</span></a></h3>
                                                     <div Class="owl-carousel owl-carousel-1 sync22" id="watchsync4">
 
                                                         @For Each o1 In oLastDilwseis
@@ -574,9 +459,9 @@ End Code
 
                                         @code
                                             If AtlasKathgoriaid > 0 Then
-                                                @<h3 Class="widget-title style2">Νέα Ομίλου </h3>
+                                                @<h3 Class="widget-title style2"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=11&sl=1"><span>Νέα Ομίλου</span></a></h3>
                                             Else
-                                                @<h3 Class="widget-title style2">Νέα Διοργάνωσης </h3>
+                                                @<h3 Class="widget-title style2"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=3&sl=1"><span>Νέα Διοργάνωσης</span></a></h3>
                                             End If
 
                                                 @<ul id="latestnewsid" Class="clearfix">
@@ -921,36 +806,14 @@ End Code
          
 
     <div class="col-md-1 colflex panelBackground">
-        <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid="><img id="sticker2" src="~/Content/images/sb2-site.jpg" class="w3-center" alt="logo" style="position:fixed;" /></a>
+        <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid=" >
+        <img id="sticker2" src="~/Content/images/sb2-site.jpg" class="w3-center" alt="logo" style="position:fixed;" /></a>
     </div>
 
 </div>
 
     @Section Scripts
         <script type="text/javascript">
-
-            //var lastScrollTop = 0;
-            //$("myScrollspy2").scroll(function (event) {
-            //    var st = $(this).scrollTop();
-            //    if (st > lastScrollTop) {
-            //        $('sticker2').animate({ top: '-=10' }, 10);
-            //    } else {
-            //        $('sticker2').animate({ top: '+=10' }, 10);
-            //    }
-            //    lastScrollTop = st;
-            //});
-
-            //var lastScrollTop = 0;
-            //$("myScrollspy1").scroll(function (event) {
-            //    var st = $(this).scrollTop();
-            //    if (st > lastScrollTop) {
-            //        $('sticker1').animate({ top: '-=10' }, 10);
-            //    } else {
-            //        $('sticker1').animate({ top: '+=10' }, 10);
-            //    }
-            //    lastScrollTop = st;
-            //});
-
 
             var myIndex = 0;
 
@@ -980,65 +843,36 @@ End Code
                         .removeClass('pre following')
                         .addClass('pre');
             }
+    
+            (function () {
+                $('.carousel-showsixmoveone .item').each(function () {
+                    var itemToClone = $(this);
 
-           
+                    for (var i = 1; i < 6; i++) {
+                        itemToClone = itemToClone.next();
+
+                        // wrap around if at end of item collection
+                        if (!itemToClone.length) {
+                            itemToClone = $(this).siblings(':first');
+                        }
+
+                        // grab item, clone, add marker class, add to collection
+                        itemToClone.children(':first-child').clone()
+                          .addClass("cloneditem-" + (i))
+                          .appendTo($(this));
+                    }
+                });
+            }());
 
 
             $(document).ready(function () {
 
-
-                //$('#Glide').glide({
-                //    type: "carousel"
-                //});
-
-
                 $('.carousel-control').click(function (e) {
                     e.preventDefault();
                     $('#carousel1').carousel($(this).data());
-                    //$('#carousel2').carousel($(this).data());
-                    //$('#carousel3').carousel($(this).data());
+                    $('#carousellastgames').carousel($(this).data());
                 });
 
-                //$('.fdi-Carousel .item').each(function () {
-                //    var next = $(this).next();
-                //    if (!next.length) {
-                //        next = $(this).siblings(':first');
-                //    }
-                //    next.children(':first-child').clone().appendTo($(this));
-
-                //    if (next.next().length > 0) {
-                //        next.next().children(':first-child').clone().appendTo($(this));
-                //    }
-                //    else {
-                //        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-                //    }
-                //});
-                
-
-                //$('#carousel-text').html($('#slide-content-0').html());
-
-                ////Handles the carousel thumbnails
-                //$('[id^=carousel-selector-]').click(function () {
-                //    var id = this.id.substr(this.id.lastIndexOf("-") + 1);
-                //    var id = parseInt(id);
-                //    $('#myCarousel').carousel(id);
-                //});
-                
-                //// When the carousel slides, auto update the text
-                //$('#myCarousel').on('slid.bs.carousel', function (e) {
-                //    var id = $('.item.active').data('slide-number');
-                //    $('#carousel-text').html($('#slide-content-' + id).html());
-                //});
-
-                //$("#sticker1").sticky({
-                //    topSpacing: 0, center: true
-                //});
-                //$("#sticker1").stick_in_parent();
-                //$("#sticker2").sticky({
-                //    topSpacing: 0, center: true
-                //});
-                //$("#sticker2").stick_in_parent();
-              
                 var omilosid = $("#atlaskathgoriaid").val();
                 var triggerappendfwtos = 1;
                 if (omilosid != 0) {

@@ -4767,7 +4767,8 @@ ul.style1 > li {
   .r-item .r-side {
     width: 50%;
     float: left;
-    padding: 40px 70px;
+    /*padding: 40px 70px;*/
+    padding: 20px 10px;
     position: relative; }
     .r-item .r-side .r-thumb {
       width: 83px;
@@ -4844,6 +4845,10 @@ ul.style1 > li {
     padding: 7px 15px; }
   .t-col.width3 {
     width: 8.37438%; }
+  .t-col.width4 {
+    width: 9.25%; }
+  .t-col.width5 {
+    width: 26%; }
 
 .kopa-charts-widget .widget-title {
   margin-bottom: 0; }
@@ -5900,7 +5905,7 @@ ul.style1 > li {
   margin-bottom: 0 !important; }
 
 .widget-area-12, .widget-area-wrap {
-  width: 64.03509%;
+  width: 34.03509%;
   padding: 0 15px;
   float: left;
   min-height: 1px;
@@ -5909,7 +5914,7 @@ ul.style1 > li {
     margin-bottom: 30px !important; }
 
 .widget-area-13, .widget-area-17 {
-  width: 35.96491%;
+  width: 65.96491%;
   padding: 0 15px;
   float: left;
   min-height: 1px;
@@ -8416,23 +8421,11 @@ address {
       background: rgba(239, 96, 24, 0.6) !important;
     }
 
-
-
 .navbarheading { 
     float: right;
     display: inline-block;
 }
 
-
-
 .affix-top,.affix{
 	position: static;
-}
-
-#sidebar1 {
-	background-color:#eee;
-}
-
-#sidebar2 {
-	background-color:#eee;
 }
