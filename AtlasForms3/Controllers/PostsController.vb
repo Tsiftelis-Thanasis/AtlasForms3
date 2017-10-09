@@ -2,6 +2,7 @@
 Imports System.Web.Mvc
 Imports System.Drawing
 Imports System.Drawing.Imaging
+Imports System.Net
 
 Namespace Controllers
 
@@ -129,7 +130,19 @@ Namespace Controllers
                 End If
             End If
 
-            Dim thisfolder As String = "/Content/postimages/" & Now.Month & Now.Year & "/"
+            If logodata Is Nothing And p1.Youtubelink <> "" Then
+                'mono gia  
+                '16  Τοp 10
+                '17  ΔΗΛΩΣΕΙΣ
+                Dim kat1 = If(kathgoria Is Nothing, Nothing, kathgoria(0))
+                If kat1 = 16 Or kat1 = 17 Then
+                    Dim webClient As New WebClient()
+                    logodata = webClient.DownloadData("http://img.youtube.com/vi/" & p1.Youtubelink & "/hqdefault.jpg")
+                End If
+
+            End If
+
+                Dim thisfolder As String = "/Content/postimages/" & Now.Month & Now.Year & "/"
             Dim postimagesfolder As String = System.Web.HttpContext.Current.Server.MapPath(thisfolder)
 
             Dim exists As Boolean = System.IO.Directory.Exists(postimagesfolder)
@@ -203,11 +216,11 @@ Namespace Controllers
                     pdb.BlogPostsTable.Add(newpost)
                     pdb.SaveChanges()
 
-                    Dim kat = If(kathgoria Is Nothing, Nothing, kathgoria(0))
-                    Dim om = If(omilos Is Nothing, Nothing, omilos(0))
-                    Dim atlaskat = If(atlaskathgoria Is Nothing, Nothing, atlaskathgoria(0))
+                        Dim kat = If(kathgoria Is Nothing, Nothing, kathgoria(0))
+                        Dim om = If(omilos Is Nothing, Nothing, omilos(0))
+                        Dim atlaskat = If(atlaskathgoria Is Nothing, Nothing, atlaskathgoria(0))
 
-                    If Not (kat Is Nothing And om Is Nothing And atlaskat Is Nothing) Then
+                        If Not (kat Is Nothing And om Is Nothing And atlaskat Is Nothing) Then
                         If kat <> "" Or om <> "" Or atlaskat <> "" Then
 
                             Dim newlink As New BlogPostandKathgoriaTable

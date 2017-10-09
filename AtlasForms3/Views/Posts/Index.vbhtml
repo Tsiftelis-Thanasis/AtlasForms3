@@ -413,7 +413,7 @@ End Code
 
             //$("#divfixture").hide();
             //$("#divteams").hide();
-            var orderByName = 1;
+            var orderByName = 0;
 
             if ($('#simplelist').val() == 1) { //list from link!
                 $("#divcommon").show();
