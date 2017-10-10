@@ -45,7 +45,6 @@ Namespace Controllers
 
             If id > 0 Then
 
-
                 Try
 
                     Dim q = (From t In pdb.BlogPostsTable
@@ -57,8 +56,29 @@ Namespace Controllers
                           Where pk.PostId = q.Id
                           Select pk.KathgoriaId).FirstOrDefault
 
-                    Dim t1 As New Posts
+                    Dim ak As Integer? = 0
+                    ak = (From pk2 In pdb.BlogPostandKathgoriaTable
+                          Where pk2.PostId = q.Id
+                          Select pk2.AtlasKathgoriaId).FirstOrDefault
 
+
+                    '7 & 16
+                    '3 & 11 & 13
+                    Dim intArrray As String = ","
+                    If pq = 7 Or pq = 16 Then
+                        intArrray &= "7,16"
+                    ElseIf pq = 3 Or pq = 11 Or pq = 16 Then
+                        intArrray &= "3,11,16"
+                    Else
+                        intArrray &= pq
+                    End If
+                    intArrray &= ","
+
+                    Dim s = (From proc In pdb.GetPreviousandNextpostid(id, intArrray, If(ak Is Nothing, 0, ak))
+                             Select proc.PreviousPostId, proc.NextPostId).FirstOrDefault
+
+
+                    Dim t1 As New Posts
 
                     If pq = 14 And User.Identity.IsAuthenticated = False Then
 
@@ -84,7 +104,8 @@ Namespace Controllers
 
 
                     ViewBag.postimage = q.PostPhotoStr
-
+                    ViewBag.PreviousPostId = s.PreviousPostId
+                    ViewBag.NextPostId = s.NextPostId
 
 
                     Return View(t1)

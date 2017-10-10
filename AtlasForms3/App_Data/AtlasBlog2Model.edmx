@@ -107,6 +107,11 @@
           <Property Name="EditDate" Type="datetime" />
           <Property Name="EditBy" Type="varchar" MaxLength="100" />
         </EntityType>
+        <Function Name="GetPreviousandNextpostid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="currentpostid" Type="int" Mode="In" />
+          <Parameter Name="k" Type="varchar" Mode="In" />
+          <Parameter Name="ak" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="ATLASBLOG2ModelStoreContainer">
           <EntitySet Name="BlogKathgoriesTable" EntityType="Self.BlogKathgoriesTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlogNewPlayer" EntityType="Self.BlogNewPlayer" Schema="dbo" store:Type="Tables" />
@@ -193,6 +198,11 @@
           <EntitySet Name="BlogProgramma" EntityType="Self.BlogProgramma" />
           <EntitySet Name="BlogNewPlayer" EntityType="ATLASBLOG2Model.BlogNewPlayer" />
           <EntitySet Name="BlogNewTeam" EntityType="ATLASBLOG2Model.BlogNewTeam" />
+          <FunctionImport Name="GetPreviousandNextpostid" ReturnType="Collection(ATLASBLOG2Model.GetPreviousandNextpostid_Result)">
+            <Parameter Name="currentpostid" Mode="In" Type="Int32" />
+            <Parameter Name="k" Mode="In" Type="String" />
+            <Parameter Name="ak" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="BlogNewPlayer">
           <Key>
@@ -229,6 +239,10 @@
           <Property Name="teamcolor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="gipedo" Type="Int32" />
         </EntityType>
+        <ComplexType Name="GetPreviousandNextpostid_Result">
+          <Property Type="Int32" Name="PreviousPostId" Nullable="true" />
+          <Property Type="Int32" Name="NextPostId" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -343,6 +357,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetPreviousandNextpostid" FunctionName="ATLASBLOG2Model.Store.GetPreviousandNextpostid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATLASBLOG2Model.GetPreviousandNextpostid_Result">
+                <ScalarProperty Name="PreviousPostId" ColumnName="PreviousPostId" />
+                <ScalarProperty Name="NextPostId" ColumnName="NextPostId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

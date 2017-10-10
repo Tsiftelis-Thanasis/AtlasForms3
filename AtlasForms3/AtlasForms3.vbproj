@@ -261,6 +261,9 @@
     <Compile Include="App_Data\BlogNewTeam.vb">
       <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="App_Data\GetPreviousandNextpostid_Result.vb">
+      <DependentUpon>AtlasBlog2Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Data\GetWeeklyGames_Result.vb">
       <DependentUpon>AtlasStatistics.tt</DependentUpon>
     </Compile>

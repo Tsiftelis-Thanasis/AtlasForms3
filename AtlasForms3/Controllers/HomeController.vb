@@ -32,7 +32,6 @@ Public Class HomeController
         '16  Τοp 10
         '17  ΔΗΛΩΣΕΙΣ
 
-
         If ak > 0 Then
             ViewBag.LastMvp = GetLastNewsByCategory(1, ak, {6}, Nothing, 1, Nothing).Data.data 'MVP eiani panta 1 kai den exei video!
             ViewBag.LastDilwseis = GetLastNewsByCategory(7, ak, {17}, Nothing, 1, 1).Data.data 'dilwseis max 7, osoi kai oi agwnes tis agwnistikis!

@@ -7,20 +7,9 @@
 
     Dim imageSrc As String = ""
     If Model.PostPhotoStr IsNot Nothing Then
-        'Dim imageBase64 As String = Convert.ToBase64String(Model.PostPhoto)
-        'imageSrc = String.Format("data:image/png;base64,{0}", imageBase64)
-
         imageSrc = Model.PostPhotoStr
 
     End If
-
-    'to do
-    ''
-    ''να προσθεσω τις διαφημίσεις
-    ''
-    'Dim ads = (From pk In pdb.BlogPostKathgoriaTable2
-    '           Where pk.Id = 6
-    '           Select pk.KathgoriaName).FirstOrDefault
 
     Dim kathgorianamestr As String = ""
     Dim omilosnamestr As String = ""
@@ -101,13 +90,17 @@
 
     End If
 
+    Dim PreviousPostId As Integer = If(ViewBag.PreviousPostId Is Nothing, 0, ViewBag.PreviousPostId)
+    Dim NextPostId As Integer = If(ViewBag.NextPostId Is Nothing, 0, ViewBag.NextPostId)
+
+
 End Code
 
 @Html.AntiForgeryToken()
 @Html.ValidationSummary(True)
 @Html.HiddenFor(Function(model) model.Id)
-
-
+@Html.Hidden("PreviousPostId", PreviousPostId)
+@Html.Hidden("NextPostId", NextPostId)
 
 <div class="row rowflex">
     <div class="col-md-1 colflex panelBackground">
@@ -123,7 +116,7 @@ End Code
 
 
         <div class="main-top">
-            <div class="kopa-ticker">
+            <div class="kopa-ticker">                              
                 <span Class="ticker-title"><i class="fa fa-angle-double-right"></i>@cTitle</span>
                 <div Class="ticker-wrap">
                     <dl Class="ticker-1">
@@ -148,7 +141,7 @@ End Code
 
                             @code
 
-    If atlaskatid > 0 And katid = 14 Then
+                                If atlaskatid > 0 And katid = 14 Then
 
                     @<a href="/Home/Index/?ak=@atlaskatid"> Νέα</a>
 
@@ -166,75 +159,77 @@ End Code
 
                     @If UserisAuthenticated > 0 Then
                         If programmaid > 0 Then
-                    @If katid = 14 Then
-                    @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskatid&k=14"> <span>Πρόγραμμα</span></a>
-                        '<a style = "background: #ef6018 !important" href="/Posts/Details/@programmaid"> <span >Πρόγραμμα</span></a>
-                    Else
-                    @<a href="~/Posts/Index/?ak=@atlaskatid&k=14"><span> Πρόγραμμα </span></a>
-                        '<a href = "/Posts/Details/@programmaid" <> span > Πρόγραμμα</span></a>
-                    End If
-                                        Else
-                    @If katid = 14 Then
-                    @<a style="background: #ef6018 !important"> <span>Πρόγραμμα</span></a>
-                                            Else
-                    @<a><span>Πρόγραμμα</span></a>
-                                            End If
-                                        End If
-                                    End If
+                                @If katid = 14 Then
+                                @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskatid&k=14"> <span>Πρόγραμμα</span></a>
+                                Else
+                                @<a href="~/Posts/Index/?ak=@atlaskatid&k=14"><span> Πρόγραμμα </span></a>
 
-                    @If katid = 13 Then
-                    @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskatid&k=13"><span>Τιμωρίες</span></a>
-                    Else
-                    @<a href="/Posts/Index/?ak=@atlaskatid&k=13"><span>Τιμωρίες</span></a>
-                    End If
-
+                                End If
                         Else
+                            @If katid = 14 Then
+                                 @<a style="background: #ef6018 !important"> <span>Πρόγραμμα</span></a>
+                            Else
+                                @<a><span>Πρόγραμμα</span></a>
+                            End If
+                        End If
+                    End If
 
-                    @<a href="@Url.Action("Index", "Home")">Αρχικη</a>
+                        @If katid = 13 Then
+                            @<a style="background: #ef6018 !important" href="/Posts/Index/?ak=@atlaskatid&k=13"><span>Τιμωρίες</span></a>
+                        Else
+                            @<a href="/Posts/Index/?ak=@atlaskatid&k=13"><span>Τιμωρίες</span></a>
+                        End If
+
+                                Else
+
+                            @<a href="@Url.Action("Index", "Home")">Αρχικη</a>
 
                                     If omilosnamestr <> "" Then
-                    @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
+                                    @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
                                     End If
                                     If atlaskatnamestr <> "" Then
-                    @<a href="@Url.Action("Index", "Home", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
+                                    @<a href="@Url.Action("Index", "Home", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
                                     End If
 
-                    @<a>@Html.DisplayFor(Function(model) cTitle)</a>
+                                    @<a>@Html.DisplayFor(Function(model) cTitle)</a>
+
 
                                 End If
 
-                            End Code
-
+End Code
                         </p>
 
-                        @code
-                    If imageSrc <> "" Then
-                @<div Class="row form-horizontal vertical-center w3-center">
-                    <div Class="form-group">
-                        <div Class="col-md-6 entry-thumb">
-                            <img src="@imageSrc" style="width:75% !important;height:55% !important;" />
 
-                        </div>
-                    </div>
-                </div>
+
+
+                        @code
+                            If imageSrc <> "" Then
+                                    @<div Class="row form-horizontal vertical-center w3-center">
+                                    <div Class="form-group">
+                                    <div Class="col-md-6 entry-thumb">
+                                    <img src="@imageSrc" style="width:75% !important;height:55% !important;" />
+
+                                    </div>
+                                    </div>
+                                    </div>
                             End If
                         End Code
 
 
                         @code
-                    If agwnistikistr <> "" Then
-                @<div Class="row form-horizontal">
-                    <div Class="form-group">
-                        <div Class="col-md-12 w3-center">
-                            Αγωνιστική:
-                            <b>
-                                <em>
-                                    @agwnistikistr
-                                </em>
-                            </b>
-                        </div>
-                    </div>
-                </div>
+                            If agwnistikistr <> "" Then
+                                @<div Class="row form-horizontal">
+                                    <div Class="form-group">
+                                        <div Class="col-md-12 w3-center">
+                                            Αγωνιστική:
+                                            <b>
+                                                <em>
+                                                    @agwnistikistr
+                                                </em>
+                                            </b>
+                                        </div>
+                                    </div>
+                             </div>
 
                             End If
                         End Code
@@ -304,6 +299,49 @@ End Code
 
                         <p></p>
 
+                        @code
+                            @<div class="row entry-categories style-s2">
+                                                       
+                                    @If PreviousPostId > 0 Then
+                                        @<div class="col-md-6 col-xs-6 w3-left-align ">
+                                            <a href="@Url.Action("Details", "Posts", New With {.id = PreviousPostId})">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> </span>
+                                                Προηγούμενο άρθρο
+                                            </a>
+                                        </div>
+                                    Else
+                                        @<div class="col-md-6 col-xs-6 w3-left-align ">
+                                             <a>
+                                                 <span>
+                                                     
+                                                 </span>
+                                                 </a>
+                                            </div>
+                                    End If
+                                    @If NextPostId > 0 Then
+                                        @<div class="col-md-6 col-xs-6 w3-right-align ">
+                                             
+                                            <a href="@Url.Action("Details", "Posts", New With {.id = NextPostId})">
+                                                Επόμενο άρθρο
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> </span>
+                                            </a>
+                                        </div>
+                                    Else
+                                        @<div class="col-md-6 col-xs-6 w3-right-align ">
+
+                                    <a>
+                                        <span>
+                                            
+                                        </span>
+                                    </a>
+                        </div>
+
+                                    End If
+                                 </div>
+                        End Code
+                        
+
+
                     </article>
                 </div>
             </div>
@@ -315,12 +353,7 @@ End Code
                             <a target="_blank"
                                href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265&img=~/Content/images/facebook-icon.png">
                                 <img src="~/Content/images/facebook-icon.png">
-                            </a>
-                            @*<a target="_blank" class="twitter-share-button"
-                                   href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
-                                   data-size="large">
-                                    <img src="~/Content/images/Twitter_Logo.png" />
-                                </a>*@
+                            </a>                        
                         </div>
                     </div>
                 </div>

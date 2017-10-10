@@ -1,0 +1,33 @@
+USE [ATLASBLOG2]
+GO
+/****** Object:  StoredProcedure [dbo].[GetPreviousandNextpostid]    Script Date: 10/10/2017 3:00:30 μμ ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetPreviousandNextpostid]
+	@currentpostid int,
+	@k varchar(100),
+	@ak int
+AS
+BEGIN
+
+-- i will pass k as arrray like ',1,2,3,4,' with commas front and back!
+
+declare @next int,
+@previous int
+
+select @next = isnull(min(postid),0)  from BlogPostandKathgoriaTable
+where @k like '%,'+cast(isnull(KathgoriaId,0) as varchar(10))+',%'
+and isnull(AtlasKathgoriaId,0) = @ak
+and postid > @currentpostid
+
+select @previous = isnull(max(postid),0) from BlogPostandKathgoriaTable
+where @k like '%,'+cast(isnull(KathgoriaId,0) as varchar(10))+',%'
+and isnull(AtlasKathgoriaId,0) = @ak
+and postid < @currentpostid
+
+select @previous 'PreviousPostId', @next 'NextPostId'
+
+end
