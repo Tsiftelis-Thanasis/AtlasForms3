@@ -354,7 +354,7 @@ End Code
             readonly: 1,
             paste_data_images: true,
             content_css: [
-                http://www.atlasbasket.gr/Content/content.css
+                '//www.atlasbasket.gr/Content/content.css',
               '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
               '//www.tinymce.com/css/codepen.min.css']
         });
