@@ -474,6 +474,7 @@ End Code
                                     if (row === undefined || row === null) return '';
 
                                     var postdd = '';
+                                    
                                     if (row.PostSummary != 'null') {
                                         postdd = row.PostSummary;
                                     }

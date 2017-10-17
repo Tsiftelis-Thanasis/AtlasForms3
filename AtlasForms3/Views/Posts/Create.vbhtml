@@ -117,21 +117,26 @@ End Code
 
                     <div class="row form-horizontal">
                         <div class="form-group">
-                            <label for="title" class="col-md-2 control-label">Youtube link (code) </label>
+                            <label for="title" class="col-md-1 control-label">Youtube (code) </label>
                             <div class="col-md-2">
                                 @Html.TextBoxFor(Function(model) model.Youtubelink, New With {.class = "form-control input-text"})
                             </div>
 
-                            <label for="title" class="col-md-2 control-label">Statistics Link (number) </label>
+                            <label for="title" class="col-md-2 control-label">Statistics (number) </label>
                             <div class="col-md-2">
                                 @Html.TextBoxFor(Function(model) model.Statslink, New With {.class = "form-control input-text"})
                             </div>
 
-                            <label for="title" class="col-md-2 control-label">Αγωνιστική </label>
+                            <label for="title" class="col-md-1 control-label">Αγωνιστική </label>
                             <div class="col-md-2">
                                 @Html.DropDownList("agonistiki", gList, "Please select...", New With {.id = "agonistiki", .class = "form-control chosen-select"})
                             </div>
-                                                     
+                                          
+                            <label for="title" class="col-md-1 control-label">Active</label>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(Function(model) model.Activepost, New With {.class = "form-control input-text"})
+                            </div>
+                                       
                         </div>
                     </div>
 

@@ -54,10 +54,21 @@
     Dim urlwithid As String = HttpContext.Current.Request.Url.ToString
     Dim socialDesc As String = ViewData("Title")
 
+    Dim maxlistid As Integer = 0
+    Dim minlistid As Integer = 0
+    If Not oLastNews2 Is Nothing Then
+        If oLastNews2.count > 0 Then
+            maxlistid = oLastNews2.item(0).Id
+            minlistid = oLastNews2.item(oLastNews2.count - 1).Id
+        End If
+    End If
 
 End Code
 
 @Html.Hidden("atlaskathgoriaid", AtlasKathgoriaid)
+
+@Html.Hidden("maxlistid", maxlistid)
+@Html.Hidden("minlistid", minlistid)
 
 
 <div class="row rowflex" >
@@ -347,17 +358,19 @@ End Code
                                                         <div Class="owl-carousel sync3" id="watchsync3">
 
                                                             @For Each o In oLastTop10List
-                                                    @<div Class="item">
-                                                        <article class="entry-item video-post">
-                                                            <div class="entry-thumb w3-center">
-                                                                <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
-                                                                <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>
+                                                            @<div Class="item">
+                                                                <article class="entry-item video-post">
+                                                                    <div class="entry-thumb w3-center">
+                                                                        @*<a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
+                                                                        <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>*@
+                                                                        <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;">
+                                                                            <span class="thumb-icon" ></span></a>
+                                                                    </div>
+                                                                    <div class="entry-content">
+                                                                        <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
+                                                                    </div>
+                                                                </article>
                                                             </div>
-                                                            <div class="entry-content">
-                                                                <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
-                                                            </div>
-                                                        </article>
-                                                    </div>
                                                             Next
 
                                                         </div>
@@ -365,17 +378,21 @@ End Code
                                                         <div Class="owl-carousel sync4" id="watchsync4">
 
                                                             @For Each o1 In oLastTop10List
-                                                    @<div Class="item">
-                                                        <article Class="entry-item video-post">
-                                                            <div Class="entry-thumb">
-                                                                <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
-                                                                <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
-                                                            </div>
-                                                            <div Class="entry-content">
-                                                                <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
-                                                            </div>
-                                                        </article>
-                                                    </div>
+                                                                @<div Class="item">
+                                                                    <article Class="entry-item video-post">
+                                                                        <div Class="entry-thumb">
+                                                                            @*<a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
+                                                                            <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>*@
+                                                                            <a href="/Posts/Details/@o1.Id">
+                                                                                <img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;">
+                                                                                <span class="thumb-icon"></span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div Class="entry-content">
+                                                                            <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
                                                             Next
 
                                                         </div>
@@ -435,17 +452,20 @@ End Code
 
                                                         @For Each o1 In oLastDilwseis
 
-                                                @<div Class="item">
-                                                    <article Class="entry-item video-post">
-                                                        <div Class="entry-thumb">
-                                                            <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
-                                                            <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>
-                                                        </div>
-                                                        <div Class="entry-content">
-                                                            <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
-                                                        </div>
-                                                    </article>
-                                                </div>
+                                                            @<div Class="item">
+                                                                <article Class="entry-item video-post">
+                                                                    <div Class="entry-thumb">
+                                                                        @*<a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
+                                                                        <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>*@
+                                                                        <a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;">
+                                                                        <span class="thumb-icon" ></span></a>
+
+                                                                    </div>
+                                                                    <div Class="entry-content">
+                                                                        <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
+                                                                    </div>
+                                                                </article>
+                                                            </div>
                                                         Next
                                                     </div>
                                                 </div>
@@ -455,7 +475,7 @@ End Code
                                             End code                        
 
 
-                                    <div Class="widget kopa-article-list-widget article-list-1">
+                                    <div Class="widget kopa-article-list-widget article-list-1" id="lastnewsscrollid">
 
                                         @code
                                             If AtlasKathgoriaid > 0 Then
@@ -468,30 +488,41 @@ End Code
 
                                                     @For Each n In oLastNews2
                                                         Dim postsummarystr = If(n.postsummary Is Nothing, "", n.postsummary)
-
-                                                @<li>
-                                                    <article Class="entry-item disable-select ">
-                                                        <div Class="entry-thumb">
-                                                            <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto2" alt="" /></a>
-                                                        </div>
-                                                        <div Class="entry-content">
-                                                            <div Class="content-top">
-                                                                <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
-                                                            </div>
-                                                            <p> @postsummarystr ... </p>
-                                                        </div>
-                                                    </article>
-                                                </li>
+                                                        @<li>
+                                                            <article Class="entry-item disable-select ">
+                                                                <div Class="entry-thumb">
+                                                                    <a href="/Posts/Details/@n.Id"><img src="@n.PostPhoto2" alt="" /></a>
+                                                                </div>
+                                                                <div Class="entry-content">
+                                                                    <div Class="content-top">
+                                                                        <h4 Class="entry-title"><a href="/Posts/Details/@n.Id">@n.PostTitle</a></h4>
+                                                                    </div>
+                                                                    <p> @postsummarystr ... </p>
+                                                                </div>
+                                                            </article>
+                                                        </li>
                                                     Next
                                                 </ul>
 
-                                            If AtlasKathgoriaid > 0 Then
-                                                @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index/?ak=@AtlasKathgoriaid" Class="title style2 "><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
-                                            Else
-                                                @<div Class="entry-item p w3-right-align"><p><a href="/Posts/index" Class="title style2"><span>Δείτε λίστα με όλα τα νεα...</span></a></p></div>
-                                            End If
+                                            @<div class="row entry-categories style-s2">
 
-                                        End code
+                                                <div class="col-md-6 col-xs-6 w3-left-align ">
+                                                <a id="newerpage"  class="lipointer">
+                                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> </span>
+                                                    Πρόσφατα άρθρα
+                                                </a>
+                                                </div>
+                                             
+                                                <div class="col-md-6 col-xs-6 w3-right-align ">
+
+                                                <a id="olderpage" class="lipointer">
+                                                Παλιότερα άρθρα
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> </span>
+                                                </a>
+                                                </div>        
+                                                                              
+                                            </div>
+                                    End code
                                     </div>
                                 </div>
 
@@ -501,12 +532,7 @@ End Code
                                             <a target="_blank"
                                                href="https://www.facebook.com/sharer/sharer.php?u=@urlwithid&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=140586622674265">
                                                 <img src="~/Content/images/facebook-icon.png">
-                                            </a>
-                                            @*<a target="_blank" class="twitter-share-button"
-                                           href="https://twitter.com/intent/tweet?text=@socialDesc&url=@urlwithid"
-                                           data-size="large">
-                                            <img src="~/Content/images/Twitter_Logo.png" />
-                                        </a>*@
+                                            </a>                                          
                                         </div>
                                         
                                         <p></p>
@@ -843,7 +869,7 @@ End Code
                         .removeClass('pre following')
                         .addClass('pre');
             }
-    
+
             (function () {
                 $('.carousel-showsixmoveone .item').each(function () {
                     var itemToClone = $(this);
@@ -887,9 +913,125 @@ End Code
                     $("#facebookshareid").show();
                     triggerappendfwtos = 1;
                 }
+
+
+
+                $('#newerpage').click(function () {
+
+                    if ($("#maxlistid").val() > 0) {
+
+                        info = [];
+                        info[0] = 3;
+                        info[1] = 11;
+                        info[2] = 13;
+
+                        $.ajax({
+                            type: "POST",
+                            url: baseUrl + '@Url.Action("GetLastNewsPaging", "Home")',
+                            data: "{nCount: 10,  kathgories: " + JSON.stringify(info) + ", atlaskathgoria: " + $("#atlaskathgoriaid").val() + ", " +
+                                  " maxid:  " + $("#maxlistid").val() + ", minid: 0}",
+                            async: false,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (result) {
+                                var choiceContainer = $("#latestnewsid");
+                                if (result.data.length > 0) {
+
+                                    choiceContainer.empty();
+                                    var d = '';
+                                    var cnt = 0;
+                                    $.each(result.data, function () {
+                                        if (cnt == 0) {
+                                            $("#minlistid").val(this.Id);
+                                        }
+                                        $("#maxlistid").val(this.Id);
+                                        d = '<li> ' +
+                                            ' <article Class="entry-item disable-select ">' +
+                                            ' <div Class="entry-thumb">' +
+                                            ' <a href="/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto2 + '" alt="" /></a>' +
+                                            ' </div>' +
+                                            ' <div Class="entry-content">' +
+                                            ' <div Class="content-top">' +
+                                            ' <h4 Class="entry-title"><a href="/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4>' +
+                                            ' </div>' +
+                                            ' <p> ' + this.postsummarystr + '... </p>' +
+                                            ' </div>' +
+                                            ' </article>' +
+                                            ' </li>';
+                                        choiceContainer.append(d);
+                                        cnt++;
+                                    });
+
+                                    $(document).scrollTop($("#lastnewsscrollid").offset().top);
+                                }
+                            },
+                            error: function (result) {
+                            }
+                        });
+                    }
+                });
+
+                $('#olderpage').click(function () {
+
+                    if ($("#minlistid").val() > 0) {
+                        
+                        info = [];
+                        info[0] = 3;
+                        info[1] = 11;
+                        info[2] = 13;
+                
+                        $.ajax({
+                            type: "POST",
+                            url: baseUrl + '@Url.Action("GetLastNewsPaging", "Home")',
+                            data: "{nCount: 10,  kathgories: " + JSON.stringify(info) + ", atlaskathgoria: " + $("#atlaskathgoriaid").val() + ", " +
+                                    " maxid: 0, minid: " + $("#minlistid").val() + "}",
+                            async: false,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (result) {
+                                
+                                var choiceContainer = $("#latestnewsid");
+                                if (result.data.length > 0) {
+
+                                    choiceContainer.empty();
+                                    var d ='';
+                                    var cnt = 0;
+                                    $.each(result.data, function () {
+                                        if (cnt == 0) {
+                                            $("#maxlistid").val(this.Id);
+                                        }
+                                        $("#minlistid").val(this.Id);
+
+                                        d = '<li> ' +
+                                            ' <article Class="entry-item disable-select ">' +
+                                            ' <div Class="entry-thumb">' +
+                                            ' <a href="/Posts/Details/' + this.Id + '"><img src="' + this.PostPhoto2 + '" alt="" /></a>' +
+                                            ' </div>' +
+                                            ' <div Class="entry-content">' +
+                                            ' <div Class="content-top">' +
+                                            ' <h4 Class="entry-title"><a href="/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4>' +
+                                            ' </div>' +
+                                            ' <p> ' + this.postsummarystr + '... </p>' +
+                                            ' </div>' +
+                                            ' </article>' +
+                                            ' </li>';
+                                        choiceContainer.append(d);
+                                        cnt++;
+                                    });
+
+                                    $(document).scrollTop($("#lastnewsscrollid").offset().top);
+
+                                }
+                            },
+                            error: function (result) {
+                                alert(result.status + ' ' + result.statusText);
+                            }
+                        });
+                    }
+
+                 });
+
             });
-
-
 </script>
 
  End Section

@@ -31,14 +31,16 @@ Partial Public Class AtlasBlogEntities
     Public Overridable Property BlogNewPlayer() As DbSet(Of BlogNewPlayer)
     Public Overridable Property BlogNewTeam() As DbSet(Of BlogNewTeam)
 
-    Public Overridable Function GetPreviousandNextpostid(currentpostid As Nullable(Of Integer), k As String, ak As Nullable(Of Integer)) As ObjectResult(Of GetPreviousandNextpostid_Result)
+    Public Overridable Function GetPreviousandNextpostid(currentpostid As Nullable(Of Integer), k As String, ak As Nullable(Of Integer), currentagonistiki As Nullable(Of Integer)) As ObjectResult(Of GetPreviousandNextpostid_Result)
         Dim currentpostidParameter As ObjectParameter = If(currentpostid.HasValue, New ObjectParameter("currentpostid", currentpostid), New ObjectParameter("currentpostid", GetType(Integer)))
 
         Dim kParameter As ObjectParameter = If(k IsNot Nothing, New ObjectParameter("k", k), New ObjectParameter("k", GetType(String)))
 
         Dim akParameter As ObjectParameter = If(ak.HasValue, New ObjectParameter("ak", ak), New ObjectParameter("ak", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetPreviousandNextpostid_Result)("GetPreviousandNextpostid", currentpostidParameter, kParameter, akParameter)
+        Dim currentagonistikiParameter As ObjectParameter = If(currentagonistiki.HasValue, New ObjectParameter("currentagonistiki", currentagonistiki), New ObjectParameter("currentagonistiki", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetPreviousandNextpostid_Result)("GetPreviousandNextpostid", currentpostidParameter, kParameter, akParameter, currentagonistikiParameter)
     End Function
 
 End Class

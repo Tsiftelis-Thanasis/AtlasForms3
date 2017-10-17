@@ -617,6 +617,7 @@
     <Content Include="Content\images\atlassportwear.png" />
     <Content Include="Content\images\atlastop10.PNG" />
     <Content Include="Content\images\atlas_fb_logo.jpg" />
+    <Content Include="Content\images\basketstats1.png" />
     <Content Include="Content\images\bg-top-2.png" />
     <Content Include="Content\images\bg-top.png" />
     <Content Include="Content\images\black_twill.png" />
@@ -710,7 +711,6 @@
     </Content>
     <EntityDeploy Include="App_Data\AtlasBlog2Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AtlasBlog2Model.Designer.vb</LastGenOutput>
     </EntityDeploy>
     <Content Include="App_Data\AtlasBlog2Model.edmx.diagram">
       <DependentUpon>AtlasBlog2Model.edmx</DependentUpon>

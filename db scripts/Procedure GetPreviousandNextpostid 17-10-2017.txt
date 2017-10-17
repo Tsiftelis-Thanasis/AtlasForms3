@@ -1,0 +1,76 @@
+USE [ATLASBLOG2]
+GO
+/****** Object:  StoredProcedure [dbo].[GetPreviousandNextpostid]    Script Date: 18/10/2017 1:19:09 рм ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetPreviousandNextpostid]
+	@currentpostid int,
+	@k varchar(100),
+	@ak int,
+	@currentagonistiki  int
+AS
+BEGIN
+
+-- i will pass k as arrray like ',1,2,3,4,' with commas front and back!
+
+declare @next int,
+@previous int
+
+
+
+if (@currentagonistiki > 0)
+BEGIN
+
+	--get previous and net according to agonistiki!	
+	--select  p.id, agonistiki from BlogPostandKathgoriaTable pk, BlogPostsTable p
+	--where p.id = pk.PostId and isnull(p.Activepost,0) = 1
+	--and @k like '%,'+cast(isnull(pk.KathgoriaId,0) as varchar(10))+',%'
+	--and isnull(pk.AtlasKathgoriaId,0) = @ak
+	--and p.agonistiki > @currentagonistiki 	
+
+	--select  p.id, agonistiki from BlogPostandKathgoriaTable pk, BlogPostsTable p
+	--where p.id = pk.PostId and isnull(p.Activepost,0) = 1
+	--and @k like '%,'+cast(isnull(pk.KathgoriaId,0) as varchar(10))+',%'
+	--and isnull(pk.AtlasKathgoriaId,0) = @ak
+	--and p.agonistiki < @currentagonistiki 	
+
+	select  @next = isnull(min(p.id),0) from BlogPostandKathgoriaTable pk, BlogPostsTable p
+	where p.id = pk.PostId and isnull(p.Activepost,0) = 1
+	and @k like '%,'+cast(isnull(pk.KathgoriaId,0) as varchar(10))+',%'
+	and isnull(pk.AtlasKathgoriaId,0) = @ak
+	and p.agonistiki > @currentagonistiki 	
+
+	select @previous = isnull(max(p.id),0) from BlogPostandKathgoriaTable pk, BlogPostsTable p
+	where p.id = pk.PostId and isnull(p.Activepost,0) = 1
+	and @k like '%,'+cast(isnull(pk.KathgoriaId,0) as varchar(10))+',%'
+	and isnull(pk.AtlasKathgoriaId,0) = @ak
+	and p.agonistiki < @currentagonistiki 	
+
+
+		
+END
+ELSE
+BEGIN
+	--get previous and net according to post id!
+	select  @next = isnull(min(p.id),0) from BlogPostandKathgoriaTable pk, BlogPostsTable p
+	where p.id = pk.PostId and isnull(p.Activepost,0) = 1
+	and @k like '%,'+cast(isnull(pk.KathgoriaId,0) as varchar(10))+',%'
+	and isnull(pk.AtlasKathgoriaId,0) = @ak
+	and p.id > @currentpostid
+
+
+	select @previous = isnull(max(p.id),0) from BlogPostandKathgoriaTable pk, BlogPostsTable p
+	where p.id = pk.PostId and isnull(p.Activepost,0) = 1
+	and @k like '%,'+cast(isnull(pk.KathgoriaId,0) as varchar(10))+',%'
+	and isnull(pk.AtlasKathgoriaId,0) = @ak
+	and p.id < @currentpostid
+
+	
+END
+
+select @previous 'PreviousPostId', @next 'NextPostId'
+
+end

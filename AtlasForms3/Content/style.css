@@ -8429,3 +8429,7 @@ address {
 .affix-top,.affix{
 	position: static;
 }
+
+.detailsfontsize {
+  font-size: 14px;
+}

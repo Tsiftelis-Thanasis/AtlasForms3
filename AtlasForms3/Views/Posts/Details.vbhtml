@@ -12,7 +12,7 @@
     End If
 
     Dim kathgorianamestr As String = ""
-    Dim omilosnamestr As String = ""
+    'Dim omilosnamestr As String = ""
     Dim atlaskatnamestr As String = ""
 
     Dim postkathgoria = (From pk In pdb.BlogPostandKathgoriaTable
@@ -20,18 +20,18 @@
                          Select pk.KathgoriaId, pk.AtlasKathgoriaId, pk.IsAtlasKathgoria, pk.IsAtlasOmilos).FirstOrDefault
 
     Dim katid As Integer = If(postkathgoria Is Nothing, 0, postkathgoria.KathgoriaId)
-    Dim omid As Integer = 0
+    'Dim omid As Integer = 0
     Dim atlaskatid As Integer = 0
     If Not postkathgoria Is Nothing Then
         If Not postkathgoria.AtlasKathgoriaId Is Nothing Then
             If postkathgoria.IsAtlasOmilos = 1 Then
-                omid = postkathgoria.AtlasKathgoriaId
+                'omid = postkathgoria.AtlasKathgoriaId
             Else
                 atlaskatid = postkathgoria.AtlasKathgoriaId
-                omid = (From o In pdb2.OmilosTable
-                        Join k In pdb2.KathgoriesTable On o.Id Equals k.Omilosid
-                        Where k.Id = atlaskatid
-                        Select o.Id).FirstOrDefault
+                'omid = (From o In pdb2.OmilosTable
+                '        Join k In pdb2.KathgoriesTable On o.Id Equals k.Omilosid
+                '        Where k.Id = atlaskatid
+                '        Select o.Id).FirstOrDefault
             End If
         End If
     End If
@@ -43,12 +43,12 @@
                             Where k.Id = katid
                             Select k.KathgoriaName).FirstOrDefault
     End If
-    If omid > 0 Then
-        omilosnamestr = (From o In pdb2.OmilosTable
-                         Join d In pdb2.DiorganwshTable On d.Id Equals o.Diorganwshid
-                         Where o.Id = omid
-                         Select OmilosName = o.OmilosName & " (" & d.DiorganwshName & ")").FirstOrDefault
-    End If
+    'If omid > 0 Then
+    '    omilosnamestr = (From o In pdb2.OmilosTable
+    '                     Join d In pdb2.DiorganwshTable On d.Id Equals o.Diorganwshid
+    '                     Where o.Id = omid
+    '                     Select OmilosName = o.OmilosName & " (" & d.DiorganwshName & ")").FirstOrDefault
+    'End If
 
     If atlaskatid > 0 Then
         atlaskatnamestr = (From k In pdb2.KathgoriesTable
@@ -130,7 +130,7 @@ End Code
         </div>
 
 
-        <div class="row">
+        <div class="row ">
 
             <div class="kopa-main-col">
                 <div class="kopa-entry-post">
@@ -184,9 +184,9 @@ End Code
 
                             @<a href="@Url.Action("Index", "Home")">Αρχικη</a>
 
-                                    If omilosnamestr <> "" Then
+                                    @*If omilosnamestr <> "" Then
                                     @<a href="@Url.Action("Index", "Posts", New With {.a = omid})">@omilosnamestr</a>
-                                    End If
+                                    End If*@
                                     If atlaskatnamestr <> "" Then
                                     @<a href="@Url.Action("Index", "Home", New With {.ak = atlaskatid})">@atlaskatnamestr</a>
                                     End If
@@ -204,9 +204,9 @@ End Code
 
                         @code
                             If imageSrc <> "" Then
-                                    @<div Class="row form-horizontal vertical-center w3-center">
+                                    @<div Class="row form-horizontal">
                                     <div Class="form-group">
-                                    <div Class="col-md-6 entry-thumb">
+                                    <div Class="col-md-12  w3-center">
                                     <img src="@imageSrc" style="width:75% !important;height:55% !important;" />
 
                                     </div>
@@ -220,7 +220,7 @@ End Code
                             If agwnistikistr <> "" Then
                                 @<div Class="row form-horizontal">
                                     <div Class="form-group">
-                                        <div Class="col-md-12 w3-center">
+                                        <div Class="col-md-12 w3-center detailsfontsize">
                                             Αγωνιστική:
                                             <b>
                                                 <em>
@@ -237,15 +237,15 @@ End Code
                         @code
                             If not Model.PostSummary Is Nothing Then
                                 If Model.PostSummary <> "" Then
-                @<div Class="row form-horizontal">
-                    <div Class="form-group">
-                        <div Class="col-md-12 disable-select ">
-                            <em>
-                                @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
-                            </em>
-                        </div>
-                    </div>
-                </div>
+                                    @<div Class="row form-horizontal">
+                                        <div Class="form-group">
+                                            <div Class="col-md-12 disable-select w3-center detailsfontsize">
+                                                <em>
+                                                    @Html.DisplayFor(Function(model) model.PostSummary, New With {.class = "form-control input-text"})
+                                                </em>
+                                            </div>
+                                        </div>
+                                    </div>
                                 End If
                             End If
                         End Code
@@ -255,21 +255,21 @@ End Code
                         @code
                             If Not Model.PostBody Is Nothing Then
                                 If Model.PostBody <> "" Then
-                @<div Class="row form-horizontal">
+                                @<div Class="row form-horizontal">
 
-                    <div Class="form-group">
-                        <div Class="col-md-12 disable-select ">
-                            <div class="apostrophe-divider"><hr><span></span></div>
+                                    <div Class="form-group">
+                                        <div Class="col-md-12 disable-select">
+                                            <div class="apostrophe-divider"><hr><span></span></div>
 
-                            <div class="tinymce">
-                                @Html.Raw(Model.PostBody.ToString)
-                            </div>
+                                            <div class="tinymce">
+                                                @Html.Raw(Model.PostBody.ToString)
+                                            </div>
 
-                            <div class="apostrophe-divider"><hr><span></span></div>
-                        </div>
-                    </div>
+                                            <div class="apostrophe-divider"><hr><span></span></div>
+                                        </div>
+                                    </div>
 
-                </div>
+                                </div>
                                 End If
                             End If
 
@@ -278,11 +278,11 @@ End Code
                         @code
                             If not Model.Statslink Is Nothing Then
                                 If Model.Statslink.ToString <> "" Then
-                @<p Class="short-des" style="text-align:center">
-                    <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Model.Statslink">
-                        <img src="~/Content/images/stats.jpg" border="0" />
-                    </a>
-                </p>
+                                    @<p Class="short-des" style="text-align:center">
+                                        <a target="_blank" href="http://atlasstatistics.gr/Games/Details/@Model.Statslink">
+                                            <img src="~/Content/images/basketstats1.png" border="0"  />                                            
+                                        </a>
+                                    </p>
                                 End If
                             End If
                         End Code
@@ -290,9 +290,9 @@ End Code
                         @code
                             If not Model.Youtubelink Is Nothing Then
                                 If Model.Youtubelink.Length > 36 Then
-                @<iframe title="YouTube video player" Class="youtube-player" type="text/html"
-                         height="315" src="@Html.DisplayFor(Function(model) model.Youtubelink)"
-                         frameborder="0" allowFullScreen></iframe>
+                            @<iframe title="YouTube video player" Class="youtube-player" type="text/html"
+                                     height="315" src="@Html.DisplayFor(Function(model) model.Youtubelink)"
+                                     frameborder="0" allowFullScreen></iframe>
                                 End If
                             End If
                         End Code
@@ -386,12 +386,13 @@ End Code
             inline: true,
             readonly: 1,
             paste_data_images: true,
-            content_css: [
-                '//www.atlasbasket.gr/Content/content.css',
+            content_css: [               
               '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-              '//www.tinymce.com/css/codepen.min.css']
+              '//www.tinymce.com/css/codepen.min.css'],
+            content_style:  '.mce-content-body {font-size:16px !important;}'            
         });
 
+        //baseUrl + '/Content/content.css'
 
     </script>
 End Section

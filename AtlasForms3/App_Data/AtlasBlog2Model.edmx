@@ -111,6 +111,7 @@
           <Parameter Name="currentpostid" Type="int" Mode="In" />
           <Parameter Name="k" Type="varchar" Mode="In" />
           <Parameter Name="ak" Type="int" Mode="In" />
+          <Parameter Name="currentagonistiki" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="ATLASBLOG2ModelStoreContainer">
           <EntitySet Name="BlogKathgoriesTable" EntityType="Self.BlogKathgoriesTable" Schema="dbo" store:Type="Tables" />
@@ -202,6 +203,7 @@
             <Parameter Name="currentpostid" Mode="In" Type="Int32" />
             <Parameter Name="k" Mode="In" Type="String" />
             <Parameter Name="ak" Mode="In" Type="Int32" />
+            <Parameter Name="currentagonistiki" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="BlogNewPlayer">

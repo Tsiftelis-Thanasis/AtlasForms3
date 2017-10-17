@@ -61,6 +61,12 @@ Namespace Controllers
                           Where pk2.PostId = q.Id
                           Select pk2.AtlasKathgoriaId).FirstOrDefault
 
+                    Dim agonistiki As Integer? = 0
+                    If Not q.agonistiki Is Nothing And pq = 14 Then
+                        agonistiki = q.agonistiki
+                    Else
+                        agonistiki = 0
+                    End If
 
                     '7 & 16
                     '3 & 11 & 13
@@ -74,16 +80,16 @@ Namespace Controllers
                     End If
                     intArrray &= ","
 
-                    Dim s = (From proc In pdb.GetPreviousandNextpostid(id, intArrray, If(ak Is Nothing, 0, ak))
+                    Dim s = (From proc In pdb.GetPreviousandNextpostid(id, intArrray, If(ak Is Nothing, 0, ak), agonistiki)
                              Select proc.PreviousPostId, proc.NextPostId).FirstOrDefault
 
 
                     Dim t1 As New Posts
+                    t1.Id = id
 
                     If pq = 14 And User.Identity.IsAuthenticated = False Then
 
-                        ModelState.AddModelError("", "Το περιεχόμενο δεν είναι διαθέσιμο. Πρέπει να συνδεθείτε")
-                        t1.Id = q.Id
+                        ModelState.AddModelError("", "Το περιεχόμενο δεν είναι διαθέσιμο. Πρέπει να συνδεθείτε για να το δείτε!")
                         Return View(t1)
 
                     End If
@@ -130,7 +136,11 @@ Namespace Controllers
         ' GET: Posts/Create
         <Authorize(Roles:="Admins")>
         Function Create() As ActionResult
-            Return View()
+
+            Dim p As New Posts
+            p.Activepost = 1
+            Return View(p)
+
         End Function
 
         ' POST: Posts/Create
@@ -229,7 +239,7 @@ Namespace Controllers
                     newpost.Youtubelink = p1.Youtubelink
                     newpost.Statslink = p1.Statslink
                     newpost.agonistiki = p1.Agonistiki
-                    newpost.Activepost = 1
+                    newpost.Activepost = If(p1.Activepost, 1, 0)
                     newpost.CreatedBy = User.Identity.Name
                     newpost.CreationDate = Now()
                     newpost.EditBy = User.Identity.Name

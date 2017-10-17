@@ -539,19 +539,18 @@ Public Class HomeController
         '16  Τοπ 10
         '17  ΔΗΛΩΣΕΙΣ
 
-        If k.Count = 1 Then
+        If k Is Nothing Then
+            k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
+        ElseIf k.Count = 0 Or k.FirstOrDefault = 0 Then
+            k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
+        ElseIf k.Count = 1 Then
             If k(0) = 3 Or k(0) = 13 Or k(0) = 11 Then
                 k = {3, 11, 13} 'Teleutaia nea opws kai me tin panw panw lista! (*)
             End If
         End If
 
-        If k Is Nothing Or k.Count = 0 Or k.FirstOrDefault = 0 Then
-            k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
-        End If
-
 
         Try
-
 
             If kl.Count > 0 Then
 
@@ -589,6 +588,8 @@ Public Class HomeController
                 Return Json(dtm, JsonRequestBehavior.AllowGet)
 
             Else
+
+
 
                 Dim q = (From p In pdb_blog.BlogPostsTable
                          Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
@@ -629,5 +630,112 @@ Public Class HomeController
         End Try
 
     End Function
+
+
+
+
+    <Compress>
+    Function GetLastNewsPaging(ByVal nCount As Integer, ByVal atlaskathgoria As Integer?,
+                         ByVal kathgories() As Integer?, ByVal minid As Integer?, ByVal maxid As Integer?) As JsonResult
+
+        If atlaskathgoria Is Nothing Then atlaskathgoria = 0
+        If minid Is Nothing Then minid = 0
+        If maxid Is Nothing Then maxid = 0
+
+        Dim kl = (From o In pdb.KathgoriesTable
+                  Where o.Id = atlaskathgoria
+                  Select o.Id).ToList
+
+        If kathgories Is Nothing Then
+            kathgories = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
+        ElseIf kathgories.Count = 0 Or kathgories.FirstOrDefault = 0 Then
+            kathgories = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
+        ElseIf kathgories.Count = 1 Then
+            If kathgories(0) = 3 Or kathgories(0) = 13 Or kathgories(0) = 11 Then
+                kathgories = {3, 11, 13} 'Teleutaia nea opws kai me tin panw panw lista! (*)
+            End If
+        End If
+
+        Try
+
+            If kl.Count > 0 Then
+
+                Dim q = (From p In pdb_blog.BlogPostsTable
+                         Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
+                         Join klist In kl On klist Equals pk.AtlasKathgoriaId
+                         Where p.Activepost = True And
+                            kathgories.Contains(pk.KathgoriaId) And
+                             If(minid > 0 And maxid = 0, p.Id < minid, 1 = 1) And
+                             If(minid = 0 And maxid > 0, p.Id > maxid, 1 = 1)
+                         Select p
+                             ).AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle,
+                        .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                        .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
+                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str),
+                        .agonistiki = o.agonistiki
+                        }).ToList()
+
+                If minid = 0 And maxid > 0 Then
+                    q = q.OrderBy(Function(a) a.Id).Take(nCount).ToList
+                ElseIf minid > 0 And maxid = 0 Then
+                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                Else
+                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                End If
+
+
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
+
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+            Else
+
+                Dim q = (From p In pdb_blog.BlogPostsTable
+                         Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
+                         Where p.Activepost = True And kathgories.Contains(If(pk.KathgoriaId, 0)) And
+                         pk.AtlasKathgoriaId Is Nothing And
+                            If(minid > 0 And maxid = 0, p.Id < minid, 1 = 1) And
+                             If(minid = 0 And maxid > 0, p.Id > maxid, 1 = 1)
+                         Select p
+                             ).AsEnumerable().[Select](
+                        Function(o) New With {.Id = o.Id, .PostTitle = o.PostTitle, .PostSummary = o.PostSummary, .PostBody = o.PostBody,
+                        .PostPhoto = If(o.PostPhotoStr Is Nothing, "", o.PostPhotoStr),
+                        .PostPhoto2 = If(o.PostPhoto160_160Str Is Nothing, "", o.PostPhoto160_160Str),
+                        .agonistiki = o.agonistiki
+                    }).ToList()
+
+                If minid = 0 And maxid > 0 Then
+                    q = q.OrderBy(Function(a) a.Id).Take(nCount).ToList
+                ElseIf minid > 0 And maxid = 0 Then
+                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                Else
+                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                End If
+
+                Dim dtm As New DataTableModel
+                If q IsNot Nothing Then
+                    dtm.data = q.Cast(Of Object).ToList
+                End If
+                dtm.draw = 0
+                dtm.recordsTotal = dtm.data.Count
+                dtm.recordsFiltered = dtm.recordsTotal
+
+                Return Json(dtm, JsonRequestBehavior.AllowGet)
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+
+    End Function
+
 
 End Class
