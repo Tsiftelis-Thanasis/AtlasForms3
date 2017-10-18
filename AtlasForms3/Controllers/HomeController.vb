@@ -676,13 +676,14 @@ Public Class HomeController
                         .agonistiki = o.agonistiki
                         }).ToList()
 
-                If minid = 0 And maxid > 0 Then
-                    q = q.OrderBy(Function(a) a.Id).Take(nCount).ToList
-                ElseIf minid > 0 And maxid = 0 Then
-                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
-                Else
-                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
-                End If
+                'If minid = 0 And maxid > 0 Then
+                '    q = q.OrderBy(Function(a) a.Id).Take(nCount).ToList
+                'ElseIf minid > 0 And maxid = 0 Then
+                '    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                'Else
+                '    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                'End If
+                q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
 
 
                 Dim dtm As New DataTableModel
@@ -711,13 +712,14 @@ Public Class HomeController
                         .agonistiki = o.agonistiki
                     }).ToList()
 
-                If minid = 0 And maxid > 0 Then
-                    q = q.OrderBy(Function(a) a.Id).Take(nCount).ToList
-                ElseIf minid > 0 And maxid = 0 Then
-                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
-                Else
-                    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
-                End If
+                'If minid = 0 And maxid > 0 Then
+                '    q = q.OrderBy(Function(a) a.Id).Take(nCount).ToList
+                'ElseIf minid > 0 And maxid = 0 Then
+                '    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                'Else
+                '    q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
+                'End If
+                q = q.OrderByDescending(Function(a) a.Id).Take(nCount).ToList
 
                 Dim dtm As New DataTableModel
                 If q IsNot Nothing Then

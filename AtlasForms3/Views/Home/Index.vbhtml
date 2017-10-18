@@ -940,11 +940,20 @@ End Code
                                     choiceContainer.empty();
                                     var d = '';
                                     var cnt = 0;
+                                    var min1 = 999999999;
+                                    var max1 = 0;
+
+
                                     $.each(result.data, function () {
-                                        if (cnt == 0) {
-                                            $("#minlistid").val(this.Id);
+
+                                        if (min1 => this.Id) {
+                                            min1 = this.Id;
                                         }
-                                        $("#maxlistid").val(this.Id);
+
+                                        if (max1 <= this.Id) {
+                                            max1 = this.Id;
+                                        }
+
                                         d = '<li> ' +
                                             ' <article Class="entry-item disable-select ">' +
                                             ' <div Class="entry-thumb">' +
@@ -959,8 +968,11 @@ End Code
                                             ' </article>' +
                                             ' </li>';
                                         choiceContainer.append(d);
-                                        cnt++;
+                                        //cnt++;
                                     });
+
+                                    $("#minlistid").val(min1);
+                                    $("#maxlistid").val(max1);
 
                                     $(document).scrollTop($("#lastnewsscrollid").offset().top);
                                 }
@@ -996,11 +1008,19 @@ End Code
                                     choiceContainer.empty();
                                     var d ='';
                                     var cnt = 0;
+                                    var min1 = 999999999;
+                                    var max1 = 0;
+
+
                                     $.each(result.data, function () {
-                                        if (cnt == 0) {
-                                            $("#maxlistid").val(this.Id);
+                                    
+                                        if (min1 => this.Id) {
+                                            min1 = this.Id;
                                         }
-                                        $("#minlistid").val(this.Id);
+
+                                        if (max1 <= this.Id) {
+                                            max1 = this.Id;
+                                        }
 
                                         d = '<li> ' +
                                             ' <article Class="entry-item disable-select ">' +
@@ -1016,8 +1036,11 @@ End Code
                                             ' </article>' +
                                             ' </li>';
                                         choiceContainer.append(d);
-                                        cnt++;
+                                        
                                     });
+
+                                    $("#minlistid").val(min1);
+                                    $("#maxlistid").val(max1);
 
                                     $(document).scrollTop($("#lastnewsscrollid").offset().top);
 
