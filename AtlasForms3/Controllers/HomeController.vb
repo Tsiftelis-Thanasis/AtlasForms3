@@ -91,11 +91,18 @@ Public Class HomeController
 
         Dim ha As New Utils
 
+        '<h3>Στοιχεία αποστολέα</h3><hr><span> Όνομα: Θανάσης Τσιφτελής < span <> br >
+        '<span> Email: tsiftelis.thanasis@gmail.com<span><br><hr><h3>Τα σχόλια της επικοινωνίας</h3><hr>Δοκιμή πως φαίνεται το email!<hr>
 
         subj = "Επικοινωνία μέσω site με θέμα: " & subj
-        body = "<h3>Τα σχόλια της επικοινωνίας</h3><hr>" & body & "<hr>"
 
-        Await ha.sendContactformEmailAsync(name, email, subj, body, copy)
+        Dim bodystr As String = ""
+        bodystr = "<h3>Στοιχεία αποστολέα</h3><hr>"
+        bodystr &= "<span> Όνομα: " & name & "<span><br>"
+        bodystr &= "<span> Email: " & email & "<span><br><hr>"
+        bodystr &= "<h3>Τα σχόλια της επικοινωνίας</h3><hr>" & body & "<hr>"
+
+        Await ha.sendContactformEmailAsync(name, email, subj, bodystr, copy)
 
         'ModelState.AddModelError("", "Έγινε η αποστολή!")
         'Return View()
@@ -423,7 +430,7 @@ Public Class HomeController
 
 
 
-    '    Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "Please confirm your account by clicking <a href=""http://atlasbasket2.gr.144-76-99-45.my-website-preview.com/Posts/?ak=49&k=11"">here</a>", False)
+    '    Await ha.sendEmailsync("tsiftelis.thanasis@gmail.com", "test", "Please confirm your account by clicking <a href="" http://atlasbasket2.gr.144-76-99-45.my-website-preview.com/Posts/?ak=49&k=11"">here</a>", False)
 
 
     'End Function
@@ -665,7 +672,7 @@ Public Class HomeController
                          Join klist In kl On klist Equals pk.AtlasKathgoriaId
                          Where p.Activepost = True And
                             kathgories.Contains(pk.KathgoriaId) And
-                             If(minid > 0 And maxid = 0, p.Id < minid, 1 = 1) And
+                             If(minid > 0 And maxid = 0, p.Id <minid, 1 = 1) And
                              If(minid = 0 And maxid > 0, p.Id > maxid, 1 = 1)
                          Select p
                              ).AsEnumerable().[Select](
@@ -702,7 +709,7 @@ Public Class HomeController
                          Join pk In pdb_blog.BlogPostandKathgoriaTable On pk.PostId Equals p.Id
                          Where p.Activepost = True And kathgories.Contains(If(pk.KathgoriaId, 0)) And
                          pk.AtlasKathgoriaId Is Nothing And
-                            If(minid > 0 And maxid = 0, p.Id < minid, 1 = 1) And
+                            If(minid > 0 And maxid = 0, p.Id <minid, 1 = 1) And
                              If(minid = 0 And maxid > 0, p.Id > maxid, 1 = 1)
                          Select p
                              ).AsEnumerable().[Select](
