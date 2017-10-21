@@ -1,0 +1,50 @@
+  <nav class="main-nav-mobile clearfix">
+                    <a class="pull fa fa-bars"></a>
+                    <ul class="main-menu-mobile" style="display: none;">
+					
+					<li class="">
+						<a href="@Url.Action("Index", "Home")"><span>Αρχικη</span></a>
+					</li>
+					
+					<li class="">
+						<a class="lipointer mm" onclick="fillomiloinavbar(@firstDiorganwshid, 1)"><span>Πρωταθλημα</span></a>
+					</li>
+						
+					<li class="">
+						<a><span>διοργανώσεις</span><span class=""></span></a>
+						  <ul class="sub-menu" id="diorganwseiulidmobile"  data-index="0" style="display: none;">
+							@code
+								For Each g In oGetdiorganwseis
+									@<li class="lipointer" onclick="fillomiloinavbar(@g.Id);"><a>@g.DiorganwshName</a></li>
+								Next
+							End Code
+						</ul>
+					</li>					
+						
+					<li class="">
+						<a><span>διοργανωτρια αρχη</span><span class=""></span></a>                            
+						<ul class="sub-menu" id="diorgarxhpostsidmobile" data-index="1" style="display: none;">
+							@code
+								For Each g In oGetSimplePosts
+									@<li><a href="/Posts/Details/@g.Id">@g.PostTitle</a></li>
+								Next
+							End Code
+						</ul>
+					</li>
+						
+					<li class="">
+						<a href="@Url.Action("Create", "Newteam")"><span>εγγραφη ομαδας</span></a>
+                    </li>
+
+                    <li class="">
+						<a href="@Url.Action("Contact", "Home")"><span>επικοινωνια </span></a>
+                    </li>
+
+                        @if User.Identity.IsAuthenticated Then
+                            If User.IsInRole("Admins") Then
+                                @<li Class="current-menu-item"><a href="@Url.Action("Panel", "Home")"><span>διαχειριση</span></a></li>
+                            End If
+                        End If
+						
+                    </ul>
+                </nav>

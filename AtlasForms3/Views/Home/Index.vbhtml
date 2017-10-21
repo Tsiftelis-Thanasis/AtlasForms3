@@ -73,7 +73,7 @@ End Code
 
 <div class="row rowflex" >
 
-    <div class="col-md-1 colflex panelBackground">
+    <div class="col-md-1 colflex panelBackground kopa-tab-1-widget">
         <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid=" >
         <img id="sticker1" src="~/Content/images/sb1-site.jpg" class="w3-center" alt="logo" style="position:fixed;" /></a>
     </div>    
@@ -81,7 +81,7 @@ End Code
 
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 colflex">
 
-        <div class="panelBackground0 w3-center"  style="padding-left:0px;padding-right:0px;">
+        <div class="panelBackground0 w3-center kopa-tab-1-widget"  style="padding-left:0px;padding-right:0px;">
             <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid="><img src="~/Content/images/sb0-site.png" class="w3-center" alt="logo" /></a>
         </div> 
 
@@ -462,7 +462,11 @@ End Code
 
                                                                     </div>
                                                                     <div Class="entry-content">
-                                                                        <h4 Class="entry-title"><a href="/Posts/Details/@o1.Id">@o1.PostTitle</a></h4>
+                                                                        <h5 Class="entry-title"><a href="/Posts/Details/@o1.Id">
+                                                                            <span style="width:95%;word-wrap: break-word;">
+                                                                                @o1.PostTitle                                
+                                                                            </span>                                                                        
+                                                                            </a></h5>
                                                                     </div>
                                                                 </article>
                                                             </div>
@@ -831,7 +835,7 @@ End Code
     </div>
          
 
-    <div class="col-md-1 colflex panelBackground">
+    <div class="col-md-1 colflex panelBackground kopa-tab-1-widget">
         <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid=" >
         <img id="sticker2" src="~/Content/images/sb2-site.jpg" class="w3-center" alt="logo" style="position:fixed;" /></a>
     </div>
@@ -923,7 +927,7 @@ End Code
                         info = [];
                         info[0] = 3;
                         info[1] = 11;
-                        info[2] = 13;
+                        //info[2] = 13;
 
                         $.ajax({
                             type: "POST",
@@ -990,7 +994,7 @@ End Code
                         info = [];
                         info[0] = 3;
                         info[1] = 11;
-                        info[2] = 13;
+                        //info[2] = 13;
                 
                         $.ajax({
                             type: "POST",

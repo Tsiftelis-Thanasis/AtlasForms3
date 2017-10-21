@@ -10,7 +10,7 @@ End Code
 
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 colflex">
 
-        <div class="panelBackground0 w3-center" style="padding-left:0px;padding-right:0px;">
+        <div class="panelBackground0 w3-center kopa-tab-1-widget" style="padding-left:0px;padding-right:0px;">
             <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid="><img src="~/Content/images/sb0-site.png" class="w3-center" alt="logo" /></a>
         </div>
 

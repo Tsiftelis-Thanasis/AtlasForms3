@@ -47,8 +47,11 @@ Public Class HomeController
         End If
 
         ViewBag.LastGamesList = Getlastgames(ak).Data
-        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13}, 1, Nothing).Data.data '(*) teleutaia nea!
-        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13}, Nothing, Nothing).Data.data '(*) teleutaia nea!
+        'ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11, 13}, 1, Nothing).Data.data '(*) teleutaia nea!
+        'ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11, 13}, Nothing, Nothing).Data.data '(*) teleutaia nea!
+        ViewBag.LastNews1 = GetLastNews(10, ak, 1, Nothing, {3, 11}, 1, Nothing).Data.data '(*) teleutaia nea!
+        ViewBag.LastNews2 = GetLastNews(10, ak, Nothing, Nothing, {3, 11}, Nothing, Nothing).Data.data '(*) teleutaia nea!
+
 
         ViewBag.WeeklyStat1 = GetWeeklyReportStat1(Nothing, ak).Data
         ViewBag.WeeklyStat2 = GetWeeklyReportStat2(Nothing, ak).Data
@@ -551,8 +554,10 @@ Public Class HomeController
         ElseIf k.Count = 0 Or k.FirstOrDefault = 0 Then
             k = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
         ElseIf k.Count = 1 Then
-            If k(0) = 3 Or k(0) = 13 Or k(0) = 11 Then
-                k = {3, 11, 13} 'Teleutaia nea opws kai me tin panw panw lista! (*)
+            'If k(0) = 3 Or k(0) = 13 Or k(0) = 11 Then
+            If k(0) = 3 Or k(0) = 11 Then
+                'k = {3, 11, 13} 'Teleutaia nea opws kai me tin panw panw lista! (*)
+                k = {3, 11} 'Teleutaia nea opws kai me tin panw panw lista! (*)
             End If
         End If
 
@@ -658,8 +663,11 @@ Public Class HomeController
         ElseIf kathgories.Count = 0 Or kathgories.FirstOrDefault = 0 Then
             kathgories = {3, 6, 7, 11, 13, 16, 17} 'Teleutaia nea!
         ElseIf kathgories.Count = 1 Then
-            If kathgories(0) = 3 Or kathgories(0) = 13 Or kathgories(0) = 11 Then
-                kathgories = {3, 11, 13} 'Teleutaia nea opws kai me tin panw panw lista! (*)
+            'If kathgories(0) = 3 Or kathgories(0) = 13 Or kathgories(0) = 11 Then
+            '    kathgories = {3, 11, 13} 'Teleutaia nea opws kai me tin panw panw lista! (*)
+            'End If
+            If kathgories(0) = 3 Or kathgories(0) = 11 Then
+                kathgories = {3, 11} 'Teleutaia nea opws kai me tin panw panw lista! (*)
             End If
         End If
 
