@@ -2,76 +2,83 @@
 @Code
 
 
+    Dim datatableid As Integer = 0
+    If Session("GlobalDataTableId") = 0 Then
+        datatableid = 0
+    Else
+        datatableid = Session("GlobalDataTableId")
+    End If
+
 End Code
+
+@Html.Hidden("datatableid", datatableid)
 
 <div id="main-content" Class="style1">
 
-    <div Class="wrapper">
-       <div Class="content-wrap">
+<div Class="wrapper">
+    <div Class="content-wrap">
           
-            <div Class="row">
-                @*<div Class="kopa-main-col">*@
+        <div Class="row">
                                        
-                    <div id="divcommon" Class="widget-area-2">
-                        <div Class="widget kopa-article-list-widget article-list-1">
-                            <h3 Class="widget-title style2">Όλα τα άρθρα</h3>
+                <div id="divcommon" Class="widget-area-2">
+                    <div Class="widget kopa-article-list-widget article-list-1">
+                        <h3 Class="widget-title style2">Όλα τα άρθρα</h3>
 
-                            <p  class="entry-categories style-s2">  @Html.ActionLink("Δημιουργία Άρθρου", "Create", "Posts") </p>
+                        <p  class="entry-categories style-s2">  @Html.ActionLink("Δημιουργία Άρθρου", "Create", "Posts") </p>
 
-                            <table id="newstable">
-                                <thead>
-                                    <tr>
-                                        <th>Άρθρο</th>
-                                        <th>Κατηγορία</th>
-                                        <th>Όμιλος (στατιστικά)</th>
-                                        <th>Κατηγορία (στατιστικά)</th>
-                                        <th>Active</th>
-                                        <th>Ημερομηνία δημιουργίας</th>
-                                        <th>Ημερομηνία αλλαγής</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                             </table>
-                        </div>
+                        <table id="newstable">
+                            <thead>
+                                <tr>
+                                    <th>Άρθρο</th>
+                                    <th>Κατηγορία</th>
+                                    <th>Όμιλος (στατιστικά)</th>
+                                    <th>Κατηγορία (στατιστικά)</th>
+                                    <th>Active</th>
+                                    <th>Ημερομηνία δημιουργίας</th>
+                                    <th>Ημερομηνία αλλαγής</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            </table>
                     </div>
                 </div>
-                
-                @*<div Class="sidebar widget-area-11">
-
-                    <div Class="widget kopa-ads-widget">
-                        <a href="http://www.blue-ice.gr/"> <img src="~/Content/images/blueiceok.png" alt=""></a>
-                    </div>
-
-                    <div Class="widget kopa-ads-widget">
-                        <a href="https://www.facebook.com/therisko2reloaded/?ref=ts&fref=ts"> <img src="~/Content/images/risko.jpg" alt=""></a>
-                    </div>
-
-                    <div Class="widget kopa-ads-widget">
-                        <a href="http://www.atlassportswear.gr/"> <img src="~/Content/images/atlassportwear.png" alt=""></a>
-                    </div>
-                
-                </div>*@
-                
-            </div>
-            <!-- row -->
-
-        </div>
-        <!-- content-wrap -->
-
-
+            </div>            
+        </div>  
     </div>
-    <!-- wrapper -->
+</div>  
 
-@*</div>*@
-<!-- main-content -->
 
 
 
 
 @Section Scripts
+
+<script src="https://cdn.datatables.net/plug-ins/1.10.16/api/fnDisplayRow.js" type="text/javascript"></script>
+
     <Script type="text/javascript" language="javascript">
+
+        /* post datatable id      */
+        function postDTid(id) {
+
+            $("#datatableid").val(id);
+            
+            $.ajax({
+                type: "POST",
+                url: baseUrl + '@Url.Action("SetDTRowid", "Home")',
+                data: "{id : " + id + "}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+                },
+                error: function () {
+                }
+            });
+        }
+
+
     $(document).ready(function () {
-        
+                
         $('#newstable').DataTable({
             "sAjaxSource": baseUrl + '@Url.Action("GetAllthePosts")',           
             "contentType": "application/json; charset=utf-8",
@@ -97,9 +104,10 @@ End Code
                         "render": function (data, type, row) {
                             if (row === undefined || row === null) return '';
 
-                                                        
-                            var btnDelete = '<a href="@Url.Action("Delete", "Posts")/' + row.Id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Σβήσιμο του άρθρου</a>'
-                            var btnEdit = '<a href="@Url.Action("Edit", "Posts")/' + row.Id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Προβολή του άρθρου</a>'
+                            //table.row(this).id();
+
+                            var btnDelete = '<a click="postDTid(' + row.id + ');" href="@Url.Action("Delete", "Posts")/' + row.Id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Σβήσιμο του άρθρου</a>'
+                            var btnEdit = '<a click="postDTid(' + row.id + ');" href="@Url.Action("Edit", "Posts")/' + row.Id + '"><i class="fa fa-pencil-square-o fa-fw"></i>Προβολή του άρθρου</a>'
                             var dd = '<div><div class="btn-group">' +
                                             '<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
                                             '<i class="fa fa-gear"></i><span class="caret"></span>' +
@@ -112,7 +120,7 @@ End Code
                             dd += ' <article class="entry-item"> ' +
                                ' <div class="entry-content"> ' +
                                '   <div class="content-top"> ' + 
-                               '       <a href="@Url.Action("Edit", "Posts")/' + row.Id + '"> ' +
+                               '       <a click="postDTid(' + row.id + ');" href="@Url.Action("Edit", "Posts")/' + row.Id + '"> ' +
                                '           <h4 class="entry-title"> <b>' + row.PostTitle + ' </b> </h4> ' + 
                                '       </a> ' +
                                '   </div> ' +
@@ -122,13 +130,27 @@ End Code
                                ' </article> ';
                             
 
-
                             return dd;
                         }
 
                     }
-            ]
+            ],
+            "fnRowCallback": function (nRow, aData, iDataIndex) {                
+                $(nRow).attr('id',aData.Id);
+            }
         });
+      
+
+        $('#newstable').on('click', 'tr', function () {
+            var id = this.id;            
+            postDTid(id);
+        });
+
+       
+        var table = $('#newstable').dataTable();
+        if ($("#datatableid").val()>0) {
+            table.fnDisplayRow(table.fnGetNodes()[$("#datatableid").val()]);
+        }
 
    
         jQuery.extend(jQuery.fn.dataTableExt.oSort, {

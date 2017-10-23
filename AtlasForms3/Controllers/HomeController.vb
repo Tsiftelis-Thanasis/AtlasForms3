@@ -755,4 +755,21 @@ Public Class HomeController
     End Function
 
 
+
+    <AllowAnonymous>
+    Function SetDTRowid(ByVal id As Integer?) As Boolean
+
+
+        If id IsNot Nothing Then
+            If id > 0 Then
+                Session("GlobalDataTableId") = id
+            End If
+        End If
+
+        Return True
+
+    End Function
+
+
+
 End Class

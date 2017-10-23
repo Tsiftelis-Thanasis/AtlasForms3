@@ -13,6 +13,7 @@ Public Class MvcApplication
     Protected Sub Session_Start()
 
         Session("GlobalDiorganwshid") = 0
+        Session("GlobalDataTableId") = 0
 
     End Sub
 
