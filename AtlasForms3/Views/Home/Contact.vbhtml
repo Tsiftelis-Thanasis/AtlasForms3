@@ -3,7 +3,7 @@
 End Code
 
 <div class="row rowflex">
-    <div class="col-md-1 colflex panelBackground">
+    <div class="col-md-1 colflex panelBackground kopa-tab-1-widget">
         <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid="><img id="sticker1" src="~/Content/images/sb1-site.jpg" class="w3-center" alt="logo" style="position:fixed;" /></a>
     </div>
 
@@ -94,7 +94,7 @@ End Code
     </div>
 
 
-    <div Class="col-md-1 colflex panelBackground">
+    <div class="col-md-1 colflex panelBackground kopa-tab-1-widget">
         <a target="_blank" href="http://partner.sbaffiliates.com/processing/clickthrgh.asp?btag=a_63418b_46560&aid="><img id="sticker2" src="~/Content/images/sb2-site.jpg" Class="w3-center" alt="logo" style="position:fixed;" /></a>
     </div>
 </div>

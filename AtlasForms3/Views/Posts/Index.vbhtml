@@ -473,9 +473,8 @@ End Code
                                 "render": function (data, type, row) {
                                     if (row === undefined || row === null) return '';
 
-                                    var postdd = '';
-                                    
-                                    if (row.PostSummary != 'null') {
+                                    var postdd = '';                                    
+                                    if (row.PostSummary != null) {
                                         postdd = row.PostSummary;
                                     }
 

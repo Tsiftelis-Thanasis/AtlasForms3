@@ -426,8 +426,8 @@ End Code
                                                         <div class="entry-thumb w3-center">
                                                             <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:160px;width:auto;"></a>                                                            
                                                         </div>
-                                                        <div class="entry-content">
-                                                            <h3 class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
+                                                        <div class="entry-content widget-title style7 kopa-point-widget">
+                                                            <h5 class=""><a style="color: #ffffff !important;" href="/Posts/Details/@o.Id">@o.PostTitle</a></h5>
                                                         </div>
                                                     </article>
                                                 </div>
@@ -452,7 +452,7 @@ End Code
 
                                                         @For Each o1 In oLastDilwseis
 
-                                                            @<div Class="item">
+                                                            @<div Class="item kopa-point-widget">
                                                                 <article Class="entry-item video-post">
                                                                     <div Class="entry-thumb">
                                                                         @*<a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
@@ -958,6 +958,12 @@ End Code
                                             max1 = this.Id;
                                         }
 
+                                        var postdd = '';
+                                        if (this.postsummarystr != null) {
+                                            postdd = this.postsummarystr;
+                                        }
+                                        alert(postdd);
+
                                         d = '<li> ' +
                                             ' <article Class="entry-item disable-select ">' +
                                             ' <div Class="entry-thumb">' +
@@ -967,7 +973,7 @@ End Code
                                             ' <div Class="content-top">' +
                                             ' <h4 Class="entry-title"><a href="/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4>' +
                                             ' </div>' +
-                                            ' <p> ' + this.postsummarystr + '... </p>' +
+                                            ' <p> ' + postdd + '... </p>' +
                                             ' </div>' +
                                             ' </article>' +
                                             ' </li>';
@@ -1026,6 +1032,11 @@ End Code
                                             max1 = this.Id;
                                         }
 
+                                        var postdd = '';
+                                        if (this.postsummarystr != null) {
+                                            postdd = this.postsummarystr;
+                                        }                                        
+                                        
                                         d = '<li> ' +
                                             ' <article Class="entry-item disable-select ">' +
                                             ' <div Class="entry-thumb">' +
@@ -1035,7 +1046,7 @@ End Code
                                             ' <div Class="content-top">' +
                                             ' <h4 Class="entry-title"><a href="/Posts/Details/' + this.Id + '">' + this.PostTitle + '</a></h4>' +
                                             ' </div>' +
-                                            ' <p> ' + this.postsummarystr + '... </p>' +
+                                            ' <p> ' + postdd + '... </p>' +
                                             ' </div>' +
                                             ' </article>' +
                                             ' </li>';
