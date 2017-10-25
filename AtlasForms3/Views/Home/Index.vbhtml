@@ -962,8 +962,7 @@ End Code
                                         if (this.postsummarystr != null) {
                                             postdd = this.postsummarystr;
                                         }
-                                        alert(postdd);
-
+                                        
                                         d = '<li> ' +
                                             ' <article Class="entry-item disable-select ">' +
                                             ' <div Class="entry-thumb">' +
