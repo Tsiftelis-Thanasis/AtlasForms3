@@ -248,17 +248,20 @@ End Code
                             <div Class="row">
                                 <div Class="kopa-main-col">
 
+                                    @code
+                                        Dim countid As Integer = 0
+                                        Dim countid2 As Integer = 0
 
+                                    @If oLastTop10List.count > 0 And AtlasKathgoriaid = 0 Then
 
-
-
-                                    <div class="container">
+                                    @<div class="container">
                                         <div id="main_area">
                                             <div Class="widget-area-1">
 
                                                 <div Class="widget kopa-tab-sync-carousel-widget">
 
                                                     <h3 Class="widget-title style1"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=16&sl=1"><span>TOP 10</span></a></h3>
+
                                                     <div Class="widget kopa-sync-carousel-2-widget">
                                                         <div Class="owl-carousel sync3">
                                                             <!-- Slider -->
@@ -267,61 +270,48 @@ End Code
                                                                     <!-- Top part of the slider -->
                                                                     <div class="row">
                                                                         <div class="col-sm-12" id="carousel-bounding-box">
-                                                                            <div class="carousel slide" id="myCarousel">
+                                                                            <div class="carousel slide " id="myCarousel">
                                                                                 <!-- Carousel items -->
                                                                                 <div class="carousel-inner">
-                                                                                    <div class="active item" data-slide-number="0">
-                                                                                        <article class="entry-item video-post">
-                                                                                            <div class="entry-thumb w3-center">
-                                                                                                <a href="/Posts/Details/1">
-                                                                                                    <img src="~/Content/images/facebook-icon.png" alt="" style="height:320px;width:640px;">
-                                                                                                    <span class="thumb-icon"></span>
-                                                                                                </a>
+
+                                                                                    @For Each o In oLastTop10List
+                                                                                        If countid = 0 Then
+
+                                                                                              @<div Class="active item" data-slide-number="0">
+                                                                                                <article Class="entry-item video-post">
+                                                                                                    <div Class="entry-thumb w3-center">
+                                                                                                        <a href="/Posts/Details/@o.Id">
+                                                                                                            <img src="@o.PostPhoto" alt="" style="height:320px;width:640px;">
+                                                                                                            <span class="thumb-icon"></span>
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                    <div Class="entry-content">
+                                                                                                        <h3 Class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
+                                                                                                    </div>
+                                                                                                </article>
+                                                                                                </div>
+
+
+                                                                                        Else
+
+                                                                                             @<div Class="item" data-slide-number="@countid">
+                                                                                                <article Class="entry-item video-post">
+                                                                                                    <div Class="entry-thumb w3-center">
+                                                                                                        <a href = "/Posts/Details/@o.Id" >
+                                                                                                            <img src="@o.PostPhoto" alt="" style="height:320px;width:640px;">
+                                                                                                                <span class="thumb-icon"></span>
+                                                                                                            </a>
+                                                                                                    </div>
+                                                                                                    <div Class="entry-content">
+                                                                                                        <h3 Class=""><a href="/Posts/Details/@o.Id">@o.PostTitle</a></h3>
+                                                                                                    </div>
+                                                                                                </article>
                                                                                             </div>
-                                                                                            <div class="entry-content">
-                                                                                                <h3 class=""><a href="/Posts/Details/1">One</a></h3>
-                                                                                            </div>
-                                                                                        </article>
-                                                                                    </div>
-                                                                                    <div class="item" data-slide-number="1">
-                                                                                        <article class="entry-item video-post">
-                                                                                            <div class="entry-thumb w3-center">
-                                                                                                <a href="/Posts/Details/1">
-                                                                                                    <img src="~/Content/images/facebook-icon.png" alt="" style="height:320px;width:640px;">
-                                                                                                    <span class="thumb-icon"></span>
-                                                                                                </a>
-                                                                                            </div>
-                                                                                            <div class="entry-content">
-                                                                                                <h3 class=""><a href="/Posts/Details/1">Two</a></h3>
-                                                                                            </div>
-                                                                                        </article>
-                                                                                    </div>
-                                                                                    <div class="item" data-slide-number="2">
-                                                                                        <article class="entry-item video-post">
-                                                                                            <div class="entry-thumb w3-center">
-                                                                                                <a href="/Posts/Details/1">
-                                                                                                    <img src="~/Content/images/facebook-icon.png" alt="" style="height:320px;width:640px;">
-                                                                                                    <span class="thumb-icon"></span>
-                                                                                                </a>
-                                                                                            </div>
-                                                                                            <div class="entry-content">
-                                                                                                <h3 class=""><a href="/Posts/Details/1">Three</a></h3>
-                                                                                            </div>
-                                                                                        </article>
-                                                                                    </div>
-                                                                                    <div class="item" data-slide-number="3">
-                                                                                        <article class="entry-item video-post">
-                                                                                            <div class="entry-thumb w3-center">
-                                                                                                <a href="/Posts/Details/1">
-                                                                                                    <img src="~/Content/images/facebook-icon.png" alt="" style="height:320px;width:640px;">
-                                                                                                    <span class="thumb-icon"></span>
-                                                                                                </a>
-                                                                                            </div>
-                                                                                            <div class="entry-content">
-                                                                                                <h3 class=""><a href="/Posts/Details/1">Four</a></h3>
-                                                                                            </div>
-                                                                                        </article>
-                                                                                    </div>
+
+                                                                                        End If
+                                                                                        countid += 1
+                                                                                    Next
+                                                                                   
                                                                                 </div><!-- Carousel nav -->
                                                                             </div>
                                                                         </div>
@@ -329,87 +319,88 @@ End Code
                                                                 </div>
                                                             </div><!--/Slider-->
                                                         </div>
+
+
+                                                        <div Class="owl-carousel  sync4 " id="slider-thumbs">
+
+                                                          
+                                                            <ul Class="hide-bullets">
+                                                                @For Each o2 In oLastTop10List
+                                                                    If countid2 = 0 Then
+
+                                                                @<li Class="col-sm-2 col-md-offset-1 lipointer"  >
+                                                                    <a id="carousel-selector-@countid2 " Class="thumbnail">
+                                                                        <div Class="item">
+                                                                            <article Class="entry-item video-post">
+                                                                                <div Class="entry-thumb">
+                                                                                    <img src="@o2.PostPhoto2" alt="" style="height:100px;width:120px;">
+                                                                                    <span Class="thumb-icon"></span>
+                                                                                </div>
+                                                                                <div Class="entry-content">
+                                                                                    <h4 Class="entry-title">@o2.PostTitle</h4>
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+
+                                                                    Else
+
+                                                                        @<li Class="col-sm-2 lipointer">
+                                                                            <a id="carousel-selector-@countid2 " Class="thumbnail">
+                                                                                <div Class="item">
+                                                                                    <article Class="entry-item video-post">
+                                                                                        <div Class="entry-thumb">
+                                                                                            <img src="@o2.PostPhoto2" alt="" style="height:100px;width:120px;">
+                                                                                            <span Class="thumb-icon"></span>
+                                                                                        </div>
+                                                                                        <div Class="entry-content">
+                                                                                            <h4 Class="entry-title">@o2.PostTitle</h4>
+                                                                                        </div>
+                                                                                    </article>
+                                                                                </div>
+                                                                            </a>
+                                                                        </li>
+
+                                                                    End If
+
+                                                                    countid2 += 1
+
+                                                                Next
+
+                                                            </ul>
+
+
+
+
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
 
-                                         
-                                                <div class="row hidden-xs" id="slider-thumbs">
-                                                        <!-- Bottom switcher of slider -->
-                                                        <ul class="hide-bullets">
-                                                            <li class="col-sm-3">
-                                                                <div Class="entry-thumb">
-                                                                    <a href="/Posts/Details/1">
-                                                                        <img src="~/Content/images/facebook-icon.png" alt="" style="height:100px;width:120px;">
-                                                                        <span class="thumb-icon"></span>
-                                                                    </a>
-                                                                </div>
-                                                                <div Class="entry-content">
-                                                                    <h4 Class="entry-title"><a href="/Posts/Details/1">One</a></h4>
-                                                                </div>
+                                        </div>
+                                    </div>
 
-                                                            </li>
-                                                            <li class="col-sm-3">
+                                    End If
+                                                                    End Code
 
-                                                                <div Class="entry-thumb">
-                                                                        <img src="~/Content/images/facebook-icon.png" alt="" style="height:100px;width:120px;">
-                                                                        <span class="thumb-icon"></span>
-                                                                  
-                                                                </div>
-                                                                <div Class="entry-content">
-                                                                    <h4 Class="entry-title">Two</h4>
-                                                                </div>
+                @*@code
 
-                                                            </li>
-                                                            <li class="col-sm-3">
-                                                                <div Class="entry-thumb">
-                                                                    <a href="/Posts/Details/1">
-                                                                        <img src="~/Content/images/facebook-icon.png" alt="" style="height:100px;width:120px;">
-                                                                        <span class="thumb-icon"></span>
-                                                                    </a>
-                                                                </div>
-                                                                <div Class="entry-content">
-                                                                    <h4 Class="entry-title"><a href="/Posts/Details/1">Three</a></h4>
-                                                                </div>
-                                                            </li>
-                                                            <li class="col-sm-3">
-                                                                <div Class="entry-thumb">
-                                                                    <a href="/Posts/Details/1">
-                                                                        <img src="~/Content/images/facebook-icon.png" alt="" style="height:100px;width:120px;">
-                                                                        <span class="thumb-icon"></span>
-                                                                    </a>
-                                                                </div>
-                                                                <div Class="entry-content">
-                                                                    <h4 Class="entry-title"><a href="/Posts/Details/1">Four</a></h4>
-                                                                </div>
+                    @If oLastTop10List.count > 0 And AtlasKathgoriaid = 0 Then
 
-                                                            </li>
-                                                        </ul>
-                                                   
-                                            </div>
-                                            </div>
-                                            </div>
+                        @<div Class="widget-area-1">
 
+                            <div Class="widget kopa-tab-sync-carousel-widget">
+                                <h3 Class="widget-title style1"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=16&sl=1"><span>TOP 10</span></a></h3>
+                                <div Class="widget kopa-sync-carousel-2-widget">
 
+                                    <div Class="owl-carousel sync3" id="watchsync3">
 
-                                            @code
-
-                                                @If oLastTop10List.count > 0 And AtlasKathgoriaid = 0 Then
-
-                                                    @<div Class="widget-area-1">
-
-                                                        <div Class="widget kopa-tab-sync-carousel-widget">
-                                                            <h3 Class="widget-title style1"><a href="/Posts/Index/?ak=@AtlasKathgoriaid&k=16&sl=1"><span>TOP 10</span></a></h3>
-                                                            <div Class="widget kopa-sync-carousel-2-widget">
-
-                                                                <div Class="owl-carousel sync3" id="watchsync3">
-
-                                                                    @For Each o In oLastTop10List
-                                                    @<div Class="item">
-                                                        <article class="entry-item video-post">
-                                                            <div class="entry-thumb w3-center">
-                                                                @*<a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:320px;width:640px;"></a>
-                                <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o.Youtubelink" target="_blank"></a>*@
+                                        @For Each o In oLastTop10List
+                        @<div Class="item">
+                            <article class="entry-item video-post">
+                                <div class="entry-thumb w3-center">                                
                                                                 <a href="/Posts/Details/@o.Id">
                                                                     <img src="@o.PostPhoto" alt="" style="height:320px;width:640px;">
                                                                     <span class="thumb-icon"></span>
@@ -429,9 +420,7 @@ End Code
                                                                     @For Each o1 In oLastTop10List
                                                     @<div Class="item">
                                                         <article Class="entry-item video-post">
-                                                            <div Class="entry-thumb">
-                                                                @*<a href="/Posts/Details/@o1.Id"><img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;"></a>
-                                <a class="thumb-icon" href="https://www.youtube.com/watch?v=@o1.Youtubelink" target="_blank"></a>*@
+                                                            <div Class="entry-thumb">                                                              
                                                                 <a href="/Posts/Details/@o1.Id">
                                                                     <img src="@o1.PostPhoto2" alt="" style="height:100px;width:120px;">
                                                                     <span class="thumb-icon"></span>
@@ -455,7 +444,7 @@ End Code
                                                     </div>
 
                                                 End If
-                                            End Code
+                                            End Code*@
 
 
 
@@ -470,16 +459,16 @@ End Code
                                                             <div Class="owl-carousel owl-carousel-1 sync22" id="watchsync3">
 
                                                                 @For Each o In oLastMvp
-                                                @<div Class="item">
-                                                    <article class="entry-item ">
-                                                        <div class="entry-thumb w3-center">
-                                                            <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:160px;width:auto;"></a>
-                                                        </div>
-                                                        <div class="entry-content widget-title style7 kopa-point-widget">
-                                                            <h5 class=""><a style="color: #ffffff !important;" href="/Posts/Details/@o.Id">@o.PostTitle</a></h5>
-                                                        </div>
-                                                    </article>
-                                                </div>
+                                                                @<div Class="item">
+                                                                    <article class="entry-item ">
+                                                                        <div class="entry-thumb w3-center">
+                                                                            <a href="/Posts/Details/@o.Id"><img src="@o.PostPhoto" alt="" style="height:160px;width:auto;"></a>
+                                                                        </div>
+                                                                        <div class="entry-content widget-title style7 kopa-point-widget">
+                                                                            <h5 class=""><a style="color: #ffffff !important;" href="/Posts/Details/@o.Id">@o.PostTitle</a></h5>
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
                                                                 Next
 
                                                             </div>
@@ -1144,6 +1133,22 @@ End Code
                 $('#myCarousel').on('slid.bs.carousel', function (e) {
                     var id = $('.item.active').data('slide-number');
                     $('#carousel-text').html($('#slide-content-' + id).html());
+                });
+
+
+                $('.fdi-Carousel .item').each(function () {
+                    var next = $(this).next();
+                    if (!next.length) {
+                        next = $(this).siblings(':first');
+                    }
+                    next.children(':first-child').clone().appendTo($(this));
+
+                    if (next.next().length > 0) {
+                        next.next().children(':first-child').clone().appendTo($(this));
+                    }
+                    else {
+                        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                    }
                 });
 
             });

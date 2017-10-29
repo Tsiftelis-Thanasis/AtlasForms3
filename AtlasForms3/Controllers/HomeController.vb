@@ -41,7 +41,7 @@ Public Class HomeController
         End If
 
         If ak = 0 Then
-            ViewBag.LastTop10List = GetLastNewsByCategory(10, ak, {7, 16}, Nothing, 1, 1).Data.data
+            ViewBag.LastTop10List = GetLastNewsByCategory(5, ak, {7, 16}, Nothing, 1, 1).Data.data
         Else
             ViewBag.LastTop10List = New List(Of Object)
         End If
