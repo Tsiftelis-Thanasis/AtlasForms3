@@ -23,7 +23,7 @@ End Code
                 <div id="divcommon" Class="widget-area-2">
                     <div Class="widget kopa-article-list-widget article-list-1">
                         <h3 Class="widget-title style2">Όλα τα άρθρα</h3>
-
+                        <button id="clicktable">Click me</button>
                         <p  class="entry-categories style-s2">  @Html.ActionLink("Δημιουργία Άρθρου", "Create", "Posts") </p>
 
                         <table id="newstable">
@@ -142,16 +142,29 @@ End Code
       
 
         $('#newstable').on('click', 'tr', function () {
-            var id = this.id;            
+            //var id = this.id;
+
+            var table = $('#newstable').dataTable();
+            //var id = table.row(this).id();
+            alert( table.row(this) );
+
             postDTid(id);
         });
 
        
-        var table = $('#newstable').dataTable();
-        if ($("#datatableid").val()>0) {
-            table.fnDisplayRow(table.fnGetNodes()[$("#datatableid").val()]);
-        }
+      
 
+        //if ($("#datatableid").val() > 0) {
+            
+        //    table.fnDisplayRow(64);
+        //}
+
+
+        $('#clicktable').on('click', function () {
+            alert(64);
+            var table = $('#newstable').dataTable();
+            table.fnDisplayRow(table.fnGetNodes()[8]);
+        });
    
         jQuery.extend(jQuery.fn.dataTableExt.oSort, {
             "date-uk-pre": function (a) {

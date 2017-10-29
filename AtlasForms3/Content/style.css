@@ -8517,3 +8517,8 @@ address {
   font-size: 14px;
 }
 
+
+.hide-bullets {
+list-style:none;
+
+}
