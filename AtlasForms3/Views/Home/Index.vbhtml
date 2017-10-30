@@ -124,10 +124,7 @@ End Code
                 End If
 
             End Code
-
-
-           
-
+                  
 
                 <div Class="wrapperSmall">
                     <div Class="kopa-page">
@@ -226,10 +223,10 @@ End Code
 
                             </div>
 
-                            <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
+                            <a class="left carousel-control" id="carousel-control1" href="#carousel1" role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             </a>
-                            <a class="right carousel-control" href="#carousel1" role="button" data-slide="next">
+                            <a class="right carousel-control" id="carousel-control2" href="#carousel1" role="button" data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                             </a>
 
@@ -943,10 +940,18 @@ End Code
 
             $(document).ready(function () {
 
-                $('.carousel-control').click(function (e) {
+                //$('.carousel-control').click(function (e) {
+                //    e.preventDefault();
+                //    $('#carousel1').carousel($(this).data());                   
+                //});
+
+                $('#carousel-control1').click(function (e) {
                     e.preventDefault();
                     $('#carousel1').carousel($(this).data());
-                    $('#carousellastgames').carousel($(this).data());
+                });
+                $('#carousel-control2').click(function (e) {
+                    e.preventDefault();
+                    $('#carousel1').carousel($(this).data());
                 });
 
                 var omilosid = $("#atlaskathgoriaid").val();
@@ -963,8 +968,7 @@ End Code
                     $("#facebookshareid").show();
                     triggerappendfwtos = 1;
                 }
-
-
+                
 
                 $('#newerpage').click(function () {
 
@@ -1136,7 +1140,12 @@ End Code
                 });
 
 
-                $('.fdi-Carousel .item').each(function () {
+
+                $('#myCarousel22').carousel({
+                    interval: 10000
+                })
+
+                $('.carousel2 .item').each(function () {
                     var next = $(this).next();
                     if (!next.length) {
                         next = $(this).siblings(':first');
@@ -1150,6 +1159,8 @@ End Code
                         $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
                     }
                 });
+
+
 
             });
 </script>
